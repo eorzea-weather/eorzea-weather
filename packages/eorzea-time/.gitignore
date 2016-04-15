@@ -1,0 +1,4 @@
+/lib/*
+!/lib/.keep
+/node_modules
+/npm-debug.log

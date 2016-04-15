@@ -1,0 +1,13 @@
+{
+  "extends": [
+    "airbnb/base",
+    "airbnb/rules/strict"
+  ],
+  "rules": {
+    "comma-dangle": ["error", "never"],
+    "space-before-function-paren": ["error", {
+      "anonymous": "never",
+      "named": "never"
+    }]
+  }
+}
