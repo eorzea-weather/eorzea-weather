@@ -1,0 +1,26 @@
+{
+  "author": "Lily Cartelet <flowercartelet@gmail.com>",
+  "description": "",
+  "devDependencies": {
+    "babel-preset-es2015-rollup": "^1.1.1",
+    "eslint": "^2.7.0",
+    "eslint-config-airbnb": "^7.0.0",
+    "eslint-plugin-jsx-a11y": "^0.6.2",
+    "eslint-plugin-react": "^4.3.0",
+    "rollup": "^0.25.8",
+    "rollup-plugin-babel": "^2.4.0"
+  },
+  "jsnext:main": "./src/eorzea-time.js",
+  "license": "MIT",
+  "main": "./lib/eorzea-time.js",
+  "name": "eorzea-time",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/flowercartelet/eorzea-time.git"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "lint": "find src -name '*.js' | xargs eslint"
+  },
+  "version": "1.0.0"
+}
