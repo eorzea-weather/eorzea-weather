@@ -1,7 +1,7 @@
 import padStart from './polyfill/padStart';
 
 const THREE_MINUTES = 3 * 60 * 1000;
-const privateDateProperty = typeof Symbol !== 'function' ?
+const privateDateProperty = typeof Symbol === 'function' ?
   Symbol('privateDateProperty') : '_privateDateProperty';
 
 function computeEorzeaDate(date) {
