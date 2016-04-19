@@ -1,5 +1,8 @@
 {
-  "presets": [
-    "es2015-rollup"
+  "plugins": [
+    "external-helpers",
+    "transform-es2015-block-scoping",
+    "transform-es2015-classes",
+    "transform-es2015-parameters"
   ]
 }
