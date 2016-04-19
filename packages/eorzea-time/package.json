@@ -2,7 +2,10 @@
   "author": "Lily Cartelet <flowercartelet@gmail.com>",
   "description": "",
   "devDependencies": {
-    "babel-preset-es2015-rollup": "^1.1.1",
+    "babel-plugin-external-helpers": "^6.5.0",
+    "babel-plugin-transform-es2015-block-scoping": "^6.7.1",
+    "babel-plugin-transform-es2015-classes": "^6.6.5",
+    "babel-plugin-transform-es2015-parameters": "^6.7.0",
     "eslint": "^2.7.0",
     "eslint-config-airbnb": "^7.0.0",
     "rollup": "^0.25.8",
