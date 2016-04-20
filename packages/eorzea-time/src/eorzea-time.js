@@ -37,6 +37,6 @@ export default class EorzeaTime {
   }
 
   toJSON() {
-    return toString();
+    return this.toString();
   }
 }
