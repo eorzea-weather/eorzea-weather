@@ -19,6 +19,29 @@ const eorzeaTime = new EorzeaTime();
 console.log(eorzeaTime.toString);
 ```
 
+### HTML
+
+```html
+<!-- ... -->
+<dl>
+  <dt>eorzea time
+  <dd><span id="eorzea-time"></span>
+</dl>
+<script src="eorzea-time.js"></script>
+<script>
+(function() {
+  var result = document.getElementById('eorzea-time');
+  (function timer() {
+    setTimeout(function() {
+      var eorzeaTime = new EorzeaTime();
+      result.textContent = eorzeaTime.toString();
+    }, 1000 / 60);
+  })();
+})();
+</script>
+<!-- ... -->
+```
+
 ## License
 
 [MIT](LICENSE)
