@@ -37,6 +37,7 @@
   "scripts": {
     "build": "npm run lint && rollup -c",
     "lint": "find src -name '*.js' | xargs eslint",
+    "prepublish": "npm test",
     "pretest": "npm run build",
     "test": "ava"
   },
