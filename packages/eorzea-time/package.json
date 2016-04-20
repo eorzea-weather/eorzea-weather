@@ -35,8 +35,9 @@
     "url": "https://github.com/flowercartelet/eorzea-time.git"
   },
   "scripts": {
-    "build": "rollup -c",
+    "build": "npm run lint && rollup -c",
     "lint": "find src -name '*.js' | xargs eslint",
+    "pretest": "npm run build",
     "test": "ava"
   },
   "version": "1.0.1"
