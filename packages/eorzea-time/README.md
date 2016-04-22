@@ -8,6 +8,10 @@
 npm install --save eorzea-time
 ```
 
+or
+
+Download the **eorzea-time.js** from [releases page](https://github.com/flowercartelet/eorzea-time/releases)
+
 ## Usage
 
 ### ES2015
