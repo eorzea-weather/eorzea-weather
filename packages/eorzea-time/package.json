@@ -1,16 +1,19 @@
 {
   "author": "Lily Cartelet <flowercartelet@gmail.com>",
   "ava": {
-    "files": [
-      "test/**/*.js"
-    ],
     "failFast": true,
+    "files": [
+      "./test/**/*.js"
+    ],
     "require": [
       "babel-register"
     ],
     "serial": true,
     "tap": true,
     "verbose": true
+  },
+  "bugs": {
+    "url": "https://github.com/flowercartelet/eorzea-time/issues"
   },
   "description": ":clock3: A clock of the Eorzea time.",
   "devDependencies": {
@@ -26,6 +29,10 @@
     "rollup-plugin-babel": "^2.4.0",
     "sinon": "^1.17.3"
   },
+  "directories": {
+    "lib": "./lib"
+  },
+  "homepage": "https://flowercartelet.com/eorzea-time/",
   "jsnext:main": "./src/eorzea-time.js",
   "license": "MIT",
   "main": "./lib/eorzea-time.js",
