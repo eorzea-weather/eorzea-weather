@@ -14,15 +14,6 @@ Download the **eorzea-time.js** from [releases page](https://github.com/flowerca
 
 ## Usage
 
-### ES2015
-
-```javascript
-import EorzeaTime from 'eorzea-time';
-
-const eorzeaTime = new EorzeaTime();
-console.log(eorzeaTime.toString);
-```
-
 ### HTML
 
 ```html
@@ -44,6 +35,24 @@ console.log(eorzeaTime.toString);
 })();
 </script>
 <!-- ... -->
+```
+
+### Node
+
+```javascript
+var EorzeaTime = require('eorzea-time');
+
+var eorzeaTime = new EorzeaTime();
+console.log(eorzeaTime.toString());
+```
+
+### ES2015
+
+```javascript
+import EorzeaTime from 'eorzea-time';
+
+const eorzeaTime = new EorzeaTime();
+console.log(eorzeaTime.toString);
 ```
 
 ## License
