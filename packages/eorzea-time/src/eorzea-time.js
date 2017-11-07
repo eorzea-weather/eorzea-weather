@@ -1,12 +1,11 @@
 import padStart from './polyfill/padStart';
 
-const THREE_MINUTES = 3 * 60 * 1000;
 const privateDateProperty = typeof Symbol === 'function' ?
   Symbol('privateDateProperty') : '_privateDateProperty';
 
 function computeEorzeaDate(date) {
   const eorzeaTime = new Date();
-  const unixTime = Math.floor(date.getTime() * 1440 / 70 - THREE_MINUTES);
+  const unixTime = Math.floor(date.getTime() * 1440 / 70);
   eorzeaTime.setTime(unixTime);
   return eorzeaTime;
 }

@@ -13,7 +13,7 @@ test.afterEach(function(t) {
 
 test(function toString(t) {
   const eorzeaTime = new EorzeaTime();
-  t.deepEqual(eorzeaTime.toString(), '13:39:51');
+  t.deepEqual(eorzeaTime.toString(), '13:42:51');
 });
 
 test(function getHours(t) {
@@ -23,10 +23,11 @@ test(function getHours(t) {
 
 test(function getMinutes(t) {
   const eorzeaTime = new EorzeaTime();
-  t.deepEqual(eorzeaTime.getMinutes(), 39);
+  t.deepEqual(eorzeaTime.getMinutes(), 42);
 });
 
 test(function getSeconds(t) {
   const eorzeaTime = new EorzeaTime();
   t.deepEqual(eorzeaTime.getSeconds(), 51);
 });
+
