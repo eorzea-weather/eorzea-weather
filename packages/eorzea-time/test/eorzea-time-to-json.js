@@ -13,7 +13,7 @@ test.afterEach(function(t) {
 
 test(function toJSON(t) {
   const eorzeaTime = t.context.eorzeaTime;
-  t.deepEqual(eorzeaTime.toJSON(), '13:39:51');
+  t.deepEqual(eorzeaTime.toJSON(), '13:42:51');
 });
 
 test(function returnsSameAsToString(t) {
@@ -23,7 +23,7 @@ test(function returnsSameAsToString(t) {
 
 test(function jsonStringify(t) {
   const eorzeaTime = t.context.eorzeaTime;
-  t.deepEqual(JSON.stringify(eorzeaTime), '"13:39:51"');
+  t.deepEqual(JSON.stringify(eorzeaTime), '"13:42:51"');
 });
 
 test(function jsonFromObject(t) {
@@ -31,5 +31,5 @@ test(function jsonFromObject(t) {
   const object = {
     time: eorzeaTime
   };
-  t.deepEqual(JSON.stringify(object), '{"time":"13:39:51"}');
+  t.deepEqual(JSON.stringify(object), '{"time":"13:42:51"}');
 });

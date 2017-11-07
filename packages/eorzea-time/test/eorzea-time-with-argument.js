@@ -5,7 +5,7 @@ test(function toString(t) {
   const unixTime = Date.UTC(2015, 6, 23, 9, 0, 0);
   const date = new Date(unixTime);
   const eorzeaTime = new EorzeaTime(date);
-  t.deepEqual(eorzeaTime.toString(), '17:05:34');
+  t.deepEqual(eorzeaTime.toString(), '17:08:34');
 });
 
 test(function getHours(t) {
@@ -19,7 +19,7 @@ test(function getMinutes(t) {
   const unixTime = Date.UTC(2015, 6, 23, 9, 0, 0);
   const date = new Date(unixTime);
   const eorzeaTime = new EorzeaTime(date);
-  t.deepEqual(eorzeaTime.getMinutes(), 5);
+  t.deepEqual(eorzeaTime.getMinutes(), 8);
 });
 
 test(function getSeconds(t) {
