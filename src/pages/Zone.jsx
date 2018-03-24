@@ -23,6 +23,9 @@ export const styles = {
   activeTableCell: {
     backgroundColor: 'rgba(0, 0, 0, .05)',
   },
+  weatherTable: {
+    margin: '25px 5px 30px',
+  },
 };
 
 @injectIntl
@@ -63,33 +66,33 @@ export default class Zone extends PureComponent {
       <Fragment>
         <Typography variant="headline">
           <FormattedMessage defaultMessage="{name} weather" id="zone.title" values={{ name: zoneName }} />
-          <Paper>
-            <Table>
-              <TableHead>
-                <TableRow>
-                  <TableCell>00:00 - 07:59</TableCell>
-                  <TableCell>08:00 - 15:59</TableCell>
-                  <TableCell>16:00 - 23:59</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {range(startTime, startTime + (step * 30), step * 3).map(dayStartTime => (
-                  <TableRow key={`row-${dayStartTime}`}>
-                    {range(dayStartTime, dayStartTime + (step * 3), step).map((time) => {
-                      const weather = this.getWeather(time);
-                      const className = classNames({
-                        [classes.activeTableCell]: time <= now && now < time + step,
-                      });
-                      return (
-                        <TableCell className={className} key={`cell-${time}`}>{weather} (<FormattedTime value={new Date(time)} />)</TableCell>
-                      );
-                    })}
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </Paper>
         </Typography>
+        <Paper className={classes.weatherTable}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>00:00 - 07:59</TableCell>
+                <TableCell>08:00 - 15:59</TableCell>
+                <TableCell>16:00 - 23:59</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {range(startTime, startTime + (step * 30), step * 3).map(dayStartTime => (
+                <TableRow key={`row-${dayStartTime}`}>
+                  {range(dayStartTime, dayStartTime + (step * 3), step).map((time) => {
+                    const weather = this.getWeather(time);
+                    const className = classNames({
+                      [classes.activeTableCell]: time <= now && now < time + step,
+                    });
+                    return (
+                      <TableCell className={className} key={`cell-${time}`}>{weather} (<FormattedTime value={new Date(time)} />)</TableCell>
+                    );
+                  })}
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </Paper>
       </Fragment>
     );
   }
