@@ -1,4 +1,5 @@
 import AppBar from 'material-ui/AppBar';
+import blueGrey from 'material-ui/colors/blueGrey';
 import CssBaseline from 'material-ui/CssBaseline';
 import { withStyles } from 'material-ui/styles';
 import Toolbar from 'material-ui/Toolbar';
@@ -20,17 +21,25 @@ export const styles = {
     maxWidth: 'calc(100% - 20px)',
     width: '1240px',
   },
+  footer: {
+    backgroundColor: blueGrey[100],
+    margin: '150px 0 0',
+    padding: '40px 10px 30px',
+    '& a': {
+      color: blueGrey[600],
+      textDecoration: 'none',
+      '&:hover': {
+        color: blueGrey[400],
+      },
+    },
+  },
 };
 
 @withStyles(styles)
 export default class App extends Component {
-  static defaultProps = {
-    classes: {},
-  };
-
   static propTypes = {
     // eslint-disable-next-line react/forbid-prop-types
-    classes: PropTypes.object,
+    classes: PropTypes.object.isRequired,
   }
 
   render() {
@@ -53,6 +62,9 @@ export default class App extends Component {
             <Route component={NoMatch} />
           </Switch>
         </main>
+        <footer className={classes.footer}>
+          <Typography align="center" variant="body1">Copyright &copy; 2018 <a href="mailto:flowercartelet@gmail.com">Lily Cartelet</a></Typography>
+        </footer>
       </Fragment>
     );
   }
