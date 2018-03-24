@@ -1,4 +1,5 @@
 const HtmlPlugin = require('html-webpack-plugin');
+const path = require('path');
 
 module.exports = {
   devServer: {
@@ -19,6 +20,7 @@ module.exports = {
   },
   plugins: [
     new HtmlPlugin({
+      template: path.resolve(__dirname, 'src', 'templates', 'index.jsx'),
       title: 'Eorzea Weather',
     }),
   ],
