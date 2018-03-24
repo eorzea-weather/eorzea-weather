@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true
+  },
+  "exclude": [
+    ".bundle",
+    "node_modules",
+    "vendor/bundle"
+  ]
+}
