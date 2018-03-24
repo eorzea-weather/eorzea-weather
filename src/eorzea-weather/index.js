@@ -11,13 +11,13 @@ const weatherNames = {
 
 const weatherChances = {
   eurekaAnemos(chance) {
-    if (chance <= 30) {
+    if (chance < 30) {
       return 'Fair Skies';
     }
-    if (chance <= 60) {
+    if (chance < 60) {
       return 'Gales';
     }
-    if (chance <= 90) {
+    if (chance < 90) {
       return 'Showers';
     }
     return 'Snow';
