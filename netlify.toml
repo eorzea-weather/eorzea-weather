@@ -8,3 +8,8 @@
   from   = '/*'
   status = 200
   to     = '/index.html'
+
+[[headers]]
+  for = '/*.js'
+  [headers.values]
+    Cache-Control = 'max-age=31536000, public, immutable'
