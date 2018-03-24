@@ -4,6 +4,7 @@ import { withStyles } from 'material-ui/styles';
 import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
 import Typography from 'material-ui/Typography';
 import camelCase from 'lodash/camelCase';
+import chunk from 'lodash/chunk';
 import range from 'lodash/range';
 import PropTypes from 'prop-types';
 import React, { Fragment, PureComponent } from 'react';
@@ -37,6 +38,10 @@ export default class Zone extends PureComponent {
     match: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   };
 
+  state = {
+    weatherTable: this.calculateWeatherTable(),
+  };
+
   getCurrentZoneName() {
     const { locale } = this.props.intl;
     const zoneId = this.getCurrentZoneId();
@@ -55,17 +60,24 @@ export default class Zone extends PureComponent {
     return EorzeaWeather.getWeather(msec, { zoneId, locale });
   }
 
+  calculateWeatherTable(baseTime = new Date()) {
+    const startTime = getStartTime(baseTime).getTime();
+    const step = 8 * 175 * 1000; // 8 hours
+    return range(startTime, startTime + (step * 30), step).map(time => ({
+      startedAt: new Date(time),
+      weather: this.getWeather(time),
+    }));
+  }
+
   render() {
     const { classes } = this.props;
-    const zoneName = this.getCurrentZoneName();
+    const { weatherTable } = this.state;
     const now = Date.now();
-    const startTime = getStartTime(new Date()).getTime();
-    const step = 8 * 175 * 1000; // 8 hours
 
     return (
       <Fragment>
         <Typography variant="headline">
-          <FormattedMessage defaultMessage="{name} weather" id="zone.title" values={{ name: zoneName }} />
+          <FormattedMessage defaultMessage="{name} weather" id="zone.title" values={{ name: this.getCurrentZoneName() }} />
         </Typography>
         <Paper className={classes.weatherTable}>
           <Table>
@@ -77,12 +89,12 @@ export default class Zone extends PureComponent {
               </TableRow>
             </TableHead>
             <TableBody>
-              {range(startTime, startTime + (step * 30), step * 3).map(dayStartTime => (
-                <TableRow key={`row-${dayStartTime}`}>
-                  {range(dayStartTime, dayStartTime + (step * 3), step).map((time) => {
-                    const weather = this.getWeather(time);
+              {chunk(weatherTable, 3).map(weatherTableForDay => (
+                <TableRow key={`row-${weatherTableForDay[0].startedAt.getTime()}`}>
+                  {weatherTableForDay.map(({ startedAt, weather }) => {
+                    const time = startedAt.getTime();
                     const className = classNames({
-                      [classes.activeTableCell]: time <= now && now < time + step,
+                      [classes.activeTableCell]: time <= now && now < time + (8 * 175 * 1000),
                     });
                     return (
                       <TableCell className={className} key={`cell-${time}`}>{weather} (<FormattedTime value={new Date(time)} />)</TableCell>
