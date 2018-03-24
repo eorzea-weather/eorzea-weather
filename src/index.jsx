@@ -9,21 +9,7 @@ import jaMessages from './locales/ja.json';
 
 addLocaleData(jaLocaleData);
 
-const getCurrentScript = () => {
-  if (document.currentScript) {
-    return document.currentScript;
-  }
-  const scripts = document.getElementsByTagName('script');
-  return scripts[scripts.length - 1];
-};
-
-const createContainer = () => {
-  const currentScript = getCurrentScript();
-  const container = document.createElement('div');
-  container.id = 'root';
-  currentScript.parentNode.insertBefore(container, currentScript.previousSibling);
-  return container;
-};
+const getCurrentLocale = () => (navigator.language || '').split('-')[0] || 'en';
 
 const render = (element, container) => new Promise((resolve, reject) => {
   try {
@@ -34,8 +20,8 @@ const render = (element, container) => new Promise((resolve, reject) => {
 });
 
 const main = async () => {
-  const container = createContainer();
-  const locale = (navigator.language || '').split('-')[0] || 'en';
+  const container = document.getElementById('root');
+  const locale = getCurrentLocale();
   const messages = locale === 'ja' ? jaMessages : enMessages;
   const element = (
     <IntlProvider locale={locale} messages={messages}>
