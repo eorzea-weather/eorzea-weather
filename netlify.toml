@@ -1,0 +1,10 @@
+[build]
+  base    = './'
+  command = 'yarn build'
+  publish = './dist/'
+
+[[redirect]]
+  force  = true
+  from   = '/*'
+  status = 200
+  to     = '/index.html'
