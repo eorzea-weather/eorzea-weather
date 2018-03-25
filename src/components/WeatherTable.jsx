@@ -5,16 +5,19 @@ import { LinearProgress } from 'material-ui/Progress';
 import { withStyles } from 'material-ui/styles';
 import Switch from 'material-ui/Switch';
 import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
+import Typography from 'material-ui/Typography';
 import chunk from 'lodash/chunk';
 import uniq from 'lodash/uniq';
 import PropTypes from 'prop-types';
 import React, { Component, Fragment } from 'react';
-import { FormattedMessage, FormattedTime } from 'react-intl';
+import { injectIntl, FormattedMessage, FormattedTime } from 'react-intl';
 
 const EIGHT_HOURS = 8 * 175 * 1000;
 
 export const styles = ({ palette }) => ({
   cell: {
+    paddingBottom: '15px',
+    paddingTop: '15px',
     position: 'relative',
   },
   highlight: {
@@ -32,10 +35,12 @@ export const styles = ({ palette }) => ({
   },
 });
 
+@injectIntl
 @withStyles(styles)
 export default class WeatherTable extends Component {
   static propTypes = {
     classes: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+    intl: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
     table: PropTypes.arrayOf(PropTypes.shape({
       startedAt: PropTypes.objectOf(Date).isRequired,
       weather: PropTypes.string.isRequired,
@@ -72,7 +77,7 @@ export default class WeatherTable extends Component {
   }
 
   render() {
-    const { classes, table: weatherTable } = this.props;
+    const { classes, intl, table: weatherTable } = this.props;
     const { highlightedWeathers } = this.state;
     const now = Date.now();
 
@@ -96,8 +101,8 @@ export default class WeatherTable extends Component {
                       [classes.highlight]: highlightedWeathers[weather],
                     });
                     return (
-                      <TableCell className={className} key={`cell-${time}`}>
-                        {weather} (<FormattedTime value={startedAt} />)
+                      <TableCell className={className} key={`cell-${time}`} title={intl.formatRelative(startedAt)}>
+                        <Typography>{weather} (<FormattedTime value={startedAt} />)</Typography>
                         {time <= now && now < time + EIGHT_HOURS && (
                           <LinearProgress className={classes.progress} value={((now - time) / EIGHT_HOURS) * 100} variant="determinate" />
                         )}
