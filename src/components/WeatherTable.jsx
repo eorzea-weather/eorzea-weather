@@ -82,9 +82,9 @@ export default class WeatherTable extends Component {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell>00:00 - 07:59</TableCell>
-                <TableCell>08:00 - 15:59</TableCell>
-                <TableCell>16:00 - 23:59</TableCell>
+                <TableCell>ET 00:00 - 07:59</TableCell>
+                <TableCell>ET 08:00 - 15:59</TableCell>
+                <TableCell>ET 16:00 - 23:59</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
