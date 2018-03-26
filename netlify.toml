@@ -4,8 +4,13 @@
   publish = './dist/'
 
 [[redirects]]
-  from   = '/*'
+  from   = '/zones/*'
   status = 200
+  to     = '/index.html'
+
+[[redirects]]
+  from   = '/*'
+  status = 404
   to     = '/index.html'
 
 [[headers]]
