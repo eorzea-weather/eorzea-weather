@@ -2,6 +2,7 @@
   "author": "Lily Cartelet <flowercartelet@gmail.com>",
   "dependencies": {
     "classnames": "^2.2.5",
+    "localforage": "^1.6.0",
     "lodash": "^4.17.5",
     "material-ui": "^1.0.0-beta.38",
     "material-ui-icons": "^1.0.0-beta.36",
