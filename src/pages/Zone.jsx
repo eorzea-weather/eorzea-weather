@@ -55,8 +55,8 @@ export default class Zone extends PureComponent {
   }
 
   calculateWeatherTable(baseTime = new Date()) {
-    const startTime = getStartTime(baseTime).getTime();
     const step = 8 * 175 * 1000; // 8 hours
+    const startTime = getStartTime(baseTime).getTime() - (step * 3);
     return range(startTime, startTime + (step * 30), step).map(time => ({
       startedAt: new Date(time),
       weather: this.getWeather(time),
