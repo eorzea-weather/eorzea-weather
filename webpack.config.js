@@ -8,7 +8,7 @@ module.exports = {
   module: {
     rules: [
       {
-        exclude: /\/node_modules\/(?:css-vendor|jss-default-unit|jss-global|jss-nested|jss-props-sort|jss-vendor-prefixer)\//,
+        exclude: /\/node_modules\/(?:css-vendor|jss-default-unit|jss-global|jss-nested|jss-props-sort|jss-vendor-prefixer|localforage|lodash|react|react-dom)\//,
         test: /\.jsx?$/,
         loader: 'babel-loader',
       },

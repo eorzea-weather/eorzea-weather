@@ -1,3 +1,4 @@
+import localForage from 'localforage';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { addLocaleData, IntlProvider } from 'react-intl';
@@ -9,7 +10,20 @@ import jaMessages from './locales/ja.json';
 
 addLocaleData(jaLocaleData);
 
-const getCurrentLocale = () => (navigator.language || '').split('-')[0] || 'en';
+const getCurrentLocale = async () => {
+  const cachedLocale = await localForage.getItem('locale');
+  const parsedUrl = new URL(window.location.href);
+  if (parsedUrl.searchParams && parsedUrl.searchParams.has('locale')) {
+    const locale = parsedUrl.searchParams.get('locale');
+    parsedUrl.searchParams.delete('locale');
+    window.history.replaceState(null, document.title, parsedUrl.href);
+    if (!cachedLocale || locale !== cachedLocale) {
+      await localForage.setItem('locale', locale);
+      return locale;
+    }
+  }
+  return cachedLocale || (navigator.language || '').split('-')[0] || 'en';
+};
 
 const render = (element, container) => new Promise((resolve, reject) => {
   try {
@@ -21,7 +35,7 @@ const render = (element, container) => new Promise((resolve, reject) => {
 
 const main = async () => {
   const container = document.getElementById('root');
-  const locale = getCurrentLocale();
+  const locale = await getCurrentLocale();
   const messages = locale === 'ja' ? jaMessages : enMessages;
   const element = (
     <IntlProvider locale={locale} messages={messages}>
