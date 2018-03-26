@@ -18,11 +18,11 @@ const messages = defineMessages({
 });
 
 const getStartTime = (date) => {
-  const unixtime = Math.floor(date.getTime() / 1000);
-  const bell = (unixtime / 175) % 24;
-  const startBell = bell - (bell % 24);
-  const startUnixtime = unixtime - (175 * (bell - startBell));
-  return new Date(startUnixtime * 1000);
+  const oneHour = 175 * 1000;
+  const msec = date.getTime();
+  const bell = (msec / oneHour) % 24;
+  const startMsec = msec - Math.round(oneHour * bell);
+  return new Date(startMsec);
 };
 
 export const styles = {
