@@ -24,6 +24,9 @@ export const styles = ({ palette }) => ({
     backgroundColor: palette.primary.light,
     color: palette.primary.contrastText,
   },
+  past: {
+    color: palette.text.disabled,
+  },
   progress: {
     bottom: 0,
     left: 0,
@@ -99,6 +102,7 @@ export default class WeatherTable extends Component {
                     const time = startedAt.getTime();
                     const className = classNames(classes.cell, {
                       [classes.highlight]: highlightedWeathers[weather],
+                      [classes.past]: time + EIGHT_HOURS < now,
                     });
                     return (
                       <TableCell className={className} key={`cell-${time}`} title={intl.formatRelative(startedAt)}>
