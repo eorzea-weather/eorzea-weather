@@ -102,7 +102,7 @@ export default class WeatherTable extends Component {
                     });
                     return (
                       <TableCell className={className} key={`cell-${time}`} title={intl.formatRelative(startedAt)}>
-                        <Typography>{weather} (<FormattedTime value={startedAt} />)</Typography>
+                        <Typography color="inherit">{weather} (<FormattedTime value={startedAt} />)</Typography>
                         {time <= now && now < time + EIGHT_HOURS && (
                           <LinearProgress className={classes.progress} value={((now - time) / EIGHT_HOURS) * 100} variant="determinate" />
                         )}
