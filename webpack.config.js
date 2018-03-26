@@ -22,7 +22,6 @@ module.exports = {
     new HtmlPlugin({
       inject: false,
       template: path.resolve(__dirname, 'src', 'templates', 'index.jsx'),
-      title: 'Eorzea Weather',
     }),
   ],
   resolve: {
