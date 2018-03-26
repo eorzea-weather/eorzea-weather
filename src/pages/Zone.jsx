@@ -4,10 +4,18 @@ import camelCase from 'lodash/camelCase';
 import range from 'lodash/range';
 import PropTypes from 'prop-types';
 import React, { Fragment, PureComponent } from 'react';
-import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
+import { Helmet } from 'react-helmet';
+import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import WeatherTable from '../components/WeatherTable';
 import EorzeaWeather from '../eorzea-weather';
 import zones from '../zones.json';
+
+const messages = defineMessages({
+  title: {
+    defaultMessage: '{name} weather',
+    id: 'zone.title',
+  },
+});
 
 const getStartTime = (date) => {
   const unixtime = Math.floor(date.getTime() / 1000);
@@ -64,14 +72,16 @@ export default class Zone extends PureComponent {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, intl } = this.props;
     const { weatherTable } = this.state;
+    const title = intl.formatMessage(messages.title, { name: this.getCurrentZoneName() });
 
     return (
       <Fragment>
-        <Typography className={classes.headline} variant="headline">
-          <FormattedMessage defaultMessage="{name} weather" id="zone.title" values={{ name: this.getCurrentZoneName() }} />
-        </Typography>
+        <Helmet>
+          <title>{title} - Eorzea Weather</title>
+        </Helmet>
+        <Typography className={classes.headline} variant="headline">{title}</Typography>
         <WeatherTable table={weatherTable} />
       </Fragment>
     );
