@@ -79,7 +79,7 @@ export default class Zone extends PureComponent {
     return (
       <Fragment>
         <Helmet>
-          <title>{title} - Eorzea Weather</title>
+          <title>{title}</title>
         </Helmet>
         <Typography className={classes.headline} variant="headline">{title}</Typography>
         <WeatherTable table={weatherTable} />

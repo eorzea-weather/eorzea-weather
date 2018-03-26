@@ -11,7 +11,7 @@ const Html = ({ files }) => (
     <body>
       <div id="root" />
       {files.js.map(path => (
-        <script src={path} />
+        <script key={`script-${path}`} src={path} />
       ))}
     </body>
   </html>

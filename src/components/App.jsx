@@ -9,6 +9,7 @@ import Typography from 'material-ui/Typography';
 import LanguageIcon from 'material-ui-icons/Language';
 import PropTypes from 'prop-types';
 import React, { Component, Fragment } from 'react';
+import { Helmet } from 'react-helmet';
 import { Link, Route, Switch } from 'react-router-dom';
 import Home from '../pages/Home';
 import NoMatch from '../pages/NoMatch';
@@ -70,6 +71,7 @@ export default class App extends Component {
 
     return (
       <Fragment>
+        <Helmet defaultTitle="Eorzea Weather" titleTemplate="%s - Eorzea Weather" />
         <CssBaseline />
         <AppBar position="static">
           <Toolbar>
