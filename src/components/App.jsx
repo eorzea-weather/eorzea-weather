@@ -14,6 +14,7 @@ import { Link, Route, Switch } from 'react-router-dom';
 import Home from '../pages/Home';
 import NoMatch from '../pages/NoMatch';
 import Zone from '../pages/Zone';
+import EorzeaClock from './EorzeaClock';
 
 export const styles = {
   appbarTitle: {
@@ -78,6 +79,7 @@ export default class App extends Component {
             <Typography className={classes.flex} color="inherit" noWrap variant="title">
               <Link className={classes.appbarTitle} to="/">Eorzea Weather</Link>
             </Typography>
+            <EorzeaClock />
             <IconButton color="inherit" onClick={this.handleLanguageIconClick}>
               <LanguageIcon />
             </IconButton>
