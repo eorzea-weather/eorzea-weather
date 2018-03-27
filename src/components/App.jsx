@@ -10,6 +10,7 @@ import LanguageIcon from 'material-ui-icons/Language';
 import PropTypes from 'prop-types';
 import React, { Component, Fragment } from 'react';
 import { Helmet } from 'react-helmet';
+import { injectIntl } from 'react-intl';
 import { Link, Route, Switch } from 'react-router-dom';
 import Home from '../pages/Home';
 import NoMatch from '../pages/NoMatch';
@@ -43,11 +44,12 @@ export const styles = {
   },
 };
 
+@injectIntl
 @withStyles(styles)
 export default class App extends Component {
   static propTypes = {
-    // eslint-disable-next-line react/forbid-prop-types
-    classes: PropTypes.object.isRequired,
+    classes: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+    intl: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   }
 
   state = {
@@ -67,12 +69,12 @@ export default class App extends Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, intl } = this.props;
     const { anchorEl } = this.state;
 
     return (
       <Fragment>
-        <Helmet defaultTitle="Eorzea Weather" titleTemplate="%s - Eorzea Weather" />
+        <Helmet defaultTitle="Eorzea Weather" htmlAttributes={{ lang: intl.locale }} titleTemplate="%s - Eorzea Weather" />
         <CssBaseline />
         <AppBar position="static">
           <Toolbar>
