@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React from 'react';
 import { addLocaleData, IntlProvider } from 'react-intl';
 import jaLocaleData from 'react-intl/locale-data/ja';
 import enMessages from '../locales/en.json';
@@ -8,27 +8,22 @@ import App from './App';
 
 addLocaleData(jaLocaleData);
 
-export default class Main extends Component {
-  static defaultProps = {
-    locale: 'en',
-  };
+const Main = ({ locale }) => {
+  const messages = locale === 'ja' ? jaMessages : enMessages;
 
-  static propTypes = {
-    locale: PropTypes.string,
-  };
+  return (
+    <IntlProvider locale={locale} messages={messages}>
+      <App />
+    </IntlProvider>
+  );
+};
 
-  shouldComponentUpdate(nextProps) {
-    return this.props.locale !== nextProps.locale;
-  }
+Main.defaultProps = {
+  locale: 'en',
+};
 
-  render() {
-    const { locale } = this.props;
-    const messages = locale === 'ja' ? jaMessages : enMessages;
+Main.propTypes = {
+  locale: PropTypes.string,
+};
 
-    return (
-      <IntlProvider locale={locale} messages={messages}>
-        <App />
-      </IntlProvider>
-    );
-  }
-}
+export default Main;
