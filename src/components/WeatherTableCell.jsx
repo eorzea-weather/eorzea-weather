@@ -5,7 +5,7 @@ import { TableCell } from 'material-ui/Table';
 import Typography from 'material-ui/Typography';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { FormattedTime } from 'react-intl';
+import { FormattedTime, injectIntl, intlShape } from 'react-intl';
 import weatherShape from '../types/weatherShape';
 
 const EIGHT_HOURS = 8 * 175 * 1000;
@@ -30,6 +30,7 @@ export const styles = ({ palette }) => ({
   },
 });
 
+@injectIntl
 @withStyles(styles)
 export default class WeatherTableCell extends Component {
   static defaultProps = {
@@ -37,8 +38,9 @@ export default class WeatherTableCell extends Component {
   };
 
   static propTypes = {
-    classes: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+    classes: PropTypes.objectOf(PropTypes.any).isRequired,
     highlight: PropTypes.bool,
+    intl: intlShape.isRequired,
     value: weatherShape.isRequired,
   };
 
@@ -98,7 +100,12 @@ export default class WeatherTableCell extends Component {
   }
 
   render() {
-    const { classes, highlight, value } = this.props;
+    const {
+      classes,
+      highlight,
+      intl,
+      value,
+    } = this.props;
     const { now } = this.state;
     const { startedAt, name } = value;
     const time = startedAt.getTime();
@@ -106,10 +113,26 @@ export default class WeatherTableCell extends Component {
       [classes.highlight]: highlight,
       [classes.past]: this.isPast(),
     });
+    const title = intl.formatDate(startedAt.toISOString(), {
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      month: 'short',
+      second: 'numeric',
+      year: 'numeric',
+    });
 
     return (
       <TableCell className={className} key={`cell-${time}`}>
-        <Typography color="inherit">{name} (<FormattedTime value={startedAt} />)</Typography>
+        <Typography color="inherit">
+          {name}
+          {' '}
+          (
+          <time dateTime={startedAt.toISOString()} title={title}>
+            <FormattedTime value={startedAt} />
+          </time>
+          )
+        </Typography>
         {this.isNow() && (
           <LinearProgress className={classes.progress} value={((now - time) / EIGHT_HOURS) * 100} variant="determinate" />
         )}
