@@ -1,5 +1,3 @@
-import padStart from './polyfill/padStart';
-
 const privateDateProperty = typeof Symbol === 'function' ?
   Symbol('privateDateProperty') : '_privateDateProperty';
 
@@ -29,9 +27,9 @@ export default class EorzeaTime {
 
   toString() {
     return [
-      padStart.call(this.getHours(), 2, 0),
-      padStart.call(this.getMinutes(), 2, 0),
-      padStart.call(this.getSeconds(), 2, 0)
+      `0${this.getHours()}`.slice(-2),
+      `0${this.getMinutes()}`.slice(-2),
+      `0${this.getSeconds()}`.slice(-2)
     ].join(':');
   }
 
