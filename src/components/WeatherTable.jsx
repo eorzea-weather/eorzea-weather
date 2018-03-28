@@ -1,14 +1,15 @@
+import chunk from 'lodash/chunk';
+import isEqual from 'lodash/isEqual';
+import uniq from 'lodash/uniq';
 import { FormControlLabel, FormGroup, FormLabel } from 'material-ui/Form';
 import Paper from 'material-ui/Paper';
 import { withStyles } from 'material-ui/styles';
 import Switch from 'material-ui/Switch';
 import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
-import chunk from 'lodash/chunk';
-import isEqual from 'lodash/isEqual';
-import uniq from 'lodash/uniq';
 import PropTypes from 'prop-types';
 import React, { Component, Fragment } from 'react';
 import { FormattedMessage } from 'react-intl';
+import weatherShape from '../types/weatherShape';
 import WeatherTableCell from './WeatherTableCell';
 
 export const styles = {
@@ -21,19 +22,19 @@ export const styles = {
 @withStyles(styles)
 export default class WeatherTable extends Component {
   static propTypes = {
-    classes: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
-    table: PropTypes.arrayOf(PropTypes.shape({
-      startedAt: PropTypes.objectOf(Date).isRequired,
-      weather: PropTypes.string.isRequired,
-    })).isRequired,
+    classes: PropTypes.objectOf(PropTypes.any).isRequired,
+    data: PropTypes.arrayOf(weatherShape).isRequired,
   };
 
   state = {
     highlightedWeathers: {},
   };
 
-  shouldComponentUpdate(nextProps) {
-    return isEqual(this.props.table, nextProps.table);
+  shouldComponentUpdate(nextProps, nextState) {
+    return (
+      !isEqual(this.state.highlightedWeathers, nextState.highlightedWeathers) ||
+      !isEqual(this.props.data, nextProps.data)
+    );
   }
 
   handleFilterChange = ({ target }) => {
@@ -47,7 +48,7 @@ export default class WeatherTable extends Component {
   }
 
   render() {
-    const { classes, table: weatherTable } = this.props;
+    const { classes, data: weatherTable } = this.props;
     const { highlightedWeathers } = this.state;
 
     return (
@@ -64,11 +65,11 @@ export default class WeatherTable extends Component {
             <TableBody>
               {chunk(weatherTable, 3).map(weatherTableForDay => (
                 <TableRow key={`row-${weatherTableForDay[0].startedAt.getTime()}`}>
-                  {weatherTableForDay.map(value => (
+                  {weatherTableForDay.map(weather => (
                     <WeatherTableCell
-                      highlight={highlightedWeathers[value.weather]}
-                      key={`cell-${value.startedAt.getTime()}`}
-                      value={value}
+                      highlight={highlightedWeathers[weather.name]}
+                      key={`cell-${weather.startedAt.getTime()}`}
+                      value={weather}
                     />
                   ))}
                 </TableRow>
@@ -80,12 +81,12 @@ export default class WeatherTable extends Component {
           <FormattedMessage defaultMessage="Highlight" id="zone.highlight" />
         </FormLabel>
         <FormGroup row>
-          {uniq(weatherTable.map(({ weather }) => weather)).map((weather) => {
+          {uniq(weatherTable.map(({ name }) => name)).map((name) => {
             const control = (
-              <Switch color="primary" onChange={this.handleFilterChange} value={weather} />
+              <Switch color="primary" onChange={this.handleFilterChange} value={name} />
             );
             return (
-              <FormControlLabel control={control} key={weather} label={weather} />
+              <FormControlLabel control={control} key={name} label={name} />
             );
           })}
         </FormGroup>

@@ -6,6 +6,7 @@ import Typography from 'material-ui/Typography';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { FormattedTime } from 'react-intl';
+import weatherShape from '../types/weatherShape';
 
 const EIGHT_HOURS = 8 * 175 * 1000;
 
@@ -38,10 +39,7 @@ export default class WeatherTableCell extends Component {
   static propTypes = {
     classes: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
     highlight: PropTypes.bool,
-    value: PropTypes.shape({
-      startedAt: PropTypes.instanceOf(Date).isRequired,
-      weather: PropTypes.string.isRequired,
-    }).isRequired,
+    value: weatherShape.isRequired,
   };
 
   state = {
@@ -102,7 +100,7 @@ export default class WeatherTableCell extends Component {
   render() {
     const { classes, highlight, value } = this.props;
     const { now } = this.state;
-    const { startedAt, weather } = value;
+    const { startedAt, name } = value;
     const time = startedAt.getTime();
     const className = classNames(classes.root, {
       [classes.highlight]: highlight,
@@ -111,7 +109,7 @@ export default class WeatherTableCell extends Component {
 
     return (
       <TableCell className={className} key={`cell-${time}`}>
-        <Typography color="inherit">{weather} (<FormattedTime value={startedAt} />)</Typography>
+        <Typography color="inherit">{name} (<FormattedTime value={startedAt} />)</Typography>
         {this.isNow() && (
           <LinearProgress className={classes.progress} value={((now - time) / EIGHT_HOURS) * 100} variant="determinate" />
         )}

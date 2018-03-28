@@ -12,10 +12,10 @@ import React, { Component, Fragment } from 'react';
 import { Helmet } from 'react-helmet';
 import { injectIntl } from 'react-intl';
 import { Link, Route, Switch } from 'react-router-dom';
-import Home from '../pages/Home';
-import NoMatch from '../pages/NoMatch';
-import Zone from '../pages/Zone';
+import Zone from '../containers/Zone';
 import EorzeaClock from './EorzeaClock';
+import Home from './Home';
+import NoMatch from './NoMatch';
 
 export const styles = {
   appbarTitle: {
@@ -109,7 +109,7 @@ export default class App extends Component {
         <main className={classes.container}>
           <Switch>
             <Route component={Home} exact path="/" />
-            <Route component={Zone} path="/zones/:id" />
+            <Route component={Zone} path="/zones/:zoneId" />
             <Route component={NoMatch} />
           </Switch>
         </main>
