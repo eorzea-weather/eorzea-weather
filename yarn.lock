@@ -2554,6 +2554,10 @@ entities@~1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/entities/-/entities-1.1.1.tgz#6e5c2d0a5621b5dadaecef80b90edfb5cd7772f0"
 
+eorzea-time@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/eorzea-time/-/eorzea-time-1.0.5.tgz#e4de9fecb03f80bc61e5e831213ccf32c3656003"
+
 errno@^0.1.3, errno@~0.1.7:
   version "0.1.7"
   resolved "https://registry.yarnpkg.com/errno/-/errno-0.1.7.tgz#4684d71779ad39af177e3f007996f7c67c852618"
