@@ -1,13 +1,6 @@
+import EorzeaTime from 'eorzea-time';
 import Typography from 'material-ui/Typography';
 import React, { Component } from 'react';
-import { FormattedTime } from 'react-intl';
-
-const calculateEorzeaDate = (date = new Date()) => {
-  const eorzeaDate = new Date();
-  const msec = Math.floor(date.getTime() * (1440 / 70));
-  eorzeaDate.setTime(msec);
-  return eorzeaDate;
-};
 
 export default class EorzeaClock extends Component {
   state = {
@@ -20,11 +13,11 @@ export default class EorzeaClock extends Component {
 
   shouldComponentUpdate(nextProps, { date: nextDate }) {
     const { date: currentDate } = this.state;
-    if (currentDate instanceof Date && nextDate instanceof Date) {
+    if (currentDate instanceof EorzeaTime && nextDate instanceof EorzeaTime) {
       return (
-        currentDate.getUTCHours() !== nextDate.getUTCHours() ||
-        currentDate.getUTCMinutes() !== nextDate.getUTCMinutes() ||
-        currentDate.getUTCSeconds() !== nextDate.getUTCSeconds()
+        currentDate.getHours() !== nextDate.getHours() ||
+        currentDate.getMinutes() !== nextDate.getMinutes() ||
+        currentDate.getSeconds() !== nextDate.getSeconds()
       );
     }
     return currentDate !== nextDate;
@@ -38,7 +31,7 @@ export default class EorzeaClock extends Component {
 
   loop = () => {
     this.setState({
-      date: calculateEorzeaDate(),
+      date: new EorzeaTime(),
     }, () => {
       this.requestId = requestAnimationFrame(this.loop);
     });
@@ -48,7 +41,7 @@ export default class EorzeaClock extends Component {
     const { date } = this.state;
 
     return (
-      <Typography color="inherit" variant="body2">ET {date ? <FormattedTime hour="2-digit" hour12={false} minute="2-digit" second="2-digit" timeZone="UTC" value={date} /> : <span>--:--:--</span>}</Typography>
+      <Typography color="inherit" variant="body2">ET {date ? date.toString() : '--:--:--'}</Typography>
     );
   }
 }
