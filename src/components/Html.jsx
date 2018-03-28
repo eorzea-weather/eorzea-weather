@@ -7,6 +7,7 @@ const Html = ({ files }) => (
       <meta charSet="UTF-8" />
       <meta content="initial-scale=1,width=device-width" name="viewport" />
       <title>Eorzea Weather</title>
+      <link href="/favicon.ico" rel="icon" />
       <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
     </head>
     <body>
