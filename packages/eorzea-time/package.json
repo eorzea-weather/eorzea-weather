@@ -48,5 +48,5 @@
     "pretest": "npm run build",
     "test": "ava"
   },
-  "version": "1.0.3"
+  "version": "1.0.4"
 }
