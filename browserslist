@@ -1,5 +1,5 @@
-last 3 Chrome versions
-last 2 ChromeAndroid versions
-last 3 Firefox versions
+Chrome >= 41 # for Googlebot (https://developers.google.com/search/docs/guides/rendering)
+ChromeAndroid >= 41
+Firefox ESR
 last 2 iOS versions
 last 2 Safari versions
