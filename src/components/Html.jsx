@@ -12,7 +12,7 @@ const Html = ({ files }) => (
     </head>
     <body>
       <div id="root" />
-      <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Array.from,Object.assign,Object.values,Promise" />
+      <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Array.from,Object.assign,Object.values,Promise,URL" />
       {files.js.map(path => (
         <script key={`script-${path}`} src={path} />
       ))}
