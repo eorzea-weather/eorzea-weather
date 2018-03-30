@@ -1,5 +1,8 @@
 import range from 'lodash/range';
-import EorzeaWeather from '../eorzea-weather';
+import EorzeaWeather from 'eorzea-weather';
+
+const EIGHT_HOURS = 8 * 175 * 1000;
+const ONE_DAY = EIGHT_HOURS * 3;
 
 export const WEATHER_FETCH = 'WEATHER_FETCH';
 
@@ -12,12 +15,15 @@ const getStartTime = (date) => {
 };
 
 const getWeathers = ({ locale, zoneId }, baseTime = new Date()) => {
-  const step = 8 * 175 * 1000; // 8 hours
-  const startTime = getStartTime(baseTime) - (step * 6);
-  return range(startTime, startTime + (step * 30), step).map(time => ({
-    name: EorzeaWeather.getWeather(time, { locale, zoneId }),
-    startedAt: new Date(time),
-  }));
+  const eorzeaWeather = new EorzeaWeather(zoneId, { locale });
+  const startTime = getStartTime(baseTime) - (ONE_DAY * 2);
+  return range(startTime, startTime + (ONE_DAY * 10), EIGHT_HOURS).map((time) => {
+    const startedAt = new Date(time);
+    return {
+      name: eorzeaWeather.getWeather(startedAt),
+      startedAt,
+    };
+  });
 };
 
 export const fetchWeathers = (zoneId, { locale }) => ({
