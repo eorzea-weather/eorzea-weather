@@ -1,11 +1,11 @@
-import zones from '../zones.json';
+import EorzeaWeather from 'eorzea-weather';
 
 export const ZONE_FETCH = 'ZONE_FETCH';
 
 export const fetchZone = (zoneId, { locale }) => {
-  const zone = zones[zoneId];
+  const eorzeaWeather = new EorzeaWeather(zoneId, { locale });
   return {
-    name: zone[locale] || zone.en,
+    name: eorzeaWeather.getZoneName(),
     type: ZONE_FETCH,
     zoneId,
   };
