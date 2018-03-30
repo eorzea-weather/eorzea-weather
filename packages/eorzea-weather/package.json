@@ -45,5 +45,5 @@
     "prepublishOnly": "npm-run-all lint test build",
     "test": "cross-env NODE_ENV=test jest"
   },
-  "version": "1.0.0"
+  "version": "1.0.1"
 }
