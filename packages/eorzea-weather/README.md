@@ -17,9 +17,9 @@ $ npm install --save eorzea-weather
 ## Usage
 
 ```javascript
-import EorzeaWeather, { ZONE_EUREKA_ANEMOS } from 'eorzea-weather';
+const EorzeaWeather = requre('eorzea-weather');
 
-EorzeaWeather.getWeather(ZONE_EUREKA_ANEMOS, new Date()); // Gales
+EorzeaWeather.getWeather(EorzeaWeather.ZONE_EUREKA_ANEMOS, new Date()); // Gales
 ```
 
 ## License
