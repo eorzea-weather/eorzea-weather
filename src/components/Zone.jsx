@@ -1,4 +1,3 @@
-import camelCase from 'lodash/camelCase';
 import isEqual from 'lodash/isEqual';
 import { withStyles } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
@@ -6,10 +5,8 @@ import PropTypes from 'prop-types';
 import React, { Fragment, Component } from 'react';
 import { Helmet } from 'react-helmet';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
-import { fetchWeathers } from '../actions/weathers';
 import { fetchZone } from '../actions/zones';
-import WeatherTable from '../components/WeatherTable';
-import weatherShape from '../types/weatherShape';
+import WeatherTable from '../containers/WeatherTable';
 import zoneShape from '../types/zoneShape';
 
 const messages = defineMessages({
@@ -29,33 +26,27 @@ export const styles = {
 @withStyles(styles)
 export default class Zone extends Component {
   static defaultProps = {
-    weathers: [],
-    zone: { name: '' },
+    zone: null,
   };
 
   static propTypes = {
     classes: PropTypes.objectOf(PropTypes.any).isRequired,
     dispatch: PropTypes.func.isRequired,
     intl: intlShape.isRequired,
-    match: PropTypes.shape({
-      params: PropTypes.objectOf(PropTypes.string),
-    }).isRequired,
-    weathers: PropTypes.arrayOf(weatherShape),
     zone: zoneShape,
   };
 
-  componentWillMount() {
-    const {
-      intl: { locale },
-      match: { params },
-    } = this.props;
-    const zoneId = camelCase(params.zoneId);
-    this.props.dispatch(fetchZone(zoneId, { locale }));
-    this.props.dispatch(fetchWeathers(zoneId, { locale }));
+  componentDidMount() {
+    const { zone } = this.props;
+    if (!zone.name) {
+      const { locale } = this.props.intl;
+      this.props.dispatch(fetchZone(zone.id, { locale }));
+    }
   }
 
   shouldComponentUpdate(nextProps) {
     return (
+      this.props.zoneId !== nextProps.zoneId ||
       !isEqual(this.props.zone, nextProps.zone) ||
       !isEqual(this.props.weathers, nextProps.weathers)
     );
@@ -76,7 +67,7 @@ export default class Zone extends Component {
           <title>{title}</title>
         </Helmet>
         <Typography className={classes.headline} variant="headline">{title}</Typography>
-        <WeatherTable data={weathers} />
+        <WeatherTable zoneId={zone.id} />
       </Fragment>
     );
   }

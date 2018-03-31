@@ -8,7 +8,8 @@ import Switch from 'material-ui/Switch';
 import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
 import PropTypes from 'prop-types';
 import React, { Component, Fragment } from 'react';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
+import { fetchWeathers } from '../actions/weathers';
 import weatherShape from '../types/weatherShape';
 import WeatherTableCell from './WeatherTableCell';
 
@@ -19,16 +20,28 @@ export const styles = {
   },
 };
 
+@injectIntl
 @withStyles(styles)
 export default class WeatherTable extends Component {
+  static defaultProps = {
+    data: [],
+  };
+
   static propTypes = {
     classes: PropTypes.objectOf(PropTypes.any).isRequired,
-    data: PropTypes.arrayOf(weatherShape).isRequired,
+    data: PropTypes.arrayOf(weatherShape),
+    dispatch: PropTypes.func.isRequired,
+    intl: intlShape.isRequired,
   };
 
   state = {
     highlightedWeathers: {},
   };
+
+  componentDidMount() {
+    const { intl, zoneId } = this.props;
+    this.props.dispatch(fetchWeathers(zoneId, { locale: intl.locale }));
+  }
 
   shouldComponentUpdate(nextProps, nextState) {
     return (

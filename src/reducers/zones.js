@@ -7,7 +7,7 @@ export default (state = {}, action) => {
     case ZONE_FETCH:
       return {
         ...state,
-        [zoneId]: { name: action.name },
+        [zoneId]: { id: zoneId, name: action.name },
       };
     default:
       return state;
