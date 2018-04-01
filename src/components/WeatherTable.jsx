@@ -32,6 +32,7 @@ export default class WeatherTable extends Component {
     data: PropTypes.arrayOf(weatherShape),
     dispatch: PropTypes.func.isRequired,
     intl: intlShape.isRequired,
+    zoneId: PropTypes.string.isRequired,
   };
 
   state = {

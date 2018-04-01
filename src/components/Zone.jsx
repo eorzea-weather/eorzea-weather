@@ -45,20 +45,11 @@ export default class Zone extends Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    return (
-      this.props.zoneId !== nextProps.zoneId ||
-      !isEqual(this.props.zone, nextProps.zone) ||
-      !isEqual(this.props.weathers, nextProps.weathers)
-    );
+    return !isEqual(this.props.zone, nextProps.zone);
   }
 
   render() {
-    const {
-      classes,
-      intl,
-      weathers,
-      zone,
-    } = this.props;
+    const { classes, intl, zone } = this.props;
     const title = intl.formatMessage(messages.title, { name: zone.name });
 
     return (
