@@ -10,11 +10,11 @@ import LanguageIcon from 'material-ui-icons/Language';
 import PropTypes from 'prop-types';
 import React, { Component, Fragment } from 'react';
 import { Helmet } from 'react-helmet';
-import { injectIntl } from 'react-intl';
-import { Link, Route, Switch } from 'react-router-dom';
+import { injectIntl, intlShape } from 'react-intl';
+import { Link, Route, Switch, withRouter } from 'react-router-dom';
+import Home from '../containers/Home';
 import Zone from '../containers/Zone';
 import EorzeaClock from './EorzeaClock';
-import Home from './Home';
 import NoMatch from './NoMatch';
 
 export const styles = {
@@ -45,16 +45,30 @@ export const styles = {
 };
 
 @injectIntl
+@withRouter
 @withStyles(styles)
 export default class App extends Component {
   static propTypes = {
-    classes: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
-    intl: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+    classes: PropTypes.objectOf(PropTypes.any).isRequired,
+    intl: intlShape.isRequired,
+    location: PropTypes.shape({
+      pathname: PropTypes.string.isRequired,
+      search: PropTypes.string,
+    }).isRequired,
   }
 
   state = {
     anchorEl: null,
   };
+
+  componentDidUpdate(prevProps) {
+    if (
+      this.props.location.pathname !== prevProps.location.pathname ||
+      this.props.location.search !== prevProps.location.search
+    ) {
+      window.scrollTo(0, 0);
+    }
+  }
 
   handleLanguageIconClick = ({ currentTarget }) => {
     this.setState({
