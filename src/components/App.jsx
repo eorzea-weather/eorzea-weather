@@ -14,6 +14,7 @@ import { injectIntl, intlShape } from 'react-intl';
 import { Link, Route, Switch, withRouter } from 'react-router-dom';
 import Home from '../containers/Home';
 import Zone from '../containers/Zone';
+import * as locales from '../locales';
 import EorzeaClock from './EorzeaClock';
 import NoMatch from './NoMatch';
 
@@ -83,12 +84,20 @@ export default class App extends Component {
   }
 
   render() {
-    const { classes, intl } = this.props;
+    const { classes, intl, location } = this.props;
     const { anchorEl } = this.state;
 
     return (
       <Fragment>
-        <Helmet defaultTitle="Eorzea Weather" htmlAttributes={{ lang: intl.locale }} titleTemplate="%s - Eorzea Weather" />
+        <Helmet defaultTitle="Eorzea Weather" htmlAttributes={{ lang: intl.locale }} titleTemplate="%s - Eorzea Weather">
+          <meta charSet="UTF-8" />
+          <meta content="initial-scale=1,width=device-width" name="viewport" />
+          <link href="/favicon.ico" rel="icon" />
+          <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
+          {Object.keys(locales).filter(v => v !== intl.locale).map(v => (
+            <link href={`${location.pathname}?locale=${v}`} hrefLang={v} key={`lang-${v}`} rel="alternate" />
+          ))}
+        </Helmet>
         <CssBaseline />
         <AppBar position="static">
           <Toolbar>

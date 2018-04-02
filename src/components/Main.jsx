@@ -3,8 +3,7 @@ import React from 'react';
 import { addLocaleData, IntlProvider } from 'react-intl';
 import jaLocaleData from 'react-intl/locale-data/ja';
 import { Provider as ReduxProvider } from 'react-redux';
-import enMessages from '../locales/en.json';
-import jaMessages from '../locales/ja.json';
+import * as locales from '../locales';
 import configureStore from '../store/configureStore';
 import App from './App';
 
@@ -13,7 +12,7 @@ const store = configureStore();
 addLocaleData(jaLocaleData);
 
 const Main = ({ locale }) => {
-  const messages = locale === 'ja' ? jaMessages : enMessages;
+  const messages = locales[locale] || locales.en;
 
   return (
     <ReduxProvider store={store}>
