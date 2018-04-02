@@ -4,7 +4,7 @@
     "classnames": "^2.2.5",
     "eorzea-time": "^1.0.5",
     "eorzea-weather": "^1.0.2",
-    "localforage": "^1.6.0",
+    "localforage": "^1.7.1",
     "lodash": "^4.17.5",
     "material-ui": "^1.0.0-beta.40",
     "material-ui-icons": "^1.0.0-beta.36",
