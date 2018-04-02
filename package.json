@@ -42,8 +42,8 @@
   "license": "MIT",
   "name": "@flowercartelet/eorzea-weather-app",
   "scripts": {
-    "build": "webpack --devtool source-map --mode production",
-    "dev": "webpack-dev-server --mode development",
+    "build": "webpack --devtool source-map --env production",
+    "dev": "webpack-dev-server",
     "lint": "eslint --ext .js --ext .jsx ."
   },
   "version": "1.0.0"

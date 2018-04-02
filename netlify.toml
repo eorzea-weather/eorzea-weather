@@ -4,14 +4,52 @@
   publish = './dist/'
 
 [[redirects]]
+  force  = true
+  from   = '/'
+  query  = { locale = "en" }
+  status = 200
+  to     = '/index.html'
+
+[[redirects]]
+  force  = true
+  from   = '/'
+  query  = { locale = "ja" }
+  status = 200
+  to     = '/index.ja.html'
+
+[[redirects]]
+  conditions = { Language = ["ja"] }
+  from       = '/'
+  status     = 200
+  to         = '/index.ja.html'
+
+[[redirects]]
+  from   = '/zones/*'
+  query  = { locale = "en" }
+  status = 200
+  to     = '/index.html'
+
+[[redirects]]
+  from   = '/zones/*'
+  query  = { locale = "ja" }
+  status = 200
+  to     = '/index.ja.html'
+
+[[redirects]]
+  conditions = { Language = ["ja"] }
+  from       = '/zones/*'
+  status     = 200
+  to         = '/index.ja.html'
+
+[[redirects]]
   from   = '/zones/*'
   status = 200
   to     = '/index.html'
 
 [[redirects]]
-  from   = '/*'
-  status = 404
-  to     = '/index.html'
+  from       = '/*'
+  status     = 404
+  to         = '/index.html'
 
 [[headers]]
   for = '/*.js'

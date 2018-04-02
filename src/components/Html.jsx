@@ -1,26 +1,31 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import Helmet from 'react-helmet';
 
-const Html = ({ files }) => (
-  <html lang="en">
-    <head>
-      <meta charSet="UTF-8" />
-      <meta content="initial-scale=1,width=device-width" name="viewport" />
-      <title>Eorzea Weather</title>
-      <link href="/favicon.ico" rel="icon" />
-      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
-    </head>
-    <body>
-      <div id="root" />
-      <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Array.from,Object.assign,Object.values,Promise,URL" />
-      {files.js.map(path => (
-        <script key={`script-${path}`} src={path} />
-      ))}
-    </body>
-  </html>
-);
+const Html = ({ children, files }) => {
+  const helmet = Helmet.renderStatic();
+
+  return (
+    <html lang="en" {...helmet.htmlAttributes.toComponent()}>
+      <head>
+        {helmet.title.toComponent()}
+        {helmet.meta.toComponent()}
+        {helmet.link.toComponent()}
+      </head>
+      <body {...helmet.bodyAttributes.toComponent()}>
+        {/* eslint-disable-next-line react/no-danger */}
+        <div id="root" dangerouslySetInnerHTML={{ __html: children }} />
+        <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Array.from,Object.assign,Object.values,Promise,URL" />
+        {files.js.map(path => (
+          <script key={`script-${path}`} src={path} />
+        ))}
+      </body>
+    </html>
+  );
+};
 
 Html.propTypes = {
+  children: PropTypes.node.isRequired,
   files: PropTypes.shape({
     js: PropTypes.arrayOf(PropTypes.string.isRequired),
   }).isRequired,

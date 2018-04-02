@@ -22,7 +22,7 @@ export default class Home extends Component {
     zones: PropTypes.objectOf(zoneShape),
   };
 
-  componentWillMount() {
+  componentDidMount() {
     const { locale } = this.props.intl;
     this.props.dispatch(getAllZones({ locale }));
   }
