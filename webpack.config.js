@@ -1,5 +1,6 @@
 const HtmlPlugin = require('html-webpack-plugin');
 const path = require('path');
+const EnvironmentPlugin = require('webpack/lib/EnvironmentPlugin');
 
 const htmlPluginOptions = {
   inject: false,
@@ -36,6 +37,10 @@ module.exports = (env = process.env.NODE_ENV || 'development') => ({
     publicPath: '/',
   },
   plugins: [
+    new EnvironmentPlugin({
+      GOOGLE_AD_CLIENT: null,
+      NODE_ENV: env,
+    }),
     new HtmlPlugin({
       ...htmlPluginOptions,
       favicon: path.resolve(__dirname, 'src', 'images', 'favicon.ico'),
