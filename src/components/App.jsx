@@ -86,10 +86,6 @@ export default class App extends Component {
   render() {
     const { classes, intl, location } = this.props;
     const { anchorEl } = this.state;
-    const adsenseOptions = {
-      google_ad_client: process.env.GOOGLE_AD_CLIENT,
-      enable_page_level_ads: true,
-    };
 
     return (
       <Fragment>
@@ -101,12 +97,6 @@ export default class App extends Component {
           {Object.keys(locales).filter(v => v !== intl.locale).map(v => (
             <link href={`${location.pathname}?locale=${v}`} hrefLang={v} key={`lang-${v}`} rel="alternate" />
           ))}
-          {adsenseOptions.google_ad_client && (
-            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" />
-          )}
-          {adsenseOptions.google_ad_client && (
-            <script>{`(adsbygoogle = window.adsbygoogle || []).push(${JSON.stringify(adsenseOptions)});`}</script>
-          )}
         </Helmet>
         <CssBaseline />
         <AppBar position="static">
