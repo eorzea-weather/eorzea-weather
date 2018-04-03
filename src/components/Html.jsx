@@ -11,6 +11,7 @@ const Html = ({ children, files }) => {
         {helmet.title.toComponent()}
         {helmet.meta.toComponent()}
         {helmet.link.toComponent()}
+        {helmet.script.toComponent()}
       </head>
       <body {...helmet.bodyAttributes.toComponent()}>
         {/* eslint-disable-next-line react/no-danger */}
