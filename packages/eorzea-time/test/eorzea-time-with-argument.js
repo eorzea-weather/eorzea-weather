@@ -1,28 +1,28 @@
 import test from 'ava';
-import EorzeaTime from '../lib/eorzea-time';
+import EorzeaTime from '..'; // eslint-disable-line import/extensions, import/no-unresolved
 
-test(function toString(t) {
+test((t) => {
   const unixTime = Date.UTC(2015, 6, 23, 9, 0, 0);
   const date = new Date(unixTime);
   const eorzeaTime = new EorzeaTime(date);
   t.deepEqual(eorzeaTime.toString(), '17:08:34');
 });
 
-test(function getHours(t) {
+test((t) => {
   const unixTime = Date.UTC(2015, 6, 23, 9, 0, 0);
   const date = new Date(unixTime);
   const eorzeaTime = new EorzeaTime(date);
   t.deepEqual(eorzeaTime.getHours(), 17);
 });
 
-test(function getMinutes(t) {
+test((t) => {
   const unixTime = Date.UTC(2015, 6, 23, 9, 0, 0);
   const date = new Date(unixTime);
   const eorzeaTime = new EorzeaTime(date);
   t.deepEqual(eorzeaTime.getMinutes(), 8);
 });
 
-test(function getSeconds(t) {
+test((t) => {
   const unixTime = Date.UTC(2015, 6, 23, 9, 0, 0);
   const date = new Date(unixTime);
   const eorzeaTime = new EorzeaTime(date);
