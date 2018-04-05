@@ -20,9 +20,11 @@
     "eslint-plugin-import": "^2.9.0",
     "jest": "^22.4.3",
     "npm-run-all": "^4.1.2",
+    "rimraf": "^2.6.2",
     "rollup": "^0.57.1",
     "rollup-plugin-babel": "^v4.0.0-beta.3",
-    "rollup-plugin-json": "^2.3.0"
+    "rollup-plugin-json": "^2.3.0",
+    "rollup-plugin-uglify": "^3.0.0"
   },
   "keywords": [
     "Eorzea",
@@ -32,8 +34,8 @@
   ],
   "homepage": "https://github.com/flowercartelet/eorzea-weather",
   "license": "MIT",
-  "main": "./lib/index.js",
-  "module": "./lib/index.es.js",
+  "main": "./dist/eorzea-weather.min.js",
+  "module": "./lib/eorzea-weather.js",
   "name": "eorzea-weather",
   "repository": {
     "type": "git",
@@ -41,8 +43,9 @@
   },
   "scripts": {
     "build": "cross-env NODE_ENV=production rollup -c",
+    "clean": "rimraf dist lib",
     "lint": "eslint .",
-    "prepublishOnly": "npm-run-all lint test build",
+    "prepublishOnly": "npm-run-all lint test clean build",
     "test": "cross-env NODE_ENV=test jest"
   },
   "version": "1.0.2"

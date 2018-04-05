@@ -1,22 +1,34 @@
 import * as path from 'path';
 import babel from 'rollup-plugin-babel';
 import json from 'rollup-plugin-json';
+import uglify from 'rollup-plugin-uglify';
+import pkg from './package.json';
 
-export default {
+const createConfig = ({ output, plugins = [] }) => ({
   input: path.resolve(__dirname, 'src', 'index.js'),
-  output: [
-    {
-      file: path.resolve(__dirname, 'lib', 'index.js'),
+  output,
+  plugins: [
+    json(),
+    ...plugins,
+  ],
+});
+
+export default [
+  createConfig({
+    output: {
+      file: path.resolve(__dirname, pkg.main),
       format: 'umd',
       name: 'EorzeaWeather',
     },
-    {
-      file: path.resolve(__dirname, 'lib', 'index.es.js'),
+    plugins: [
+      babel(),
+      uglify(),
+    ],
+  }),
+  createConfig({
+    output: {
+      file: path.resolve(__dirname, pkg.module),
       format: 'es',
     },
-  ],
-  plugins: [
-    json(),
-    babel(),
-  ],
-};
+  }),
+];
