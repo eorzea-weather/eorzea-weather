@@ -17,35 +17,35 @@
   },
   "description": ":clock3: A clock of the Eorzea time.",
   "devDependencies": {
-    "ava": "^0.14.0",
-    "babel-plugin-external-helpers": "^6.5.0",
-    "babel-plugin-transform-es2015-block-scoping": "^6.7.1",
-    "babel-plugin-transform-es2015-classes": "^6.6.5",
-    "babel-plugin-transform-es2015-parameters": "^6.7.0",
-    "babel-register": "^6.7.2",
-    "eslint": "^2.7.0",
-    "eslint-config-airbnb": "^7.0.0",
-    "rollup": "^0.25.8",
-    "rollup-plugin-babel": "^2.4.0",
-    "sinon": "^1.17.3"
-  },
-  "directories": {
-    "lib": "./lib"
+    "ava": "^0.25.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.10.0",
+    "npm-run-all": "^4.1.2",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.57.1",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-uglify": "^3.0.0",
+    "sinon": "^4.5.0"
   },
   "homepage": "https://flowercartelet.com/eorzea-time/",
-  "jsnext:main": "./src/eorzea-time.js",
   "license": "MIT",
-  "main": "./lib/eorzea-time.js",
+  "main": "./dist/eorzea-time.min.js",
+  "module": "./lib/eorzea-time.js",
   "name": "eorzea-time",
   "repository": {
     "type": "git",
     "url": "https://github.com/flowercartelet/eorzea-time.git"
   },
   "scripts": {
-    "build": "npm run lint && rollup -c",
-    "lint": "find src -name '*.js' | xargs eslint",
-    "prepublish": "npm test",
-    "pretest": "npm run build",
+    "build": "rollup -c",
+    "clean": "rimraf dist lib",
+    "lint": "eslint .",
+    "prebuild": "npm-run-all clean lint",
+    "prepublishOnly": "npm-run-all test",
+    "pretest": "npm-run-all build",
     "test": "ava"
   },
   "version": "1.0.5"

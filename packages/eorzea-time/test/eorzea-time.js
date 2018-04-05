@@ -1,32 +1,34 @@
 import test from 'ava';
 import sinon from 'sinon';
-import EorzeaTime from '../lib/eorzea-time';
+import EorzeaTime from '..'; // eslint-disable-line import/extensions, import/no-unresolved
 
-test.beforeEach(function(t) {
+test.beforeEach((t) => {
   const unixTime = Date.UTC(2016, 4, 20, 0, 0, 0);
-  t.context.clock = sinon.useFakeTimers(unixTime);
+  Object.assign(t.context, {
+    clock: sinon.useFakeTimers(unixTime),
+  });
 });
 
-test.afterEach(function(t) {
+test.afterEach((t) => {
   t.context.clock.restore();
 });
 
-test(function toString(t) {
+test((t) => {
   const eorzeaTime = new EorzeaTime();
   t.deepEqual(eorzeaTime.toString(), '13:42:51');
 });
 
-test(function getHours(t) {
+test((t) => {
   const eorzeaTime = new EorzeaTime();
   t.deepEqual(eorzeaTime.getHours(), 13);
 });
 
-test(function getMinutes(t) {
+test((t) => {
   const eorzeaTime = new EorzeaTime();
   t.deepEqual(eorzeaTime.getMinutes(), 42);
 });
 
-test(function getSeconds(t) {
+test((t) => {
   const eorzeaTime = new EorzeaTime();
   t.deepEqual(eorzeaTime.getSeconds(), 51);
 });

@@ -3,7 +3,7 @@ const privateDateProperty = typeof Symbol === 'function' ?
 
 function computeEorzeaDate(date) {
   const eorzeaTime = new Date();
-  const unixTime = Math.floor(date.getTime() * 1440 / 70);
+  const unixTime = Math.floor(date.getTime() * (1440 / 70));
   eorzeaTime.setTime(unixTime);
   return eorzeaTime;
 }
@@ -29,7 +29,7 @@ export default class EorzeaTime {
     return [
       `0${this.getHours()}`.slice(-2),
       `0${this.getMinutes()}`.slice(-2),
-      `0${this.getSeconds()}`.slice(-2)
+      `0${this.getSeconds()}`.slice(-2),
     ].join(':');
   }
 

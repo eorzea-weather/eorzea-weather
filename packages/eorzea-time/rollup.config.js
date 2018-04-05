@@ -1,13 +1,51 @@
-import path from 'path';
+import * as path from 'path';
 import babel from 'rollup-plugin-babel';
+import uglify from 'rollup-plugin-uglify';
+import pkg from './package.json';
 
-export default {
-  dest: path.join(__dirname, 'lib', 'eorzea-time.js'),
-  entry: path.join(__dirname, 'src', 'eorzea-time.js'),
-  format: 'umd',
-  moduleName: 'EorzeaTime',
+const createConfig = ({ output, plugins = [] }) => ({
+  input: path.resolve(__dirname, 'src', 'eorzea-time.js'),
+  output,
   plugins: [
-    babel()
+    babel({
+      presets: [
+        [
+          'env',
+          {
+            loose: output.format !== 'es',
+            modules: false,
+            targets: Object.assign({
+              node: '6',
+            }, output.format === 'umd' ? {
+              browsers: [
+                '> 1%',
+                'Last 2 versions',
+              ],
+            } : {}),
+          },
+        ],
+      ],
+    }),
+    ...plugins,
   ],
-  sourceMap: false
-};
+  preferConst: output.format === 'es',
+});
+
+export default [
+  createConfig({
+    output: {
+      file: path.resolve(__dirname, pkg.main),
+      format: 'umd',
+      name: 'EorzeaTime',
+    },
+    plugins: [
+      uglify(),
+    ],
+  }),
+  createConfig({
+    output: {
+      file: path.resolve(__dirname, pkg.module),
+      format: 'es',
+    },
+  }),
+];
