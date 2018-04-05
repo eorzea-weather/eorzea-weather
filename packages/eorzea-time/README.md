@@ -4,13 +4,19 @@
 
 ## Install
 
-```shell
-npm install --save eorzea-time
+```console
+$ npm install --save eorzea-time
 ```
 
 or
 
-Download the **eorzea-time.js** from [releases page](https://github.com/flowercartelet/eorzea-time/releases)
+```console
+$ yarn add eorzea-time
+```
+
+or
+
+Download the **eorzea-time.min.js** from [releases page](https://github.com/flowercartelet/eorzea-time/releases)
 
 ## Usage
 
@@ -22,10 +28,13 @@ Download the **eorzea-time.js** from [releases page](https://github.com/flowerca
   <dt>eorzea time
   <dd><span id="eorzea-time"></span>
 </dl>
-<script src="eorzea-time.js"></script>
+<script src="eorzea-time.min.js"></script>
 <script>
 (function() {
+  'use strict';
+
   var result = document.getElementById('eorzea-time');
+
   (function timer() {
     setTimeout(function() {
       var eorzeaTime = new EorzeaTime();
@@ -52,13 +61,14 @@ console.log(eorzeaTime.toString());
 import EorzeaTime from 'eorzea-time';
 
 const eorzeaTime = new EorzeaTime();
-console.log(eorzeaTime.toString);
+console.log(eorzeaTime.toString());
 ```
 
 ## License
 
 [MIT](LICENSE)
 
+```plain
 FINAL FANTASY is a registered trademark of Square Enix Holdings Co., Ltd.
-
 FINAL FANTASY XIV (c) 2010-2016 SQUARE ENIX CO., LTD. All Rights Reserved.
+```
