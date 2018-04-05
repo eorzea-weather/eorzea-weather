@@ -14,4 +14,4 @@ node_js:
   - 9
 
 script:
-  - npm test
+  - yarn test
