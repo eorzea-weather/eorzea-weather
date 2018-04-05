@@ -8,9 +8,12 @@ const createConfig = ({ output, plugins = [] }) => ({
   input: path.resolve(__dirname, 'src', 'index.js'),
   output,
   plugins: [
-    json(),
+    json({
+      preferConst: true,
+    }),
     ...plugins,
   ],
+  preferConst: output.format === 'es',
 });
 
 export default [
