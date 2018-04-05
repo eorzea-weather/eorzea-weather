@@ -32,7 +32,8 @@ module.exports = (env = process.env.NODE_ENV || 'development') => ({
     },
   },
   output: {
-    filename: '[name].[chunkhash].js',
+    chunkFilename: '[name].[chunkhash].js',
+    filename: '[name].[hash].js',
     publicPath: '/',
   },
   plugins: [
