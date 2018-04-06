@@ -1,4 +1,4 @@
-# eorzea-weather
+# eorzea-weather [![CircleCI](https://circleci.com/gh/flowercartelet/eorzea-weather.svg?style=shield)](https://circleci.com/gh/flowercartelet/eorzea-weather)
 
 Weather forecast for Eorzea.
 
