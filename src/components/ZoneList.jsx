@@ -4,7 +4,7 @@ import kebabCase from 'lodash/kebabCase';
 import Grid from 'material-ui/Grid';
 import List, { ListItem, ListItemText, ListSubheader } from 'material-ui/List';
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { Link } from 'react-router-dom';
 import zoneShape from '../types/zoneShape';
@@ -123,9 +123,9 @@ export default class ZoneList extends Component {
     return (
       <Grid container justify="flex-start" spacing={24}>
         {Object.entries(this.createGroupedZones()).map(([label, groupedZones]) => (
-          <Grid item key={`grid-${label}`} md={4} sm={6} xs={12}>
+          <Grid item key={`grid-${label}`} md={3} sm={4} xs={12}>
             <List component="nav" subheader={<ListSubheader component="h2" disableSticky>{label}</ListSubheader>}>
-              {groupedZones.map(zoneId => zones[zoneId] && (
+              {groupedZones.map((zoneId, i) => zones[zoneId] && (
                 <ListItem button component={props => <Link to={`/zones/${kebabCase(zoneId)}`} {...props} />} key={`item-${zoneId}`}>
                   <ListItemText primary={zones[zoneId].name} />
                 </ListItem>
