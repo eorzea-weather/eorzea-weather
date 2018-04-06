@@ -15,7 +15,7 @@ const Html = ({ children, files }) => {
       <body {...helmet.bodyAttributes.toComponent()}>
         {/* eslint-disable-next-line react/no-danger */}
         <div id="root" dangerouslySetInnerHTML={{ __html: children }} />
-        <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Array.from,Object.assign,Object.values,Promise,URL" />
+        <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Array.from,Object.assign,Object.entries,Object.values,Promise,URL" />
         {files.js.map(path => (
           <script key={`script-${path}`} src={path} />
         ))}

@@ -1,22 +1,42 @@
 import isEqual from 'lodash/isEqual';
-import kebabCase from 'lodash/kebabCase';
-import Divider from 'material-ui/Divider';
-import List, { ListItem, ListItemText } from 'material-ui/List';
+import Button from 'material-ui/Button';
+import { withStyles } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
 import PropTypes from 'prop-types';
 import React, { Component, Fragment } from 'react';
-import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
+import { injectIntl, intlShape } from 'react-intl';
 import { Link } from 'react-router-dom';
 import { getAllZones } from '../actions/zones';
 import zoneShape from '../types/zoneShape';
+import ZoneList from './ZoneList';
+
+export const styles = ({ palette, spacing }) => ({
+  button: {
+    marginTop: spacing.unit * 3,
+  },
+  container: {
+    padding: spacing.unit * 1.5,
+  },
+  hero: {
+    alignItems: 'center',
+    backgroundColor: palette.primary.main,
+    color: palette.primary.contrastText,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    minHeight: '40vh',
+  },
+});
 
 @injectIntl
+@withStyles(styles)
 export default class Home extends Component {
   static defaultProps = {
     zones: [],
   };
 
   static propTypes = {
+    classes: PropTypes.objectOf(PropTypes.any).isRequired,
     dispatch: PropTypes.func.isRequired,
     intl: intlShape.isRequired,
     zones: PropTypes.objectOf(zoneShape),
@@ -32,23 +52,17 @@ export default class Home extends Component {
   }
 
   render() {
-    const { zones } = this.props;
+    const { classes, zones } = this.props;
 
     return (
       <Fragment>
-        <Typography variant="headline">
-          <FormattedMessage defaultMessage="Home" id="home.title" />
-        </Typography>
-        <List>
-          {Object.values(zones).map(zone => (
-            <Fragment key={`item-${zone.id}`}>
-              <ListItem button component={Link} to={`/zones/${kebabCase(zone.id)}`}>
-                <ListItemText primary={zone.name} />
-              </ListItem>
-              <Divider light />
-            </Fragment>
-          ))}
-        </List>
+        <div className={classes.hero}>
+          <Typography color="inherit" component="h1" gutterBottom variant="display2">Eorzea Weather</Typography>
+          <Button className={classes.button} component={props => <Link to="/zones/eureka-anemos" {...props} />} variant="raised">Eureka!</Button>
+        </div>
+        <main className={classes.container}>
+          {Object.keys(zones).length > 0 && <ZoneList zones={zones} />}
+        </main>
       </Fragment>
     );
   }

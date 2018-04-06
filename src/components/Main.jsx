@@ -1,3 +1,5 @@
+import blue from 'material-ui/colors/blue';
+import { createMuiTheme, MuiThemeProvider } from 'material-ui/styles';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { addLocaleData, IntlProvider } from 'react-intl';
@@ -7,9 +9,14 @@ import * as locales from '../locales';
 import configureStore from '../store/configureStore';
 import App from './App';
 
-const store = configureStore();
-
 addLocaleData(jaLocaleData);
+
+const store = configureStore();
+const theme = createMuiTheme({
+  palette: {
+    primary: blue,
+  },
+});
 
 const Main = ({ locale }) => {
   const messages = locales[locale] || locales.en;
@@ -17,7 +24,9 @@ const Main = ({ locale }) => {
   return (
     <ReduxProvider store={store}>
       <IntlProvider locale={locale} messages={messages}>
-        <App />
+        <MuiThemeProvider theme={theme}>
+          <App />
+        </MuiThemeProvider>
       </IntlProvider>
     </ReduxProvider>
   );

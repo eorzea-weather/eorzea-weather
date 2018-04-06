@@ -2,7 +2,7 @@ import isEqual from 'lodash/isEqual';
 import { withStyles } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
 import PropTypes from 'prop-types';
-import React, { Fragment, Component } from 'react';
+import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { fetchZone } from '../actions/zones';
@@ -19,6 +19,11 @@ const messages = defineMessages({
 export const styles = {
   headline: {
     marginBottom: '25px',
+  },
+  root: {
+    margin: '16px auto',
+    maxWidth: 'calc(100% - 20px)',
+    width: '1240px',
   },
 };
 
@@ -53,13 +58,13 @@ export default class Zone extends Component {
     const title = intl.formatMessage(messages.title, { name: zone.name });
 
     return (
-      <Fragment>
+      <main className={classes.root}>
         <Helmet>
           <title>{title}</title>
         </Helmet>
         <Typography className={classes.headline} variant="headline">{title}</Typography>
         <WeatherTable zoneId={zone.id} />
-      </Fragment>
+      </main>
     );
   }
 }

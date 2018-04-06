@@ -1,5 +1,13 @@
 {
   "home.title": "Home",
   "zone.highlight": "Highlight",
-  "zone.title": "{name} weather"
+  "zone.title": "{name} weather",
+  "zone_list.eureka": "Eureka",
+  "zone_list.gyr_abania": "Gyr Abania",
+  "zone_list.ishgard_and_surrounding_areas": "Ishgard and Surrounding Areas",
+  "zone_list.la_noscea": "La Noscea",
+  "zone_list.others": "Others",
+  "zone_list.thanalan": "Thanalan",
+  "zone_list.the_black_shroud": "The Black Shroud",
+  "zone_list.the_far_east": "The Far East"
 }
