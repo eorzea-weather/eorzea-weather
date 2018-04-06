@@ -39,8 +39,13 @@
     "webpack-cli": "^2.0.14",
     "webpack-serve": "^0.3.1"
   },
+  "homepage": "https://eorzea-weather.info/",
   "license": "MIT",
   "name": "@flowercartelet/eorzea-weather-app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/flowercartelet/eorzea-weather-app.git"
+  },
   "scripts": {
     "build": "webpack --devtool source-map --env production",
     "dev": "webpack-serve",
