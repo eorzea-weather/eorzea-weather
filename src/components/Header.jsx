@@ -178,7 +178,7 @@ export default class Header extends Component {
             {repositoryUrl && (
               <Fragment>
                 {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
-                <ListItem buttom component={props => <a href={repositoryUrl} rel="noopener" target="_blank" {...props} />}>
+                <ListItem button component={props => <a href={repositoryUrl} rel="noopener" target="_blank" {...props} />}>
                   <ListItemText primary={intl.formatMessage(messages.sourceCode)} />
                 </ListItem>
               </Fragment>
