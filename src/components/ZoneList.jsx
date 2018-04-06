@@ -52,7 +52,7 @@ export default class ZoneList extends Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    return isEqual(this.props.zones, nextProps.zones);
+    return !isEqual(this.props.zones, nextProps.zones);
   }
 
   createGroupedZones() {
@@ -125,7 +125,7 @@ export default class ZoneList extends Component {
         {Object.entries(this.createGroupedZones()).map(([label, groupedZones]) => (
           <Grid item key={`grid-${label}`} md={4} sm={6} xs={12}>
             <List component="nav" subheader={<ListSubheader component="h2" disableSticky>{label}</ListSubheader>}>
-              {groupedZones.map(zoneId => (
+              {groupedZones.map(zoneId => zones[zoneId] && (
                 <ListItem button component={props => <Link to={`/zones/${kebabCase(zoneId)}`} {...props} />} key={`item-${zoneId}`}>
                   <ListItemText primary={zones[zoneId].name} />
                 </ListItem>
