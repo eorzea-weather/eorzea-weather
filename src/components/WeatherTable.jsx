@@ -22,13 +22,20 @@ export const styles = ({ breakpoints, spacing }) => ({
     marginLeft: spacing.unit * 2,
     marginRight: spacing.unit * 2,
   },
-  table: {
+  paper: {
     marginBottom: spacing.unit * 4,
     marginTop: 0,
-    tableLayout: 'fixed',
     [breakpoints.up('md')]: {
       marginLeft: spacing.unit,
       marginRight: spacing.unit,
+    },
+  },
+  table: {
+    tableLayout: 'fixed',
+  },
+  tableCell: {
+    '&:last-child': {
+      paddingRight: spacing.unit * 7,
     },
   },
 });
@@ -80,13 +87,13 @@ export default class WeatherTable extends Component {
 
     return (
       <Fragment>
-        <Paper className={classes.table}>
-          <Table>
+        <Paper className={classes.paper}>
+          <Table className={classes.table}>
             <TableHead>
               <TableRow>
-                <TableCell>ET 00:00 - 07:59</TableCell>
-                <TableCell>ET 08:00 - 15:59</TableCell>
-                <TableCell>ET 16:00 - 23:59</TableCell>
+                <TableCell className={classes.tableCell}>ET 00:00 - 07:59</TableCell>
+                <TableCell className={classes.tableCell}>ET 08:00 - 15:59</TableCell>
+                <TableCell className={classes.tableCell}>ET 16:00 - 23:59</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
