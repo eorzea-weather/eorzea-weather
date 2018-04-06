@@ -1,4 +1,6 @@
+const history = require('connect-history-api-fallback');
 const HtmlPlugin = require('html-webpack-plugin');
+const convert = require('koa-connect');
 const path = require('path');
 
 const htmlPluginOptions = {
@@ -52,4 +54,11 @@ module.exports = (env = process.env.NODE_ENV || 'development') => ({
   resolve: {
     extensions: ['.js', '.jsx'],
   },
+  ...(env === 'development' ? {
+    serve: {
+      add(app) {
+        app.use(convert(history()));
+      },
+    },
+  } : {}),
 });
