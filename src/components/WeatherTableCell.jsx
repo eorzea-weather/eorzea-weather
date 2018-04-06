@@ -10,7 +10,7 @@ import weatherShape from '../types/weatherShape';
 
 const EIGHT_HOURS = 8 * 175 * 1000;
 
-export const styles = ({ palette }) => ({
+export const styles = ({ palette, spacing }) => ({
   highlight: {
     backgroundColor: palette.grey[100],
   },
@@ -27,6 +27,9 @@ export const styles = ({ palette }) => ({
     paddingBottom: '15px',
     paddingTop: '15px',
     position: 'relative',
+    '&:last-child': {
+      paddingRight: spacing.unit * 7,
+    },
   },
 });
 
