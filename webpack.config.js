@@ -9,9 +9,6 @@ const htmlPluginOptions = {
 };
 
 module.exports = (env = process.env.NODE_ENV || 'development') => ({
-  devServer: {
-    historyApiFallback: true,
-  },
   mode: env === 'production' ? 'production' : 'development',
   module: {
     rules: [
