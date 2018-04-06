@@ -16,7 +16,7 @@ import NoMatch from './NoMatch';
 export const styles = {
   footer: {
     backgroundColor: blueGrey[100],
-    margin: '150px 0 0',
+    margin: '75px 0 0',
     padding: '40px 10px 30px',
     '& a': {
       color: blueGrey[600],

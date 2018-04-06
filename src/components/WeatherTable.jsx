@@ -13,12 +13,25 @@ import { fetchWeathers } from '../actions/weathers';
 import weatherShape from '../types/weatherShape';
 import WeatherTableCell from './WeatherTableCell';
 
-export const styles = {
-  table: {
-    margin: '0 5px 30px',
-    tableLayout: 'fixed',
+export const styles = ({ breakpoints, spacing }) => ({
+  formGroup: {
+    marginLeft: spacing.unit * 2,
+    marginRight: spacing.unit * 2,
   },
-};
+  formLabel: {
+    marginLeft: spacing.unit * 2,
+    marginRight: spacing.unit * 2,
+  },
+  table: {
+    marginBottom: spacing.unit * 4,
+    marginTop: 0,
+    tableLayout: 'fixed',
+    [breakpoints.up('md')]: {
+      marginLeft: spacing.unit,
+      marginRight: spacing.unit,
+    },
+  },
+});
 
 @injectIntl
 @withStyles(styles)
@@ -91,10 +104,10 @@ export default class WeatherTable extends Component {
             </TableBody>
           </Table>
         </Paper>
-        <FormLabel>
+        <FormLabel className={classes.formLabel}>
           <FormattedMessage defaultMessage="Highlight" id="zone.highlight" />
         </FormLabel>
-        <FormGroup row>
+        <FormGroup className={classes.formGroup} row>
           {uniq(weatherTable.map(({ name }) => name)).map((name) => {
             const control = (
               <Switch color="primary" onChange={this.handleFilterChange} value={name} />
