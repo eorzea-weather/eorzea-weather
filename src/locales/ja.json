@@ -1,5 +1,13 @@
 {
   "home.title": "ホーム",
   "zone.highlight": "強調表示",
-  "zone.title": "{name}の天気"
+  "zone.title": "{name}の天気",
+  "zone_list.eureka": "エウレカ",
+  "zone_list.gyr_abania": "ギラバニア",
+  "zone_list.ishgard_and_surrounding_areas": "イシュガルド周辺地域",
+  "zone_list.la_noscea": "ラノシア",
+  "zone_list.others": "その他",
+  "zone_list.thanalan": "ザナラーン",
+  "zone_list.the_black_shroud": "黒衣森",
+  "zone_list.the_far_east": "東方地域"
 }

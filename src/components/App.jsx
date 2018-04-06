@@ -1,36 +1,19 @@
-import AppBar from 'material-ui/AppBar';
 import blueGrey from 'material-ui/colors/blueGrey';
 import CssBaseline from 'material-ui/CssBaseline';
-import IconButton from 'material-ui/IconButton';
-import Menu, { MenuItem } from 'material-ui/Menu';
 import { withStyles } from 'material-ui/styles';
-import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
-import LanguageIcon from 'material-ui-icons/Language';
 import PropTypes from 'prop-types';
 import React, { Component, Fragment } from 'react';
 import { Helmet } from 'react-helmet';
 import { injectIntl, intlShape } from 'react-intl';
-import { Link, Route, Switch, withRouter } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import Home from '../containers/Home';
 import Zone from '../containers/Zone';
 import * as locales from '../locales';
-import EorzeaClock from './EorzeaClock';
+import Header from './Header';
 import NoMatch from './NoMatch';
 
 export const styles = {
-  appbarTitle: {
-    color: 'inherit',
-    textDecoration: 'none',
-  },
-  container: {
-    margin: '16px auto',
-    maxWidth: 'calc(100% - 20px)',
-    width: '1240px',
-  },
-  flex: {
-    flex: 1,
-  },
   footer: {
     backgroundColor: blueGrey[100],
     margin: '150px 0 0',
@@ -58,9 +41,12 @@ export default class App extends Component {
     }).isRequired,
   }
 
-  state = {
-    anchorEl: null,
-  };
+  shouldComponentUpdate(nextProps) {
+    return (
+      this.props.location.pathname !== nextProps.location.pathname ||
+      this.props.location.search !== nextProps.location.search
+    );
+  }
 
   componentDidUpdate(prevProps) {
     if (
@@ -71,21 +57,8 @@ export default class App extends Component {
     }
   }
 
-  handleLanguageIconClick = ({ currentTarget }) => {
-    this.setState({
-      anchorEl: currentTarget,
-    });
-  }
-
-  handleMenuClose = () => {
-    this.setState({
-      anchorEl: null,
-    });
-  }
-
   render() {
     const { classes, intl, location } = this.props;
-    const { anchorEl } = this.state;
 
     return (
       <Fragment>
@@ -99,43 +72,12 @@ export default class App extends Component {
           ))}
         </Helmet>
         <CssBaseline />
-        <AppBar position="static">
-          <Toolbar>
-            <Typography className={classes.flex} color="inherit" noWrap variant="title">
-              <Link className={classes.appbarTitle} to="/">Eorzea Weather</Link>
-            </Typography>
-            <EorzeaClock />
-            <IconButton color="inherit" onClick={this.handleLanguageIconClick}>
-              <LanguageIcon />
-            </IconButton>
-            <Menu
-              anchorEl={anchorEl}
-              anchorOrigin={{
-                horizontal: 'right',
-                vertical: 'top',
-              }}
-              MenuListProps={{
-                component: 'div',
-              }}
-              onClose={this.handleMenuClose}
-              open={!!anchorEl}
-              transformOrigin={{
-                horizontal: 'right',
-                vertical: 'top',
-              }}
-            >
-              <MenuItem component="a" href="?locale=en" onClick={this.handleMenuClose}>English</MenuItem>
-              <MenuItem component="a" href="?locale=ja" onClick={this.handleMenuClose}>日本語</MenuItem>
-            </Menu>
-          </Toolbar>
-        </AppBar>
-        <main className={classes.container}>
-          <Switch>
-            <Route component={Home} exact path="/" />
-            <Route component={Zone} path="/zones/:zoneId" />
-            <Route component={NoMatch} />
-          </Switch>
-        </main>
+        <Header />
+        <Switch>
+          <Route component={Home} exact path="/" />
+          <Route component={Zone} path="/zones/:zoneId" />
+          <Route component={NoMatch} />
+        </Switch>
         <footer className={classes.footer}>
           <Typography align="center" variant="body1">Copyright &copy; 2018 <a href="mailto:flowercartelet@gmail.com">Lily Cartelet</a></Typography>
         </footer>
