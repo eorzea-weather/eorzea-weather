@@ -27,7 +27,7 @@ const messages = defineMessages({
   sourceCode: {
     defaultMessage: 'Source code',
     id: 'header.source_code',
-  }
+  },
 });
 
 const normalizeRepositoryUrl = (repository) => {

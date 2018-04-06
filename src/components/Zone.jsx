@@ -16,16 +16,18 @@ const messages = defineMessages({
   },
 });
 
-export const styles = {
+export const styles = ({ spacing }) => ({
   headline: {
-    marginBottom: '25px',
+    marginBottom: spacing.unit * 1.5,
+    marginLeft: spacing.unit * 0.75,
+    marginRight: spacing.unit * 0.75,
   },
   root: {
     margin: '16px auto',
-    maxWidth: 'calc(100% - 20px)',
+    maxWidth: '100%',
     width: '1240px',
   },
-};
+});
 
 @injectIntl
 @withStyles(styles)
