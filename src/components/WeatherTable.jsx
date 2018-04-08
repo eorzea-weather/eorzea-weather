@@ -64,6 +64,13 @@ export default class WeatherTable extends Component {
     this.props.dispatch(fetchWeathers(zoneId, { locale: intl.locale }));
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.zoneId !== nextProps.zoneId) {
+      const { intl, zoneId } = nextProps;
+      this.props.dispatch(fetchWeathers(zoneId, { locale: intl.locale }));
+    }
+  }
+
   shouldComponentUpdate(nextProps, nextState) {
     return (
       !isEqual(this.state.highlightedWeathers, nextState.highlightedWeathers) ||
