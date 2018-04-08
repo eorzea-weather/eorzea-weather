@@ -67,6 +67,7 @@ export default class App extends Component {
           <meta content="initial-scale=1,width=device-width" name="viewport" />
           <link href="/favicon.ico" rel="icon" />
           <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
+          <link href={location.pathname} hrefLang="x-default" rel="alternate" />
           {Object.keys(locales).filter(v => v !== intl.locale).map(v => (
             <link href={`${location.pathname}?locale=${v}`} hrefLang={v} key={`lang-${v}`} rel="alternate" />
           ))}
