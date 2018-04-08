@@ -10,8 +10,6 @@ const getCurrentLocale = async () => {
   const parsedUrl = new URL(window.location.href);
   if (parsedUrl.searchParams && parsedUrl.searchParams.has('locale')) {
     const locale = parsedUrl.searchParams.get('locale');
-    parsedUrl.searchParams.delete('locale');
-    window.history.replaceState(null, document.title, parsedUrl.href);
     if (!cachedLocale || locale !== cachedLocale) {
       await localForage.setItem('locale', locale);
       return locale;
