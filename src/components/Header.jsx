@@ -1,21 +1,16 @@
 import classNames from 'classnames';
 import AppBar from 'material-ui/AppBar';
-import Divider from 'material-ui/Divider';
-import Drawer from 'material-ui/Drawer';
 import IconButton from 'material-ui/IconButton';
-import List, { ListItem, ListItemText } from 'material-ui/List';
 import Menu, { MenuItem } from 'material-ui/Menu';
 import { withStyles } from 'material-ui/styles';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
-import ChevronLeftIcon from 'material-ui-icons/ChevronLeft';
 import LanguageIcon from 'material-ui-icons/Language';
 import MenuIcon from 'material-ui-icons/Menu';
 import PropTypes from 'prop-types';
 import React, { Component, Fragment } from 'react';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { Link, withRouter } from 'react-router-dom';
-import * as pkg from '../../package.json';
+import AppDrawer from '../containers/AppDrawer';
 import EorzeaClock from './EorzeaClock';
 
 const AVAILABLE_LOCALES = {
@@ -23,36 +18,9 @@ const AVAILABLE_LOCALES = {
   ja: '日本語',
 };
 
-const messages = defineMessages({
-  sourceCode: {
-    defaultMessage: 'Source code',
-    id: 'header.source_code',
-  },
-});
-
-const normalizeRepositoryUrl = (repository) => {
-  if (repository.url) {
-    return repository.url.replace(/\.git$/, '');
-  }
-  if (typeof repository !== 'string') {
-    return null;
-  }
-  return `https://github.com/${repository}`;
-};
-
-export const styles = ({ mixins }) => ({
+export const styles = {
   appBarHome: {
     boxShadow: 'none',
-  },
-  drawerHeader: {
-    alignItems: 'center',
-    display: 'flex',
-    justifyContent: 'flex-end',
-    padding: '0 8px',
-    ...mixins.toolbar,
-  },
-  drawerPaper: {
-    minWidth: '240px',
   },
   title: {
     color: 'inherit',
@@ -64,15 +32,13 @@ export const styles = ({ mixins }) => ({
   hideTitle: {
     display: 'none',
   },
-});
+};
 
-@injectIntl
 @withRouter
 @withStyles(styles)
 export default class Header extends Component {
   static propTypes = {
     classes: PropTypes.objectOf(PropTypes.any).isRequired,
-    intl: intlShape.isRequired,
     location: PropTypes.shape({
       pathname: PropTypes.string.isRequired,
       search: PropTypes.string,
@@ -123,7 +89,7 @@ export default class Header extends Component {
   }
 
   render() {
-    const { classes, intl } = this.props;
+    const { classes } = this.props;
     const { anchorEl, open } = this.state;
     const appBarClassName = classNames({
       [classes.appBarHome]: this.isHome(),
@@ -140,7 +106,6 @@ export default class Header extends Component {
       },
       transformOrigin: origin,
     };
-    const repositoryUrl = normalizeRepositoryUrl(pkg.repository);
 
     return (
       <Fragment>
@@ -167,24 +132,7 @@ export default class Header extends Component {
             </Menu>
           </Toolbar>
         </AppBar>
-        <Drawer anchor="left" classes={{ paper: classes.drawerPaper }} onClose={this.handleDrawerClose} open={open}>
-          <div className={classes.drawerHeader}>
-            <IconButton onClick={this.handleDrawerClose}>
-              <ChevronLeftIcon />
-            </IconButton>
-          </div>
-          <Divider />
-          <List onClick={this.handleDrawerClose} onKeyDown={this.handleDrawerClose}>
-            {repositoryUrl && (
-              <Fragment>
-                {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
-                <ListItem button component={props => <a href={repositoryUrl} rel="noopener" target="_blank" {...props} />}>
-                  <ListItemText primary={intl.formatMessage(messages.sourceCode)} />
-                </ListItem>
-              </Fragment>
-            )}
-          </List>
-        </Drawer>
+        <AppDrawer onClose={this.handleDrawerClose} open={open} />
       </Fragment>
     );
   }

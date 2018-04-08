@@ -6,8 +6,9 @@ import PropTypes from 'prop-types';
 import React, { Component, Fragment } from 'react';
 import { injectIntl, intlShape } from 'react-intl';
 import { Link } from 'react-router-dom';
-import { getAllZones } from '../actions/zones';
+import { fetchZone } from '../actions/zones';
 import zoneShape from '../types/zoneShape';
+import * as zoneList from '../zones';
 import ZoneList from './ZoneList';
 
 export const styles = ({ palette, spacing }) => ({
@@ -43,8 +44,13 @@ export default class Home extends Component {
   };
 
   componentDidMount() {
-    const { locale } = this.props.intl;
-    this.props.dispatch(getAllZones({ locale }));
+    const {
+      intl: { locale },
+      zones,
+    } = this.props;
+    Object.values(zoneList).filter(zoneId => !zones[zoneId]).forEach((zoneId) => {
+      this.props.dispatch(fetchZone(zoneId, { locale }));
+    });
   }
 
   shouldComponentUpdate(nextProps) {
