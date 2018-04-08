@@ -108,7 +108,7 @@ export default class AppDrawer extends Component {
           {Object.entries(createGroupedZones({ intl })).map(([label, groupedZones]) => (
             <AppDrawerNavItem key={`drawer-item-${label}`} label={label}>
               {groupedZones.filter(zoneId => zones[zoneId]).map(zoneId => (
-                <ListItem button component={props => <Link to={`/zones/${kebabCase(zoneId)}`} {...props} />} key={`item-${zoneId}`} className={classes.childListItem} onClick={this.handleClose}>
+                <ListItem button component={props => <Link onClick={this.handleClose} to={`/zones/${kebabCase(zoneId)}`} {...props} />} key={`item-${zoneId}`} className={classes.childListItem}>
                   <ListItemText primary={zones[zoneId].name} />
                 </ListItem>
               ))}
