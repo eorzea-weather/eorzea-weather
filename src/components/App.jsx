@@ -13,6 +13,21 @@ import * as locales from '../locales';
 import Header from './Header';
 import NoMatch from './NoMatch';
 
+const compareLocations = (...locations) => {
+  const { length: len } = locations;
+  for (let i = 1; i < len; i += 1) {
+    const locationA = locations[i - 1];
+    const locationB = locations[i];
+    if (
+      locationA.pathname !== locationB.pathname ||
+      locationA.search !== locationB.search
+    ) {
+      return false;
+    }
+  }
+  return true;
+};
+
 export const styles = {
   footer: {
     backgroundColor: blueGrey[100],
@@ -42,17 +57,11 @@ export default class App extends Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    return (
-      this.props.location.pathname !== nextProps.location.pathname ||
-      this.props.location.search !== nextProps.location.search
-    );
+    return !compareLocations(this.props.location, nextProps.location);
   }
 
   componentDidUpdate(prevProps) {
-    if (
-      this.props.location.pathname !== prevProps.location.pathname ||
-      this.props.location.search !== prevProps.location.search
-    ) {
+    if (!compareLocations(prevProps.location, this.props.location)) {
       window.scrollTo(0, 0);
     }
   }
