@@ -1,8 +1,8 @@
+import ExpandLessIcon from '@material-ui/icons/ExpandLess';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import List, { ListItem, ListItemText } from 'material-ui/List';
 import { withStyles } from 'material-ui/styles';
 import Collapse from 'material-ui/transitions/Collapse';
-import ExpandLessIcon from 'material-ui-icons/ExpandLess';
-import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
 import PropTypes from 'prop-types';
 import React, { Component, Fragment } from 'react';
 
