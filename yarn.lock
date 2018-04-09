@@ -2566,9 +2566,9 @@ envinfo@^4.4.2:
   version "4.4.2"
   resolved "https://registry.yarnpkg.com/envinfo/-/envinfo-4.4.2.tgz#472c49f3a8b9bca73962641ce7cb692bf623cd1c"
 
-eorzea-time@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/eorzea-time/-/eorzea-time-1.0.5.tgz#e4de9fecb03f80bc61e5e831213ccf32c3656003"
+eorzea-time@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/eorzea-time/-/eorzea-time-2.0.0.tgz#22f86a98513b48175fe891cbd0f13ef44875a930"
 
 eorzea-weather@^2.0.0:
   version "2.0.0"
