@@ -1,4 +1,5 @@
 import isEqual from 'lodash/isEqual';
+import kebabCase from 'lodash/kebabCase';
 import { withStyles } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
 import PropTypes from 'prop-types';
@@ -7,6 +8,7 @@ import { Helmet } from 'react-helmet';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { fetchZone } from '../actions/zones';
 import WeatherTable from '../containers/WeatherTable';
+import tracker from '../utils/tracker';
 import zoneShape from '../types/zoneShape';
 
 const messages = defineMessages({
@@ -48,11 +50,26 @@ export default class Zone extends Component {
     if (!zone.name) {
       const { locale } = this.props.intl;
       this.props.dispatch(fetchZone(zone.id, { locale }));
+    } else {
+      this.track(this.props);
     }
   }
 
   shouldComponentUpdate(nextProps) {
     return !isEqual(this.props.zone, nextProps.zone);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.zone.id !== this.props.zone.id) {
+      this.track(this.props);
+    }
+  }
+
+  track({ zone }) {
+    const { intl } = this.props;
+    const path = `/zones/${kebabCase(zone.id)}`;
+    const title = intl.formatMessage(messages.title, { name: zone.name });
+    tracker.track({ path, title });
   }
 
   render() {

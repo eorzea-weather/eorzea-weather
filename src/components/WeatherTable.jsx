@@ -60,15 +60,7 @@ export default class WeatherTable extends Component {
   };
 
   componentDidMount() {
-    const { intl, zoneId } = this.props;
-    this.props.dispatch(fetchWeathers(zoneId, { locale: intl.locale }));
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (this.props.zoneId !== nextProps.zoneId) {
-      const { intl, zoneId } = nextProps;
-      this.props.dispatch(fetchWeathers(zoneId, { locale: intl.locale }));
-    }
+    this.load(this.props);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -76,6 +68,13 @@ export default class WeatherTable extends Component {
       !isEqual(this.state.highlightedWeathers, nextState.highlightedWeathers) ||
       !isEqual(this.props.data, nextProps.data)
     );
+  }
+
+  componentDidUpdate(prevProps) {
+    const { zoneId } = this.props;
+    if (prevProps.zoneId !== zoneId) {
+      this.load({ zoneId });
+    }
   }
 
   handleFilterChange = ({ target }) => {
@@ -86,6 +85,11 @@ export default class WeatherTable extends Component {
         [weather]: !highlightedWeathers[weather],
       },
     }));
+  }
+
+  load({ zoneId }) {
+    const { locale } = this.props.intl;
+    this.props.dispatch(fetchWeathers(zoneId, { locale }));
   }
 
   render() {

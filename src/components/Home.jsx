@@ -8,6 +8,7 @@ import { injectIntl, intlShape } from 'react-intl';
 import { Link } from 'react-router-dom';
 import { fetchZone } from '../actions/zones';
 import zoneShape from '../types/zoneShape';
+import tracker from '../utils/tracker';
 import * as zoneList from '../zones';
 import ZoneList from './ZoneList';
 
@@ -51,6 +52,7 @@ export default class Home extends Component {
     Object.values(zoneList).filter(zoneId => !zones[zoneId]).forEach((zoneId) => {
       this.props.dispatch(fetchZone(zoneId, { locale }));
     });
+    tracker.track({ path: '/', title: 'Home' });
   }
 
   shouldComponentUpdate(nextProps) {
