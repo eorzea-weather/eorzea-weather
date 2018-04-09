@@ -22,7 +22,7 @@ version: 2
         key: v1-node-dependencies-{{ checksum "yarn.lock" }}
         paths:
           - ./node_modules/
-    - persit_to_workspace:
+    - persist_to_workspace:
         root: ~/projects/
         paths:
           - eorzea-weather-app
