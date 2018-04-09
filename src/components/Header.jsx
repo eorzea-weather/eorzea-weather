@@ -1,3 +1,5 @@
+import LanguageIcon from '@material-ui/icons/Language';
+import MenuIcon from '@material-ui/icons/Menu';
 import classNames from 'classnames';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
@@ -5,8 +7,6 @@ import Menu, { MenuItem } from 'material-ui/Menu';
 import { withStyles } from 'material-ui/styles';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
-import LanguageIcon from 'material-ui-icons/Language';
-import MenuIcon from 'material-ui-icons/Menu';
 import PropTypes from 'prop-types';
 import React, { Component, Fragment } from 'react';
 import { Link, withRouter } from 'react-router-dom';
