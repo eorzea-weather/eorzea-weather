@@ -1,0 +1,47 @@
+version: 2
+
+.defaults: &defaults
+  docker:
+    - image: circleci/node:8.11.1-stretch
+  working_directory: ~/projects/eorzea-weather-app/
+
+.attach_workspace: &attach_workspace
+  attach_workspace:
+    at: ~/projects/
+
+.install_steps: &install_steps
+  steps:
+    - checkout
+    - *attach_workspace
+    - restore_cache:
+        keys:
+          - v1-node-dependencies-{{ checksum "yarn.lock" }}
+          - v1-node-dependencies-
+    - run: yarn install --frozen-lockfile
+    - save_cache:
+        key: v1-node-dependencies-{{ checksum "yarn.lock" }}
+        paths:
+          - ./node_modules/
+    - persit_to_workspace:
+        root: ~/projects/
+        paths:
+          - eorzea-weather-app
+
+jobs:
+  install:
+    <<: *defaults
+    <<: *install_steps
+  lint:
+    <<: *defaults
+    steps:
+      - *attach_workspace
+      - run: yarn lint
+
+workflows:
+  version: 2
+  tests:
+    jobs:
+      - install
+      - lint:
+          requires:
+            - install
