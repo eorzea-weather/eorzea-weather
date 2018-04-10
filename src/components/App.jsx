@@ -1,7 +1,4 @@
-import blueGrey from 'material-ui/colors/blueGrey';
 import CssBaseline from 'material-ui/CssBaseline';
-import { withStyles } from 'material-ui/styles';
-import Typography from 'material-ui/Typography';
 import PropTypes from 'prop-types';
 import React, { Component, Fragment } from 'react';
 import { Helmet } from 'react-helmet';
@@ -28,27 +25,10 @@ const compareLocations = (...locations) => {
   return true;
 };
 
-export const styles = {
-  footer: {
-    backgroundColor: blueGrey[100],
-    margin: '75px 0 0',
-    padding: '40px 10px 30px',
-    '& a': {
-      color: blueGrey[600],
-      textDecoration: 'none',
-      '&:hover': {
-        color: blueGrey[400],
-      },
-    },
-  },
-};
-
 @injectIntl
 @withRouter
-@withStyles(styles)
 export default class App extends Component {
   static propTypes = {
-    classes: PropTypes.objectOf(PropTypes.any).isRequired,
     intl: intlShape.isRequired,
     location: PropTypes.shape({
       pathname: PropTypes.string.isRequired,
@@ -67,7 +47,7 @@ export default class App extends Component {
   }
 
   render() {
-    const { classes, intl, location } = this.props;
+    const { intl, location } = this.props;
 
     return (
       <Fragment>
@@ -88,9 +68,6 @@ export default class App extends Component {
           <Route component={Zone} path="/zones/:zoneId" />
           <Route component={NoMatch} />
         </Switch>
-        <footer className={classes.footer}>
-          <Typography align="center" variant="body1">Copyright &copy; 2018 <a href="mailto:flowercartelet@gmail.com">Lily Cartelet</a></Typography>
-        </footer>
       </Fragment>
     );
   }
