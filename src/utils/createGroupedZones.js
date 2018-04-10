@@ -88,6 +88,7 @@ export default ({ intl }) => ({
     EorzeaWeather.ZONE_MIST,
     EorzeaWeather.ZONE_THE_LAVENDER_BEDS,
     EorzeaWeather.ZONE_THE_GOBLET,
+    EorzeaWeather.ZONE_SHIROGANE,
     EorzeaWeather.ZONE_MOR_DHONA,
   ],
   [intl.formatMessage(messages.eureka)]: [
