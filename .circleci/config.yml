@@ -36,6 +36,11 @@ jobs:
     steps:
       - *attach_workspace
       - run: yarn lint
+  build:
+    <<: *defaults
+    steps:
+      - *attach_workspace
+      - run: yarn build
 
 workflows:
   version: 2
@@ -43,5 +48,8 @@ workflows:
     jobs:
       - install
       - lint:
+          requires:
+            - install
+      - build:
           requires:
             - install
