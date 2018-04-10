@@ -20,6 +20,7 @@ export const ZONE_NORTHERN_THANALAN = 'northernThanalan';
 export const ZONE_NORTH_SHROUD = 'northShroud';
 export const ZONE_OUTER_LA_NOSCEA = 'outerLaNoscea';
 export const ZONE_RHALGRS_REACH = 'rhalgrsReach';
+export const ZONE_SHIROGANE = 'shirogane';
 export const ZONE_SOUTHERN_THANALAN = 'southernThanalan';
 export const ZONE_SOUTH_SHROUD = 'southShroud';
 export const ZONE_THE_AZIM_STEPPE = 'theAzimSteppe';
