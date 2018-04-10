@@ -1,4 +1,5 @@
 const history = require('connect-history-api-fallback');
+const CopyPlugin = require('copy-webpack-plugin');
 const HtmlPlugin = require('html-webpack-plugin');
 const convert = require('koa-connect');
 const path = require('path');
@@ -41,9 +42,11 @@ module.exports = (env = process.env.NODE_ENV || 'development') => ({
       GOOGLE_ANALYTICS_TRACKING_ID: null,
       NODE_ENV: env,
     }),
+    new CopyPlugin([
+      path.resolve(__dirname, 'src', 'images', 'favicon.ico'),
+    ]),
     new HtmlPlugin({
       ...htmlPluginOptions,
-      favicon: path.resolve(__dirname, 'src', 'images', 'favicon.ico'),
       filename: 'index.html',
     }),
     ...(env === 'production' ? [
