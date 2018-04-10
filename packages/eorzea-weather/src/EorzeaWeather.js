@@ -94,6 +94,10 @@ export default class EorzeaWeather {
     return zones.ZONE_RHALGRS_REACH;
   }
 
+  static get ZONE_SHIROGANE() {
+    return zones.ZONE_SHIROGANE;
+  }
+
   static get ZONE_SOUTHERN_THANALAN() {
     return zones.ZONE_SOUTHERN_THANALAN;
   }

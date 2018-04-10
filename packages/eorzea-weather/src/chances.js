@@ -403,6 +403,22 @@ export const rhalgrsReach = (chance) => {
   return WEATHER_THUNDER;
 };
 
+export const shirogane = (chance) => {
+  if (chance < 10) {
+    return WEATHER_RAIN;
+  }
+  if (chance < 20) {
+    return WEATHER_FOG;
+  }
+  if (chance < 40) {
+    return WEATHER_CLOUDS;
+  }
+  if (chance < 80) {
+    return WEATHER_FAIR_SKIES;
+  }
+  return WEATHER_CLEAR_SKIES;
+};
+
 export const southernThanalan = (chance) => {
   if (chance < 20) {
     return WEATHER_HEAT_WAVES;
