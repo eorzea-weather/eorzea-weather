@@ -2568,9 +2568,9 @@ eorzea-time@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/eorzea-time/-/eorzea-time-2.0.0.tgz#22f86a98513b48175fe891cbd0f13ef44875a930"
 
-eorzea-weather@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/eorzea-weather/-/eorzea-weather-2.0.0.tgz#db6bcf8c04bd1bdf6bdccac87f7ed6023ca4d1d7"
+eorzea-weather@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/eorzea-weather/-/eorzea-weather-2.1.0.tgz#d54c7c257372209c60db564e86cdc6ca13e9b881"
 
 errno@^0.1.3, errno@~0.1.7:
   version "0.1.7"
