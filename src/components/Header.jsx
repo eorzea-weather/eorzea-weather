@@ -18,13 +18,16 @@ const AVAILABLE_LOCALES = {
   ja: '日本語',
 };
 
-export const styles = {
+export const styles = ({ breakpoints, spacing }) => ({
   appBarHome: {
     boxShadow: 'none',
   },
   title: {
     color: 'inherit',
     textDecoration: 'none',
+    [breakpoints.up('sm')]: {
+      paddingLeft: spacing.unit * 2,
+    },
   },
   flex: {
     flex: 1,
@@ -32,7 +35,7 @@ export const styles = {
   hideTitle: {
     display: 'none',
   },
-};
+});
 
 @withRouter
 @withStyles(styles)
@@ -109,7 +112,7 @@ export default class Header extends Component {
 
     return (
       <Fragment>
-        <AppBar className={appBarClassName} position="static">
+        <AppBar className={appBarClassName} position="fixed">
           <Toolbar>
             <IconButton color="inherit" onClick={this.handleMenuIconClick}>
               <MenuIcon />

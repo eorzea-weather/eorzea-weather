@@ -26,7 +26,9 @@ export const styles = ({ palette, spacing }) => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    minHeight: '40vh',
+    minHeight: '55vh',
+    paddingBottom: 80,
+    paddingTop: 80,
   },
 });
 

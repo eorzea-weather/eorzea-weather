@@ -20,14 +20,13 @@ const messages = defineMessages({
 
 export const styles = ({ spacing }) => ({
   headline: {
-    marginBottom: spacing.unit * 1.5,
-    marginLeft: spacing.unit * 0.75,
-    marginRight: spacing.unit * 0.75,
+    margin: `${spacing.unit * 1}px ${spacing.unit * 0.75}px ${spacing.unit * 3}px`,
   },
   root: {
     margin: '16px auto',
     maxWidth: '100%',
-    width: '1240px',
+    paddingTop: 80,
+    width: 1240,
   },
 });
 
