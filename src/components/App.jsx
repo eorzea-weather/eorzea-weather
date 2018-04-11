@@ -1,6 +1,6 @@
 import CssBaseline from 'material-ui/CssBaseline';
 import PropTypes from 'prop-types';
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
 import { injectIntl, intlShape } from 'react-intl';
 import { Route, Switch, withRouter } from 'react-router-dom';
@@ -36,6 +36,13 @@ export default class App extends Component {
     }).isRequired,
   }
 
+  componentDidMount() {
+    const styles = document.getElementById('server-rendered-styles');
+    if (styles && styles.parentNode) {
+      styles.parentNode.removeChild(styles);
+    }
+  }
+
   shouldComponentUpdate(nextProps) {
     return !compareLocations(this.props.location, nextProps.location);
   }
@@ -50,7 +57,7 @@ export default class App extends Component {
     const { intl, location } = this.props;
 
     return (
-      <Fragment>
+      <div id="app">
         <Helmet defaultTitle="Eorzea Weather" htmlAttributes={{ lang: intl.locale }} titleTemplate="%s - Eorzea Weather">
           <meta charSet="UTF-8" />
           <meta content="initial-scale=1,width=device-width" name="viewport" />
@@ -68,7 +75,7 @@ export default class App extends Component {
           <Route component={Zone} path="/zones/:zoneId" />
           <Route component={NoMatch} />
         </Switch>
-      </Fragment>
+      </div>
     );
   }
 }

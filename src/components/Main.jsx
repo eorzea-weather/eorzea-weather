@@ -5,26 +5,25 @@ import React from 'react';
 import { addLocaleData, IntlProvider } from 'react-intl';
 import jaLocaleData from 'react-intl/locale-data/ja';
 import { Provider as ReduxProvider } from 'react-redux';
+import { storeShape } from 'react-redux/es/utils/PropTypes';
 import * as locales from '../locales';
-import configureStore from '../store/configureStore';
 import App from './App';
 
 addLocaleData(jaLocaleData);
 
-const store = configureStore();
 const theme = createMuiTheme({
   palette: {
     primary: blue,
   },
 });
 
-const Main = ({ locale }) => {
+const Main = ({ locale, store }) => {
   const messages = locales[locale] || locales.en;
 
   return (
     <ReduxProvider store={store}>
       <IntlProvider locale={locale} messages={messages}>
-        <MuiThemeProvider theme={theme}>
+        <MuiThemeProvider sheetsManager={new Map()} theme={theme}>
           <App />
         </MuiThemeProvider>
       </IntlProvider>
@@ -38,6 +37,7 @@ Main.defaultProps = {
 
 Main.propTypes = {
   locale: PropTypes.string,
+  store: storeShape.isRequired,
 };
 
 export default Main;
