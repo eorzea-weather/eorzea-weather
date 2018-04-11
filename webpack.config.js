@@ -7,6 +7,14 @@ const EnvironmentPlugin = require('webpack/lib/EnvironmentPlugin');
 
 const htmlPluginOptions = {
   inject: false,
+  minify: {
+    caseSensitive: true,
+    minifyCSS: true,
+    minifyJS: true,
+    removeAttributeQuotes: true,
+    removeEmptyAttributes: true,
+    removeOptionalTags: true,
+  },
   template: path.resolve(__dirname, 'src', 'templates', 'index.jsx'),
 };
 
