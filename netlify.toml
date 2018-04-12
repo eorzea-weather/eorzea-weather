@@ -8,7 +8,7 @@
   from   = '/'
   query  = { locale = "en" }
   status = 200
-  to     = '/index.html'
+  to     = '/index.en.html'
 
 [[redirects]]
   force  = true
@@ -27,7 +27,7 @@
   from   = '/zones/*'
   query  = { locale = "en" }
   status = 200
-  to     = '/index.html'
+  to     = '/index.en.html'
 
 [[redirects]]
   from   = '/zones/*'
@@ -44,12 +44,12 @@
 [[redirects]]
   from   = '/zones/*'
   status = 200
-  to     = '/index.html'
+  to     = '/index.en.html'
 
 [[redirects]]
   from       = '/*'
   status     = 404
-  to         = '/index.html'
+  to         = '/index.en.html'
 
 [[headers]]
   for = '/*.js'
