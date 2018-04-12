@@ -1,10 +1,13 @@
 import 'regenerator-runtime/runtime';
 import localForage from 'localforage';
+import isEqual from 'lodash/isEqual';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { fetchZone } from './actions/zones';
 import Main from './components/Main';
 import configureStore from './store/configureStore';
+import * as zoneList from './zones';
 
 const getCurrentLocale = async () => {
   const cachedLocale = await localForage.getItem('locale');
@@ -19,6 +22,15 @@ const getCurrentLocale = async () => {
   return cachedLocale || (navigator.language || '').split('-')[0] || 'en';
 };
 
+const getPreloadedState = ({ locale }) => {
+  if (document.documentElement.lang !== locale) {
+    return {};
+  }
+  const element = document.getElementById('preloaded-state');
+  const json = element ? element.textContent : '{}';
+  return JSON.parse(json);
+};
+
 const render = (element, container) => new Promise((resolve, reject) => {
   const methodName = (container.firstChild && container.firstChild.hasAttribute('data-reactroot')) ? 'hydrate' : 'render';
   try {
@@ -30,9 +42,13 @@ const render = (element, container) => new Promise((resolve, reject) => {
 
 const main = async () => {
   const container = document.getElementById('root');
-  const preloadedState = JSON.parse(document.getElementById('preloaded-state').textContent);
-  const store = configureStore(preloadedState);
   const locale = await getCurrentLocale();
+  const preloadedState = getPreloadedState({ locale });
+  const store = configureStore(preloadedState);
+  const zoneIds = Object.values(zoneList);
+  if (!isEqual(Object.keys(store.getState().zones), zoneIds)) {
+    zoneIds.forEach(zoneId => store.dispatch(fetchZone(zoneId, { locale })));
+  }
   const element = (
     <Router>
       <Main locale={locale} store={store} />

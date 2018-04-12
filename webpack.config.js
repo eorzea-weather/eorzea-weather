@@ -1,7 +1,5 @@
-const history = require('connect-history-api-fallback');
 const CopyPlugin = require('copy-webpack-plugin');
 const HtmlPlugin = require('html-webpack-plugin');
-const convert = require('koa-connect');
 const path = require('path');
 const EnvironmentPlugin = require('webpack/lib/EnvironmentPlugin');
 
@@ -55,14 +53,12 @@ module.exports = (env = process.env.NODE_ENV || 'development') => ({
     ]),
     new HtmlPlugin({
       ...htmlPluginOptions,
-      filename: 'index.html',
+      filename: 'index.en.html',
     }),
-    ...(env === 'production' ? [
-      new HtmlPlugin({
-        ...htmlPluginOptions,
-        filename: 'index.ja.html',
-      }),
-    ] : []),
+    new HtmlPlugin({
+      ...htmlPluginOptions,
+      filename: 'index.ja.html',
+    }),
   ],
   resolve: {
     extensions: ['.js', '.jsx'],
@@ -70,7 +66,13 @@ module.exports = (env = process.env.NODE_ENV || 'development') => ({
   ...(env === 'development' ? {
     serve: {
       add(app) {
-        app.use(convert(history()));
+        app.use(async (ctx, next) => {
+          if (/^\/(?:$|zones(?:$|\/))/.test(ctx.path)) {
+            const locale = ctx.query.locale || ctx.acceptsLanguages(['en', 'ja']) || 'en';
+            ctx.request.url = `/index.${locale}.html`;
+          }
+          await next();
+        });
       },
     },
   } : {}),
