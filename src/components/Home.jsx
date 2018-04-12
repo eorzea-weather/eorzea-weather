@@ -6,10 +6,8 @@ import PropTypes from 'prop-types';
 import React, { Component, Fragment } from 'react';
 import { injectIntl, intlShape } from 'react-intl';
 import { Link } from 'react-router-dom';
-import { fetchZone } from '../actions/zones';
 import zoneShape from '../types/zoneShape';
 import tracker from '../utils/tracker';
-import * as zoneList from '../zones';
 import ZoneList from './ZoneList';
 
 export const styles = ({ palette, spacing }) => ({
@@ -47,13 +45,6 @@ export default class Home extends Component {
   };
 
   componentDidMount() {
-    const {
-      intl: { locale },
-      zones,
-    } = this.props;
-    Object.values(zoneList).filter(zoneId => !zones[zoneId]).forEach((zoneId) => {
-      this.props.dispatch(fetchZone(zoneId, { locale }));
-    });
     tracker.track({ path: '/', title: 'Home' });
   }
 

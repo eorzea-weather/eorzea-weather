@@ -11,10 +11,8 @@ import React, { Component, Fragment } from 'react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { Link } from 'react-router-dom';
 import * as pkg from '../../package.json';
-import { fetchZone } from '../actions/zones';
 import createGroupedZones from '../utils/createGroupedZones';
 import zoneShape from '../types/zoneShape';
-import * as zoneList from '../zones';
 import AppDrawerNavItem from './AppDrawerNavItem';
 
 const messages = defineMessages({
@@ -59,22 +57,11 @@ export default class AppDrawer extends Component {
 
   static propTypes = {
     classes: PropTypes.objectOf(PropTypes.any).isRequired,
-    dispatch: PropTypes.func.isRequired,
     intl: intlShape.isRequired,
     onClose: PropTypes.func.isRequired,
     open: PropTypes.bool.isRequired,
     zones: PropTypes.objectOf(zoneShape),
   };
-
-  componentDidMount() {
-    const {
-      intl: { locale },
-      zones,
-    } = this.props;
-    Object.values(zoneList).filter(zoneId => !zones[zoneId]).forEach((zoneId) => {
-      this.props.dispatch(fetchZone(zoneId, { locale }));
-    });
-  }
 
   shouldComponentUpdate(nextProps) {
     return (
