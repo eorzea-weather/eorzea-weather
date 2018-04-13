@@ -1,6 +1,5 @@
 import LanguageIcon from '@material-ui/icons/Language';
 import MenuIcon from '@material-ui/icons/Menu';
-import classNames from 'classnames';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import Menu, { MenuItem } from 'material-ui/Menu';
@@ -19,8 +18,10 @@ const AVAILABLE_LOCALES = {
 };
 
 export const styles = ({ breakpoints, spacing }) => ({
-  appBarHome: {
-    boxShadow: 'none',
+  appBar: {
+    'body.home &': {
+      boxShadow: 'none',
+    },
   },
   title: {
     color: 'inherit',
@@ -28,18 +29,18 @@ export const styles = ({ breakpoints, spacing }) => ({
     [breakpoints.up('sm')]: {
       paddingLeft: spacing.unit * 2,
     },
+    'body.home &': {
+      color: 'transparent',
+    },
   },
   flex: {
     flex: 1,
-  },
-  hideTitle: {
-    display: 'none',
   },
 });
 
 @withRouter
 @withStyles(styles)
-export default class Header extends Component {
+export default class AppHeader extends Component {
   static propTypes = {
     classes: PropTypes.objectOf(PropTypes.any).isRequired,
     location: PropTypes.shape({
@@ -86,17 +87,9 @@ export default class Header extends Component {
     });
   }
 
-  isHome() {
-    const { location } = this.props;
-    return location.pathname === '/';
-  }
-
   render() {
     const { classes } = this.props;
     const { anchorEl, open } = this.state;
-    const appBarClassName = classNames({
-      [classes.appBarHome]: this.isHome(),
-    });
     const origin = {
       horizontal: 'right',
       vertical: 'top',
@@ -112,13 +105,13 @@ export default class Header extends Component {
 
     return (
       <Fragment>
-        <AppBar className={appBarClassName} position="fixed">
+        <AppBar className={classes.appBar} position="fixed">
           <Toolbar>
             <IconButton color="inherit" onClick={this.handleMenuIconClick}>
               <MenuIcon />
             </IconButton>
             <Typography className={classes.flex} color="inherit" noWrap variant="title">
-              <Link className={classNames(classes.title, { [classes.hideTitle]: this.isHome() })} to="/">Eorzea Weather</Link>
+              <Link className={classes.title} to="/">Eorzea Weather</Link>
             </Typography>
             <EorzeaClock />
             <IconButton color="inherit" onClick={this.handleLanguageIconClick}>

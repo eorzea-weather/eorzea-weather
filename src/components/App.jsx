@@ -1,4 +1,6 @@
 import CssBaseline from 'material-ui/CssBaseline';
+import { CircularProgress } from 'material-ui/Progress';
+import { withStyles } from 'material-ui/styles';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
@@ -7,7 +9,7 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 import Home from '../containers/Home';
 import Zone from '../containers/Zone';
 import * as locales from '../locales';
-import Header from './Header';
+import AppHeader from './AppHeader';
 import NoMatch from './NoMatch';
 
 const compareLocations = (...locations) => {
@@ -25,10 +27,22 @@ const compareLocations = (...locations) => {
   return true;
 };
 
+export const styles = {
+  loading: {
+    alignItems: 'center',
+    display: 'flex',
+    height: '100vh',
+    justifyContent: 'center',
+    width: '100vw',
+  },
+};
+
 @injectIntl
 @withRouter
+@withStyles(styles)
 export default class App extends Component {
   static propTypes = {
+    classes: PropTypes.objectOf(PropTypes.any).isRequired,
     intl: intlShape.isRequired,
     location: PropTypes.shape({
       pathname: PropTypes.string.isRequired,
@@ -36,15 +50,19 @@ export default class App extends Component {
     }).isRequired,
   }
 
+  state = {
+    loading: true,
+  };
+
   componentDidMount() {
-    const styles = document.getElementById('server-rendered-styles');
-    if (styles && styles.parentNode) {
-      styles.parentNode.removeChild(styles);
-    }
+    this.handleMount();
   }
 
-  shouldComponentUpdate(nextProps) {
-    return !compareLocations(this.props.location, nextProps.location);
+  shouldComponentUpdate(nextProps, nextState) {
+    return (
+      this.state.loading !== nextState.loading ||
+      !compareLocations(this.props.location, nextProps.location)
+    );
   }
 
   componentDidUpdate(prevProps) {
@@ -53,8 +71,19 @@ export default class App extends Component {
     }
   }
 
+  handleMount() {
+    const renderedStyles = document.getElementById('server-rendered-styles');
+    if (renderedStyles && renderedStyles.parentNode) {
+      renderedStyles.parentNode.removeChild(renderedStyles);
+    }
+    this.setState({
+      loading: false,
+    });
+  }
+
   render() {
-    const { intl, location } = this.props;
+    const { classes, intl, location } = this.props;
+    const { loading } = this.state;
 
     return (
       <div id="app">
@@ -69,12 +98,18 @@ export default class App extends Component {
           ))}
         </Helmet>
         <CssBaseline />
-        <Header />
-        <Switch>
-          <Route component={Home} exact path="/" />
-          <Route component={Zone} path="/zones/:zoneId" />
-          <Route component={NoMatch} />
-        </Switch>
+        <AppHeader />
+        {loading ? (
+          <div className={classes.loading}>
+            <CircularProgress size={150} />
+          </div>
+        ) : (
+          <Switch>
+            <Route component={Home} exact path="/" />
+            <Route component={Zone} path="/zones/:zoneId" />
+            <Route component={NoMatch} />
+          </Switch>
+        )}
       </div>
     );
   }
