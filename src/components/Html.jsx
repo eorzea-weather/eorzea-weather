@@ -48,7 +48,7 @@ const Html = ({
       </head>
       <body {...helmet.bodyAttributes.toComponent()}>
         {/* eslint-disable-next-line react/no-danger */}
-        <div dangerouslySetInnerHTML={{ __html: children && '' }} id="root" />
+        <div dangerouslySetInnerHTML={{ __html: children }} id="root" />
         <script src={`https://cdn.polyfill.io/v2/polyfill.min.js?features=${polyfills.join(',')}`} />
         {/* eslint-disable-next-line react/no-danger */}
         <script dangerouslySetInnerHTML={{ __html: JSON.stringify(preloadedState) }} id="preloaded-state" type="application/json" />

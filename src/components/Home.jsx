@@ -4,6 +4,7 @@ import { withStyles } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
 import PropTypes from 'prop-types';
 import React, { Component, Fragment } from 'react';
+import Helmet from 'react-helmet';
 import { injectIntl, intlShape } from 'react-intl';
 import { Link } from 'react-router-dom';
 import zoneShape from '../types/zoneShape';
@@ -58,6 +59,7 @@ export default class Home extends Component {
     return (
       <Fragment>
         <div className={classes.hero}>
+          <Helmet bodyAttributes={{ class: 'home' }} />
           <Typography color="inherit" component="h1" gutterBottom variant="display2">Eorzea Weather</Typography>
           <Button className={classes.button} component={props => <Link to="/zones/eureka-anemos" {...props} />} variant="raised">Eureka!</Button>
         </div>
