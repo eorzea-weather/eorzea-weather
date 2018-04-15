@@ -24,6 +24,11 @@
   to         = '/index.ja.html'
 
 [[redirects]]
+  from   = '/'
+  status = 200
+  to     = '/index.en.html'
+
+[[redirects]]
   from   = '/zones/*'
   query  = { locale = "en" }
   status = 200
