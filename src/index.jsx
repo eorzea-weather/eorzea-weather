@@ -9,8 +9,18 @@ import Main from './components/Main';
 import configureStore from './store/configureStore';
 import * as zoneList from './zones';
 
+const getCachedLocale = async () => {
+  try {
+    const locale = await localForage.getItem('locale');
+    return locale;
+  } catch (e) {
+    console.error(e); // eslint-disable-line no-console
+    return null;
+  }
+};
+
 const getCurrentLocale = async () => {
-  const cachedLocale = await localForage.getItem('locale');
+  const cachedLocale = await getCachedLocale();
   const parsedUrl = new URL(window.location.href);
   if (parsedUrl.searchParams && parsedUrl.searchParams.has('locale')) {
     const locale = parsedUrl.searchParams.get('locale');
