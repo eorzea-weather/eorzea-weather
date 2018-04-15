@@ -15,7 +15,11 @@ const getCurrentLocale = async () => {
   if (parsedUrl.searchParams && parsedUrl.searchParams.has('locale')) {
     const locale = parsedUrl.searchParams.get('locale');
     if (!cachedLocale || locale !== cachedLocale) {
-      await localForage.setItem('locale', locale);
+      try {
+        await localForage.setItem('locale', locale);
+      } catch (e) {
+        console.error(e); // eslint-disable-line no-console
+      }
       return locale;
     }
   }
