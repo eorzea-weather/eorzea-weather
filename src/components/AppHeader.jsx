@@ -38,9 +38,9 @@ export const styles = ({ breakpoints, spacing }) => ({
   },
 });
 
-@withRouter
+export default @withRouter
 @withStyles(styles)
-export default class AppHeader extends Component {
+class AppHeader extends Component {
   static propTypes = {
     classes: PropTypes.objectOf(PropTypes.any).isRequired,
     location: PropTypes.shape({

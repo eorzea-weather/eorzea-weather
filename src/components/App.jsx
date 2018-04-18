@@ -37,10 +37,10 @@ export const styles = {
   },
 };
 
-@injectIntl
+export default @injectIntl
 @withRouter
 @withStyles(styles)
-export default class App extends Component {
+class App extends Component {
   static propTypes = {
     classes: PropTypes.objectOf(PropTypes.any).isRequired,
     intl: intlShape.isRequired,

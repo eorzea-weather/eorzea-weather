@@ -31,9 +31,9 @@ export const styles = ({ palette, spacing }) => ({
   },
 });
 
-@injectIntl
+export default @injectIntl
 @withStyles(styles)
-export default class Home extends Component {
+class Home extends Component {
   static defaultProps = {
     zones: [],
   };

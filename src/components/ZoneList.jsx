@@ -9,8 +9,8 @@ import { Link } from 'react-router-dom';
 import createGroupedZones from '../utils/createGroupedZones';
 import zoneShape from '../types/zoneShape';
 
-@injectIntl
-export default class ZoneList extends Component {
+export default @injectIntl
+class ZoneList extends Component {
   static propTypes = {
     intl: intlShape.isRequired,
     zones: PropTypes.objectOf(zoneShape).isRequired,
