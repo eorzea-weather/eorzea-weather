@@ -29,9 +29,9 @@ export const styles = ({ spacing }) => ({
   },
 });
 
-@injectIntl
+export default @injectIntl
 @withStyles(styles)
-export default class Zone extends Component {
+class Zone extends Component {
   static defaultProps = {
     zone: null,
   };

@@ -40,9 +40,9 @@ export const styles = ({ breakpoints, spacing }) => ({
   },
 });
 
-@injectIntl
+export default @injectIntl
 @withStyles(styles)
-export default class WeatherTable extends Component {
+class WeatherTable extends Component {
   static defaultProps = {
     data: [],
   };

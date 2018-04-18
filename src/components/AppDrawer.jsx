@@ -48,9 +48,9 @@ export const styles = ({ mixins, spacing }) => ({
   },
 });
 
-@injectIntl
+export default @injectIntl
 @withStyles(styles)
-export default class AppDrawer extends Component {
+class AppDrawer extends Component {
   static defaultProps = {
     zones: {},
   };

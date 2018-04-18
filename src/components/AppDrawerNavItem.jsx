@@ -13,8 +13,8 @@ export const styles = ({ spacing }) => ({
   },
 });
 
-@withStyles(styles)
-export default class AppDrawerNavItem extends Component {
+export default @withStyles(styles)
+class AppDrawerNavItem extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
     classes: PropTypes.objectOf(PropTypes.any).isRequired,

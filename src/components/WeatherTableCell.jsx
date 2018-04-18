@@ -33,9 +33,9 @@ export const styles = ({ palette, spacing }) => ({
   },
 });
 
-@injectIntl
+export default @injectIntl
 @withStyles(styles)
-export default class WeatherTableCell extends Component {
+class WeatherTableCell extends Component {
   static defaultProps = {
     highlight: false,
   };
