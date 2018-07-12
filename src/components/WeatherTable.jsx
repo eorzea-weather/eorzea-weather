@@ -5,7 +5,9 @@ import { FormControlLabel, FormGroup, FormLabel } from 'material-ui/Form';
 import Paper from 'material-ui/Paper';
 import { withStyles } from 'material-ui/styles';
 import Switch from 'material-ui/Switch';
-import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
+import Table, {
+  TableBody, TableCell, TableHead, TableRow,
+} from 'material-ui/Table';
 import PropTypes from 'prop-types';
 import React, { Component, Fragment } from 'react';
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
@@ -43,16 +45,16 @@ export const styles = ({ breakpoints, spacing }) => ({
 export default @injectIntl
 @withStyles(styles)
 class WeatherTable extends Component {
-  static defaultProps = {
-    data: [],
-  };
-
   static propTypes = {
     classes: PropTypes.objectOf(PropTypes.any).isRequired,
     data: PropTypes.arrayOf(weatherShape),
     dispatch: PropTypes.func.isRequired,
     intl: intlShape.isRequired,
     zoneId: PropTypes.string.isRequired,
+  };
+
+  static defaultProps = {
+    data: [],
   };
 
   state = {
@@ -64,14 +66,18 @@ class WeatherTable extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
+    const { data } = this.props;
+    const { highlightedWeathers } = this.state;
+
     return (
-      !isEqual(this.state.highlightedWeathers, nextState.highlightedWeathers) ||
-      !isEqual(this.props.data, nextProps.data)
+      !isEqual(highlightedWeathers, nextState.highlightedWeathers)
+      || !isEqual(data, nextProps.data)
     );
   }
 
   componentDidUpdate(prevProps) {
     const { zoneId } = this.props;
+
     if (prevProps.zoneId !== zoneId) {
       this.load({ zoneId });
     }
@@ -79,6 +85,7 @@ class WeatherTable extends Component {
 
   handleFilterChange = ({ target }) => {
     const { value: weather } = target;
+
     this.setState(({ highlightedWeathers }) => ({
       highlightedWeathers: {
         ...highlightedWeathers,
@@ -88,8 +95,10 @@ class WeatherTable extends Component {
   }
 
   load({ zoneId }) {
-    const { locale } = this.props.intl;
-    this.props.dispatch(fetchWeathers(zoneId, { locale }));
+    const { dispatch, intl } = this.props;
+    const { locale } = intl;
+
+    dispatch(fetchWeathers(zoneId, { locale }));
   }
 
   render() {
@@ -102,9 +111,15 @@ class WeatherTable extends Component {
           <Table className={classes.table}>
             <TableHead>
               <TableRow>
-                <TableCell className={classes.tableCell}>ET 00:00 - 07:59</TableCell>
-                <TableCell className={classes.tableCell}>ET 08:00 - 15:59</TableCell>
-                <TableCell className={classes.tableCell}>ET 16:00 - 23:59</TableCell>
+                <TableCell className={classes.tableCell}>
+                  ET 00:00 - 07:59
+                </TableCell>
+                <TableCell className={classes.tableCell}>
+                  ET 08:00 - 15:59
+                </TableCell>
+                <TableCell className={classes.tableCell}>
+                  ET 16:00 - 23:59
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>

@@ -18,8 +18,8 @@ const compareLocations = (...locations) => {
     const locationA = locations[i - 1];
     const locationB = locations[i];
     if (
-      locationA.pathname !== locationB.pathname ||
-      locationA.search !== locationB.search
+      locationA.pathname !== locationB.pathname
+      || locationA.search !== locationB.search
     ) {
       return false;
     }
@@ -59,14 +59,19 @@ class App extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
+    const { location } = this.props;
+    const { loading } = this.state;
+
     return (
-      this.state.loading !== nextState.loading ||
-      !compareLocations(this.props.location, nextProps.location)
+      loading !== nextState.loading
+      || !compareLocations(location, nextProps.location)
     );
   }
 
   componentDidUpdate(prevProps) {
-    if (!compareLocations(prevProps.location, this.props.location)) {
+    const { location } = this.props;
+
+    if (!compareLocations(prevProps.location, location)) {
       window.scrollTo(0, 0);
     }
   }

@@ -32,14 +32,14 @@ export const styles = ({ spacing }) => ({
 export default @injectIntl
 @withStyles(styles)
 class Zone extends Component {
-  static defaultProps = {
-    zone: null,
-  };
-
   static propTypes = {
     classes: PropTypes.objectOf(PropTypes.any).isRequired,
     intl: intlShape.isRequired,
     zone: zoneShape,
+  };
+
+  static defaultProps = {
+    zone: null,
   };
 
   componentDidMount() {
@@ -47,11 +47,15 @@ class Zone extends Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    return !isEqual(this.props.zone, nextProps.zone);
+    const { zone } = this.props;
+
+    return !isEqual(zone, nextProps.zone);
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.zone.id !== this.props.zone.id) {
+    const { zone } = this.props;
+
+    if (prevProps.zone.id !== zone.id) {
       this.track(this.props);
     }
   }
@@ -72,9 +76,13 @@ class Zone extends Component {
     return (
       <main className={classes.root}>
         <Helmet>
-          <title>{title}</title>
+          <title>
+            {title}
+          </title>
         </Helmet>
-        <Typography className={classes.headline} variant="headline">{title}</Typography>
+        <Typography className={classes.headline} variant="headline">
+          {title}
+        </Typography>
         <WeatherTable zoneId={zone.id} />
       </main>
     );

@@ -55,11 +55,14 @@ class AppHeader extends Component {
   };
 
   shouldComponentUpdate(nextProps, nextState) {
+    const { location } = this.props;
+    const { anchorEl, open } = this.state;
+
     return (
-      this.state.open !== nextState.open ||
-      this.state.anchorEl !== nextState.anchorEl ||
-      this.props.location.pathname !== nextProps.location.pathname ||
-      this.props.location.search !== nextProps.location.search
+      open !== nextState.open
+      || anchorEl !== nextState.anchorEl
+      || location.pathname !== nextProps.location.pathname
+      || location.search !== nextProps.location.search
     );
   }
 
@@ -111,16 +114,22 @@ class AppHeader extends Component {
               <MenuIcon />
             </IconButton>
             <Typography className={classes.flex} color="inherit" noWrap variant="title">
-              <Link className={classes.title} to="/">Eorzea Weather</Link>
+              <Link className={classes.title} to="/">
+Eorzea Weather
+              </Link>
             </Typography>
             <EorzeaClock />
             <IconButton color="inherit" onClick={this.handleLanguageIconClick}>
               <LanguageIcon />
             </IconButton>
-            <Menu onClose={this.handleMenuClose} open={!!anchorEl} {...menuProps} >
+            <Menu onClose={this.handleMenuClose} open={!!anchorEl} {...menuProps}>
               {Object.entries(AVAILABLE_LOCALES).map(([locale, label]) => (
                 <MenuItem
-                  component={props => <a href={`?locale=${locale}`} hrefLang={locale} {...props}>{label}</a>}
+                  component={props => (
+                    <a href={`?locale=${locale}`} hrefLang={locale} {...props}>
+                      {label}
+                    </a>
+                  )}
                   key={`item-${locale}`}
                   onClick={this.handleMenuClose}
                 />

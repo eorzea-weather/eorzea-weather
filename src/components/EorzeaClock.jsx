@@ -15,9 +15,9 @@ export default class EorzeaClock extends Component {
     const { date: currentDate } = this.state;
     if (currentDate instanceof EorzeaTime && nextDate instanceof EorzeaTime) {
       return (
-        currentDate.getHours() !== nextDate.getHours() ||
-        currentDate.getMinutes() !== nextDate.getMinutes() ||
-        currentDate.getSeconds() !== nextDate.getSeconds()
+        currentDate.getHours() !== nextDate.getHours()
+        || currentDate.getMinutes() !== nextDate.getMinutes()
+        || currentDate.getSeconds() !== nextDate.getSeconds()
       );
     }
     return currentDate !== nextDate;
@@ -41,7 +41,10 @@ export default class EorzeaClock extends Component {
     const { date } = this.state;
 
     return (
-      <Typography color="inherit" variant="body2">ET {date ? date.toString() : '--:--:--'}</Typography>
+      <Typography color="inherit" variant="body2">
+ET
+        {date ? date.toString() : '--:--:--'}
+      </Typography>
     );
   }
 }
