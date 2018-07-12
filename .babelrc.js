@@ -1,6 +1,6 @@
 module.exports = {
   plugins: [
-    '@babel/proposal-decorators',
+    ['@babel/proposal-decorators', { legacy: true }],
     ['@babel/proposal-class-properties', { loose: true }],
     '@babel/proposal-object-rest-spread',
   ],
