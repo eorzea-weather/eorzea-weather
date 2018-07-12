@@ -1,6 +1,6 @@
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { withStyles } from '@material-ui/core/styles';
-import { TableCell } from '@material-ui/core/Table';
+import TableCell from '@material-ui/core/TableCell';
 import Typography from '@material-ui/core/Typography';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
@@ -89,15 +89,17 @@ class WeatherTableCell extends Component {
   }
 
   isNow() {
-    const { value: startedAt } = this.props;
+    const { value } = this.props;
     const { now } = this.state;
+    const { startedAt } = value;
     const time = startedAt.getTime();
     return time <= now && now < time + EIGHT_HOURS;
   }
 
   isPast() {
-    const { value: startedAt } = this.props;
+    const { value } = this.props;
     const { now } = this.state;
+    const { startedAt } = value;
     const time = startedAt.getTime();
     return time + EIGHT_HOURS < now;
   }

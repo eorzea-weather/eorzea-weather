@@ -4,12 +4,11 @@ import FormLabel from '@material-ui/core/FormLabel';
 import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
 import Switch from '@material-ui/core/Switch';
-import Table, {
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-} from '@material-ui/core/Table';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 import chunk from 'lodash/chunk';
 import isEqual from 'lodash/isEqual';
 import uniq from 'lodash/uniq';
