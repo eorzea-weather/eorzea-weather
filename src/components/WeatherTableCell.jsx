@@ -36,15 +36,15 @@ export const styles = ({ palette, spacing }) => ({
 export default @injectIntl
 @withStyles(styles)
 class WeatherTableCell extends Component {
-  static defaultProps = {
-    highlight: false,
-  };
-
   static propTypes = {
     classes: PropTypes.objectOf(PropTypes.any).isRequired,
     highlight: PropTypes.bool,
     intl: intlShape.isRequired,
     value: weatherShape.isRequired,
+  };
+
+  static defaultProps = {
+    highlight: false,
   };
 
   state = {
@@ -78,20 +78,6 @@ class WeatherTableCell extends Component {
     }
   }
 
-  isNow() {
-    const { startedAt } = this.props.value;
-    const { now } = this.state;
-    const time = startedAt.getTime();
-    return time <= now && now < time + EIGHT_HOURS;
-  }
-
-  isPast() {
-    const { startedAt } = this.props.value;
-    const { now } = this.state;
-    const time = startedAt.getTime();
-    return time + EIGHT_HOURS < now;
-  }
-
   loop = () => {
     if (!this.isPast()) {
       this.setState({
@@ -100,6 +86,20 @@ class WeatherTableCell extends Component {
         this.requestId = requestAnimationFrame(this.loop);
       });
     }
+  }
+
+  isNow() {
+    const { value: startedAt } = this.props;
+    const { now } = this.state;
+    const time = startedAt.getTime();
+    return time <= now && now < time + EIGHT_HOURS;
+  }
+
+  isPast() {
+    const { value: startedAt } = this.props;
+    const { now } = this.state;
+    const time = startedAt.getTime();
+    return time + EIGHT_HOURS < now;
   }
 
   render() {

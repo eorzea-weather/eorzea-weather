@@ -51,10 +51,6 @@ export const styles = ({ mixins, spacing }) => ({
 export default @injectIntl
 @withStyles(styles)
 class AppDrawer extends Component {
-  static defaultProps = {
-    zones: {},
-  };
-
   static propTypes = {
     classes: PropTypes.objectOf(PropTypes.any).isRequired,
     intl: intlShape.isRequired,
@@ -63,15 +59,20 @@ class AppDrawer extends Component {
     zones: PropTypes.objectOf(zoneShape),
   };
 
+  static defaultProps = {
+    zones: {},
+  };
+
   shouldComponentUpdate(nextProps) {
-    return (
-      this.props.open !== nextProps.open ||
-      !isEqual(this.props.zones, nextProps.zones)
-    );
+    const { open, zones } = this.props;
+
+    return open !== nextProps.open || !isEqual(zones, nextProps.zones);
   }
 
   handleClose = (...args) => {
-    this.props.onClose(...args);
+    const { onClose } = this.props;
+
+    onClose(...args);
   }
 
   render() {
@@ -107,7 +108,7 @@ class AppDrawer extends Component {
           {repositoryUrl && (
             <Fragment>
               {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
-              <ListItem button component={props => <a href={repositoryUrl} rel="noopener" target="_blank" {...props} />} onClick={this.handleClose}>
+              <ListItem button component={props => <a href={repositoryUrl} rel="noopener noreferrer" target="_blank" {...props} />} onClick={this.handleClose}>
                 <ListItemText primary={intl.formatMessage(messages.sourceCode)} />
               </ListItem>
             </Fragment>

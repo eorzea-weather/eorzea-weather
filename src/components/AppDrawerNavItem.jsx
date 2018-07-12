@@ -26,7 +26,9 @@ class AppDrawerNavItem extends Component {
   };
 
   shouldComponentUpdate(nextProps, nextState) {
-    return this.state.open !== nextState.open;
+    const { open } = this.state;
+
+    return open !== nextState.open;
   }
 
   handleClick = () => {

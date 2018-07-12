@@ -17,7 +17,9 @@ class ZoneList extends Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    return !isEqual(this.props.zones, nextProps.zones);
+    const { zones } = this.props;
+
+    return !isEqual(zones, nextProps.zones);
   }
 
   render() {
@@ -27,7 +29,14 @@ class ZoneList extends Component {
       <Grid container justify="flex-start" spacing={24}>
         {Object.entries(createGroupedZones({ intl })).map(([label, groupedZones]) => (
           <Grid item key={`grid-${label}`} md={3} sm={4} xs={12}>
-            <List component="nav" subheader={<ListSubheader component="h2" disableSticky>{label}</ListSubheader>}>
+            <List
+              component="nav"
+              subheader={(
+                <ListSubheader component="h2" disableSticky>
+                  {label}
+                </ListSubheader>
+              )}
+            >
               {groupedZones.map(zoneId => zones[zoneId] && (
                 <ListItem button component={props => <Link to={`/zones/${kebabCase(zoneId)}`} {...props} />} key={`item-${zoneId}`}>
                   <ListItemText primary={zones[zoneId].name} />

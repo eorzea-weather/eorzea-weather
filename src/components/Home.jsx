@@ -34,10 +34,6 @@ export const styles = ({ palette, spacing }) => ({
 export default @injectIntl
 @withStyles(styles)
 class Home extends Component {
-  static defaultProps = {
-    zones: [],
-  };
-
   static propTypes = {
     classes: PropTypes.objectOf(PropTypes.any).isRequired,
     dispatch: PropTypes.func.isRequired,
@@ -45,12 +41,18 @@ class Home extends Component {
     zones: PropTypes.objectOf(zoneShape),
   };
 
+  static defaultProps = {
+    zones: [],
+  };
+
   componentDidMount() {
     tracker.track({ path: '/', title: 'Home' });
   }
 
   shouldComponentUpdate(nextProps) {
-    return !isEqual(this.props.zones, nextProps.zones);
+    const { zones } = this.props;
+
+    return !isEqual(zones, nextProps.zones);
   }
 
   render() {
@@ -60,8 +62,12 @@ class Home extends Component {
       <Fragment>
         <div className={classes.hero}>
           <Helmet bodyAttributes={{ class: 'home' }} />
-          <Typography color="inherit" component="h1" gutterBottom variant="display2">Eorzea Weather</Typography>
-          <Button className={classes.button} component={props => <Link to="/zones/eureka-anemos" {...props} />} variant="raised">Eureka!</Button>
+          <Typography color="inherit" component="h1" gutterBottom variant="display2">
+            Eorzea Weather
+          </Typography>
+          <Button className={classes.button} component={props => <Link to="/zones/eureka-anemos" {...props} />} variant="raised">
+            Eureka!
+          </Button>
         </div>
         <main className={classes.container}>
           {Object.keys(zones).length > 0 && <ZoneList zones={zones} />}
