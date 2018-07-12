@@ -3,6 +3,8 @@ const HtmlPlugin = require('html-webpack-plugin');
 const path = require('path');
 const EnvironmentPlugin = require('webpack/lib/EnvironmentPlugin');
 
+const env = process.env.NODE_ENV || 'development';
+
 const htmlPluginOptions = {
   inject: false,
   minify: {
@@ -16,7 +18,7 @@ const htmlPluginOptions = {
   template: path.resolve(__dirname, 'src', 'templates', 'index.jsx'),
 };
 
-module.exports = (env = process.env.NODE_ENV || 'development') => ({
+module.exports = {
   mode: env === 'production' ? 'production' : 'development',
   module: {
     rules: [
@@ -76,4 +78,4 @@ module.exports = (env = process.env.NODE_ENV || 'development') => ({
       },
     },
   } : {}),
-});
+};

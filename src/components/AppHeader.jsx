@@ -1,11 +1,12 @@
+import AppBar from '@material-ui/core/AppBar';
+import IconButton from '@material-ui/core/IconButton';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import { withStyles } from '@material-ui/core/styles';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
 import LanguageIcon from '@material-ui/icons/Language';
 import MenuIcon from '@material-ui/icons/Menu';
-import AppBar from 'material-ui/AppBar';
-import IconButton from 'material-ui/IconButton';
-import Menu, { MenuItem } from 'material-ui/Menu';
-import { withStyles } from 'material-ui/styles';
-import Toolbar from 'material-ui/Toolbar';
-import Typography from 'material-ui/Typography';
 import PropTypes from 'prop-types';
 import React, { Component, Fragment } from 'react';
 import { Link, withRouter } from 'react-router-dom';
@@ -115,7 +116,7 @@ class AppHeader extends Component {
             </IconButton>
             <Typography className={classes.flex} color="inherit" noWrap variant="title">
               <Link className={classes.title} to="/">
-Eorzea Weather
+                Eorzea Weather
               </Link>
             </Typography>
             <EorzeaClock />

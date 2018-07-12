@@ -1,5 +1,5 @@
+import Typography from '@material-ui/core/Typography';
 import EorzeaTime from 'eorzea-time';
-import Typography from 'material-ui/Typography';
 import React, { Component } from 'react';
 
 export default class EorzeaClock extends Component {
@@ -42,7 +42,8 @@ export default class EorzeaClock extends Component {
 
     return (
       <Typography color="inherit" variant="body2">
-ET
+        ET
+        {' '}
         {date ? date.toString() : '--:--:--'}
       </Typography>
     );

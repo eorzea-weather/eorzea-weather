@@ -1,7 +1,7 @@
+import Button from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 import isEqual from 'lodash/isEqual';
-import Button from 'material-ui/Button';
-import { withStyles } from 'material-ui/styles';
-import Typography from 'material-ui/Typography';
 import PropTypes from 'prop-types';
 import React, { Component, Fragment } from 'react';
 import Helmet from 'react-helmet';
