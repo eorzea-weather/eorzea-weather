@@ -1,8 +1,8 @@
+import LinearProgress from '@material-ui/core/LinearProgress';
+import { withStyles } from '@material-ui/core/styles';
+import { TableCell } from '@material-ui/core/Table';
+import Typography from '@material-ui/core/Typography';
 import classNames from 'classnames';
-import { LinearProgress } from 'material-ui/Progress';
-import { withStyles } from 'material-ui/styles';
-import { TableCell } from 'material-ui/Table';
-import Typography from 'material-ui/Typography';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { FormattedTime, injectIntl, intlShape } from 'react-intl';

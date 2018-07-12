@@ -1,7 +1,10 @@
+import Grid from '@material-ui/core/Grid';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListSubheader from '@material-ui/core/ListSubheader';
 import isEqual from 'lodash/isEqual';
 import kebabCase from 'lodash/kebabCase';
-import Grid from 'material-ui/Grid';
-import List, { ListItem, ListItemText, ListSubheader } from 'material-ui/List';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { injectIntl, intlShape } from 'react-intl';

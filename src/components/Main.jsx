@@ -1,5 +1,5 @@
-import blue from 'material-ui/colors/blue';
-import { createMuiTheme, MuiThemeProvider } from 'material-ui/styles';
+import blue from '@material-ui/core/colors/blue';
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { addLocaleData, IntlProvider } from 'react-intl';

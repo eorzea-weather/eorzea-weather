@@ -1,5 +1,5 @@
+import { createGenerateClassName } from '@material-ui/core/styles';
 import * as path from 'path';
-import { createGenerateClassName } from 'material-ui/styles';
 import React from 'react';
 import ReactDOM from 'react-dom/server';
 import { SheetsRegistry } from 'react-jss/lib/jss';

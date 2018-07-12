@@ -1,11 +1,13 @@
+import Divider from '@material-ui/core/Divider';
+import Drawer from '@material-ui/core/Drawer';
+import IconButton from '@material-ui/core/IconButton';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import { withStyles } from '@material-ui/core/styles';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import isEqual from 'lodash/isEqual';
 import kebabCase from 'lodash/kebabCase';
-import Divider from 'material-ui/Divider';
-import Drawer from 'material-ui/Drawer';
-import IconButton from 'material-ui/IconButton';
-import List, { ListItem, ListItemText } from 'material-ui/List';
-import { withStyles } from 'material-ui/styles';
 import PropTypes from 'prop-types';
 import React, { Component, Fragment } from 'react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';

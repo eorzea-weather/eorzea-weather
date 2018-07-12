@@ -1,13 +1,18 @@
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormLabel from '@material-ui/core/FormLabel';
+import Paper from '@material-ui/core/Paper';
+import { withStyles } from '@material-ui/core/styles';
+import Switch from '@material-ui/core/Switch';
+import Table, {
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+} from '@material-ui/core/Table';
 import chunk from 'lodash/chunk';
 import isEqual from 'lodash/isEqual';
 import uniq from 'lodash/uniq';
-import { FormControlLabel, FormGroup, FormLabel } from 'material-ui/Form';
-import Paper from 'material-ui/Paper';
-import { withStyles } from 'material-ui/styles';
-import Switch from 'material-ui/Switch';
-import Table, {
-  TableBody, TableCell, TableHead, TableRow,
-} from 'material-ui/Table';
 import PropTypes from 'prop-types';
 import React, { Component, Fragment } from 'react';
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
