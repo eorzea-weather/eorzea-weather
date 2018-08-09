@@ -65,7 +65,7 @@ class Home extends Component {
           <Typography color="inherit" component="h1" gutterBottom variant="display2">
             Eorzea Weather
           </Typography>
-          <Button className={classes.button} component={props => <Link to="/zones/eureka-anemos" {...props} />} variant="raised">
+          <Button className={classes.button} component={props => <Link to="/zones/eureka-pagos" {...props} />} variant="raised">
             Eureka!
           </Button>
         </div>

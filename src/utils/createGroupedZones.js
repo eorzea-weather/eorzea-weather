@@ -93,5 +93,6 @@ export default ({ intl }) => ({
   ],
   [intl.formatMessage(messages.eureka)]: [
     EorzeaWeather.ZONE_EUREKA_ANEMOS,
+    EorzeaWeather.ZONE_EUREKA_PAGOS,
   ],
 });
