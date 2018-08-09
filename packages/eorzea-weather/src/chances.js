@@ -180,6 +180,25 @@ export const eurekaAnemos = (chance) => {
   return WEATHER_SNOW;
 };
 
+export const eurekaPagos = (chance) => {
+  if (chance < 10) {
+    return WEATHER_FAIR_SKIES;
+  }
+  if (chance < 28) {
+    return WEATHER_FOG;
+  }
+  if (chance < 46) {
+    return WEATHER_HEAT_WAVES;
+  }
+  if (chance < 64) {
+    return WEATHER_SNOW;
+  }
+  if (chance < 82) {
+    return WEATHER_THUNDER;
+  }
+  return WEATHER_BLIZZARDS;
+};
+
 export const gridania = (chance) => {
   if (chance < 20) {
     return WEATHER_RAIN;

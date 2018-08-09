@@ -42,6 +42,10 @@ export default class EorzeaWeather {
     return zones.ZONE_EUREKA_ANEMOS;
   }
 
+  static get ZONE_EUREKA_PAGOS() {
+    return zones.ZONE_EUREKA_PAGOS;
+  }
+
   static get ZONE_GRIDANIA() {
     return zones.ZONE_GRIDANIA;
   }
