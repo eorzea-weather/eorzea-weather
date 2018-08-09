@@ -7,6 +7,7 @@ export const ZONE_EASTERN_LA_NOSCEA = 'easternLaNoscea';
 export const ZONE_EASTERN_THANALAN = 'easternThanalan';
 export const ZONE_EAST_SHROUD = 'eastShroud';
 export const ZONE_EUREKA_ANEMOS = 'eurekaAnemos';
+export const ZONE_EUREKA_PAGOS = 'eurekaPagos';
 export const ZONE_GRIDANIA = 'gridania';
 export const ZONE_IDYLLSHIRE = 'idyllshire';
 export const ZONE_ISHGARD = 'ishgard';
