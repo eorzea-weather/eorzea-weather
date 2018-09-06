@@ -1,5 +1,6 @@
 {
   "header.source_code": "ソースコード",
+  "home.description": "Eorzea WeatherはFINAL FANTASY XIVのゲーム中の天気予報を一覧表示させるウェブアプリケーションです。",
   "home.title": "ホーム",
   "zone.highlight": "強調表示",
   "zone.title": "{name}の天気",

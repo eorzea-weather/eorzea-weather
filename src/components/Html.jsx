@@ -33,6 +33,8 @@ const Html = ({
   return (
     <html lang="en" {...helmet.htmlAttributes.toComponent()}>
       <head>
+        <meta charSet="UTF-8" />
+        <meta content="initial-scale=1,width=device-width" name="viewport" />
         {trackingId && (
           <Fragment>
             <script async src={`https://www.googletagmanager.com/gtag/js?id=${trackingId}`} />
