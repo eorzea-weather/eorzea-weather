@@ -5,11 +5,18 @@ import isEqual from 'lodash/isEqual';
 import PropTypes from 'prop-types';
 import React, { Component, Fragment } from 'react';
 import Helmet from 'react-helmet';
-import { injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { Link } from 'react-router-dom';
 import zoneShape from '../types/zoneShape';
 import tracker from '../utils/tracker';
 import ZoneList from './ZoneList';
+
+const messages = defineMessages({
+  description: {
+    defaultMessage: 'Eorzea Weather is a web application that displays a list of weather forecasts during the game of FINAL FANTASY XIV.',
+    id: 'home.description',
+  },
+});
 
 export const styles = ({ palette, spacing }) => ({
   button: {
@@ -61,7 +68,9 @@ class Home extends Component {
     return (
       <Fragment>
         <div className={classes.hero}>
-          <Helmet bodyAttributes={{ class: 'home' }} />
+          <Helmet bodyAttributes={{ class: 'home' }}>
+            <meta content={intl.format} name="description" />
+          </Helmet>
           <Typography color="inherit" component="h1" gutterBottom variant="display2">
             Eorzea Weather
           </Typography>
