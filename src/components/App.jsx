@@ -4,13 +4,20 @@ import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
-import { injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import Home from '../containers/Home';
 import Zone from '../containers/Zone';
 import * as locales from '../locales';
 import AppHeader from './AppHeader';
 import NoMatch from './NoMatch';
+
+const messages = defineMessages({
+  description: {
+    defaultMessage: 'Eorzea Weather is a web application that displays a list of weather forecasts during the game of FINAL FANTASY XIV.',
+    id: 'home.description',
+  },
+});
 
 const compareLocations = (...locations) => {
   const { length: len } = locations;
@@ -93,8 +100,7 @@ class App extends Component {
     return (
       <div id="app">
         <Helmet defaultTitle="Eorzea Weather" htmlAttributes={{ lang: intl.locale }} titleTemplate="%s - Eorzea Weather">
-          <meta charSet="UTF-8" />
-          <meta content="initial-scale=1,width=device-width" name="viewport" />
+          <meta content={intl.formatMessage(messages.description)} name="description" />
           <link href="/favicon.ico" rel="icon" />
           <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
           <link href={location.pathname} hrefLang="x-default" rel="alternate" />
