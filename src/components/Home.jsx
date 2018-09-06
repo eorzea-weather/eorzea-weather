@@ -63,7 +63,7 @@ class Home extends Component {
   }
 
   render() {
-    const { classes, zones } = this.props;
+    const { classes, intl, zones } = this.props;
 
     return (
       <Fragment>
