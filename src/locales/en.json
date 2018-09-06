@@ -1,5 +1,6 @@
 {
   "header.source_code": "Source code",
+  "home.description": "Eorzea Weather is a web application that displays a list of weather forecasts during the game of FINAL FANTASY XIV.",
   "home.title": "Home",
   "zone.highlight": "Highlight",
   "zone.title": "{name} weather",
