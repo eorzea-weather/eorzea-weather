@@ -69,7 +69,7 @@ class Home extends Component {
       <Fragment>
         <div className={classes.hero}>
           <Helmet bodyAttributes={{ class: 'home' }}>
-            <meta content={intl.format} name="description" />
+            <meta content={intl.formatMessage(messages.description)} name="description" />
           </Helmet>
           <Typography color="inherit" component="h1" gutterBottom variant="display2">
             Eorzea Weather
