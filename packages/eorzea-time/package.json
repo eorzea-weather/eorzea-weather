@@ -27,7 +27,7 @@
     "rimraf": "^2.6.2",
     "rollup": "^1.16.7",
     "rollup-plugin-babel": "^3.0.3",
-    "rollup-plugin-uglify": "^3.0.0",
+    "rollup-plugin-uglify": "^6.0.2",
     "sinon": "^7.3.2"
   },
   "homepage": "https://flowercartelet.github.io/eorzea-time/",
