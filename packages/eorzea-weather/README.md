@@ -17,7 +17,7 @@ $ npm install --save eorzea-weather
 ## Usage
 
 ```javascript
-const EorzeaWeather = requre('eorzea-weather');
+const EorzeaWeather = require('eorzea-weather');
 
 EorzeaWeather.getWeather(EorzeaWeather.ZONE_EUREKA_ANEMOS, new Date()); // Gales
 ```
