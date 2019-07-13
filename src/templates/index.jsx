@@ -1,9 +1,7 @@
-import { createGenerateClassName } from '@material-ui/core/styles';
+import { ServerStyleSheets, StylesProvider, createGenerateClassName } from '@material-ui/styles';
 import * as path from 'path';
 import React from 'react';
 import ReactDOM from 'react-dom/server';
-import { SheetsRegistry } from 'react-jss/lib/jss';
-import JssProvider from 'react-jss/lib/JssProvider';
 import { StaticRouter } from 'react-router-dom';
 import { fetchZone } from '../actions/zones';
 import Html from '../components/Html';
@@ -15,18 +13,18 @@ const createChildren = ({
   context,
   locale,
   location,
-  sheetsRegistry,
+  sheets,
   store,
 }) => {
   const generateClassName = createGenerateClassName();
   const element = (
-    <JssProvider generateClassName={generateClassName} registry={sheetsRegistry}>
+    <StylesProvider generateClassName={generateClassName}>
       <StaticRouter context={context} location={location}>
         <Main locale={locale} store={store} />
       </StaticRouter>
-    </JssProvider>
+    </StylesProvider>
   );
-  return ReactDOM.renderToString(element);
+  return ReactDOM.renderToString(sheets.collect(element));
 };
 
 export default ({ htmlWebpackPlugin: { files, options } }) => {
@@ -35,17 +33,17 @@ export default ({ htmlWebpackPlugin: { files, options } }) => {
   const locale = (path.basename(filename, '.html').split('.') || [])[1] || 'en';
   const store = configureStore();
   Object.values(zones).forEach(zoneId => store.dispatch(fetchZone(zoneId, { locale })));
-  const sheetsRegistry = new SheetsRegistry();
+  const sheets = new ServerStyleSheets();
   const context = {};
   const children = createChildren({
     context,
     locale,
     location,
-    sheetsRegistry,
+    sheets,
     store,
   });
   const html = (
-    <Html files={files} preloadedState={store.getState()} styles={sheetsRegistry.toString()}>
+    <Html files={files} preloadedState={store.getState()} styles={sheets.toString()}>
       {children}
     </Html>
   );

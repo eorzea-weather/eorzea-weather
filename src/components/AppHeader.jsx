@@ -28,7 +28,7 @@ export const styles = ({ breakpoints, spacing }) => ({
     color: 'inherit',
     textDecoration: 'none',
     [breakpoints.up('sm')]: {
-      paddingLeft: spacing.unit * 2,
+      paddingLeft: spacing(2),
     },
     'body.home &': {
       color: 'transparent',
@@ -114,7 +114,7 @@ class AppHeader extends Component {
             <IconButton color="inherit" onClick={this.handleMenuIconClick}>
               <MenuIcon />
             </IconButton>
-            <Typography className={classes.flex} color="inherit" noWrap variant="title">
+            <Typography className={classes.flex} color="inherit" noWrap variant="h6">
               <Link className={classes.title} to="/">
                 Eorzea Weather
               </Link>
@@ -126,14 +126,13 @@ class AppHeader extends Component {
             <Menu onClose={this.handleMenuClose} open={!!anchorEl} {...menuProps}>
               {Object.entries(AVAILABLE_LOCALES).map(([locale, label]) => (
                 <MenuItem
-                  component={props => (
-                    <a href={`?locale=${locale}`} hrefLang={locale} {...props}>
-                      {label}
-                    </a>
-                  )}
+                  href={`?locale=${locale}`}
+                  hrefLang={locale}
                   key={`item-${locale}`}
                   onClick={this.handleMenuClose}
-                />
+                >
+                  {label}
+                </MenuItem>
               ))}
             </Menu>
           </Toolbar>

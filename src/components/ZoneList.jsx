@@ -6,11 +6,13 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import isEqual from 'lodash/isEqual';
 import kebabCase from 'lodash/kebabCase';
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, { Component, forwardRef } from 'react';
 import { injectIntl, intlShape } from 'react-intl';
 import { Link } from 'react-router-dom';
 import createGroupedZones from '../utils/createGroupedZones';
 import zoneShape from '../types/zoneShape';
+
+const AdapterLink = forwardRef((props, ref) => <Link innerRef={ref} {...props} />);
 
 export default @injectIntl
 class ZoneList extends Component {
@@ -29,7 +31,7 @@ class ZoneList extends Component {
     const { intl, zones } = this.props;
 
     return (
-      <Grid container justify="flex-start" spacing={24}>
+      <Grid container justify="flex-start" spacing={10}>
         {Object.entries(createGroupedZones({ intl })).map(([label, groupedZones]) => (
           <Grid item key={`grid-${label}`} md={3} sm={4} xs={12}>
             <List
@@ -41,7 +43,12 @@ class ZoneList extends Component {
               )}
             >
               {groupedZones.map(zoneId => zones[zoneId] && (
-                <ListItem button component={props => <Link to={`/zones/${kebabCase(zoneId)}`} {...props} />} key={`item-${zoneId}`}>
+                <ListItem
+                  button
+                  component={AdapterLink}
+                  key={`item-${zoneId}`}
+                  to={`/zones/${kebabCase(zoneId)}`}
+                >
                   <ListItemText primary={zones[zoneId].name} />
                 </ListItem>
               ))}

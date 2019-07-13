@@ -9,7 +9,7 @@ export default () => (
         404 Not Found
       </title>
     </Helmet>
-    <Typography variant="headline">
+    <Typography variant="subtitle1">
       404 Not Found
     </Typography>
   </Fragment>

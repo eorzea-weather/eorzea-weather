@@ -3,9 +3,9 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import isEqual from 'lodash/isEqual';
 import PropTypes from 'prop-types';
-import React, { Component, Fragment } from 'react';
+import React, { Component, forwardRef } from 'react';
 import Helmet from 'react-helmet';
-import { injectIntl, intlShape } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import { Link } from 'react-router-dom';
 import zoneShape from '../types/zoneShape';
 import tracker from '../utils/tracker';
@@ -13,10 +13,10 @@ import ZoneList from './ZoneList';
 
 export const styles = ({ palette, spacing }) => ({
   button: {
-    marginTop: spacing.unit * 3,
+    marginTop: spacing(3),
   },
   container: {
-    padding: spacing.unit * 1.5,
+    padding: spacing(1.5),
   },
   hero: {
     alignItems: 'center',
@@ -31,13 +31,13 @@ export const styles = ({ palette, spacing }) => ({
   },
 });
 
+const AdapterLink = forwardRef((props, ref) => <Link innerRef={ref} to="/zones/eureka-pagos" {...props} />);
+
 export default @injectIntl
 @withStyles(styles)
 class Home extends Component {
   static propTypes = {
     classes: PropTypes.objectOf(PropTypes.any).isRequired,
-    dispatch: PropTypes.func.isRequired,
-    intl: intlShape.isRequired,
     zones: PropTypes.objectOf(zoneShape),
   };
 
@@ -59,20 +59,23 @@ class Home extends Component {
     const { classes, zones } = this.props;
 
     return (
-      <Fragment>
+      <>
         <div className={classes.hero}>
           <Helmet bodyAttributes={{ class: 'home' }} />
-          <Typography color="inherit" component="h1" gutterBottom variant="display2">
+
+          <Typography color="inherit" component="h1" gutterBottom variant="h3">
             Eorzea Weather
           </Typography>
-          <Button className={classes.button} component={props => <Link to="/zones/eureka-pagos" {...props} />} variant="raised">
+
+          <Button className={classes.button} component={AdapterLink} variant="contained">
             Eureka!
           </Button>
         </div>
+
         <main className={classes.container}>
           {Object.keys(zones).length > 0 && <ZoneList zones={zones} />}
         </main>
-      </Fragment>
+      </>
     );
   }
 }

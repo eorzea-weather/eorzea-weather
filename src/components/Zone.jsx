@@ -19,7 +19,7 @@ const messages = defineMessages({
 
 export const styles = ({ spacing }) => ({
   headline: {
-    margin: `${spacing.unit * 1}px ${spacing.unit * 0.75}px ${spacing.unit * 3}px`,
+    margin: `${spacing(1)}px ${spacing(0.75)}px ${spacing(3)}px`,
   },
   root: {
     margin: '16px auto',
@@ -80,7 +80,7 @@ class Zone extends Component {
             {title}
           </title>
         </Helmet>
-        <Typography className={classes.headline} variant="headline">
+        <Typography className={classes.headline} variant="subtitle1">
           {title}
         </Typography>
         <WeatherTable zoneId={zone.id} />

@@ -23,7 +23,7 @@ const Main = ({ locale, store }) => {
   return (
     <ReduxProvider store={store}>
       <IntlProvider locale={locale} messages={messages}>
-        <MuiThemeProvider sheetsManager={new Map()} theme={theme}>
+        <MuiThemeProvider theme={theme}>
           <App />
         </MuiThemeProvider>
       </IntlProvider>
