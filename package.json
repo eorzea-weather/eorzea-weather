@@ -8,7 +8,7 @@
     "eorzea-weather": "^2.2.0",
     "localforage": "^1.7.2",
     "lodash": "^4.17.10",
-    "prop-types": "^15.6.2",
+    "prop-types": "^15.7.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-helmet": "^5.2.0",
