@@ -30,7 +30,7 @@
     "@babel/preset-react": "^7.0.0-beta.53",
     "babel-eslint": "^8.2.5",
     "babel-loader": "^8.0.0-beta.4",
-    "connect-history-api-fallback": "^1.5.0",
+    "connect-history-api-fallback": "^1.6.0",
     "copy-webpack-plugin": "^4.5.2",
     "eslint": "^5.1.0",
     "eslint-config-airbnb": "^17.0.0",
