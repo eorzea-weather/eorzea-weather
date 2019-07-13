@@ -20,7 +20,7 @@
     "ava": "^0.25.0",
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
-    "eslint": "^4.19.1",
+    "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.2.0",
     "eslint-plugin-import": "^2.10.0",
     "npm-run-all": "^4.1.2",
