@@ -1,5 +1,5 @@
-const privateDateProperty = typeof Symbol === 'function' ?
-  Symbol('privateDateProperty') : '_privateDateProperty';
+const privateDateProperty = typeof Symbol === 'function'
+  ? Symbol('privateDateProperty') : '_privateDateProperty';
 
 function computeEorzeaDate(date) {
   const eorzeaTime = new Date();
