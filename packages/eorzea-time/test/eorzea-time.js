@@ -32,4 +32,3 @@ test((t) => {
   const eorzeaTime = new EorzeaTime();
   t.deepEqual(eorzeaTime.getSeconds(), 51);
 });
-
