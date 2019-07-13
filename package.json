@@ -6,7 +6,7 @@
     "classnames": "^2.2.6",
     "eorzea-time": "^2.0.0",
     "eorzea-weather": "^2.2.0",
-    "localforage": "^1.7.2",
+    "localforage": "^1.7.3",
     "lodash": "^4.17.13",
     "prop-types": "^15.7.2",
     "react": "^16.4.1",
