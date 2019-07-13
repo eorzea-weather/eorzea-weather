@@ -9,7 +9,7 @@
     "localforage": "^1.7.3",
     "lodash": "^4.17.13",
     "prop-types": "^15.7.2",
-    "react": "^16.4.1",
+    "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
     "react-intl": "^2.9.0",
