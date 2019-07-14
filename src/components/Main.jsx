@@ -5,7 +5,6 @@ import React from 'react';
 import { addLocaleData, IntlProvider } from 'react-intl';
 import jaLocaleData from 'react-intl/locale-data/ja';
 import { Provider as ReduxProvider } from 'react-redux';
-import { storeShape } from 'react-redux/es/utils/PropTypes';
 import * as locales from '../locales';
 import App from './App';
 
@@ -37,7 +36,11 @@ Main.defaultProps = {
 
 Main.propTypes = {
   locale: PropTypes.string,
-  store: storeShape.isRequired,
+  store: PropTypes.shape({
+    dispatch: PropTypes.func.isRequired,
+    getState: PropTypes.func.isRequired,
+    subscribe: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default Main;
