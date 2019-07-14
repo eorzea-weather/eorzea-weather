@@ -5,7 +5,14 @@ module.exports = {
     '@babel/proposal-object-rest-spread',
   ],
   presets: [
-    ['@babel/env',  { modules: false }],
+    [
+      '@babel/env', 
+      {
+        corejs: 3,
+        modules: false,
+        useBuiltIns: 'usage'
+      },
+    ],
     '@babel/react',
   ],
 };

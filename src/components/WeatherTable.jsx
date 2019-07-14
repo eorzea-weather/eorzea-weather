@@ -21,19 +21,19 @@ import WeatherTableCell from './WeatherTableCell';
 
 export const styles = ({ breakpoints, spacing }) => ({
   formGroup: {
-    marginLeft: spacing.unit * 2,
-    marginRight: spacing.unit * 2,
+    marginLeft: spacing(2),
+    marginRight: spacing(2),
   },
   formLabel: {
-    marginLeft: spacing.unit * 2,
-    marginRight: spacing.unit * 2,
+    marginLeft: spacing(2),
+    marginRight: spacing(2),
   },
   paper: {
-    marginBottom: spacing.unit * 4,
+    marginBottom: spacing(4),
     marginTop: 0,
     [breakpoints.up('md')]: {
-      marginLeft: spacing.unit,
-      marginRight: spacing.unit,
+      marginLeft: spacing(1),
+      marginRight: spacing(1),
     },
   },
   table: {
@@ -41,7 +41,7 @@ export const styles = ({ breakpoints, spacing }) => ({
   },
   tableCell: {
     '&:last-child': {
-      paddingRight: spacing.unit * 7,
+      paddingRight: spacing(7),
     },
   },
 });

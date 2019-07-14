@@ -1,4 +1,3 @@
-import 'regenerator-runtime/runtime';
 import localForage from 'localforage';
 import isEqual from 'lodash/isEqual';
 import React from 'react';

@@ -9,7 +9,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import isEqual from 'lodash/isEqual';
 import kebabCase from 'lodash/kebabCase';
 import PropTypes from 'prop-types';
-import React, { Component, Fragment } from 'react';
+import React, { Component, forwardRef } from 'react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { Link } from 'react-router-dom';
 import * as pkg from '../../package.json';
@@ -36,7 +36,7 @@ const normalizeRepositoryUrl = (repository) => {
 
 export const styles = ({ mixins, spacing }) => ({
   childListItem: {
-    paddingLeft: spacing.unit * 4,
+    paddingLeft: spacing(4),
   },
   drawerHeader: {
     ...mixins.toolbar,
@@ -49,6 +49,8 @@ export const styles = ({ mixins, spacing }) => ({
     minWidth: '240px',
   },
 });
+
+const AdapterLink = forwardRef((props, ref) => <Link innerRef={ref} {...props} />);
 
 export default @injectIntl
 @withStyles(styles)
@@ -98,7 +100,14 @@ class AppDrawer extends Component {
           {Object.entries(createGroupedZones({ intl })).map(([label, groupedZones]) => (
             <AppDrawerNavItem key={`drawer-item-${label}`} label={label}>
               {groupedZones.filter(zoneId => zones[zoneId]).map(zoneId => (
-                <ListItem button component={props => <Link onClick={this.handleClose} to={`/zones/${kebabCase(zoneId)}`} {...props} />} key={`item-${zoneId}`} className={classes.childListItem}>
+                <ListItem
+                  button
+                  className={classes.childListItem}
+                  key={`item-${zoneId}`}
+                  component={AdapterLink}
+                  onClick={this.handleClose}
+                  to={`/zones/${kebabCase(zoneId)}`}
+                >
                   <ListItemText primary={zones[zoneId].name} />
                 </ListItem>
               ))}
@@ -108,12 +117,19 @@ class AppDrawer extends Component {
         <Divider />
         <List onKeyDown={this.handleClose}>
           {repositoryUrl && (
-            <Fragment>
+            <>
               {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
-              <ListItem button component={props => <a href={repositoryUrl} rel="noopener noreferrer" target="_blank" {...props} />} onClick={this.handleClose}>
+              <ListItem
+                button
+                component="a"
+                href={repositoryUrl}
+                onClick={this.handleClose}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
                 <ListItemText primary={intl.formatMessage(messages.sourceCode)} />
               </ListItem>
-            </Fragment>
+            </>
           )}
         </List>
       </Drawer>

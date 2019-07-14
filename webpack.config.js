@@ -65,17 +65,4 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
-  ...(env === 'development' ? {
-    serve: {
-      add(app) {
-        app.use(async (ctx, next) => {
-          if (/^\/(?:$|zones(?:$|\/))/.test(ctx.path)) {
-            const locale = ctx.query.locale || ctx.acceptsLanguages(['en', 'ja']) || 'en';
-            ctx.request.url = `/index.${locale}.html`;
-          }
-          await next();
-        });
-      },
-    },
-  } : {}),
 };

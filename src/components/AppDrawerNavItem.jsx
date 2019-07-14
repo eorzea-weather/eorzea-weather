@@ -10,8 +10,8 @@ import React, { Component, Fragment } from 'react';
 
 export const styles = ({ spacing }) => ({
   label: {
-    paddingLeft: spacing.unit * 3,
-    paddingRight: spacing.unit * 2,
+    paddingLeft: spacing(3),
+    paddingRight: spacing(2),
   },
 });
 

@@ -28,7 +28,7 @@ export const styles = ({ palette, spacing }) => ({
     paddingTop: '15px',
     position: 'relative',
     '&:last-child': {
-      paddingRight: spacing.unit * 7,
+      paddingRight: spacing(7),
     },
   },
 });
