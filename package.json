@@ -9,7 +9,7 @@
     "eorzea-time": "^2.0.0",
     "eorzea-weather": "^2.2.0",
     "localforage": "^1.7.3",
-    "lodash": "^4.17.13",
+    "lodash": "^4.17.15",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
