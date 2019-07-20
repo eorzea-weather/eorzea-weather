@@ -10,12 +10,12 @@ const createConfig = ({ output, plugins = [] }) => ({
     babel({
       presets: [
         [
-          'env',
+          '@babel/env',
           {
             loose: output.format !== 'es',
             modules: false,
             targets: Object.assign({
-              node: '6',
+              node: '8',
             }, output.format === 'umd' ? {
               browsers: [
                 '> 1%',
@@ -28,7 +28,6 @@ const createConfig = ({ output, plugins = [] }) => ({
     }),
     ...plugins,
   ],
-  preferConst: output.format === 'es',
 });
 
 export default [

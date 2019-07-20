@@ -11,22 +11,22 @@ test.beforeEach((t) => {
 
 test.afterEach(t => Object.assign(t.context, { eorzeaTime: undefined }));
 
-test((t) => {
+test('1', (t) => {
   const { eorzeaTime } = t.context;
   t.deepEqual(eorzeaTime.toJSON(), '13:42:51');
 });
 
-test((t) => {
+test('2', (t) => {
   const { eorzeaTime } = t.context;
   t.deepEqual(eorzeaTime.toJSON(), eorzeaTime.toString());
 });
 
-test((t) => {
+test('3', (t) => {
   const { eorzeaTime } = t.context;
   t.deepEqual(JSON.stringify(eorzeaTime), '"13:42:51"');
 });
 
-test((t) => {
+test('4', (t) => {
   const { eorzeaTime } = t.context;
   const object = {
     time: eorzeaTime,
