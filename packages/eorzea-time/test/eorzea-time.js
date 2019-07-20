@@ -13,22 +13,22 @@ test.afterEach((t) => {
   t.context.clock.restore();
 });
 
-test((t) => {
+test('1', (t) => {
   const eorzeaTime = new EorzeaTime();
   t.deepEqual(eorzeaTime.toString(), '13:42:51');
 });
 
-test((t) => {
+test('2', (t) => {
   const eorzeaTime = new EorzeaTime();
   t.deepEqual(eorzeaTime.getHours(), 13);
 });
 
-test((t) => {
+test('3', (t) => {
   const eorzeaTime = new EorzeaTime();
   t.deepEqual(eorzeaTime.getMinutes(), 42);
 });
 
-test((t) => {
+test('4', (t) => {
   const eorzeaTime = new EorzeaTime();
   t.deepEqual(eorzeaTime.getSeconds(), 51);
 });
