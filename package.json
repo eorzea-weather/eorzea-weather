@@ -3,7 +3,7 @@
   "dependencies": {
     "@material-ui/core": "^4.2.1",
     "@material-ui/icons": "^4.2.1",
-    "@material-ui/styles": "^4.2.1",
+    "@material-ui/styles": "^4.3.0",
     "classnames": "^2.2.6",
     "core-js": "^3.1.4",
     "eorzea-time": "^2.0.0",
