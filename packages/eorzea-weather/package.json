@@ -16,7 +16,7 @@
     "babel-jest": "^24.8.0",
     "cross-env": "^5.1.4",
     "eslint": "^5.16.0",
-    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.10.0",
     "jest": "^24.8.0",
     "npm-run-all": "^4.1.2",

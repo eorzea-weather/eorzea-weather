@@ -204,7 +204,7 @@ export default class EorzeaWeather {
   }
 
   validate() {
-    const key = `ZONE_${this.zoneId.replace(/[A-Z]/g, w => `_${w}`).toUpperCase()}`;
+    const key = `ZONE_${this.zoneId.replace(/[A-Z]/g, (w) => `_${w}`).toUpperCase()}`;
     return EorzeaWeather[key] === this.zoneId;
   }
 }
