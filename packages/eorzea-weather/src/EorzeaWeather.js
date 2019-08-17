@@ -182,6 +182,10 @@ export default class EorzeaWeather {
     return zones.ZONE_THE_PEAKS;
   }
 
+  static get ZONE_THE_RAKTIKA_GREATWOOD() {
+    return zones.ZONE_THE_RAKTIKA_GREATWOOD;
+  }
+
   static get ZONE_THE_RUBY_SEA() {
     return zones.ZONE_THE_RUBY_SEA;
   }

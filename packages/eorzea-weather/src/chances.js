@@ -806,6 +806,25 @@ export const thePeaks = (chance) => {
   return WEATHER_DUST_STORMS;
 };
 
+export const theRaktikaGreatwood = (chance) => {
+  if (chance < 10) {
+    return WEATHER_FOG;
+  }
+  if (chance < 20) {
+    return WEATHER_RAIN;
+  }
+  if (chance < 30) {
+    return WEATHER_UMBRAL_WIND;
+  }
+  if (chance < 45) {
+    return WEATHER_CLEAR_SKIES;
+  }
+  if (chance < 85) {
+    return WEATHER_FAIR_SKIES;
+  }
+  return WEATHER_CLOUDS;
+};
+
 export const theRubySea = (chance) => {
   if (chance < 10) {
     return WEATHER_THUNDER;
