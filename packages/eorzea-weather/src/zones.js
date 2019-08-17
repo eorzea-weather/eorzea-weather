@@ -42,6 +42,7 @@ export const ZONE_THE_GOBLET = 'theGoblet';
 export const ZONE_THE_LAVENDER_BEDS = 'theLavenderBeds';
 export const ZONE_THE_LOCHS = 'theLochs';
 export const ZONE_THE_PEAKS = 'thePeaks';
+export const ZONE_THE_RAKTIKA_GREATWOOD = 'theRaktikaGreatwood';
 export const ZONE_THE_RUBY_SEA = 'theRubySea';
 export const ZONE_THE_SEA_OF_CLOUDS = 'theSeaOfClouds';
 export const ZONE_THE_TEMPEST = 'theTempest';
