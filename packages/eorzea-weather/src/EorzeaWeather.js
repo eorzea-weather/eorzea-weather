@@ -6,6 +6,10 @@ import * as zones from './zones';
 const DEFAULT_LOCALE = 'en';
 
 export default class EorzeaWeather {
+  static get ZONE_AMH_ARAENG() {
+    return zones.ZONE_AMH_ARAENG;
+  }
+
   static get ZONE_AZYS_LLA() {
     return zones.ZONE_AZYS_LLA;
   }
@@ -26,6 +30,10 @@ export default class EorzeaWeather {
     return zones.ZONE_COERTHAS_WESTERN_HIGHLANDS;
   }
 
+  static get ZONE_EAST_SHROUD() {
+    return zones.ZONE_EAST_SHROUD;
+  }
+
   static get ZONE_EASTERN_LA_NOSCEA() {
     return zones.ZONE_EASTERN_LA_NOSCEA;
   }
@@ -34,16 +42,24 @@ export default class EorzeaWeather {
     return zones.ZONE_EASTERN_THANALAN;
   }
 
-  static get ZONE_EAST_SHROUD() {
-    return zones.ZONE_EAST_SHROUD;
+  static get ZONE_EULMORE() {
+    return zones.ZONE_EULMORE;
   }
 
   static get ZONE_EUREKA_ANEMOS() {
     return zones.ZONE_EUREKA_ANEMOS;
   }
 
+  static get ZONE_EUREKA_HYDATOS() {
+    return zones.ZONE_EUREKA_HYDATOS;
+  }
+
   static get ZONE_EUREKA_PAGOS() {
     return zones.ZONE_EUREKA_PAGOS;
+  }
+
+  static get ZONE_EUREKA_PYROS() {
+    return zones.ZONE_EUREKA_PYROS;
   }
 
   static get ZONE_GRIDANIA() {
@@ -54,12 +70,24 @@ export default class EorzeaWeather {
     return zones.ZONE_IDYLLSHIRE;
   }
 
+  static get ZONE_IL_MHEG() {
+    return zones.ZONE_IL_MHEG;
+  }
+
   static get ZONE_ISHGARD() {
     return zones.ZONE_ISHGARD;
   }
 
+  static get ZONE_KHOLUSIA() {
+    return zones.ZONE_KHOLUSIA;
+  }
+
   static get ZONE_KUGANE() {
     return zones.ZONE_KUGANE;
+  }
+
+  static get ZONE_LAKELAND() {
+    return zones.ZONE_LAKELAND;
   }
 
   static get ZONE_LIMSA_LOMINSA() {
@@ -82,12 +110,12 @@ export default class EorzeaWeather {
     return zones.ZONE_MOR_DHONA;
   }
 
-  static get ZONE_NORTHERN_THANALAN() {
-    return zones.ZONE_NORTHERN_THANALAN;
-  }
-
   static get ZONE_NORTH_SHROUD() {
     return zones.ZONE_NORTH_SHROUD;
+  }
+
+  static get ZONE_NORTHERN_THANALAN() {
+    return zones.ZONE_NORTHERN_THANALAN;
   }
 
   static get ZONE_OUTER_LA_NOSCEA() {
@@ -102,12 +130,12 @@ export default class EorzeaWeather {
     return zones.ZONE_SHIROGANE;
   }
 
-  static get ZONE_SOUTHERN_THANALAN() {
-    return zones.ZONE_SOUTHERN_THANALAN;
-  }
-
   static get ZONE_SOUTH_SHROUD() {
     return zones.ZONE_SOUTH_SHROUD;
+  }
+
+  static get ZONE_SOUTHERN_THANALAN() {
+    return zones.ZONE_SOUTHERN_THANALAN;
   }
 
   static get ZONE_THE_AZIM_STEPPE() {
@@ -116,6 +144,14 @@ export default class EorzeaWeather {
 
   static get ZONE_THE_CHURNING_MISTS() {
     return zones.ZONE_THE_CHURNING_MISTS;
+  }
+
+  static get ZONE_THE_CRYSTARIUM() {
+    return zones.ZONE_THE_CRYSTARIUM;
+  }
+
+  static get ZONE_THE_DIADEM() {
+    return zones.ZONE_THE_DIADEM;
   }
 
   static get ZONE_THE_DRAVANIAN_FORELANDS() {
@@ -152,6 +188,10 @@ export default class EorzeaWeather {
 
   static get ZONE_THE_SEA_OF_CLOUDS() {
     return zones.ZONE_THE_SEA_OF_CLOUDS;
+  }
+
+  static get ZONE_THE_TEMPEST() {
+    return zones.ZONE_THE_TEMPEST;
   }
 
   static get ZONE_ULDAH() {
