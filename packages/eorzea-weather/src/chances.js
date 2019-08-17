@@ -18,6 +18,22 @@ import {
   WEATHER_WIND,
 } from './weathers';
 
+export const amhAraeng = (chance) => {
+  if (chance < 45) {
+    return WEATHER_FAIR_SKIES;
+  }
+  if (chance < 60) {
+    return WEATHER_CLOUDS;
+  }
+  if (chance < 70) {
+    return WEATHER_DUST_STORMS;
+  }
+  if (chance < 80) {
+    return WEATHER_HEAT_WAVES;
+  }
+  return WEATHER_CLEAR_SKIES;
+};
+
 export const azysLla = (chance) => {
   if (chance < 35) {
     return WEATHER_FAIR_SKIES;
@@ -107,6 +123,28 @@ export const coerthasWesternHighlands = (chance) => {
   return WEATHER_FOG;
 };
 
+export const eastShroud = (chance) => {
+  if (chance < 5) {
+    return WEATHER_THUNDER;
+  }
+  if (chance < 20) {
+    return WEATHER_RAIN;
+  }
+  if (chance < 30) {
+    return WEATHER_FOG;
+  }
+  if (chance < 40) {
+    return WEATHER_CLOUDS;
+  }
+  if (chance < 55) {
+    return WEATHER_FAIR_SKIES;
+  }
+  if (chance < 85) {
+    return WEATHER_CLEAR_SKIES;
+  }
+  return WEATHER_FAIR_SKIES;
+};
+
 export const easternLaNoscea = (chance) => {
   if (chance < 5) {
     return WEATHER_FOG;
@@ -145,9 +183,9 @@ export const easternThanalan = (chance) => {
   return WEATHER_SHOWERS;
 };
 
-export const eastShroud = (chance) => {
-  if (chance < 5) {
-    return WEATHER_THUNDER;
+export const eulmore = (chance) => {
+  if (chance < 10) {
+    return WEATHER_GALES;
   }
   if (chance < 20) {
     return WEATHER_RAIN;
@@ -155,16 +193,13 @@ export const eastShroud = (chance) => {
   if (chance < 30) {
     return WEATHER_FOG;
   }
-  if (chance < 40) {
+  if (chance < 45) {
     return WEATHER_CLOUDS;
   }
-  if (chance < 55) {
+  if (chance < 85) {
     return WEATHER_FAIR_SKIES;
   }
-  if (chance < 85) {
-    return WEATHER_CLEAR_SKIES;
-  }
-  return WEATHER_FAIR_SKIES;
+  return WEATHER_CLEAR_SKIES;
 };
 
 export const eurekaAnemos = (chance) => {
@@ -176,6 +211,22 @@ export const eurekaAnemos = (chance) => {
   }
   if (chance < 90) {
     return WEATHER_SHOWERS;
+  }
+  return WEATHER_SNOW;
+};
+
+export const eurekaHydatos = (chance) => {
+  if (chance < 12) {
+    return WEATHER_FAIR_SKIES;
+  }
+  if (chance < 34) {
+    return WEATHER_SHOWERS;
+  }
+  if (chance < 56) {
+    return WEATHER_GLOOM;
+  }
+  if (chance < 78) {
+    return WEATHER_THUNDERSTORMS;
   }
   return WEATHER_SNOW;
 };
@@ -199,7 +250,29 @@ export const eurekaPagos = (chance) => {
   return WEATHER_BLIZZARDS;
 };
 
+export const eurekaPyros = (chance) => {
+  if (chance < 10) {
+    return WEATHER_FAIR_SKIES;
+  }
+  if (chance < 28) {
+    return WEATHER_HEAT_WAVES;
+  }
+  if (chance < 46) {
+    return WEATHER_THUNDER;
+  }
+  if (chance < 64) {
+    return WEATHER_BLIZZARDS;
+  }
+  if (chance < 82) {
+    return WEATHER_UMBRAL_WIND;
+  }
+  return WEATHER_SNOW;
+};
+
 export const gridania = (chance) => {
+  if (chance < 5) {
+    return WEATHER_RAIN;
+  }
   if (chance < 20) {
     return WEATHER_RAIN;
   }
@@ -237,6 +310,25 @@ export const idyllshire = (chance) => {
   return WEATHER_FAIR_SKIES;
 };
 
+export const ilMheg = (chance) => {
+  if (chance < 10) {
+    return WEATHER_RAIN;
+  }
+  if (chance < 20) {
+    return WEATHER_FOG;
+  }
+  if (chance < 35) {
+    return WEATHER_CLOUDS;
+  }
+  if (chance < 45) {
+    return WEATHER_THUNDERSTORMS;
+  }
+  if (chance < 60) {
+    return WEATHER_CLEAR_SKIES;
+  }
+  return WEATHER_FAIR_SKIES;
+};
+
 export const ishgard = (chance) => {
   if (chance < 60) {
     return WEATHER_SNOW;
@@ -253,6 +345,25 @@ export const ishgard = (chance) => {
   return WEATHER_FOG;
 };
 
+export const kholusia = (chance) => {
+  if (chance < 10) {
+    return WEATHER_GALES;
+  }
+  if (chance < 20) {
+    return WEATHER_RAIN;
+  }
+  if (chance < 30) {
+    return WEATHER_FOG;
+  }
+  if (chance < 45) {
+    return WEATHER_CLOUDS;
+  }
+  if (chance < 85) {
+    return WEATHER_FAIR_SKIES;
+  }
+  return WEATHER_CLEAR_SKIES;
+};
+
 export const kugane = (chance) => {
   if (chance < 10) {
     return WEATHER_RAIN;
@@ -267,6 +378,25 @@ export const kugane = (chance) => {
     return WEATHER_FAIR_SKIES;
   }
   return WEATHER_CLEAR_SKIES;
+};
+
+export const lakeland = (chance) => {
+  if (chance < 20) {
+    return WEATHER_CLEAR_SKIES;
+  }
+  if (chance < 60) {
+    return WEATHER_FAIR_SKIES;
+  }
+  if (chance < 75) {
+    return WEATHER_CLOUDS;
+  }
+  if (chance < 85) {
+    return WEATHER_FOG;
+  }
+  if (chance < 95) {
+    return WEATHER_RAIN;
+  }
+  return WEATHER_THUNDERSTORMS;
 };
 
 export const limsaLominsa = (chance) => {
@@ -334,6 +464,9 @@ export const mist = (chance) => {
     return WEATHER_FAIR_SKIES;
   }
   if (chance < 80) {
+    return WEATHER_FAIR_SKIES;
+  }
+  if (chance < 90) {
     return WEATHER_FOG;
   }
   return WEATHER_RAIN;
@@ -353,19 +486,6 @@ export const morDhona = (chance) => {
     return WEATHER_CLEAR_SKIES;
   }
   return WEATHER_FAIR_SKIES;
-};
-
-export const northernThanalan = (chance) => {
-  if (chance < 5) {
-    return WEATHER_CLEAR_SKIES;
-  }
-  if (chance < 20) {
-    return WEATHER_FAIR_SKIES;
-  }
-  if (chance < 50) {
-    return WEATHER_CLOUDS;
-  }
-  return WEATHER_FOG;
 };
 
 export const northShroud = (chance) => {
@@ -388,6 +508,19 @@ export const northShroud = (chance) => {
     return WEATHER_FAIR_SKIES;
   }
   return WEATHER_CLEAR_SKIES;
+};
+
+export const northernThanalan = (chance) => {
+  if (chance < 5) {
+    return WEATHER_CLEAR_SKIES;
+  }
+  if (chance < 20) {
+    return WEATHER_FAIR_SKIES;
+  }
+  if (chance < 50) {
+    return WEATHER_CLOUDS;
+  }
+  return WEATHER_FOG;
 };
 
 export const outerLaNoscea = (chance) => {
@@ -438,22 +571,6 @@ export const shirogane = (chance) => {
   return WEATHER_CLEAR_SKIES;
 };
 
-export const southernThanalan = (chance) => {
-  if (chance < 20) {
-    return WEATHER_HEAT_WAVES;
-  }
-  if (chance < 60) {
-    return WEATHER_CLEAR_SKIES;
-  }
-  if (chance < 80) {
-    return WEATHER_FAIR_SKIES;
-  }
-  if (chance < 90) {
-    return WEATHER_CLOUDS;
-  }
-  return WEATHER_FOG;
-};
-
 export const southShroud = (chance) => {
   if (chance < 5) {
     return WEATHER_FOG;
@@ -474,6 +591,22 @@ export const southShroud = (chance) => {
     return WEATHER_FAIR_SKIES;
   }
   return WEATHER_CLEAR_SKIES;
+};
+
+export const southernThanalan = (chance) => {
+  if (chance < 20) {
+    return WEATHER_HEAT_WAVES;
+  }
+  if (chance < 60) {
+    return WEATHER_CLEAR_SKIES;
+  }
+  if (chance < 80) {
+    return WEATHER_FAIR_SKIES;
+  }
+  if (chance < 90) {
+    return WEATHER_CLOUDS;
+  }
+  return WEATHER_FOG;
 };
 
 export const theAzimSteppe = (chance) => {
@@ -512,6 +645,38 @@ export const theChurningMists = (chance) => {
     return WEATHER_CLEAR_SKIES;
   }
   return WEATHER_FAIR_SKIES;
+};
+
+export const theCrystarium = (chance) => {
+  if (chance < 20) {
+    return WEATHER_CLEAR_SKIES;
+  }
+  if (chance < 60) {
+    return WEATHER_FAIR_SKIES;
+  }
+  if (chance < 75) {
+    return WEATHER_CLOUDS;
+  }
+  if (chance < 85) {
+    return WEATHER_FOG;
+  }
+  if (chance < 95) {
+    return WEATHER_RAIN;
+  }
+  return WEATHER_THUNDERSTORMS;
+};
+
+export const theDiadem = (chance) => {
+  if (chance < 30) {
+    return WEATHER_FAIR_SKIES;
+  }
+  if (chance < 60) {
+    return WEATHER_FOG;
+  }
+  if (chance < 90) {
+    return WEATHER_WIND;
+  }
+  return WEATHER_UMBRAL_WIND;
 };
 
 export const theDravanianForelands = (chance) => {
@@ -674,6 +839,16 @@ export const theSeaOfClouds = (chance) => {
     return WEATHER_WIND;
   }
   return WEATHER_UMBRAL_WIND;
+};
+
+export const theTempest = (chance) => {
+  if (chance < 20) {
+    return WEATHER_CLOUDS;
+  }
+  if (chance < 80) {
+    return WEATHER_FAIR_SKIES;
+  }
+  return WEATHER_CLEAR_SKIES;
 };
 
 export const uldah = (chance) => {
