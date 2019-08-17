@@ -31,7 +31,7 @@ export const styles = ({ palette, spacing }) => ({
   },
 });
 
-const AdapterLink = forwardRef((props, ref) => <Link innerRef={ref} to="/zones/eureka-pagos" {...props} />);
+const AdapterLink = forwardRef((props, ref) => <Link innerRef={ref} to="/zones/eureka-hydatos" {...props} />);
 
 export default @injectIntl
 @withStyles(styles)

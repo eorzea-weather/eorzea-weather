@@ -2326,10 +2326,10 @@ eorzea-time@^2.0.0:
   resolved "https://registry.yarnpkg.com/eorzea-time/-/eorzea-time-2.0.0.tgz#22f86a98513b48175fe891cbd0f13ef44875a930"
   integrity sha512-XGTNwhpO/H4s5BzAPSxIA9bb5mO66hhIuqSPUKh97eSyb4dRkA080vgYq+WrAtJNaYUEYb/kBt2PDmPfxgAo5w==
 
-eorzea-weather@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/eorzea-weather/-/eorzea-weather-2.2.0.tgz#036a08148e631cea05462a073c4dbee9293a3e6b"
-  integrity sha512-Rpn3X6cnbbVkSDvxjyzgTG7NcbbysuIxuSpjJTkQTve3tVCwqRthgdVMPvRCVLJsXxBHPX0Ji0YXvoJkSZ+LuA==
+eorzea-weather@^2.3.2:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/eorzea-weather/-/eorzea-weather-2.3.2.tgz#69ad4fa7619301f9b8a82858cdc7a17cabf510dc"
+  integrity sha512-USSpiiAFWK1Bu1irmUAyW5VmcB7HXFiY7Evyf4Jvr7qc5XEma1P6cg9dXFMgarRQsSHVEG3jjyvaMcWdZMs/Sw==
 
 errno@^0.1.3, errno@~0.1.7:
   version "0.1.7"

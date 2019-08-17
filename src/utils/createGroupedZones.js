@@ -18,6 +18,10 @@ const messages = defineMessages({
     defaultMessage: 'La Noscea',
     id: 'zone_list.la_noscea',
   },
+  norvrandt: {
+    defaultMessage: 'Norvrandt',
+    id: 'zone_list.norvrandt',
+  },
   others: {
     defaultMessage: 'Others',
     id: 'zone_list.others',
@@ -84,6 +88,16 @@ export default ({ intl }) => ({
     EorzeaWeather.ZONE_YANXIA,
     EorzeaWeather.ZONE_THE_AZIM_STEPPE,
   ],
+  [intl.formatMessage(messages.norvrandt)]: [
+    EorzeaWeather.ZONE_THE_CRYSTARIUM,
+    EorzeaWeather.ZONE_EULMORE,
+    EorzeaWeather.ZONE_LAKELAND,
+    EorzeaWeather.ZONE_KHOLUSIA,
+    EorzeaWeather.ZONE_AMH_ARAENG,
+    EorzeaWeather.ZONE_IL_MHEG,
+    EorzeaWeather.ZONE_THE_RAKTIKA_GREATWOOD,
+    EorzeaWeather.ZONE_THE_TEMPEST,
+  ],
   [intl.formatMessage(messages.others)]: [
     EorzeaWeather.ZONE_MIST,
     EorzeaWeather.ZONE_THE_LAVENDER_BEDS,
@@ -94,5 +108,7 @@ export default ({ intl }) => ({
   [intl.formatMessage(messages.eureka)]: [
     EorzeaWeather.ZONE_EUREKA_ANEMOS,
     EorzeaWeather.ZONE_EUREKA_PAGOS,
+    EorzeaWeather.ZONE_EUREKA_PYROS,
+    EorzeaWeather.ZONE_EUREKA_HYDATOS,
   ],
 });

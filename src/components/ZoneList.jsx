@@ -31,7 +31,7 @@ class ZoneList extends Component {
     const { intl, zones } = this.props;
 
     return (
-      <Grid container justify="flex-start" spacing={10}>
+      <Grid container justify="flex-start">
         {Object.entries(createGroupedZones({ intl })).map(([label, groupedZones]) => (
           <Grid item key={`grid-${label}`} md={3} sm={4} xs={12}>
             <List
