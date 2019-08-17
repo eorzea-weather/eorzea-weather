@@ -1,7 +1,7 @@
 import * as path from 'path';
 import babel from 'rollup-plugin-babel';
 import json from 'rollup-plugin-json';
-import uglify from 'rollup-plugin-uglify';
+import { uglify } from 'rollup-plugin-uglify';
 import pkg from './package.json';
 
 const createConfig = ({ output, plugins = [] }) => ({
