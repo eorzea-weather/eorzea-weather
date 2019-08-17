@@ -7,7 +7,7 @@
     "classnames": "^2.2.6",
     "core-js": "^3.2.1",
     "eorzea-time": "^2.0.0",
-    "eorzea-weather": "^2.2.0",
+    "eorzea-weather": "^2.3.2",
     "localforage": "^1.7.3",
     "lodash": "^4.17.15",
     "prop-types": "^15.7.2",
