@@ -14,14 +14,15 @@ const createConfig = ({ output, plugins = [] }) => ({
           {
             loose: output.format !== 'es',
             modules: false,
-            targets: Object.assign({
+            targets: {
               node: '8',
-            }, output.format === 'umd' ? {
-              browsers: [
-                '> 1%',
-                'Last 2 versions',
-              ],
-            } : {}),
+              ...(output.format === 'umd' ? {
+                browsers: [
+                  '> 1%',
+                  'Last 2 versions',
+                ],
+              } : {}),
+            },
           },
         ],
       ],

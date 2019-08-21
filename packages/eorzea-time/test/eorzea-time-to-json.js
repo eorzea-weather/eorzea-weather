@@ -9,7 +9,7 @@ test.beforeEach((t) => {
   });
 });
 
-test.afterEach(t => Object.assign(t.context, { eorzeaTime: undefined }));
+test.afterEach((t) => Object.assign(t.context, { eorzeaTime: undefined }));
 
 test('1', (t) => {
   const { eorzeaTime } = t.context;
