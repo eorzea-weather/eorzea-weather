@@ -5,7 +5,7 @@
     "@material-ui/icons": "^4.5.1",
     "@material-ui/styles": "^4.3.3",
     "classnames": "^2.2.6",
-    "core-js": "^3.2.1",
+    "core-js": "^3.6.3",
     "eorzea-time": "^2.0.0",
     "eorzea-weather": "^2.3.2",
     "localforage": "^1.7.3",
