@@ -16,7 +16,7 @@
     "rollup": "^1.16.7",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-uglify": "^6.0.2",
-    "sinon": "^8.0.4"
+    "sinon": "^9.0.2"
   },
   "homepage": "https://flowercartelet.github.io/eorzea-time/",
   "license": "MIT",
