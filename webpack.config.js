@@ -53,7 +53,7 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         path.resolve(__dirname, 'src', 'images', 'favicon.ico'),
-      ]
+      ],
     }),
     new HtmlPlugin({
       ...htmlPluginOptions,
