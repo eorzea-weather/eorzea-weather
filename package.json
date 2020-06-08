@@ -8,7 +8,7 @@
     "core-js": "^3.6.3",
     "eorzea-time": "^2.0.0",
     "eorzea-weather": "^2.3.2",
-    "localforage": "^1.7.3",
+    "localforage": "^1.7.4",
     "lodash": "^4.17.15",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
