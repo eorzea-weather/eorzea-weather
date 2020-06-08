@@ -3,6 +3,9 @@
   command = 'yarn build'
   publish = './dist/'
 
+  [build.environment]
+    NODE_VERSION = '12.18.0'
+
 [[redirects]]
   force  = true
   from   = '/'

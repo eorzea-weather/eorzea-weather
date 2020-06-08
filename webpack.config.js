@@ -50,9 +50,11 @@ module.exports = {
       GOOGLE_ANALYTICS_TRACKING_ID: null,
       NODE_ENV: env,
     }),
-    new CopyPlugin([
-      path.resolve(__dirname, 'src', 'images', 'favicon.ico'),
-    ]),
+    new CopyPlugin({
+      patterns: [
+        path.resolve(__dirname, 'src', 'images', 'favicon.ico'),
+      ],
+    }),
     new HtmlPlugin({
       ...htmlPluginOptions,
       filename: 'index.en.html',
