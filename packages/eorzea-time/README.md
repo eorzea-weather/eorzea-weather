@@ -1,4 +1,4 @@
-# [eorzea-time](https://www.npmjs.com/package/eorzea-time) [![CircleCI](https://circleci.com/gh/flowercartelet/eorzea-weather.svg?style=shield)](https://circleci.com/gh/flowercartelet/eorzea-weather)
+# [eorzea-time](https://www.npmjs.com/package/eorzea-time) [![CircleCI](https://circleci.com/gh/eorzea-weather/eorzea-weather.svg?style=shield)](https://circleci.com/gh/flowercartelet/eorzea-weather)
 
 :clock3: A clock of the Eorzea time
 
