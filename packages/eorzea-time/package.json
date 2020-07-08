@@ -27,7 +27,9 @@
     },
     "root": true
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "homepage": "https://github.com/eorzea-weather/eorzea-time",
   "jest": {
     "preset": "ts-jest"
