@@ -214,6 +214,10 @@ export default class EorzeaWeather {
     return zones.ZONE_WESTERN_THANALAN;
   }
 
+  static get ZONE_WOLVES_DEN_PIER() {
+    return zones.ZONE_WOLVES_DEN_PIER;
+  }
+
   static get ZONE_YANXIA() {
     return zones.ZONE_YANXIA;
   }
