@@ -2,7 +2,7 @@ version: 2
 
 .defaults: &defaults
   docker:
-    - image: circleci/node:8-stretch
+    - image: circleci/node:10-stretch
   working_directory: ~/projects/eorzea-time
 
 .attach_workspace: &attach_workspace
@@ -41,13 +41,8 @@ jobs:
     steps:
       - *attach_workspace
       - run: yarn lint
-  test-node8:
-    <<: *defaults
-    <<: *test_steps
   test-node10:
     <<: *defaults
-    docker:
-      - image: circleci/node:10-stretch
     <<: *test_steps
   test-node12:
     <<: *defaults
@@ -63,9 +58,6 @@ workflows:
       - lint:
           requires:
             - install
-      - test-node8:
-          requires:
-            - lint
       - test-node10:
           requires:
             - lint

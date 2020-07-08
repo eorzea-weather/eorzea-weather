@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "allowJs": false,
+    "baseUrl": ".",
+    "module": "commonjs",
+    "noEmit": true,
+    "strict": true,
+    "target": "es2019"
+  }
+}
