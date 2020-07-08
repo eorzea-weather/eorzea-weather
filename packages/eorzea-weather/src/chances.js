@@ -940,6 +940,22 @@ export const westernThanalan = (chance) => {
   return WEATHER_RAIN;
 };
 
+export const wolvesDenPier = (chance) => {
+  if (chance < 20) {
+    return WEATHER_CLOUDS;
+  }
+  if (chance < 50) {
+    return WEATHER_CLEAR_SKIES;
+  }
+  if (chance < 80) {
+    return WEATHER_FAIR_SKIES;
+  }
+  if (chance < 90) {
+    return WEATHER_FOG;
+  }
+  return WEATHER_THUNDERSTORMS;
+};
+
 export const yanxia = (chance) => {
   if (chance < 5) {
     return WEATHER_SHOWERS;
