@@ -126,6 +126,7 @@ class AppHeader extends Component {
             <Menu onClose={this.handleMenuClose} open={!!anchorEl} {...menuProps}>
               {Object.entries(AVAILABLE_LOCALES).map(([locale, label]) => (
                 <MenuItem
+                  component="a"
                   href={`?locale=${locale}`}
                   hrefLang={locale}
                   key={`item-${locale}`}
