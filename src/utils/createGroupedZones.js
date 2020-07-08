@@ -49,6 +49,7 @@ export default ({ intl }) => ({
     EorzeaWeather.ZONE_WESTERN_LA_NOSCEA,
     EorzeaWeather.ZONE_UPPER_LA_NOSCEA,
     EorzeaWeather.ZONE_OUTER_LA_NOSCEA,
+    EorzeaWeather.ZONE_WOLVES_DEN_PIER,
   ],
   [intl.formatMessage(messages.theBlackShroud)]: [
     EorzeaWeather.ZONE_GRIDANIA,
