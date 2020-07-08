@@ -1,40 +1,59 @@
 {
   "author": "Lily Cartelet <flowercartelet@gmail.com>",
   "bugs": {
-    "url": "https://github.com/flowercartelet/eorzea-time/issues"
+    "url": "https://github.com/eorzea-weather/eorzea-time/issues"
   },
   "description": ":clock3: A clock of the Eorzea time.",
   "devDependencies": {
-    "@babel/core": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "ava": "^2.2.0",
-    "eslint": "^6.2.1",
-    "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-plugin-import": "^2.10.0",
+    "@types/jest": "^26.0.4",
+    "@typescript-eslint/eslint-plugin": "^3.6.0",
+    "@typescript-eslint/parser": "^3.6.0",
+    "eslint": "^7.4.0",
+    "jest": "^26.1.0",
+    "microbundle": "^0.12.2",
     "npm-run-all": "^4.1.2",
     "rimraf": "^3.0.0",
-    "rollup": "^1.16.7",
-    "rollup-plugin-babel": "^4.3.3",
-    "rollup-plugin-uglify": "^6.0.2",
-    "sinon": "^9.0.2"
+    "ts-jest": "^26.1.1",
+    "typescript": "^3.9.6"
   },
-  "homepage": "https://flowercartelet.github.io/eorzea-time/",
+  "eslintConfig": {
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:@typescript-eslint/recommended-requiring-type-checking"
+    ],
+    "parserOptions": {
+      "project": "tsconfig.json"
+    },
+    "root": true
+  },
+  "files": ["dist"],
+  "homepage": "https://github.com/eorzea-weather/eorzea-time",
+  "jest": {
+    "preset": "ts-jest"
+  },
   "license": "MIT",
-  "main": "./dist/eorzea-time.min.js",
-  "module": "./lib/eorzea-time.js",
+  "main": "dist/eorzea-time.js",
+  "module": "dist/eorzea-time.module.js",
   "name": "eorzea-time",
   "repository": {
     "type": "git",
-    "url": "https://github.com/flowercartelet/eorzea-time.git"
+    "url": "https://github.com/eorzea-weather/eorzea-time.git"
+  },
+  "resolutions": {
+    "microbundle/tslib": "^2.0.0"
   },
   "scripts": {
-    "build": "rollup -c",
-    "clean": "rimraf dist lib",
-    "lint": "eslint .",
-    "prebuild": "npm-run-all clean lint",
-    "prepublishOnly": "npm-run-all test",
-    "pretest": "npm-run-all build",
-    "test": "ava"
+    "build": "microbundle",
+    "clean": "rimraf dist",
+    "dev": "microbundle watch",
+    "lint": "eslint --ext .ts .",
+    "prebuild": "npm-run-all clean",
+    "prepublishOnly": "npm-run-all lint test",
+    "test": "jest"
   },
+  "source": "src/eorzea-time.ts",
+  "types": "dist/eorzea-time.d.ts",
+  "unpkg": "dist/eorzea-time.umd.js",
   "version": "2.0.0"
 }
