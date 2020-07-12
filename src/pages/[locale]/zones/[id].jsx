@@ -29,7 +29,6 @@ const useStyles = makeStyles(
     root: {
       margin: '16px auto',
       maxWidth: '100%',
-      paddingTop: 80,
       width: 1240,
     },
   }),

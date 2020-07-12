@@ -120,6 +120,7 @@ const AppHeader = () => {
           <EorzeaClock />
         </Toolbar>
       </AppBar>
+      <Toolbar />
       <AppDrawer onClose={handleDrawerClose} open={open} />
     </>
   );

@@ -1,16 +1,45 @@
 import CssBaseline from '@material-ui/core/CssBaseline';
+import Container from '@material-ui/core/Container';
+import { createStyles, makeStyles } from '@material-ui/core/styles';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { useIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import AppHeader from './AppHeader';
 
 const locales = ['en', 'ja'];
 
+const useStyles = makeStyles(
+  (theme) => createStyles({
+    footer: {
+      color: theme.palette.getContrastText(
+        theme.palette.grey[900],
+      ),
+      backgroundColor: theme.palette.grey[900],
+      marginTop: theme.spacing(4),
+      padding: `${theme.spacing(4)}px 0`,
+    },
+    footerInner: {
+      textAlign: 'right',
+    },
+    link: {
+      color: 'inherit',
+      textDecoration: 'none',
+
+      '&:hover': {
+        color: 'inherit',
+        textDecoration: 'underline',
+      },
+    },
+  }),
+);
+
 const Layout = ({ children }) => {
   const intl = useIntl();
   const router = useRouter();
+  const classes = useStyles();
 
   const path = router.asPath.startsWith(`/${intl.locale}`)
     ? router.asPath.replace(/^\/[^/]+/, '')
@@ -32,6 +61,17 @@ const Layout = ({ children }) => {
       <AppHeader />
 
       {children}
+
+      <footer className={classes.footer}>
+        <Container className={classes.footerInner}>
+          <Link as={`/${intl.local}/privacy`} href="/[locale]/privacy">
+            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+            <a className={classes.link}>
+              <FormattedMessage defaultMessage="Privacy" id="footer.privacy_policy" />
+            </a>
+          </Link>
+        </Container>
+      </footer>
     </>
   );
 };
