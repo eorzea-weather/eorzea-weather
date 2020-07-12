@@ -2,116 +2,77 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormLabel from '@material-ui/core/FormLabel';
 import Paper from '@material-ui/core/Paper';
-import { withStyles } from '@material-ui/core/styles';
+import { createStyles, makeStyles } from '@material-ui/core/styles';
 import Switch from '@material-ui/core/Switch';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import camelCase from 'lodash/camelCase';
 import chunk from 'lodash/chunk';
-import isEqual from 'lodash/isEqual';
 import uniq from 'lodash/uniq';
 import PropTypes from 'prop-types';
-import React, { Component, Fragment } from 'react';
-import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
-import { fetchWeathers } from '../actions/weathers';
-import weatherShape from '../types/weatherShape';
+import React, { useCallback, useState } from 'react';
+import { FormattedMessage, useIntl } from 'react-intl';
+import useSWR from 'swr';
 import WeatherTableCell from './WeatherTableCell';
 
-export const styles = ({ breakpoints, spacing }) => ({
-  formGroup: {
-    marginLeft: spacing(2),
-    marginRight: spacing(2),
-  },
-  formLabel: {
-    marginLeft: spacing(2),
-    marginRight: spacing(2),
-  },
-  paper: {
-    marginBottom: spacing(4),
-    marginTop: 0,
-    [breakpoints.up('md')]: {
-      marginLeft: spacing(1),
-      marginRight: spacing(1),
+const useStyles = makeStyles(
+  (theme) => createStyles({
+    formGroup: {
+      marginLeft: theme.spacing(2),
+      marginRight: theme.spacing(2),
     },
-  },
-  table: {
-    tableLayout: 'fixed',
-  },
-  tableCell: {
-    '&:last-child': {
-      paddingRight: spacing(7),
+    formLabel: {
+      marginLeft: theme.spacing(2),
+      marginRight: theme.spacing(2),
     },
-  },
-});
+    paper: {
+      marginBottom: theme.spacing(4),
+      marginTop: 0,
+      [theme.breakpoints.up('md')]: {
+        marginLeft: theme.spacing(1),
+        marginRight: theme.spacing(1),
+      },
+    },
+    table: {
+      tableLayout: 'fixed',
+    },
+    tableCell: {
+      '&:last-child': {
+        paddingRight: theme.spacing(7),
+      },
+    },
+  }),
+);
 
-export default @injectIntl
-@withStyles(styles)
-class WeatherTable extends Component {
-  static propTypes = {
-    classes: PropTypes.objectOf(PropTypes.any).isRequired,
-    data: PropTypes.arrayOf(weatherShape),
-    dispatch: PropTypes.func.isRequired,
-    intl: intlShape.isRequired,
-    zoneId: PropTypes.string.isRequired,
-  };
+const WeatherTable = ({ zoneID }) => {
+  const [highlightedWeathers, setHighlightedWeathers] = useState({});
+  const intl = useIntl();
+  const { data: weatherTable } = useSWR(
+    `/api/zones/${camelCase(zoneID)}/forecast?locale=${intl.locale}`,
+    async (key) => {
+      const res = await fetch(key);
 
-  static defaultProps = {
-    data: [],
-  };
+      return res.json();
+    },
+  );
+  const classes = useStyles();
 
-  state = {
-    highlightedWeathers: {},
-  };
-
-  componentDidMount() {
-    this.load(this.props);
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    const { data } = this.props;
-    const { highlightedWeathers } = this.state;
-
-    return (
-      !isEqual(highlightedWeathers, nextState.highlightedWeathers)
-      || !isEqual(data, nextProps.data)
-    );
-  }
-
-  componentDidUpdate(prevProps) {
-    const { zoneId } = this.props;
-
-    if (prevProps.zoneId !== zoneId) {
-      this.load({ zoneId });
-    }
-  }
-
-  handleFilterChange = ({ target }) => {
+  const handleFilterChange = useCallback(({ target }) => {
     const { value: weather } = target;
 
-    this.setState(({ highlightedWeathers }) => ({
-      highlightedWeathers: {
-        ...highlightedWeathers,
-        [weather]: !highlightedWeathers[weather],
-      },
+    setHighlightedWeathers((beforeHighlightWeathers) => ({
+      ...beforeHighlightWeathers,
+      [weather]: !beforeHighlightWeathers[weather],
     }));
-  }
+  }, []);
 
-  load({ zoneId }) {
-    const { dispatch, intl } = this.props;
-    const { locale } = intl;
-
-    dispatch(fetchWeathers(zoneId, { locale }));
-  }
-
-  render() {
-    const { classes, data: weatherTable } = this.props;
-    const { highlightedWeathers } = this.state;
-
-    return (
-      <Fragment>
-        <Paper className={classes.paper}>
+  return (
+    <>
+      <Paper className={classes.paper}>
+        {weatherTable && (
           <Table className={classes.table}>
             <TableHead>
               <TableRow>
@@ -127,12 +88,12 @@ class WeatherTable extends Component {
               </TableRow>
             </TableHead>
             <TableBody>
-              {chunk(weatherTable, 3).map(weatherTableForDay => (
-                <TableRow key={`row-${weatherTableForDay[0].startedAt.getTime()}`}>
-                  {weatherTableForDay.map(weather => (
+              {chunk(weatherTable, 3).map((weatherTableForDay) => (
+                <TableRow key={`row-${weatherTableForDay[0].startedAt}`}>
+                  {weatherTableForDay.map((weather) => (
                     <WeatherTableCell
                       highlight={highlightedWeathers[weather.name]}
-                      key={`cell-${weather.startedAt.getTime()}`}
+                      key={`cell-${weather.startedAt}`}
                       value={weather}
                     />
                   ))}
@@ -140,21 +101,30 @@ class WeatherTable extends Component {
               ))}
             </TableBody>
           </Table>
-        </Paper>
-        <FormLabel className={classes.formLabel}>
-          <FormattedMessage defaultMessage="Highlight" id="zone.highlight" />
-        </FormLabel>
+        )}
+      </Paper>
+      <FormLabel className={classes.formLabel}>
+        <FormattedMessage defaultMessage="Highlight" id="zone.highlight" />
+      </FormLabel>
+
+      {weatherTable && (
         <FormGroup className={classes.formGroup} row>
           {uniq(weatherTable.map(({ name }) => name)).map((name) => {
             const control = (
-              <Switch color="primary" onChange={this.handleFilterChange} value={name} />
+              <Switch color="primary" onChange={handleFilterChange} value={name} />
             );
             return (
               <FormControlLabel control={control} key={name} label={name} />
             );
           })}
         </FormGroup>
-      </Fragment>
-    );
-  }
-}
+      )}
+    </>
+  );
+};
+
+WeatherTable.propTypes = {
+  zoneID: PropTypes.string.isRequired,
+};
+
+export default WeatherTable;

@@ -2,59 +2,47 @@ import Collapse from '@material-ui/core/Collapse';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import { withStyles } from '@material-ui/core/styles';
+import { createStyles, makeStyles } from '@material-ui/core/styles';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import PropTypes from 'prop-types';
-import React, { Component, Fragment } from 'react';
+import React, { useCallback, useState } from 'react';
 
-export const styles = ({ spacing }) => ({
-  label: {
-    paddingLeft: spacing(3),
-    paddingRight: spacing(2),
-  },
-});
+const useStyles = makeStyles(
+  (theme) => createStyles({
+    label: {
+      paddingLeft: theme.spacing(3),
+      paddingRight: theme.spacing(2),
+    },
+  }),
+);
 
-export default @withStyles(styles)
-class AppDrawerNavItem extends Component {
-  static propTypes = {
-    children: PropTypes.node.isRequired,
-    classes: PropTypes.objectOf(PropTypes.any).isRequired,
-    label: PropTypes.string.isRequired,
-  };
+const AppDrawerNavItem = ({ children, label }) => {
+  const [open, setOpen] = useState(false);
+  const classes = useStyles();
 
-  state = {
-    open: false,
-  };
+  const handleClick = useCallback(() => {
+    setOpen((prevValue) => !prevValue);
+  });
 
-  shouldComponentUpdate(nextProps, nextState) {
-    const { open } = this.state;
+  return (
+    <>
+      <ListItem button className={classes.label} disableGutters onClick={handleClick}>
+        <ListItemText primary={label} />
+        {open ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+      </ListItem>
+      <Collapse in={open} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          {children}
+        </List>
+      </Collapse>
+    </>
+  );
+};
 
-    return open !== nextState.open;
-  }
+AppDrawerNavItem.propTypes = {
+  children: PropTypes.node.isRequired,
+  label: PropTypes.string.isRequired,
+};
 
-  handleClick = () => {
-    this.setState(prevState => ({
-      open: !prevState.open,
-    }));
-  }
-
-  render() {
-    const { children, classes, label } = this.props;
-    const { open } = this.state;
-
-    return (
-      <Fragment>
-        <ListItem button className={classes.label} disableGutters onClick={this.handleClick}>
-          <ListItemText primary={label} />
-          {open ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-        </ListItem>
-        <Collapse in={open} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
-            {children}
-          </List>
-        </Collapse>
-      </Fragment>
-    );
-  }
-}
+export default AppDrawerNavItem;
