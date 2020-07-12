@@ -1,4 +1,5 @@
 import { ServerStyleSheets } from '@material-ui/core/styles';
+import CleanCSS from 'clean-css';
 import Document, {
   Head,
   Html,
@@ -7,6 +8,8 @@ import Document, {
 } from 'next/document';
 import React from 'react';
 import Helmet from 'react-helmet';
+
+const cleanCSS = new CleanCSS();
 
 const createTrackingCode = () => [
   'window.dataLayer = window.dataLayer || [];',
@@ -23,12 +26,20 @@ class MyDocument extends Document {
         enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
       }),
     });
+    const css = sheets.toString();
 
     return {
       ...initialProps,
       styles: [
         React.Children.toArray(initialProps.styles),
-        sheets.getStyleElement(),
+        <style
+          id="jss-server-side"
+          key="jss-server-side"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            __html: cleanCSS.minify(css).styles,
+          }}
+        />,
       ],
     };
   }
