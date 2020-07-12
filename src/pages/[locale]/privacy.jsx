@@ -32,7 +32,7 @@ const Privacy = () => {
       <Typography className={classes.title} variant="h5">取得する情報</Typography>
 
       <Typography className={classes.para}>
-        当ブログでは
+        当サービスでは
         <Link href="https://developers.google.com/analytics/?hl=ja" rel="noopener noreferrer" target="_blank">Google アナリティクス</Link>
         を利用してトラフィックデータの収集を行っています。収集されたトラフィックデータは匿名化され、あなたの個人が特定されることはありません。
       </Typography>
@@ -42,7 +42,7 @@ const Privacy = () => {
         を参照してください。
       </Typography>
       <Typography className={classes.para}>
-        また当ブログでは
+        また当サービスでは
         <Link href="https://www.google.com/adsense/start/" rel="noopener noreferrer" target="_blank">Google AdSense</Link>
         を利用して広告の配信を行っています。Google AdSenseの運営者であるGoogleなどの広告配信事業者はあなたの行動に基いた広告配信のためにCookieを利用します。
       </Typography>
