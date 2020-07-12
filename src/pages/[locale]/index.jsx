@@ -30,9 +30,8 @@ const useStyles = makeStyles(
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
-      minHeight: '55vh',
-      paddingBottom: 80,
-      paddingTop: 80,
+      minHeight: '30vh',
+      padding: `${theme.spacing(10)}px 0`,
     },
   }),
 );
