@@ -33,7 +33,7 @@ const MyApp = ({
   }, []);
 
   useEffect(() => {
-    const renderedStyles = document.getElementById('server-rendered-styles');
+    const renderedStyles = document.getElementById('jss-server-side');
 
     if (renderedStyles?.parentNode) {
       renderedStyles.parentNode.removeChild(renderedStyles);
