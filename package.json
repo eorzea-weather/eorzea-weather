@@ -30,6 +30,9 @@
     "eslint-plugin-jsx-a11y": "~6.3.1",
     "eslint-plugin-react": "~7.20.3"
   },
+  "engines": {
+    "node": "12.x"
+  },
   "homepage": "https://eorzea-weather.info/",
   "license": "MIT",
   "name": "@flowercartelet/eorzea-weather-app",
