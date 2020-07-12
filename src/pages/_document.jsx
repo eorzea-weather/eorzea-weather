@@ -41,6 +41,13 @@ class MyDocument extends Document {
         <Head>
           <meta charSet="UTF-8" />
           <meta content="initial-scale=1,width=device-width" name="viewport" />
+          {process.env.NEXT_PUBLIC_GOOGLE_ADCENSE_CLIENT_ID && (
+            <script
+              async
+              data-ad-client={process.env.NEXT_PUBLIC_GOOGLE_ADCENSE_CLIENT_ID}
+              src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+            />
+          )}
           {process.env.NEXT_PUBLIC_GA_TRACKING_ID && (
             <>
               <script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_TRACKING_ID}`} />
