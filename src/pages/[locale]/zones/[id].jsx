@@ -1,5 +1,6 @@
-import { createStyles, makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
+import { createStyles, makeStyles } from '@material-ui/core/styles';
 import EorzeaWeather from 'eorzea-weather';
 import camelCase from 'lodash/camelCase';
 import kebabCase from 'lodash/kebabCase';
@@ -20,6 +21,9 @@ const messages = defineMessages({
 
 const useStyles = makeStyles(
   (theme) => createStyles({
+    ad: {
+      maxWidth: '100%',
+    },
     headline: {
       margin: [
         `${theme.spacing(1)}px`,
@@ -93,7 +97,9 @@ const Zone = ({ zone }) => {
 
       {process.env.NEXT_PUBLIC_GOOGLE_ADCENSE_CLIENT_ID
         && process.env.NEXT_PUBLIC_GOOGLE_ADCENSE_AD_SLOT && (
-          <Ad slot={process.env.NEXT_PUBLIC_GOOGLE_ADCENSE_AD_SLOT} />
+          <Container maxWidth="md">
+            <Ad className={classes.ad} slot={process.env.NEXT_PUBLIC_GOOGLE_ADCENSE_AD_SLOT} />
+          </Container>
       )}
     </>
   );
