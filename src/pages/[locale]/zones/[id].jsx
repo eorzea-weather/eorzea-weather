@@ -6,6 +6,7 @@ import kebabCase from 'lodash/kebabCase';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { defineMessages, useIntl } from 'react-intl';
+import Ad from '../../../components/Ad';
 import WeatherTable from '../../../components/WeatherTable';
 import zoneShape from '../../../types/zoneShape';
 import { EORZEA_ZONE_LIST } from '../../../utils/getZoneList';
@@ -76,17 +77,25 @@ const Zone = ({ zone }) => {
   const title = intl.formatMessage(messages.title, { name: zone.name });
 
   return (
-    <main className={classes.root}>
+    <>
       <Helmet>
         <title>
           {title}
         </title>
       </Helmet>
-      <Typography className={classes.headline} variant="subtitle1">
-        {title}
-      </Typography>
-      <WeatherTable zoneID={zone.id} />
-    </main>
+
+      <main className={classes.root}>
+        <Typography className={classes.headline} variant="subtitle1">
+          {title}
+        </Typography>
+        <WeatherTable zoneID={zone.id} />
+      </main>
+
+      {process.env.NEXT_PUBLIC_GOOGLE_ADCENSE_CLIENT_ID
+        && process.env.NEXT_PUBLIC_GOOGLE_ADCENSE_AD_SLOT && (
+          <Ad slot={process.env.NEXT_PUBLIC_GOOGLE_ADCENSE_AD_SLOT} />
+      )}
+    </>
   );
 };
 
