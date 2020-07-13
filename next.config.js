@@ -1,3 +1,5 @@
+const withMDX = require('@next/mdx')();
+
 const nextConfig = {
   experimental: {
     rewrites: () => [
@@ -7,6 +9,7 @@ const nextConfig = {
       },
     ],
   },
+  pageExtensions: ['js', 'jsx', 'mdx'],
 };
 
-module.exports = nextConfig;
+module.exports = withMDX(nextConfig);
