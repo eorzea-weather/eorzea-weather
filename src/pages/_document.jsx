@@ -64,7 +64,11 @@ class MyDocument extends Document {
             <>
               <script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_TRACKING_ID}`} />
               {/* eslint-disable-next-line react/no-danger */}
-              <script dangerouslySetInnerHTML={{ __html: createTrackingCode(process.env.NEXT_PUBLIC_GA_TRACKING_ID) }} />
+              <script
+                dangerouslySetInnerHTML={{
+                  __html: createTrackingCode(process.env.NEXT_PUBLIC_GA_TRACKING_ID)
+                }}
+               />
             </>
           )}
           {helmet.title.toComponent()}
