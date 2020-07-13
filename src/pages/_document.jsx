@@ -11,10 +11,11 @@ import Helmet from 'react-helmet';
 
 const cleanCSS = new CleanCSS();
 
-const createTrackingCode = () => [
+const createTrackingCode = (trackingID) => [
   'window.dataLayer = window.dataLayer || [];',
   'function gtag(){dataLayer.push(arguments);}',
   "gtag('js',new Date());",
+  `gtag('config',new Date(${trackingID}));`,
 ].join('\n');
 
 class MyDocument extends Document {
@@ -63,7 +64,7 @@ class MyDocument extends Document {
             <>
               <script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_TRACKING_ID}`} />
               {/* eslint-disable-next-line react/no-danger */}
-              <script dangerouslySetInnerHTML={{ __html: createTrackingCode() }} />
+              <script dangerouslySetInnerHTML={{ __html: createTrackingCode(process.env.NEXT_PUBLIC_GA_TRACKING_ID) }} />
             </>
           )}
           {helmet.title.toComponent()}
