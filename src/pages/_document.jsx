@@ -15,7 +15,7 @@ const createTrackingCode = (trackingID) => [
   'window.dataLayer = window.dataLayer || [];',
   'function gtag(){dataLayer.push(arguments);}',
   "gtag('js',new Date());",
-  `gtag('config',new Date(${trackingID}));`,
+  `gtag('config','${trackingID}');`,
 ].join('\n');
 
 class MyDocument extends Document {
