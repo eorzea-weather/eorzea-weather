@@ -1,10 +1,12 @@
+import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
-import { createStyles, makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import { createStyles, makeStyles } from '@material-ui/core/styles';
 import Link from 'next/link';
 import React from 'react';
 import Helmet from 'react-helmet';
 import { defineMessages, useIntl } from 'react-intl';
+import Ad from '../../components/Ad';
 import ZoneList from '../../components/ZoneList';
 import getZoneList from '../../utils/getZoneList';
 
@@ -17,6 +19,11 @@ const messages = defineMessages({
 
 const useStyles = makeStyles(
   (theme) => createStyles({
+    ad: {
+      maxWidth: '100%',
+      marginBottom: theme.spacing(5),
+      marginTop: theme.spacing(5),
+    },
     button: {
       marginTop: theme.spacing(3),
     },
@@ -85,6 +92,13 @@ const Home = () => {
       <main className={classes.container}>
         {Object.keys(zones).length > 0 && <ZoneList zones={zones} />}
       </main>
+
+      {process.env.NEXT_PUBLIC_GOOGLE_ADCENSE_CLIENT_ID
+        && process.env.NEXT_PUBLIC_GOOGLE_ADCENSE_AD_SLOT && (
+          <Container maxWidth="md">
+            <Ad className={classes.ad} slot={process.env.NEXT_PUBLIC_GOOGLE_ADCENSE_AD_SLOT} />
+          </Container>
+      )}
     </>
   );
 };

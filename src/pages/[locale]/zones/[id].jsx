@@ -23,6 +23,8 @@ const useStyles = makeStyles(
   (theme) => createStyles({
     ad: {
       maxWidth: '100%',
+      marginBottom: theme.spacing(5),
+      marginTop: theme.spacing(5),
     },
     headline: {
       margin: [
