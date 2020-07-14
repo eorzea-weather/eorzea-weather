@@ -100,7 +100,11 @@ const Zone = ({ zone }) => {
       {process.env.NEXT_PUBLIC_GOOGLE_ADCENSE_CLIENT_ID
         && process.env.NEXT_PUBLIC_GOOGLE_ADCENSE_AD_SLOT && (
           <Container maxWidth="md">
-            <Ad className={classes.ad} slot={process.env.NEXT_PUBLIC_GOOGLE_ADCENSE_AD_SLOT} />
+            <Ad
+              className={classes.ad}
+              key={`ad-for-${zone.id}`}
+              slot={process.env.NEXT_PUBLIC_GOOGLE_ADCENSE_AD_SLOT}
+            />
           </Container>
       )}
     </>
