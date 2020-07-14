@@ -104,7 +104,7 @@ const Zone = ({ zone }) => {
               className={classes.ad}
               key={`ad-for-${zone.id}`}
               slot={process.env.NEXT_PUBLIC_GOOGLE_ADCENSE_AD_SLOT}
-             />
+            />
           </Container>
       )}
     </>
