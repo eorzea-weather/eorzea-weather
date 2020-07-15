@@ -23,9 +23,7 @@ const EorzeaClock = () => {
 
   return (
     <Typography color="inherit" variant="body2">
-      ET
-      {' '}
-      {date ? date.toString() : '--:--:--'}
+      ET {date ? date.toString() : '--:--:--'}
     </Typography>
   );
 };

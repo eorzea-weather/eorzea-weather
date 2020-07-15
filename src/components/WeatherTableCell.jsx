@@ -11,8 +11,8 @@ import weatherShape from '../types/weatherShape';
 
 const EIGHT_HOURS = 8 * 175 * 1000;
 
-const useStyles = makeStyles(
-  (theme) => createStyles({
+const useStyles = makeStyles((theme) =>
+  createStyles({
     highlight: {
       backgroundColor: theme.palette.grey[100],
     },
@@ -77,9 +77,7 @@ const WeatherTableCell = ({ highlight, value }) => {
       <Typography color="inherit">
         {value ? (
           <>
-            {value.name}
-            {' '}
-            (
+            {value.name} (
             <time dateTime={startedAt.toISOString()} title={title}>
               <FormattedTime value={startedAt} />
             </time>
@@ -90,7 +88,11 @@ const WeatherTableCell = ({ highlight, value }) => {
         )}
       </Typography>
       {time <= now && now < time + EIGHT_HOURS && (
-        <LinearProgress className={classes.progress} value={((now - time) / EIGHT_HOURS) * 100} variant="determinate" />
+        <LinearProgress
+          className={classes.progress}
+          value={((now - time) / EIGHT_HOURS) * 100}
+          variant="determinate"
+        />
       )}
     </TableCell>
   );

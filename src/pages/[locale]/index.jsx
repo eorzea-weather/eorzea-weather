@@ -12,13 +12,14 @@ import getZoneList from '../../utils/getZoneList';
 
 const messages = defineMessages({
   description: {
-    defaultMessage: 'Eorzea Weather is a web application that displays a list of weather forecasts during the game of FINAL FANTASY XIV.',
+    defaultMessage:
+      'Eorzea Weather is a web application that displays a list of weather forecasts during the game of FINAL FANTASY XIV.',
     id: 'home.description',
   },
 });
 
-const useStyles = makeStyles(
-  (theme) => createStyles({
+const useStyles = makeStyles((theme) =>
+  createStyles({
     ad: {
       maxWidth: '100%',
       marginBottom: theme.spacing(5),
@@ -74,7 +75,10 @@ const Home = () => {
   return (
     <>
       <Helmet bodyAttributes={{ class: 'home' }}>
-        <meta content={intl.formatMessage(messages.description)} name="description" />
+        <meta
+          content={intl.formatMessage(messages.description)}
+          name="description"
+        />
       </Helmet>
 
       <div className={classes.hero}>
@@ -82,7 +86,11 @@ const Home = () => {
           Eorzea Weather
         </Typography>
 
-        <Link as={`/${intl.locale}/zones/eureka-hydatos`} href="/[locale]/zones/[id]" passHref>
+        <Link
+          as={`/${intl.locale}/zones/eureka-hydatos`}
+          href="/[locale]/zones/[id]"
+          passHref
+        >
           <Button className={classes.button} component="a" variant="contained">
             Eureka!
           </Button>
@@ -93,12 +101,15 @@ const Home = () => {
         {Object.keys(zones).length > 0 && <ZoneList zones={zones} />}
       </main>
 
-      {process.env.NEXT_PUBLIC_GOOGLE_ADCENSE_CLIENT_ID
-        && process.env.NEXT_PUBLIC_GOOGLE_ADCENSE_AD_SLOT && (
+      {process.env.NEXT_PUBLIC_GOOGLE_ADCENSE_CLIENT_ID &&
+        process.env.NEXT_PUBLIC_GOOGLE_ADCENSE_AD_SLOT && (
           <Container maxWidth="md">
-            <Ad className={classes.ad} slot={process.env.NEXT_PUBLIC_GOOGLE_ADCENSE_AD_SLOT} />
+            <Ad
+              className={classes.ad}
+              slot={process.env.NEXT_PUBLIC_GOOGLE_ADCENSE_AD_SLOT}
+            />
           </Container>
-      )}
+        )}
     </>
   );
 };

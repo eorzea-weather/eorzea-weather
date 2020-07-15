@@ -1,31 +1,28 @@
 import { ServerStyleSheets } from '@material-ui/core/styles';
 import CleanCSS from 'clean-css';
-import Document, {
-  Head,
-  Html,
-  Main,
-  NextScript,
-} from 'next/document';
+import Document, { Head, Html, Main, NextScript } from 'next/document';
 import React from 'react';
 import Helmet from 'react-helmet';
 
 const cleanCSS = new CleanCSS();
 
-const createTrackingCode = (trackingID) => [
-  'window.dataLayer = window.dataLayer || [];',
-  'function gtag(){dataLayer.push(arguments);}',
-  "gtag('js',new Date());",
-  `gtag('config','${trackingID}');`,
-].join('\n');
+const createTrackingCode = (trackingID) =>
+  [
+    'window.dataLayer = window.dataLayer || [];',
+    'function gtag(){dataLayer.push(arguments);}',
+    "gtag('js',new Date());",
+    `gtag('config','${trackingID}');`,
+  ].join('\n');
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const sheets = new ServerStyleSheets();
     const initialProps = await super.getInitialProps({
       ...ctx,
-      renderPage: () => ctx.renderPage({
-        enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
-      }),
+      renderPage: () =>
+        ctx.renderPage({
+          enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
+        }),
     });
     const css = sheets.toString();
 
@@ -62,11 +59,16 @@ class MyDocument extends Document {
           )}
           {process.env.NEXT_PUBLIC_GA_TRACKING_ID && (
             <>
-              <script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_TRACKING_ID}`} />
+              <script
+                async
+                src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_TRACKING_ID}`}
+              />
               <script
                 /* eslint-disable-next-line react/no-danger */
                 dangerouslySetInnerHTML={{
-                  __html: createTrackingCode(process.env.NEXT_PUBLIC_GA_TRACKING_ID),
+                  __html: createTrackingCode(
+                    process.env.NEXT_PUBLIC_GA_TRACKING_ID,
+                  ),
                 }}
               />
             </>

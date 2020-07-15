@@ -2,12 +2,7 @@ import accepts from 'accepts';
 
 const locales = ['en', 'ja'];
 
-export const getServerSideProps = async ({
-  params,
-  query,
-  res,
-  req,
-}) => {
+export const getServerSideProps = async ({ params, query, res, req }) => {
   const accept = accepts(req);
   const locale = locales.includes(query.locale)
     ? query.locale

@@ -57,12 +57,16 @@ export const EORZEA_ZONE_LIST = [
   EorzeaWeather.ZONE_YANXIA,
 ];
 
-const getZoneList = ({ locale }) => EORZEA_ZONE_LIST.reduce((result, id) => ({
-  ...result,
-  [id]: {
-    id,
-    name: new EorzeaWeather(id, { locale }).getZoneName(),
-  },
-}), {});
+const getZoneList = ({ locale }) =>
+  EORZEA_ZONE_LIST.reduce(
+    (result, id) => ({
+      ...result,
+      [id]: {
+        id,
+        name: new EorzeaWeather(id, { locale }).getZoneName(),
+      },
+    }),
+    {},
+  );
 
 export default getZoneList;

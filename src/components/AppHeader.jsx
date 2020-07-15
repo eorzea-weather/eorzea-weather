@@ -19,8 +19,8 @@ const AVAILABLE_LOCALES = {
   ja: '日本語',
 };
 
-const useStyles = makeStyles(
-  (theme) => createStyles({
+const useStyles = makeStyles((theme) =>
+  createStyles({
     title: {
       color: 'inherit',
       textDecoration: 'none',
@@ -70,13 +70,16 @@ const AppHeader = () => {
           <IconButton color="inherit" onClick={handleMenuIconClick}>
             <MenuIcon />
           </IconButton>
-          <Typography className={classes.flex} color="inherit" noWrap variant="h6">
+          <Typography
+            className={classes.flex}
+            color="inherit"
+            noWrap
+            variant="h6"
+          >
             {!isHome && (
               <Link as={`/${intl.locale}`} href="/[locale]">
                 {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                <a className={classes.title}>
-                  Eorzea Weather
-                </a>
+                <a className={classes.title}>Eorzea Weather</a>
               </Link>
             )}
           </Typography>

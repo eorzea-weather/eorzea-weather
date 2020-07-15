@@ -32,10 +32,12 @@
   "devDependencies": {
     "eslint": "^7.4.0",
     "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "~2.22.0",
     "eslint-plugin-jsx-a11y": "~6.3.1",
     "eslint-plugin-react": "~7.20.3",
-    "eslint-plugin-react-hooks": "^4.0.8"
+    "eslint-plugin-react-hooks": "^4.0.8",
+    "prettier": "^2.0.5"
   },
   "engines": {
     "node": "12.x"
@@ -46,7 +48,9 @@
     },
     "extends": [
       "airbnb",
-      "airbnb/hooks"
+      "airbnb/hooks",
+      "prettier",
+      "prettier/react"
     ],
     "parserOptions": {
       "ecmaVersion": 2020
@@ -58,6 +62,11 @@
   "homepage": "https://eorzea-weather.info/",
   "license": "MIT",
   "name": "@eorzea-weather/eorzea-weather-app",
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
   "private": true,
   "repository": {
     "type": "git",
@@ -69,6 +78,8 @@
   "scripts": {
     "build": "NODE_ICU_DATA=node_modules/full-icu next build",
     "dev": "NODE_ICU_DATA=node_modules/full-icu next",
+    "format": "prettier --write .",
+    "format-check": "prettier --check --write .",
     "lint": "eslint --ext .js --ext .jsx .",
     "start": "NODE_ICU_DATA=node_modules/full-icu next start"
   },

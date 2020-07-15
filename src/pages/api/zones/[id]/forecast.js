@@ -17,8 +17,12 @@ const handler = (req, res) => {
   const eorzeaWeather = new EorzeaWeather(id, { locale });
 
   if (eorzeaWeather.validate()) {
-    const startTime = getStartTime(new Date()) - (ONE_DAY * 2);
-    const weathers = range(startTime, startTime + (ONE_DAY * 10), EIGHT_HOURS).map((time) => {
+    const startTime = getStartTime(new Date()) - ONE_DAY * 2;
+    const weathers = range(
+      startTime,
+      startTime + ONE_DAY * 10,
+      EIGHT_HOURS,
+    ).map((time) => {
       const startedAt = new Date(time);
       return {
         name: eorzeaWeather.getWeather(startedAt),
