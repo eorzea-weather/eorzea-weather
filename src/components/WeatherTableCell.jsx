@@ -2,6 +2,7 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import TableCell from '@material-ui/core/TableCell';
 import Typography from '@material-ui/core/Typography';
+import Skeleton from '@material-ui/lab/Skeleton';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
@@ -40,8 +41,8 @@ const WeatherTableCell = ({ highlight, value }) => {
   const intl = useIntl();
   const classes = useStyles();
 
-  const startedAt = new Date(value.startedAt);
-  const time = startedAt.getTime();
+  const startedAt = value?.startedAt && new Date(value.startedAt);
+  const time = startedAt?.getTime() || 0;
   const className = classNames(classes.root, {
     [classes.highlight]: highlight,
     [classes.past]: time + EIGHT_HOURS < now,
@@ -72,15 +73,21 @@ const WeatherTableCell = ({ highlight, value }) => {
   }, []);
 
   return (
-    <TableCell className={className} key={`cell-${time}`}>
+    <TableCell className={className}>
       <Typography color="inherit">
-        {value.name}
-        {' '}
-        (
-        <time dateTime={startedAt.toISOString()} title={title}>
-          <FormattedTime value={startedAt} />
-        </time>
-        )
+        {value ? (
+          <>
+            {value.name}
+            {' '}
+            (
+            <time dateTime={startedAt.toISOString()} title={title}>
+              <FormattedTime value={startedAt} />
+            </time>
+            )
+          </>
+        ) : (
+          <Skeleton width="5rem" />
+        )}
       </Typography>
       {time <= now && now < time + EIGHT_HOURS && (
         <LinearProgress className={classes.progress} value={((now - time) / EIGHT_HOURS) * 100} variant="determinate" />
@@ -91,11 +98,12 @@ const WeatherTableCell = ({ highlight, value }) => {
 
 WeatherTableCell.propTypes = {
   highlight: PropTypes.bool,
-  value: weatherShape.isRequired,
+  value: weatherShape,
 };
 
 WeatherTableCell.defaultProps = {
   highlight: false,
+  value: undefined,
 };
 
 export default WeatherTableCell;
