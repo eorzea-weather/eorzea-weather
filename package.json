@@ -72,9 +72,6 @@
     "type": "git",
     "url": "https://github.com/eorzea-weather/eorzea-weather-app.git"
   },
-  "resolutions": {
-    "babel-eslint/@babel/parser": "7.7.5"
-  },
   "scripts": {
     "build": "NODE_ICU_DATA=node_modules/full-icu next build",
     "dev": "NODE_ICU_DATA=node_modules/full-icu next",
