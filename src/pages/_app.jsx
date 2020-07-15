@@ -14,9 +14,7 @@ const theme = createMuiTheme({
   },
 });
 
-const MyApp = ({
-  Component, locale, messages, pageProps,
-}) => {
+const MyApp = ({ Component, locale, messages, pageProps }) => {
   useEffect(() => {
     const handleRouteChangeComplete = (url) => {
       tracker.track({
@@ -60,7 +58,9 @@ MyApp.propTypes = {
 
 MyApp.getInitialProps = async ({ router, ...ctx }) => {
   const appProps = await App.getInitialProps({ ...ctx, router });
-  const locale = ['en', 'ja'].includes(router.query.locale) ? router.query.locale : 'en';
+  const locale = ['en', 'ja'].includes(router.query.locale)
+    ? router.query.locale
+    : 'en';
   const { default: messages } = await import(`../locales/${locale}.json`);
 
   return {

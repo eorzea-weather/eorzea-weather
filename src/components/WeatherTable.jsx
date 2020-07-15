@@ -21,8 +21,8 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import useSWR from 'swr';
 import WeatherTableCell from './WeatherTableCell';
 
-const useStyles = makeStyles(
-  (theme) => createStyles({
+const useStyles = makeStyles((theme) =>
+  createStyles({
     formGroup: {
       marginLeft: theme.spacing(2),
       marginRight: theme.spacing(2),
@@ -90,23 +90,25 @@ const WeatherTable = ({ zoneID }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {weatherTable ? chunk(weatherTable, 3).map((weatherTableForDay) => (
-              <TableRow key={`row-${weatherTableForDay[0].startedAt}`}>
-                {weatherTableForDay.map((weather) => (
-                  <WeatherTableCell
-                    highlight={highlightedWeathers[weather.name]}
-                    key={`cell-${weather.startedAt}`}
-                    value={weather}
-                  />
+            {weatherTable
+              ? chunk(weatherTable, 3).map((weatherTableForDay) => (
+                  <TableRow key={`row-${weatherTableForDay[0].startedAt}`}>
+                    {weatherTableForDay.map((weather) => (
+                      <WeatherTableCell
+                        highlight={highlightedWeathers[weather.name]}
+                        key={`cell-${weather.startedAt}`}
+                        value={weather}
+                      />
+                    ))}
+                  </TableRow>
+                ))
+              : chunk(range(30), 3).map((values) => (
+                  <TableRow key={`row-${values.join(':')}`}>
+                    {values.map((value) => (
+                      <WeatherTableCell key={`cell-${value}`} />
+                    ))}
+                  </TableRow>
                 ))}
-              </TableRow>
-            )) : chunk(range(30), 3).map((values) => (
-              <TableRow key={`row-${values.join(':')}`}>
-                {values.map((value) => (
-                  <WeatherTableCell key={`cell-${value}`} />
-                ))}
-              </TableRow>
-            ))}
           </TableBody>
         </Table>
       </TableContainer>
@@ -118,7 +120,11 @@ const WeatherTable = ({ zoneID }) => {
         <FormGroup className={classes.formGroup} row>
           {uniq(weatherTable.map(({ name }) => name)).map((name) => {
             const control = (
-              <Switch color="primary" onChange={handleFilterChange} value={name} />
+              <Switch
+                color="primary"
+                onChange={handleFilterChange}
+                value={name}
+              />
             );
             return (
               <FormControlLabel control={control} key={name} label={name} />
@@ -128,13 +134,7 @@ const WeatherTable = ({ zoneID }) => {
       ) : (
         <FormGroup className={classes.formGroup} row>
           {range(3).map((value) => {
-            const control = (
-              <Switch
-                color="primary"
-                disabled
-                value={value}
-              />
-            );
+            const control = <Switch color="primary" disabled value={value} />;
             return (
               <FormControlLabel
                 control={control}

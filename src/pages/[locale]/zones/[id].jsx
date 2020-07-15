@@ -19,8 +19,8 @@ const messages = defineMessages({
   },
 });
 
-const useStyles = makeStyles(
-  (theme) => createStyles({
+const useStyles = makeStyles((theme) =>
+  createStyles({
     ad: {
       maxWidth: '100%',
       marginBottom: theme.spacing(5),
@@ -59,21 +59,24 @@ export const getStaticProps = async ({ params }) => {
 
 export const getStaticPaths = () => ({
   fallback: false,
-  paths: EORZEA_ZONE_LIST
-    .reduce((result, id) => result.concat(
-      {
-        params: {
-          locale: 'en',
-          id: kebabCase(id),
+  paths: EORZEA_ZONE_LIST.reduce(
+    (result, id) =>
+      result.concat(
+        {
+          params: {
+            locale: 'en',
+            id: kebabCase(id),
+          },
         },
-      },
-      {
-        params: {
-          locale: 'ja',
-          id: kebabCase(id),
+        {
+          params: {
+            locale: 'ja',
+            id: kebabCase(id),
+          },
         },
-      },
-    ), []),
+      ),
+    [],
+  ),
 });
 
 const Zone = ({ zone }) => {
@@ -85,9 +88,7 @@ const Zone = ({ zone }) => {
   return (
     <>
       <Helmet>
-        <title>
-          {title}
-        </title>
+        <title>{title}</title>
       </Helmet>
 
       <main className={classes.root}>
@@ -97,8 +98,8 @@ const Zone = ({ zone }) => {
         <WeatherTable zoneID={zone.id} />
       </main>
 
-      {process.env.NEXT_PUBLIC_GOOGLE_ADCENSE_CLIENT_ID
-        && process.env.NEXT_PUBLIC_GOOGLE_ADCENSE_AD_SLOT && (
+      {process.env.NEXT_PUBLIC_GOOGLE_ADCENSE_CLIENT_ID &&
+        process.env.NEXT_PUBLIC_GOOGLE_ADCENSE_AD_SLOT && (
           <Container maxWidth="md">
             <Ad
               className={classes.ad}
@@ -106,7 +107,7 @@ const Zone = ({ zone }) => {
               slot={process.env.NEXT_PUBLIC_GOOGLE_ADCENSE_AD_SLOT}
             />
           </Container>
-      )}
+        )}
     </>
   );
 };

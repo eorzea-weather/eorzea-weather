@@ -33,8 +33,8 @@ const normalizeRepositoryUrl = (repository) => {
   return `https://github.com/${repository}`;
 };
 
-const useStyles = makeStyles(
-  (theme) => createStyles({
+const useStyles = makeStyles((theme) =>
+  createStyles({
     childListItem: {
       paddingLeft: theme.spacing(4),
     },
@@ -55,9 +55,12 @@ const AppDrawer = ({ onClose, open }) => {
   const intl = useIntl();
   const classes = useStyles();
 
-  const handleClose = useCallback((...args) => {
-    onClose(...args);
-  }, [onClose]);
+  const handleClose = useCallback(
+    (...args) => {
+      onClose(...args);
+    },
+    [onClose],
+  );
 
   const zones = getZoneList({
     locale: intl.locale,
@@ -65,7 +68,12 @@ const AppDrawer = ({ onClose, open }) => {
   const repositoryUrl = normalizeRepositoryUrl(pkg.repository);
 
   return (
-    <Drawer anchor="left" classes={{ paper: classes.drawerPaper }} onClose={handleClose} open={open}>
+    <Drawer
+      anchor="left"
+      classes={{ paper: classes.drawerPaper }}
+      onClose={handleClose}
+      open={open}
+    >
       <div className={classes.drawerHeader}>
         <IconButton onClick={handleClose}>
           <ChevronLeftIcon />
@@ -73,27 +81,31 @@ const AppDrawer = ({ onClose, open }) => {
       </div>
       <Divider />
       <List>
-        {Object.entries(createGroupedZones({ intl })).map(([label, groupedZones]) => (
-          <AppDrawerNavItem key={`drawer-item-${label}`} label={label}>
-            {groupedZones.filter((zoneId) => zones[zoneId]).map((zoneId) => (
-              <Link
-                as={`/${intl.locale}/zones/${kebabCase(zoneId)}`}
-                href="/[locale]/zones/[id]"
-                key={`item-${zoneId}`}
-                passHref
-              >
-                <ListItem
-                  button
-                  className={classes.childListItem}
-                  component="a"
-                  onClick={handleClose}
-                >
-                  <ListItemText primary={zones[zoneId].name} />
-                </ListItem>
-              </Link>
-            ))}
-          </AppDrawerNavItem>
-        ))}
+        {Object.entries(createGroupedZones({ intl })).map(
+          ([label, groupedZones]) => (
+            <AppDrawerNavItem key={`drawer-item-${label}`} label={label}>
+              {groupedZones
+                .filter((zoneId) => zones[zoneId])
+                .map((zoneId) => (
+                  <Link
+                    as={`/${intl.locale}/zones/${kebabCase(zoneId)}`}
+                    href="/[locale]/zones/[id]"
+                    key={`item-${zoneId}`}
+                    passHref
+                  >
+                    <ListItem
+                      button
+                      className={classes.childListItem}
+                      component="a"
+                      onClick={handleClose}
+                    >
+                      <ListItemText primary={zones[zoneId].name} />
+                    </ListItem>
+                  </Link>
+                ))}
+            </AppDrawerNavItem>
+          ),
+        )}
       </List>
       <Divider />
       <List onKeyDown={handleClose}>

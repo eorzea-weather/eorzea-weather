@@ -16,31 +16,36 @@ const ZoneList = ({ zones }) => {
 
   return (
     <Grid container justify="flex-start">
-      {Object.entries(createGroupedZones({ intl })).map(([label, groupedZones]) => (
-        <Grid item key={`grid-${label}`} md={3} sm={4} xs={12}>
-          <List
-            component="nav"
-            subheader={(
-              <ListSubheader component="h2" disableSticky>
-                {label}
-              </ListSubheader>
-            )}
-          >
-            {groupedZones.map((zoneId) => zones[zoneId] && (
-              <Link
-                as={`/${intl.locale}/zones/${kebabCase(zoneId)}`}
-                href="/[locale]/zones/[id]"
-                key={`item-${zoneId}`}
-                passHref
-              >
-                <ListItem button component="a">
-                  <ListItemText primary={zones[zoneId].name} />
-                </ListItem>
-              </Link>
-            ))}
-          </List>
-        </Grid>
-      ))}
+      {Object.entries(createGroupedZones({ intl })).map(
+        ([label, groupedZones]) => (
+          <Grid item key={`grid-${label}`} md={3} sm={4} xs={12}>
+            <List
+              component="nav"
+              subheader={
+                <ListSubheader component="h2" disableSticky>
+                  {label}
+                </ListSubheader>
+              }
+            >
+              {groupedZones.map(
+                (zoneId) =>
+                  zones[zoneId] && (
+                    <Link
+                      as={`/${intl.locale}/zones/${kebabCase(zoneId)}`}
+                      href="/[locale]/zones/[id]"
+                      key={`item-${zoneId}`}
+                      passHref
+                    >
+                      <ListItem button component="a">
+                        <ListItemText primary={zones[zoneId].name} />
+                      </ListItem>
+                    </Link>
+                  ),
+              )}
+            </List>
+          </Grid>
+        ),
+      )}
     </Grid>
   );
 };
