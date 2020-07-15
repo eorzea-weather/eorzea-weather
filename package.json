@@ -30,15 +30,30 @@
   },
   "description": "Weather forecast for Eorzea.",
   "devDependencies": {
-    "babel-eslint": "^10.1.0",
     "eslint": "^7.4.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-plugin-import": "~2.22.0",
     "eslint-plugin-jsx-a11y": "~6.3.1",
-    "eslint-plugin-react": "~7.20.3"
+    "eslint-plugin-react": "~7.20.3",
+    "eslint-plugin-react-hooks": "^4.0.8"
   },
   "engines": {
     "node": "12.x"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true
+    },
+    "extends": [
+      "airbnb",
+      "airbnb/hooks"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 2020
+    },
+    "rules": {
+      "react/jsx-props-no-spreading": "off"
+    }
   },
   "homepage": "https://eorzea-weather.info/",
   "license": "MIT",
