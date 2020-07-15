@@ -23,7 +23,7 @@ const AppDrawerNavItem = ({ children, label }) => {
 
   const handleClick = useCallback(() => {
     setOpen((prevValue) => !prevValue);
-  });
+  }, []);
 
   return (
     <>
