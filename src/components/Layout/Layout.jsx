@@ -84,7 +84,11 @@ const Layout = ({ children }) => {
 
       <footer className={classes.footer}>
         <Container className={classes.footerInner}>
-          <Link as={`/${locale}/privacy`} href="/[locale]/privacy" prefetch={false}>
+          <Link
+            as={`/${locale}/privacy`}
+            href="/[locale]/privacy"
+            prefetch={false}
+          >
             {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
             <a className={classes.link}>{messageFormatter('privacy_policy')}</a>
           </Link>

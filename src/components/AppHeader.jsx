@@ -10,7 +10,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { useLocale } from '@react-aria/i18n';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useCallback, useState } from 'react';
+import PropTypes from 'prop-types';
+import React, { forwardRef, useCallback, useState } from 'react';
 import { AVAILABLE_LOCALES } from '../constants';
 import AppDrawer from './AppDrawer';
 import EorzeaClock from './EorzeaClock';
@@ -29,6 +30,18 @@ const useStyles = makeStyles((theme) =>
     },
   }),
 );
+
+const MenuItemLink = forwardRef(({ as, children, href, ...props }) => (
+  <Link as={as} href={href}>
+    <a {...props}>{children}</a>
+  </Link>
+));
+
+MenuItemLink.propTypes = {
+  as: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+  href: PropTypes.string.isRequired,
+};
 
 const AppHeader = () => {
   const [open, setOpen] = useState(false);
@@ -100,19 +113,25 @@ const AppHeader = () => {
                   vertical: 'top',
                 }}
               >
-                {Object.entries(AVAILABLE_LOCALES).map(([l, label]) => (
-                  <MenuItem
-                    component="a"
-                    href={`/${l}${router.asPath.replace(/^\/[^/]+/, '')}`}
-                    hrefLang={l}
-                    key={`item-${l}`}
-                    lang={l}
-                    onClick={handleMenuClose}
-                    selected={l === locale}
-                  >
-                    {label}
-                  </MenuItem>
-                ))}
+                {Object.entries(AVAILABLE_LOCALES).map(
+                  ([availableLocale, label]) => (
+                    <MenuItem
+                      as={`/${availableLocale}${router.asPath.replace(
+                        /^\/[^/]+/,
+                        '',
+                      )}`}
+                      component={MenuItemLink}
+                      href={router.pathname}
+                      hrefLang={availableLocale}
+                      key={`item-${availableLocale}`}
+                      lang={availableLocale}
+                      onClick={handleMenuClose}
+                      selected={availableLocale === locale}
+                    >
+                      {label}
+                    </MenuItem>
+                  ),
+                )}
               </Menu>
             </>
           )}
