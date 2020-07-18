@@ -7,17 +7,13 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import LanguageIcon from '@material-ui/icons/Language';
 import MenuIcon from '@material-ui/icons/Menu';
+import { useLocale } from '@react-aria/i18n';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useCallback, useState } from 'react';
-import { useIntl } from 'react-intl';
+import { AVAILABLE_LOCALES } from '../constants';
 import AppDrawer from './AppDrawer';
 import EorzeaClock from './EorzeaClock';
-
-const AVAILABLE_LOCALES = {
-  en: 'English',
-  ja: '日本語',
-};
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -37,7 +33,7 @@ const useStyles = makeStyles((theme) =>
 const AppHeader = () => {
   const [open, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
-  const intl = useIntl();
+  const { locale } = useLocale();
   const router = useRouter();
   const classes = useStyles();
 
@@ -77,13 +73,13 @@ const AppHeader = () => {
             variant="h6"
           >
             {!isHome && (
-              <Link as={`/${intl.locale}`} href="/[locale]">
+              <Link as={`/${locale}`} href="/[locale]">
                 {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                 <a className={classes.title}>Eorzea Weather</a>
               </Link>
             )}
           </Typography>
-          {router.asPath.startsWith(`/${intl.locale}`) && (
+          {router.asPath.startsWith(`/${locale}`) && (
             <>
               <IconButton color="inherit" onClick={handleLanguageIconClick}>
                 <LanguageIcon />
@@ -104,15 +100,15 @@ const AppHeader = () => {
                   vertical: 'top',
                 }}
               >
-                {Object.entries(AVAILABLE_LOCALES).map(([locale, label]) => (
+                {Object.entries(AVAILABLE_LOCALES).map(([l, label]) => (
                   <MenuItem
                     component="a"
-                    href={`/${locale}${router.asPath.replace(/^\/[^/]+/, '')}`}
-                    hrefLang={locale}
-                    key={`item-${locale}`}
-                    lang={locale}
+                    href={`/${l}${router.asPath.replace(/^\/[^/]+/, '')}`}
+                    hrefLang={l}
+                    key={`item-${l}`}
+                    lang={l}
                     onClick={handleMenuClose}
-                    selected={intl.locale === locale}
+                    selected={l === locale}
                   >
                     {label}
                   </MenuItem>

@@ -1,11 +1,11 @@
 import blue from '@material-ui/core/colors/blue';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-import App from 'next/app';
+import { I18nProvider } from '@react-aria/i18n';
 import Router from 'next/router';
 import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
-import { IntlProvider } from 'react-intl';
 import Layout from '../components/Layout';
+import { Provider as ZoneProvider } from '../context/zone';
 import tracker from '../utils/tracker';
 
 const theme = createMuiTheme({
@@ -14,7 +14,7 @@ const theme = createMuiTheme({
   },
 });
 
-const MyApp = ({ Component, locale, messages, pageProps }) => {
+const MyApp = ({ Component, pageProps }) => {
   useEffect(() => {
     const handleRouteChangeComplete = (url) => {
       tracker.track({
@@ -39,35 +39,23 @@ const MyApp = ({ Component, locale, messages, pageProps }) => {
   }, []);
 
   return (
-    <IntlProvider key={locale} locale={locale} messages={messages}>
+    <I18nProvider locale={pageProps.locale || 'en'}>
       <MuiThemeProvider theme={theme}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <ZoneProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ZoneProvider>
       </MuiThemeProvider>
-    </IntlProvider>
+    </I18nProvider>
   );
 };
 
 MyApp.propTypes = {
   Component: PropTypes.elementType.isRequired,
-  locale: PropTypes.string.isRequired,
-  messages: PropTypes.objectOf(PropTypes.string).isRequired,
-  pageProps: PropTypes.shape({}).isRequired,
-};
-
-MyApp.getInitialProps = async ({ router, ...ctx }) => {
-  const appProps = await App.getInitialProps({ ...ctx, router });
-  const locale = ['en', 'ja'].includes(router.query.locale)
-    ? router.query.locale
-    : 'en';
-  const { default: messages } = await import(`../locales/${locale}.json`);
-
-  return {
-    ...appProps,
-    locale,
-    messages,
-  };
+  pageProps: PropTypes.shape({
+    locale: PropTypes.string,
+  }).isRequired,
 };
 
 export default MyApp;

@@ -1,5 +1,10 @@
 import EorzeaWeather from 'eorzea-weather';
 
+export const AVAILABLE_LOCALES = {
+  en: 'English',
+  ja: '日本語',
+};
+
 export const EORZEA_ZONE_LIST = [
   EorzeaWeather.ZONE_AMH_ARAENG,
   EorzeaWeather.ZONE_AZYS_LLA,
@@ -56,17 +61,3 @@ export const EORZEA_ZONE_LIST = [
   EorzeaWeather.ZONE_WOLVES_DEN_PIER,
   EorzeaWeather.ZONE_YANXIA,
 ];
-
-const getZoneList = ({ locale }) =>
-  EORZEA_ZONE_LIST.reduce(
-    (result, id) => ({
-      ...result,
-      [id]: {
-        id,
-        name: new EorzeaWeather(id, { locale }).getZoneName(),
-      },
-    }),
-    {},
-  );
-
-export default getZoneList;

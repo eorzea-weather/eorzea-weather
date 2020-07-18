@@ -1,19 +1,20 @@
 import accepts from 'accepts';
-
-const locales = ['en', 'ja'];
+import { AVAILABLE_LOCALES } from '../constants';
 
 export const getServerSideProps = async ({ query, res, req }) => {
   const accept = accepts(req);
+  const locales = Object.keys(AVAILABLE_LOCALES);
   const locale = locales.includes(query.locale)
     ? query.locale
     : accept.language(locales) || 'en';
+  const path = req.url === '/' ? '' : req.url;
 
   res.writeHead(307, {
-    Location: `/${locale}`,
+    Location: `/${locale}${path}`,
   });
   res.end();
 };
 
-const Home = () => null;
+const Redirect = () => null;
 
-export default Home;
+export default Redirect;

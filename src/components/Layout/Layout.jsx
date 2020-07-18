@@ -1,15 +1,15 @@
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
+import { useLocale, useMessageFormatter } from '@react-aria/i18n';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { FormattedMessage, useIntl } from 'react-intl';
-import AppHeader from './AppHeader';
-
-const locales = ['en', 'ja'];
+import { AVAILABLE_LOCALES } from '../../constants';
+import AppHeader from '../AppHeader';
+import messages from './intl';
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -35,11 +35,12 @@ const useStyles = makeStyles((theme) =>
 );
 
 const Layout = ({ children }) => {
-  const intl = useIntl();
+  const { dir, locale } = useLocale();
+  const messageFormatter = useMessageFormatter(messages);
   const router = useRouter();
   const classes = useStyles();
 
-  const path = router.asPath.startsWith(`/${intl.locale}`)
+  const path = router.asPath.startsWith(`/${locale}`)
     ? router.asPath.replace(/^\/[^/]+/, '')
     : undefined;
 
@@ -47,7 +48,7 @@ const Layout = ({ children }) => {
     <>
       <Helmet
         defaultTitle="Eorzea Weather"
-        htmlAttributes={{ lang: intl.locale }}
+        htmlAttributes={{ dir, lang: locale }}
         titleTemplate="%s - Eorzea Weather"
       >
         <link href="/favicon.ico" rel="icon" />
@@ -63,8 +64,8 @@ const Layout = ({ children }) => {
           />
         )}
         {typeof path === 'string' &&
-          locales
-            .filter((v) => v !== intl.locale)
+          Object.keys(AVAILABLE_LOCALES)
+            .filter((v) => v !== locale)
             .map((v) => (
               <link
                 href={`/${v}${path}`}
@@ -83,14 +84,9 @@ const Layout = ({ children }) => {
 
       <footer className={classes.footer}>
         <Container className={classes.footerInner}>
-          <Link as={`/${intl.locale}/privacy`} href="/[locale]/privacy">
+          <Link as={`/${locale}/privacy`} href="/[locale]/privacy">
             {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-            <a className={classes.link}>
-              <FormattedMessage
-                defaultMessage="Privacy"
-                id="footer.privacy_policy"
-              />
-            </a>
+            <a className={classes.link}>{messageFormatter('privacy_policy')}</a>
           </Link>
         </Container>
       </footer>

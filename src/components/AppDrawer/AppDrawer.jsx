@@ -6,22 +6,15 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import { useLocale, useMessageFormatter } from '@react-aria/i18n';
 import kebabCase from 'lodash/kebabCase';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import React, { useCallback } from 'react';
-import { defineMessages, useIntl } from 'react-intl';
-import * as pkg from '../../package.json';
-import createGroupedZones from '../utils/createGroupedZones';
-import getZoneList from '../utils/getZoneList';
+import * as pkg from '../../../package.json';
+import { useZoneList } from '../../context/zone';
 import AppDrawerNavItem from './AppDrawerNavItem';
-
-const messages = defineMessages({
-  sourceCode: {
-    defaultMessage: 'Source code',
-    id: 'header.source_code',
-  },
-});
+import messages from './intl';
 
 const normalizeRepositoryUrl = (repository) => {
   if (repository.url) {
@@ -52,19 +45,13 @@ const useStyles = makeStyles((theme) =>
 );
 
 const AppDrawer = ({ onClose, open }) => {
-  const intl = useIntl();
+  const { locale } = useLocale();
+  const messageFormatter = useMessageFormatter(messages);
+  const zoneList = useZoneList();
   const classes = useStyles();
 
-  const handleClose = useCallback(
-    (...args) => {
-      onClose(...args);
-    },
-    [onClose],
-  );
+  const handleClose = useCallback((...args) => onClose(...args), [onClose]);
 
-  const zones = getZoneList({
-    locale: intl.locale,
-  });
   const repositoryUrl = normalizeRepositoryUrl(pkg.repository);
 
   return (
@@ -81,31 +68,27 @@ const AppDrawer = ({ onClose, open }) => {
       </div>
       <Divider />
       <List>
-        {Object.entries(createGroupedZones({ intl })).map(
-          ([label, groupedZones]) => (
-            <AppDrawerNavItem key={`drawer-item-${label}`} label={label}>
-              {groupedZones
-                .filter((zoneId) => zones[zoneId])
-                .map((zoneId) => (
-                  <Link
-                    as={`/${intl.locale}/zones/${kebabCase(zoneId)}`}
-                    href="/[locale]/zones/[id]"
-                    key={`item-${zoneId}`}
-                    passHref
-                  >
-                    <ListItem
-                      button
-                      className={classes.childListItem}
-                      component="a"
-                      onClick={handleClose}
-                    >
-                      <ListItemText primary={zones[zoneId].name} />
-                    </ListItem>
-                  </Link>
-                ))}
-            </AppDrawerNavItem>
-          ),
-        )}
+        {Object.entries(zoneList).map(([label, zones]) => (
+          <AppDrawerNavItem key={`drawer-item-${label}`} label={label}>
+            {zones.map((zone) => (
+              <Link
+                as={`/${locale}/zones/${kebabCase(zone.id)}`}
+                href="/[locale]/zones/[id]"
+                key={`item-${zone.id}`}
+                passHref
+              >
+                <ListItem
+                  button
+                  className={classes.childListItem}
+                  component="a"
+                  onClick={handleClose}
+                >
+                  <ListItemText primary={zone.name} />
+                </ListItem>
+              </Link>
+            ))}
+          </AppDrawerNavItem>
+        ))}
       </List>
       <Divider />
       <List onKeyDown={handleClose}>
@@ -120,7 +103,7 @@ const AppDrawer = ({ onClose, open }) => {
               rel="noopener noreferrer"
               target="_blank"
             >
-              <ListItemText primary={intl.formatMessage(messages.sourceCode)} />
+              <ListItemText primary={messageFormatter('source_code')} />
             </ListItem>
           </>
         )}
