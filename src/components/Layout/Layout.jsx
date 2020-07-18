@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) =>
 );
 
 const Layout = ({ children }) => {
-  const { dir, locale } = useLocale();
+  const { direction, locale } = useLocale();
   const messageFormatter = useMessageFormatter(messages);
   const router = useRouter();
   const classes = useStyles();
@@ -48,7 +48,7 @@ const Layout = ({ children }) => {
     <>
       <Helmet
         defaultTitle="Eorzea Weather"
-        htmlAttributes={{ dir, lang: locale }}
+        htmlAttributes={{ dir: direction, lang: locale }}
         titleTemplate="%s - Eorzea Weather"
       >
         <link href="/favicon.ico" rel="icon" />
