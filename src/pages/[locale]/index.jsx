@@ -53,8 +53,8 @@ export const getStaticProps = async ({ params }) => {
 
 export const getStaticPaths = () => ({
   fallback: false,
-  paths: Object.keys(AVAILABLE_LOCALES).map(locale => ({
-    params: { locale }
+  paths: Object.keys(AVAILABLE_LOCALES).map((locale) => ({
+    params: { locale },
   })),
 });
 
