@@ -31,16 +31,21 @@ const useStyles = makeStyles((theme) =>
   }),
 );
 
-const MenuItemLink = forwardRef(({ as, children, href, ...props }) => (
-  <Link as={as} href={href}>
-    <a {...props}>{children}</a>
-  </Link>
-));
+const MenuItemLink = forwardRef(
+  ({ as, children, href, prefetch, ...props }, ref) => (
+    <Link as={as} href={href} prefetch>
+      <a {...props} ref={ref}>
+        {children}
+      </a>
+    </Link>
+  ),
+);
 
 MenuItemLink.propTypes = {
   as: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   href: PropTypes.string.isRequired,
+  prefetch: PropTypes.bool.isRequired,
 };
 
 const AppHeader = () => {
@@ -126,6 +131,7 @@ const AppHeader = () => {
                       key={`item-${availableLocale}`}
                       lang={availableLocale}
                       onClick={handleMenuClose}
+                      prefetch={false}
                       selected={availableLocale === locale}
                     >
                       {label}
