@@ -3,11 +3,11 @@ import { createStyles, makeStyles } from '@material-ui/core/styles';
 import TableCell from '@material-ui/core/TableCell';
 import Typography from '@material-ui/core/Typography';
 import Skeleton from '@material-ui/lab/Skeleton';
+import { useDateFormatter } from '@react-aria/i18n';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import { FormattedTime, useIntl } from 'react-intl';
-import weatherShape from '../types/weatherShape';
+import weatherShape from '../../types/weatherShape';
 
 const EIGHT_HOURS = 8 * 175 * 1000;
 
@@ -37,8 +37,19 @@ const useStyles = makeStyles((theme) =>
 );
 
 const WeatherTableCell = ({ highlight, value }) => {
-  const [now, setNow] = useState(Date.now());
-  const intl = useIntl();
+  const [now, setNow] = useState(() => Date.now());
+  const dateFormatter = useDateFormatter({
+    hour: 'numeric',
+    minute: 'numeric',
+  });
+  const fullDateFormatter = useDateFormatter({
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    month: 'short',
+    second: 'numeric',
+    year: 'numeric',
+  });
   const classes = useStyles();
 
   const startedAt = value?.startedAt && new Date(value.startedAt);
@@ -46,14 +57,6 @@ const WeatherTableCell = ({ highlight, value }) => {
   const className = classNames(classes.root, {
     [classes.highlight]: highlight,
     [classes.past]: time + EIGHT_HOURS < now,
-  });
-  const title = intl.formatDate(startedAt, {
-    day: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric',
-    month: 'short',
-    second: 'numeric',
-    year: 'numeric',
   });
 
   useEffect(() => {
@@ -78,8 +81,11 @@ const WeatherTableCell = ({ highlight, value }) => {
         {value ? (
           <>
             {value.name} (
-            <time dateTime={startedAt.toISOString()} title={title}>
-              <FormattedTime value={startedAt} />
+            <time
+              dateTime={startedAt.toISOString()}
+              title={fullDateFormatter.format(startedAt)}
+            >
+              {dateFormatter.format(startedAt)}
             </time>
             )
           </>

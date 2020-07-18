@@ -2,21 +2,14 @@ import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
+import { useLocale, useMessageFormatter } from '@react-aria/i18n';
 import Link from 'next/link';
+import PropTypes from 'prop-types';
 import React from 'react';
 import Helmet from 'react-helmet';
-import { defineMessages, useIntl } from 'react-intl';
 import Ad from '../../components/Ad';
 import ZoneList from '../../components/ZoneList';
-import getZoneList from '../../utils/getZoneList';
-
-const messages = defineMessages({
-  description: {
-    defaultMessage:
-      'Eorzea Weather is a web application that displays a list of weather forecasts during the game of FINAL FANTASY XIV.',
-    id: 'home.description',
-  },
-});
+import { AVAILABLE_LOCALES } from '../../constants';
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -44,41 +37,36 @@ const useStyles = makeStyles((theme) =>
   }),
 );
 
-export const getStaticProps = () => ({
-  props: {},
-});
+export const getStaticProps = async ({ params }) => {
+  const { locale } = params;
+  const { default: message } = await import(`../../intl/home/${locale}.json`);
+
+  return {
+    props: {
+      locale,
+      messages: {
+        [locale]: message,
+      },
+    },
+  };
+};
 
 export const getStaticPaths = () => ({
   fallback: false,
-  paths: [
-    {
-      params: {
-        locale: 'en',
-      },
-    },
-    {
-      params: {
-        locale: 'ja',
-      },
-    },
-  ],
+  paths: Object.keys(AVAILABLE_LOCALES).map(locale => ({
+    params: { locale }
+  })),
 });
 
-const Home = () => {
-  const intl = useIntl();
+const Home = ({ messages }) => {
+  const { locale } = useLocale();
+  const formatMessage = useMessageFormatter(messages);
   const classes = useStyles();
-
-  const zones = getZoneList({
-    locale: intl.locale,
-  });
 
   return (
     <>
       <Helmet bodyAttributes={{ class: 'home' }}>
-        <meta
-          content={intl.formatMessage(messages.description)}
-          name="description"
-        />
+        <meta content={formatMessage('description')} name="description" />
       </Helmet>
 
       <div className={classes.hero}>
@@ -87,7 +75,7 @@ const Home = () => {
         </Typography>
 
         <Link
-          as={`/${intl.locale}/zones/eureka-hydatos`}
+          as={`/${locale}/zones/eureka-hydatos`}
           href="/[locale]/zones/[id]"
           passHref
         >
@@ -98,7 +86,7 @@ const Home = () => {
       </div>
 
       <main className={classes.container}>
-        {Object.keys(zones).length > 0 && <ZoneList zones={zones} />}
+        <ZoneList />
       </main>
 
       {process.env.NEXT_PUBLIC_GOOGLE_ADCENSE_CLIENT_ID &&
@@ -112,6 +100,11 @@ const Home = () => {
         )}
     </>
   );
+};
+
+Home.propTypes = {
+  messages: PropTypes.objectOf(PropTypes.objectOf(PropTypes.string.isRequired))
+    .isRequired,
 };
 
 export default Home;

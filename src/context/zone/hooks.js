@@ -1,47 +1,18 @@
+import { useMessageFormatter } from '@react-aria/i18n';
 import EorzeaWeather from 'eorzea-weather';
-import { defineMessages } from 'react-intl';
+import snakeCase from 'lodash/snakeCase';
+import { useContext } from 'react';
+import Context from './Context';
+import messages from './intl';
 
-const messages = defineMessages({
-  eureka: {
-    defaultMessage: 'Eureka',
-    id: 'zone_list.eureka',
-  },
-  gyrAbania: {
-    defaultMessage: 'Gyr Abania',
-    id: 'zone_list.gyr_abania',
-  },
-  ishgardAndSurroundingAreas: {
-    defaultMessage: 'Ishgard and Surrounding Areas',
-    id: 'zone_list.ishgard_and_surrounding_areas',
-  },
-  laNoscea: {
-    defaultMessage: 'La Noscea',
-    id: 'zone_list.la_noscea',
-  },
-  norvrandt: {
-    defaultMessage: 'Norvrandt',
-    id: 'zone_list.norvrandt',
-  },
-  others: {
-    defaultMessage: 'Others',
-    id: 'zone_list.others',
-  },
-  thanalan: {
-    defaultMessage: 'Thanalan',
-    id: 'zone_list.thanalan',
-  },
-  theBlackShroud: {
-    defaultMessage: 'The Black Shroud',
-    id: 'zone_list.the_black_shroud',
-  },
-  theFarEast: {
-    defaultMessage: 'The Far East',
-    id: 'zone_list.the_far_east',
-  },
-});
+export function useZone({ id }) {
+  const { zones } = useContext(Context);
 
-export default ({ intl }) => ({
-  [intl.formatMessage(messages.laNoscea)]: [
+  return zones[id];
+}
+
+const areaMap = {
+  laNoscea: [
     EorzeaWeather.ZONE_LIMSA_LOMINSA,
     EorzeaWeather.ZONE_MIDDLE_LA_NOSCEA,
     EorzeaWeather.ZONE_LOWER_LA_NOSCEA,
@@ -51,14 +22,14 @@ export default ({ intl }) => ({
     EorzeaWeather.ZONE_OUTER_LA_NOSCEA,
     EorzeaWeather.ZONE_WOLVES_DEN_PIER,
   ],
-  [intl.formatMessage(messages.theBlackShroud)]: [
+  theBlackShroud: [
     EorzeaWeather.ZONE_GRIDANIA,
     EorzeaWeather.ZONE_CENTRAL_SHROUD,
     EorzeaWeather.ZONE_EAST_SHROUD,
     EorzeaWeather.ZONE_SOUTH_SHROUD,
     EorzeaWeather.ZONE_NORTH_SHROUD,
   ],
-  [intl.formatMessage(messages.thanalan)]: [
+  thanalan: [
     EorzeaWeather.ZONE_ULDAH,
     EorzeaWeather.ZONE_WESTERN_THANALAN,
     EorzeaWeather.ZONE_CENTRAL_THANALAN,
@@ -66,7 +37,7 @@ export default ({ intl }) => ({
     EorzeaWeather.ZONE_SOUTHERN_THANALAN,
     EorzeaWeather.ZONE_NORTHERN_THANALAN,
   ],
-  [intl.formatMessage(messages.ishgardAndSurroundingAreas)]: [
+  ishgardAndSurroundingAreas: [
     EorzeaWeather.ZONE_ISHGARD,
     EorzeaWeather.ZONE_COERTHAS_CENTRAL_HIGHLANDS,
     EorzeaWeather.ZONE_COERTHAS_WESTERN_HIGHLANDS,
@@ -77,19 +48,19 @@ export default ({ intl }) => ({
     EorzeaWeather.ZONE_THE_DRAVANIAN_HINTERLANDS,
     EorzeaWeather.ZONE_THE_CHURNING_MISTS,
   ],
-  [intl.formatMessage(messages.gyrAbania)]: [
+  gyrAbania: [
     EorzeaWeather.ZONE_RHALGRS_REACH,
     EorzeaWeather.ZONE_THE_FRINGES,
     EorzeaWeather.ZONE_THE_PEAKS,
     EorzeaWeather.ZONE_THE_LOCHS,
   ],
-  [intl.formatMessage(messages.theFarEast)]: [
+  theFarEast: [
     EorzeaWeather.ZONE_KUGANE,
     EorzeaWeather.ZONE_THE_RUBY_SEA,
     EorzeaWeather.ZONE_YANXIA,
     EorzeaWeather.ZONE_THE_AZIM_STEPPE,
   ],
-  [intl.formatMessage(messages.norvrandt)]: [
+  norvrandt: [
     EorzeaWeather.ZONE_THE_CRYSTARIUM,
     EorzeaWeather.ZONE_EULMORE,
     EorzeaWeather.ZONE_LAKELAND,
@@ -99,17 +70,30 @@ export default ({ intl }) => ({
     EorzeaWeather.ZONE_THE_RAKTIKA_GREATWOOD,
     EorzeaWeather.ZONE_THE_TEMPEST,
   ],
-  [intl.formatMessage(messages.others)]: [
+  others: [
     EorzeaWeather.ZONE_MIST,
     EorzeaWeather.ZONE_THE_LAVENDER_BEDS,
     EorzeaWeather.ZONE_THE_GOBLET,
     EorzeaWeather.ZONE_SHIROGANE,
     EorzeaWeather.ZONE_MOR_DHONA,
   ],
-  [intl.formatMessage(messages.eureka)]: [
+  eureka: [
     EorzeaWeather.ZONE_EUREKA_ANEMOS,
     EorzeaWeather.ZONE_EUREKA_PAGOS,
     EorzeaWeather.ZONE_EUREKA_PYROS,
     EorzeaWeather.ZONE_EUREKA_HYDATOS,
   ],
-});
+};
+
+export function useZoneList() {
+  const { zones } = useContext(Context);
+  const formatMessage = useMessageFormatter(messages);
+
+  return Object.entries(areaMap).reduce(
+    (list, [key, ids]) => ({
+      ...list,
+      [formatMessage(snakeCase(key))]: ids.map((id) => zones[id]),
+    }),
+    {},
+  );
+}

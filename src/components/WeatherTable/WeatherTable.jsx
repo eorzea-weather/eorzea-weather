@@ -11,15 +11,16 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Skeleton from '@material-ui/lab/Skeleton';
+import { useLocale, useMessageFormatter } from '@react-aria/i18n';
 import camelCase from 'lodash/camelCase';
 import chunk from 'lodash/chunk';
 import range from 'lodash/range';
 import uniq from 'lodash/uniq';
 import PropTypes from 'prop-types';
 import React, { useCallback, useState } from 'react';
-import { FormattedMessage, useIntl } from 'react-intl';
 import useSWR from 'swr';
 import WeatherTableCell from './WeatherTableCell';
+import messages from './intl';
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -52,9 +53,10 @@ const useStyles = makeStyles((theme) =>
 
 const WeatherTable = ({ zoneID }) => {
   const [highlightedWeathers, setHighlightedWeathers] = useState({});
-  const intl = useIntl();
+  const { locale } = useLocale();
+  const messageFormatter = useMessageFormatter(messages);
   const { data: weatherTable } = useSWR(
-    `/api/zones/${camelCase(zoneID)}/forecast?locale=${intl.locale}`,
+    `/api/zones/${camelCase(zoneID)}/forecast?locale=${locale}`,
     async (key) => {
       const res = await fetch(key);
 
@@ -113,7 +115,7 @@ const WeatherTable = ({ zoneID }) => {
         </Table>
       </TableContainer>
       <FormLabel className={classes.formLabel}>
-        <FormattedMessage defaultMessage="Highlight" id="zone.highlight" />
+        {messageFormatter('highlight')}
       </FormLabel>
 
       {weatherTable ? (

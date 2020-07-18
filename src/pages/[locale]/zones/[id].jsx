@@ -1,23 +1,16 @@
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
-import EorzeaWeather from 'eorzea-weather';
+import { useMessageFormatter } from '@react-aria/i18n';
 import camelCase from 'lodash/camelCase';
 import kebabCase from 'lodash/kebabCase';
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { defineMessages, useIntl } from 'react-intl';
 import Ad from '../../../components/Ad';
 import WeatherTable from '../../../components/WeatherTable';
-import zoneShape from '../../../types/zoneShape';
-import { EORZEA_ZONE_LIST } from '../../../utils/getZoneList';
-
-const messages = defineMessages({
-  title: {
-    defaultMessage: '{name} weather',
-    id: 'zone.title',
-  },
-});
+import { AVAILABLE_LOCALES, EORZEA_ZONE_LIST } from '../../../constants';
+import { useZone } from '../../../context/zone';
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -42,16 +35,16 @@ const useStyles = makeStyles((theme) =>
 );
 
 export const getStaticProps = async ({ params }) => {
+  const { locale } = params;
+  const { default: message } = await import(`../../../intl/zone/${locale}.json`);
   const id = camelCase(params.id);
-  const eorzeaWeather = new EorzeaWeather(id, {
-    locale: params.locale,
-  });
 
   return {
     props: {
-      zone: {
-        id,
-        name: eorzeaWeather.getZoneName(),
+      id,
+      locale,
+      messages: {
+        [locale]: message,
       },
     },
   };
@@ -62,28 +55,23 @@ export const getStaticPaths = () => ({
   paths: EORZEA_ZONE_LIST.reduce(
     (result, id) =>
       result.concat(
-        {
+        Object.keys(AVAILABLE_LOCALES).map(locale => ({
           params: {
-            locale: 'en',
+            locale,
             id: kebabCase(id),
           },
-        },
-        {
-          params: {
-            locale: 'ja',
-            id: kebabCase(id),
-          },
-        },
+        })),
       ),
     [],
   ),
 });
 
-const Zone = ({ zone }) => {
-  const intl = useIntl();
+const Zone = ({ id, messages }) => {
+  const messageFormatter = useMessageFormatter(messages);
+  const zone = useZone({ id });
   const classes = useStyles();
 
-  const title = intl.formatMessage(messages.title, { name: zone.name });
+  const title = messageFormatter('title', { name: zone.name });
 
   return (
     <>
@@ -113,7 +101,9 @@ const Zone = ({ zone }) => {
 };
 
 Zone.propTypes = {
-  zone: zoneShape.isRequired,
+  id: PropTypes.string.isRequired,
+  messages: PropTypes.objectOf(PropTypes.objectOf(PropTypes.string.isRequired))
+    .isRequired,
 };
 
 export default Zone;
