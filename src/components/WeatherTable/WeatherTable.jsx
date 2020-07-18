@@ -17,7 +17,7 @@ import chunk from 'lodash/chunk';
 import range from 'lodash/range';
 import uniq from 'lodash/uniq';
 import PropTypes from 'prop-types';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import useSWR from 'swr';
 import WeatherTableCell from './WeatherTableCell';
 import messages from './intl';
@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) =>
 );
 
 const WeatherTable = ({ zoneID }) => {
-  const [highlightedWeathers, setHighlightedWeathers] = useState({});
+  const [highlightedWeathers, setHighlightedWeathers] = useState([]);
   const { locale } = useLocale();
   const messageFormatter = useMessageFormatter(messages);
   const { data: weatherTable } = useSWR(
@@ -66,13 +66,27 @@ const WeatherTable = ({ zoneID }) => {
   const classes = useStyles();
 
   const handleFilterChange = useCallback(({ target }) => {
-    const { value: weather } = target;
+    const { checked, value } = target;
 
-    setHighlightedWeathers((beforeHighlightWeathers) => ({
-      ...beforeHighlightWeathers,
-      [weather]: !beforeHighlightWeathers[weather],
-    }));
+    if (value) {
+      setHighlightedWeathers((values) => {
+        const newValues = [...values];
+        const index = values.indexOf(value);
+
+        if (index >= 0) {
+          newValues.splice(index, 1);
+        } else if (checked) {
+          newValues.push(value);
+        }
+
+        return newValues;
+      });
+    }
   }, []);
+
+  useEffect(() => {
+    setHighlightedWeathers([]);
+  }, [zoneID]);
 
   return (
     <>
@@ -97,7 +111,7 @@ const WeatherTable = ({ zoneID }) => {
                   <TableRow key={`row-${weatherTableForDay[0].startedAt}`}>
                     {weatherTableForDay.map((weather) => (
                       <WeatherTableCell
-                        highlight={highlightedWeathers[weather.name]}
+                        highlight={highlightedWeathers.includes(weather.name)}
                         key={`cell-${weather.startedAt}`}
                         value={weather}
                       />

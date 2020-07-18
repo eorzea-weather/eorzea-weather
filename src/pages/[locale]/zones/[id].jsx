@@ -36,7 +36,9 @@ const useStyles = makeStyles((theme) =>
 
 export const getStaticProps = async ({ params }) => {
   const { locale } = params;
-  const { default: message } = await import(`../../../intl/zone/${locale}.json`);
+  const { default: message } = await import(
+    `../../../intl/zone/${locale}.json`
+  );
   const id = camelCase(params.id);
 
   return {
@@ -55,7 +57,7 @@ export const getStaticPaths = () => ({
   paths: EORZEA_ZONE_LIST.reduce(
     (result, id) =>
       result.concat(
-        Object.keys(AVAILABLE_LOCALES).map(locale => ({
+        Object.keys(AVAILABLE_LOCALES).map((locale) => ({
           params: {
             locale,
             id: kebabCase(id),
