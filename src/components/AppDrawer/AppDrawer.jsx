@@ -76,6 +76,7 @@ const AppDrawer = ({ onClose, open }) => {
                 href="/[locale]/zones/[id]"
                 key={`item-${zone.id}`}
                 passHref
+                prefetch={false}
               >
                 <ListItem
                   button

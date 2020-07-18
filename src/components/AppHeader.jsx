@@ -73,7 +73,7 @@ const AppHeader = () => {
             variant="h6"
           >
             {!isHome && (
-              <Link as={`/${locale}`} href="/[locale]">
+              <Link as={`/${locale}`} href="/[locale]" prefetch={false}>
                 {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                 <a className={classes.title}>Eorzea Weather</a>
               </Link>
