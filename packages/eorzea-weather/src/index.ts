@@ -1,1 +1,1 @@
-export { default } from './EorzeaWeather'
+export { default } from './EorzeaWeather';
