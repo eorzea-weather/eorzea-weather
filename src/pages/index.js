@@ -1,7 +1,7 @@
 import accepts from 'accepts';
 import { AVAILABLE_LOCALES } from '../constants';
 
-const availableLocales = Object.keys(AVAILABLE_LOCALES)
+const availableLocales = Object.keys(AVAILABLE_LOCALES);
 
 export const getServerSideProps = async ({ query, res, req }) => {
   const accept = accepts(req);
