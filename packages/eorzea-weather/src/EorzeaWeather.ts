@@ -226,14 +226,21 @@ export default class EorzeaWeather {
     return zones.ZONE_YANXIA;
   }
 
-  static getWeather(id: string, date: Date, options: EorzeaWeatherOptions = {}): string {
+  static getWeather(
+    id: string,
+    date: Date,
+    options: EorzeaWeatherOptions = {},
+  ): string {
     return new EorzeaWeather(id, options).getWeather(date);
   }
 
   #id: string;
   #locale: string;
 
-  constructor(id: string, { locale = DEFAULT_LOCALE }: EorzeaWeatherOptions = {}) {
+  constructor(
+    id: string,
+    { locale = DEFAULT_LOCALE }: EorzeaWeatherOptions = {},
+  ) {
     this.#id = id;
     this.#locale = locale;
   }
@@ -259,13 +266,15 @@ export default class EorzeaWeather {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
     const value: string | undefined = locales[this.#locale][key];
     if (!value) {
-      throw new TypeError(`'${key}' is undefined translate ID.`)
+      throw new TypeError(`'${key}' is undefined translate ID.`);
     }
     return value;
   }
 
   validate(): boolean {
-    const key = `ZONE_${this.#id.replace(/[A-Z]/g, (w) => `_${w}`).toUpperCase()}`;
+    const key = `ZONE_${this.#id
+      .replace(/[A-Z]/g, (w) => `_${w}`)
+      .toUpperCase()}`;
     return zones[key] === this.#id;
   }
 }
