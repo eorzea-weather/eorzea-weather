@@ -29,6 +29,10 @@
     },
     "root": true
   },
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://github.com/eorzea-weather/eorzea-weather",
   "jest": {
     "preset": "ts-jest"
   },
@@ -38,7 +42,6 @@
     "FINAL FANTASY XIV",
     "Weather"
   ],
-  "homepage": "https://github.com/eorzea-weather/eorzea-weather",
   "license": "MIT",
   "main": "dist/eorzea-weather.js",
   "module": "dist/eorzea-weather.module.js",
