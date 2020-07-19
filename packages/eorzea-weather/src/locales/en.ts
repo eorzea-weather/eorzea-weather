@@ -1,4 +1,4 @@
-{
+export default {
   "weathers.blizzards": "Blizzards",
   "weathers.clearSkies": "Clear Skies",
   "weathers.clouds": "Clouds",

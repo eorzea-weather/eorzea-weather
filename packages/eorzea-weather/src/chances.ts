@@ -18,7 +18,7 @@ import {
   WEATHER_WIND,
 } from './weathers';
 
-export const amhAraeng = (chance) => {
+export const amhAraeng = (chance: number): string => {
   if (chance < 45) {
     return WEATHER_FAIR_SKIES;
   }
@@ -34,7 +34,7 @@ export const amhAraeng = (chance) => {
   return WEATHER_CLEAR_SKIES;
 };
 
-export const azysLla = (chance) => {
+export const azysLla = (chance: number): string => {
   if (chance < 35) {
     return WEATHER_FAIR_SKIES;
   }
@@ -44,7 +44,7 @@ export const azysLla = (chance) => {
   return WEATHER_THUNDER;
 };
 
-export const centralShroud = (chance) => {
+export const centralShroud = (chance: number): string => {
   if (chance < 5) {
     return WEATHER_THUNDER;
   }
@@ -66,7 +66,7 @@ export const centralShroud = (chance) => {
   return WEATHER_FAIR_SKIES;
 };
 
-export const centralThanalan = (chance) => {
+export const centralThanalan = (chance: number): string => {
   if (chance < 15) {
     return WEATHER_DUST_STORMS;
   }
@@ -85,7 +85,7 @@ export const centralThanalan = (chance) => {
   return WEATHER_RAIN;
 };
 
-export const coerthasCentralHighlands = (chance) => {
+export const coerthasCentralHighlands = (chance: number): string => {
   if (chance < 20) {
     return WEATHER_BLIZZARDS;
   }
@@ -104,7 +104,7 @@ export const coerthasCentralHighlands = (chance) => {
   return WEATHER_FOG;
 };
 
-export const coerthasWesternHighlands = (chance) => {
+export const coerthasWesternHighlands = (chance: number): string => {
   if (chance < 20) {
     return WEATHER_BLIZZARDS;
   }
@@ -123,7 +123,7 @@ export const coerthasWesternHighlands = (chance) => {
   return WEATHER_FOG;
 };
 
-export const eastShroud = (chance) => {
+export const eastShroud = (chance: number): string => {
   if (chance < 5) {
     return WEATHER_THUNDER;
   }
@@ -145,7 +145,7 @@ export const eastShroud = (chance) => {
   return WEATHER_FAIR_SKIES;
 };
 
-export const easternLaNoscea = (chance) => {
+export const easternLaNoscea = (chance: number): string => {
   if (chance < 5) {
     return WEATHER_FOG;
   }
@@ -164,7 +164,7 @@ export const easternLaNoscea = (chance) => {
   return WEATHER_SHOWERS;
 };
 
-export const easternThanalan = (chance) => {
+export const easternThanalan = (chance: number): string => {
   if (chance < 40) {
     return WEATHER_CLEAR_SKIES;
   }
@@ -183,7 +183,7 @@ export const easternThanalan = (chance) => {
   return WEATHER_SHOWERS;
 };
 
-export const eulmore = (chance) => {
+export const eulmore = (chance: number): string => {
   if (chance < 10) {
     return WEATHER_GALES;
   }
@@ -202,7 +202,7 @@ export const eulmore = (chance) => {
   return WEATHER_CLEAR_SKIES;
 };
 
-export const eurekaAnemos = (chance) => {
+export const eurekaAnemos = (chance: number): string => {
   if (chance < 30) {
     return WEATHER_FAIR_SKIES;
   }
@@ -215,7 +215,7 @@ export const eurekaAnemos = (chance) => {
   return WEATHER_SNOW;
 };
 
-export const eurekaHydatos = (chance) => {
+export const eurekaHydatos = (chance: number): string => {
   if (chance < 12) {
     return WEATHER_FAIR_SKIES;
   }
@@ -231,7 +231,7 @@ export const eurekaHydatos = (chance) => {
   return WEATHER_SNOW;
 };
 
-export const eurekaPagos = (chance) => {
+export const eurekaPagos = (chance: number): string => {
   if (chance < 10) {
     return WEATHER_FAIR_SKIES;
   }
@@ -250,7 +250,7 @@ export const eurekaPagos = (chance) => {
   return WEATHER_BLIZZARDS;
 };
 
-export const eurekaPyros = (chance) => {
+export const eurekaPyros = (chance: number): string => {
   if (chance < 10) {
     return WEATHER_FAIR_SKIES;
   }
@@ -269,7 +269,7 @@ export const eurekaPyros = (chance) => {
   return WEATHER_SNOW;
 };
 
-export const gridania = (chance) => {
+export const gridania = (chance: number): string => {
   if (chance < 5) {
     return WEATHER_RAIN;
   }
@@ -291,7 +291,7 @@ export const gridania = (chance) => {
   return WEATHER_FAIR_SKIES;
 };
 
-export const idyllshire = (chance) => {
+export const idyllshire = (chance: number): string => {
   if (chance < 10) {
     return WEATHER_CLOUDS;
   }
@@ -310,7 +310,7 @@ export const idyllshire = (chance) => {
   return WEATHER_FAIR_SKIES;
 };
 
-export const ilMheg = (chance) => {
+export const ilMheg = (chance: number): string => {
   if (chance < 10) {
     return WEATHER_RAIN;
   }
@@ -329,7 +329,7 @@ export const ilMheg = (chance) => {
   return WEATHER_FAIR_SKIES;
 };
 
-export const ishgard = (chance) => {
+export const ishgard = (chance: number): string => {
   if (chance < 60) {
     return WEATHER_SNOW;
   }
@@ -345,7 +345,7 @@ export const ishgard = (chance) => {
   return WEATHER_FOG;
 };
 
-export const kholusia = (chance) => {
+export const kholusia = (chance: number): string => {
   if (chance < 10) {
     return WEATHER_GALES;
   }
@@ -364,7 +364,7 @@ export const kholusia = (chance) => {
   return WEATHER_CLEAR_SKIES;
 };
 
-export const kugane = (chance) => {
+export const kugane = (chance: number): string => {
   if (chance < 10) {
     return WEATHER_RAIN;
   }
@@ -380,7 +380,7 @@ export const kugane = (chance) => {
   return WEATHER_CLEAR_SKIES;
 };
 
-export const lakeland = (chance) => {
+export const lakeland = (chance: number): string => {
   if (chance < 20) {
     return WEATHER_CLEAR_SKIES;
   }
@@ -399,7 +399,7 @@ export const lakeland = (chance) => {
   return WEATHER_THUNDERSTORMS;
 };
 
-export const limsaLominsa = (chance) => {
+export const limsaLominsa = (chance: number): string => {
   if (chance < 20) {
     return WEATHER_CLOUDS;
   }
@@ -415,26 +415,7 @@ export const limsaLominsa = (chance) => {
   return WEATHER_RAIN;
 };
 
-export const lowerLaNoscea = (chance) => {
-  if (chance < 20) {
-    return WEATHER_CLOUDS;
-  }
-  if (chance < 50) {
-    return WEATHER_CLEAR_SKIES;
-  }
-  if (chance < 70) {
-    return WEATHER_FAIR_SKIES;
-  }
-  if (chance < 80) {
-    return WEATHER_WIND;
-  }
-  if (chance < 90) {
-    return WEATHER_FOG;
-  }
-  return WEATHER_RAIN;
-};
-
-export const middleLaNoscea = (chance) => {
+export const lowerLaNoscea = (chance: number): string => {
   if (chance < 20) {
     return WEATHER_CLOUDS;
   }
@@ -453,7 +434,26 @@ export const middleLaNoscea = (chance) => {
   return WEATHER_RAIN;
 };
 
-export const mist = (chance) => {
+export const middleLaNoscea = (chance: number): string => {
+  if (chance < 20) {
+    return WEATHER_CLOUDS;
+  }
+  if (chance < 50) {
+    return WEATHER_CLEAR_SKIES;
+  }
+  if (chance < 70) {
+    return WEATHER_FAIR_SKIES;
+  }
+  if (chance < 80) {
+    return WEATHER_WIND;
+  }
+  if (chance < 90) {
+    return WEATHER_FOG;
+  }
+  return WEATHER_RAIN;
+};
+
+export const mist = (chance: number): string => {
   if (chance < 20) {
     return WEATHER_CLOUDS;
   }
@@ -472,7 +472,7 @@ export const mist = (chance) => {
   return WEATHER_RAIN;
 };
 
-export const morDhona = (chance) => {
+export const morDhona = (chance: number): string => {
   if (chance < 15) {
     return WEATHER_CLOUDS;
   }
@@ -488,7 +488,7 @@ export const morDhona = (chance) => {
   return WEATHER_FAIR_SKIES;
 };
 
-export const northShroud = (chance) => {
+export const northShroud = (chance: number): string => {
   if (chance < 5) {
     return WEATHER_FOG;
   }
@@ -510,7 +510,7 @@ export const northShroud = (chance) => {
   return WEATHER_CLEAR_SKIES;
 };
 
-export const northernThanalan = (chance) => {
+export const northernThanalan = (chance: number): string => {
   if (chance < 5) {
     return WEATHER_CLEAR_SKIES;
   }
@@ -523,7 +523,7 @@ export const northernThanalan = (chance) => {
   return WEATHER_FOG;
 };
 
-export const outerLaNoscea = (chance) => {
+export const outerLaNoscea = (chance: number): string => {
   if (chance < 30) {
     return WEATHER_CLEAR_SKIES;
   }
@@ -539,7 +539,7 @@ export const outerLaNoscea = (chance) => {
   return WEATHER_RAIN;
 };
 
-export const rhalgrsReach = (chance) => {
+export const rhalgrsReach = (chance: number): string => {
   if (chance < 15) {
     return WEATHER_CLEAR_SKIES;
   }
@@ -555,7 +555,7 @@ export const rhalgrsReach = (chance) => {
   return WEATHER_THUNDER;
 };
 
-export const shirogane = (chance) => {
+export const shirogane = (chance: number): string => {
   if (chance < 10) {
     return WEATHER_RAIN;
   }
@@ -571,7 +571,7 @@ export const shirogane = (chance) => {
   return WEATHER_CLEAR_SKIES;
 };
 
-export const southShroud = (chance) => {
+export const southShroud = (chance: number): string => {
   if (chance < 5) {
     return WEATHER_FOG;
   }
@@ -593,7 +593,7 @@ export const southShroud = (chance) => {
   return WEATHER_CLEAR_SKIES;
 };
 
-export const southernThanalan = (chance) => {
+export const southernThanalan = (chance: number): string => {
   if (chance < 20) {
     return WEATHER_HEAT_WAVES;
   }
@@ -609,7 +609,7 @@ export const southernThanalan = (chance) => {
   return WEATHER_FOG;
 };
 
-export const theAzimSteppe = (chance) => {
+export const theAzimSteppe = (chance: number): string => {
   if (chance < 5) {
     return WEATHER_GALES;
   }
@@ -631,7 +631,7 @@ export const theAzimSteppe = (chance) => {
   return WEATHER_CLEAR_SKIES;
 };
 
-export const theChurningMists = (chance) => {
+export const theChurningMists = (chance: number): string => {
   if (chance < 10) {
     return WEATHER_CLOUDS;
   }
@@ -647,7 +647,7 @@ export const theChurningMists = (chance) => {
   return WEATHER_FAIR_SKIES;
 };
 
-export const theCrystarium = (chance) => {
+export const theCrystarium = (chance: number): string => {
   if (chance < 20) {
     return WEATHER_CLEAR_SKIES;
   }
@@ -666,7 +666,7 @@ export const theCrystarium = (chance) => {
   return WEATHER_THUNDERSTORMS;
 };
 
-export const theDiadem = (chance) => {
+export const theDiadem = (chance: number): string => {
   if (chance < 30) {
     return WEATHER_FAIR_SKIES;
   }
@@ -679,7 +679,7 @@ export const theDiadem = (chance) => {
   return WEATHER_UMBRAL_WIND;
 };
 
-export const theDravanianForelands = (chance) => {
+export const theDravanianForelands = (chance: number): string => {
   if (chance < 10) {
     return WEATHER_CLOUDS;
   }
@@ -698,7 +698,7 @@ export const theDravanianForelands = (chance) => {
   return WEATHER_FAIR_SKIES;
 };
 
-export const theDravanianHinterlands = (chance) => {
+export const theDravanianHinterlands = (chance: number): string => {
   if (chance < 10) {
     return WEATHER_CLOUDS;
   }
@@ -717,7 +717,7 @@ export const theDravanianHinterlands = (chance) => {
   return WEATHER_FAIR_SKIES;
 };
 
-export const theFringes = (chance) => {
+export const theFringes = (chance: number): string => {
   if (chance < 15) {
     return WEATHER_CLEAR_SKIES;
   }
@@ -733,7 +733,7 @@ export const theFringes = (chance) => {
   return WEATHER_THUNDER;
 };
 
-export const theGoblet = (chance) => {
+export const theGoblet = (chance: number): string => {
   if (chance < 40) {
     return WEATHER_CLEAR_SKIES;
   }
@@ -749,7 +749,7 @@ export const theGoblet = (chance) => {
   return WEATHER_RAIN;
 };
 
-export const theLavenderBeds = (chance) => {
+export const theLavenderBeds = (chance: number): string => {
   if (chance < 5) {
     return WEATHER_CLOUDS;
   }
@@ -771,7 +771,7 @@ export const theLavenderBeds = (chance) => {
   return WEATHER_FAIR_SKIES;
 };
 
-export const theLochs = (chance) => {
+export const theLochs = (chance: number): string => {
   if (chance < 20) {
     return WEATHER_CLEAR_SKIES;
   }
@@ -787,7 +787,7 @@ export const theLochs = (chance) => {
   return WEATHER_THUNDERSTORMS;
 };
 
-export const thePeaks = (chance) => {
+export const thePeaks = (chance: number): string => {
   if (chance < 10) {
     return WEATHER_CLEAR_SKIES;
   }
@@ -806,7 +806,7 @@ export const thePeaks = (chance) => {
   return WEATHER_DUST_STORMS;
 };
 
-export const theRaktikaGreatwood = (chance) => {
+export const theRaktikaGreatwood = (chance: number): string => {
   if (chance < 10) {
     return WEATHER_FOG;
   }
@@ -825,7 +825,7 @@ export const theRaktikaGreatwood = (chance) => {
   return WEATHER_CLOUDS;
 };
 
-export const theRubySea = (chance) => {
+export const theRubySea = (chance: number): string => {
   if (chance < 10) {
     return WEATHER_THUNDER;
   }
@@ -841,7 +841,7 @@ export const theRubySea = (chance) => {
   return WEATHER_CLEAR_SKIES;
 };
 
-export const theSeaOfClouds = (chance) => {
+export const theSeaOfClouds = (chance: number): string => {
   if (chance < 30) {
     return WEATHER_CLEAR_SKIES;
   }
@@ -860,7 +860,7 @@ export const theSeaOfClouds = (chance) => {
   return WEATHER_UMBRAL_WIND;
 };
 
-export const theTempest = (chance) => {
+export const theTempest = (chance: number): string => {
   if (chance < 20) {
     return WEATHER_CLOUDS;
   }
@@ -870,7 +870,7 @@ export const theTempest = (chance) => {
   return WEATHER_CLEAR_SKIES;
 };
 
-export const uldah = (chance) => {
+export const uldah = (chance: number): string => {
   if (chance < 40) {
     return WEATHER_CLEAR_SKIES;
   }
@@ -886,7 +886,7 @@ export const uldah = (chance) => {
   return WEATHER_RAIN;
 };
 
-export const upperLaNoscea = (chance) => {
+export const upperLaNoscea = (chance: number): string => {
   if (chance < 30) {
     return WEATHER_CLEAR_SKIES;
   }
@@ -905,7 +905,7 @@ export const upperLaNoscea = (chance) => {
   return WEATHER_THUNDERSTORMS;
 };
 
-export const westernLaNoscea = (chance) => {
+export const westernLaNoscea = (chance: number): string => {
   if (chance < 10) {
     return WEATHER_FOG;
   }
@@ -924,7 +924,7 @@ export const westernLaNoscea = (chance) => {
   return WEATHER_GALES;
 };
 
-export const westernThanalan = (chance) => {
+export const westernThanalan = (chance: number): string => {
   if (chance < 40) {
     return WEATHER_CLEAR_SKIES;
   }
@@ -940,7 +940,7 @@ export const westernThanalan = (chance) => {
   return WEATHER_RAIN;
 };
 
-export const wolvesDenPier = (chance) => {
+export const wolvesDenPier = (chance: number): string => {
   if (chance < 20) {
     return WEATHER_CLOUDS;
   }
@@ -956,7 +956,7 @@ export const wolvesDenPier = (chance) => {
   return WEATHER_THUNDERSTORMS;
 };
 
-export const yanxia = (chance) => {
+export const yanxia = (chance: number): string => {
   if (chance < 5) {
     return WEATHER_SHOWERS;
   }

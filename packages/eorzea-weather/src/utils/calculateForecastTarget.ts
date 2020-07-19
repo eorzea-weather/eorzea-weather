@@ -1,6 +1,6 @@
 // Thanks to Rogueadyn's SaintCoinach library for this calculation.
 // lDate is the current local time.
-export default (date) => {
+export default (date: Date): number => {
   const unixtime = Math.floor(date.getTime() / 1000);
   // Get Eorzea hour for weather start
   const bell = unixtime / 175;

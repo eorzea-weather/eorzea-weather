@@ -1,8 +1,8 @@
 import EorzeaWeather from '../EorzeaWeather';
 
-test('zoneId returns a zone ID', () => {
+test('validate() returns a boolean', () => {
   const eorzeaWeather = new EorzeaWeather('eurekaAnemos');
-  expect(eorzeaWeather.zoneId).toMatch('eurekaAnemos');
+  expect(eorzeaWeather.validate()).toBe(true);
 });
 
 test('getWeather() returns a weather', () => {
