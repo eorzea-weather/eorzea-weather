@@ -1,30 +1,36 @@
 {
-  "author": {
-    "email": "flowercartelet@gmail.com",
-    "name": "Lily Cartelet",
-    "url": "https://flowercartelet.com/"
-  },
+  "author": "Lily Cartelet <flowercartelet@gmail.com>",
   "bugs": {
-    "url": "https://github.com/flowercartelet/eorzea-weather/issues"
+    "url": "https://github.com/eorzea-weather/eorzea-weather/issues"
   },
   "dependencies": {},
   "description": "Weather forecast for Eorzea.",
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.44",
-    "@babel/preset-env": "^7.0.0-beta.44",
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^26.0.1",
+    "@types/jest": "^26.0.4",
+    "@typescript-eslint/eslint-plugin": "^3.6.0",
+    "@typescript-eslint/parser": "^3.6.0",
     "cross-env": "^7.0.2",
     "eslint": "^7.4.0",
-    "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-plugin-import": "^2.10.0",
-    "jest": "^26.0.1",
-    "npm-run-all": "^4.1.2",
-    "rimraf": "^3.0.0",
-    "rollup": "^1.16.7",
-    "rollup-plugin-babel": "^v4.4.0",
-    "rollup-plugin-json": "^4.0.0",
-    "rollup-plugin-uglify": "^6.0.2"
+    "jest": "^26.1.0",
+    "microbundle": "^0.12.2",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^26.1.1",
+    "typescript": "^3.9.6"
+  },
+  "eslintConfig": {
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:@typescript-eslint/recommended-requiring-type-checking"
+    ],
+    "parserOptions": {
+      "project": "tsconfig.json"
+    },
+    "root": true
+  },
+  "jest": {
+    "preset": "ts-jest"
   },
   "keywords": [
     "Eorzea",
@@ -32,21 +38,25 @@
     "FINAL FANTASY XIV",
     "Weather"
   ],
-  "homepage": "https://github.com/flowercartelet/eorzea-weather",
+  "homepage": "https://github.com/eorzea-weather/eorzea-weather",
   "license": "MIT",
-  "main": "./dist/eorzea-weather.min.js",
-  "module": "./lib/eorzea-weather.js",
+  "main": "dist/eorzea-weather.js",
+  "module": "dist/eorzea-weather.module.js",
   "name": "eorzea-weather",
   "repository": {
     "type": "git",
-    "url": "https://github.com/flowercartelet/eorzea-weather.git"
+    "url": "https://github.com/eorzea-weather/eorzea-weather.git"
   },
   "scripts": {
-    "build": "cross-env NODE_ENV=production rollup -c",
-    "clean": "rimraf dist lib",
+    "build": "microbundle",
+    "clean": "rimraf dist",
+    "dev": "microbundle watch",
     "lint": "eslint .",
-    "prepublishOnly": "npm-run-all lint test clean build",
-    "test": "cross-env NODE_ENV=test jest"
+    "prebuild": "npm-run-all clean",
+    "prepublishOnly": "npm-run-all lint test build",
+    "test": "jest"
   },
+  "source": "src/index.ts",
+  "unpkg": "dist/eorzea-weather.umd.js",
   "version": "2.4.0"
 }

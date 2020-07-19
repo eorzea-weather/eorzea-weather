@@ -1,4 +1,4 @@
-{
+export default {
   "weathers.blizzards": "吹雪",
   "weathers.clearSkies": "快晴",
   "weathers.clouds": "曇り",
