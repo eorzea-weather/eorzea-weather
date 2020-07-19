@@ -72,6 +72,7 @@
     "test": "jest"
   },
   "source": "src/index.ts",
+  "types": "dist/index.d.ts",
   "unpkg": "dist/eorzea-weather.umd.js",
   "version": "3.0.0"
 }
