@@ -1,46 +1,29 @@
 import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
+import Link, { LinkProps } from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import { MDXProvider } from '@mdx-js/react';
-import PropTypes from 'prop-types';
-import React from 'react';
+import React, { FC } from 'react';
 
-const A = ({ children, ...props }) => (
+const A: FC<LinkProps> = ({ children, ...props }) => (
   <Link rel="noopener noreferrer" target="_blank" {...props}>
     {children}
   </Link>
 );
 
-A.propTypes = {
-  children: PropTypes.node.isRequired,
-};
-
-const H1 = ({ children }) => (
+const H1: FC = ({ children }) => (
   <Typography component="h1" gutterBottom variant="h4">
     {children}
   </Typography>
 );
 
-H1.propTypes = {
-  children: PropTypes.node.isRequired,
-};
-
-const H2 = ({ children }) => (
+const H2: FC = ({ children }) => (
   <Typography component="h2" gutterBottom variant="h5">
     {children}
   </Typography>
 );
 
-H2.propTypes = {
-  children: PropTypes.node.isRequired,
-};
-
-const P = ({ children }) => <Typography paragraph>{children}</Typography>;
-
-P.propTypes = {
-  children: PropTypes.node.isRequired,
-};
+const P: FC = ({ children }) => <Typography paragraph>{children}</Typography>;
 
 const components = {
   a: A,
@@ -58,7 +41,7 @@ const useStyles = makeStyles((theme) =>
   }),
 );
 
-const Markdown = ({ children }) => {
+const Markdown: FC = ({ children }) => {
   const classes = useStyles();
 
   return (
@@ -66,10 +49,6 @@ const Markdown = ({ children }) => {
       <MDXProvider components={components}>{children}</MDXProvider>
     </Container>
   );
-};
-
-Markdown.propTypes = {
-  children: PropTypes.node.isRequired,
 };
 
 export default Markdown;

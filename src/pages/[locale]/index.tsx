@@ -3,13 +3,15 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import { useLocale, useMessageFormatter } from '@react-aria/i18n';
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Link from 'next/link';
-import PropTypes from 'prop-types';
 import React from 'react';
-import Helmet from 'react-helmet';
-import Ad from '../../components/Ad';
-import ZoneList from '../../components/ZoneList';
-import { AVAILABLE_LOCALES } from '../../constants';
+import { Helmet } from 'react-helmet';
+import Ad from '@/components/Ad';
+import ZoneList from '@/components/ZoneList';
+import { AVAILABLE_LOCALES } from '@/constants';
+
+const availableLocales = Object.keys(AVAILABLE_LOCALES);
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -37,9 +39,28 @@ const useStyles = makeStyles((theme) =>
   }),
 );
 
-export const getStaticProps = async ({ params }) => {
+type Params = {
+  locale: string;
+};
+
+type Props = {
+  locale: string;
+  messages: {
+    [key: string]: {
+      [key: string]: string;
+    };
+  };
+};
+
+export const getStaticProps: GetStaticProps<Props, Params> = async ({
+  params,
+}) => {
+  if (!params?.locale) throw new TypeError('locale is required.');
+
   const { locale } = params;
-  const { default: message } = await import(`../../intl/home/${locale}.json`);
+  const message = await import(`@/intl/home/${locale}.json`).then(
+    (mod: { default: { [key: string]: string } }) => mod.default,
+  );
 
   return {
     props: {
@@ -51,14 +72,15 @@ export const getStaticProps = async ({ params }) => {
   };
 };
 
-export const getStaticPaths = () => ({
+// eslint-disable-next-line @typescript-eslint/require-await
+export const getStaticPaths: GetStaticPaths<Params> = async () => ({
   fallback: false,
-  paths: Object.keys(AVAILABLE_LOCALES).map((locale) => ({
+  paths: availableLocales.map((locale) => ({
     params: { locale },
   })),
 });
 
-const Home = ({ messages }) => {
+const Home: NextPage<Props> = ({ messages }) => {
   const { locale } = useLocale();
   const formatMessage = useMessageFormatter(messages);
   const classes = useStyles();
@@ -100,11 +122,6 @@ const Home = ({ messages }) => {
         )}
     </>
   );
-};
-
-Home.propTypes = {
-  messages: PropTypes.objectOf(PropTypes.objectOf(PropTypes.string.isRequired))
-    .isRequired,
 };
 
 export default Home;

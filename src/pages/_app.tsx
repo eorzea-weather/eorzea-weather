@@ -1,12 +1,12 @@
 import blue from '@material-ui/core/colors/blue';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import { I18nProvider } from '@react-aria/i18n';
+import { AppProps } from 'next/app';
 import Router from 'next/router';
-import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
-import Layout from '../components/Layout';
-import { Provider as ZoneProvider } from '../context/zone';
-import tracker from '../utils/tracker';
+import Layout from '@/components/Layout';
+import { Provider as ZoneProvider } from '@/context/zone';
+import tracker from '@/utils/tracker';
 
 const theme = createMuiTheme({
   palette: {
@@ -14,9 +14,13 @@ const theme = createMuiTheme({
   },
 });
 
-const MyApp = ({ Component, pageProps }) => {
+type PageProps = {
+  locale: string;
+};
+
+const MyApp = ({ Component, pageProps }: AppProps<PageProps>): JSX.Element => {
   useEffect(() => {
-    const handleRouteChangeComplete = (url) => {
+    const handleRouteChangeComplete = (url: string) => {
       tracker.track({
         path: url,
         title: document.title,
@@ -38,8 +42,10 @@ const MyApp = ({ Component, pageProps }) => {
     }
   }, []);
 
+  const locale = (pageProps as PageProps).locale || 'en';
+
   return (
-    <I18nProvider locale={pageProps.locale || 'en'}>
+    <I18nProvider locale={locale}>
       <MuiThemeProvider theme={theme}>
         <ZoneProvider>
           <Layout>
@@ -49,13 +55,6 @@ const MyApp = ({ Component, pageProps }) => {
       </MuiThemeProvider>
     </I18nProvider>
   );
-};
-
-MyApp.propTypes = {
-  Component: PropTypes.elementType.isRequired,
-  pageProps: PropTypes.shape({
-    locale: PropTypes.string,
-  }).isRequired,
 };
 
 export default MyApp;

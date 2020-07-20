@@ -4,11 +4,10 @@ import { createStyles, makeStyles } from '@material-ui/core/styles';
 import { useLocale, useMessageFormatter } from '@react-aria/i18n';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import PropTypes from 'prop-types';
-import React from 'react';
+import React, { FC } from 'react';
 import { Helmet } from 'react-helmet';
-import { AVAILABLE_LOCALES } from '../../constants';
-import AppHeader from '../AppHeader';
+import AppHeader from '@/components/AppHeader';
+import { AVAILABLE_LOCALES } from '@/constants';
 import messages from './intl';
 
 const useStyles = makeStyles((theme) =>
@@ -34,7 +33,7 @@ const useStyles = makeStyles((theme) =>
   }),
 );
 
-const Layout = ({ children }) => {
+const Layout: FC = ({ children }) => {
   const { direction, locale } = useLocale();
   const messageFormatter = useMessageFormatter(messages);
   const router = useRouter();
@@ -96,14 +95,6 @@ const Layout = ({ children }) => {
       </footer>
     </>
   );
-};
-
-Layout.propTypes = {
-  children: PropTypes.node,
-};
-
-Layout.defaultProps = {
-  children: null,
 };
 
 export default Layout;

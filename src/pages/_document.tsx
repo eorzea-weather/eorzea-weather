@@ -1,12 +1,19 @@
 import { ServerStyleSheets } from '@material-ui/core/styles';
 import CleanCSS from 'clean-css';
-import Document, { Head, Html, Main, NextScript } from 'next/document';
+import Document, {
+  DocumentContext,
+  DocumentInitialProps,
+  Head,
+  Html,
+  Main,
+  NextScript,
+} from 'next/document';
 import React from 'react';
 import Helmet from 'react-helmet';
 
 const cleanCSS = new CleanCSS();
 
-const createTrackingCode = (trackingID) =>
+const createTrackingCode = (trackingID: string) =>
   [
     'window.dataLayer = window.dataLayer || [];',
     'function gtag(){dataLayer.push(arguments);}',
@@ -15,13 +22,16 @@ const createTrackingCode = (trackingID) =>
   ].join('\n');
 
 class MyDocument extends Document {
-  static async getInitialProps(ctx) {
+  static async getInitialProps(
+    ctx: DocumentContext,
+  ): Promise<DocumentInitialProps> {
     const sheets = new ServerStyleSheets();
     const initialProps = await super.getInitialProps({
       ...ctx,
       renderPage: () =>
         ctx.renderPage({
-          enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
+          enhanceApp: (App) => (props): JSX.Element =>
+            sheets.collect(<App {...props} />),
         }),
     });
     const css = sheets.toString();
@@ -42,7 +52,7 @@ class MyDocument extends Document {
     };
   }
 
-  render() {
+  render(): JSX.Element {
     const helmet = Helmet.renderStatic();
 
     return (

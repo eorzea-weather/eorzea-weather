@@ -1,4 +1,6 @@
-const handler = (_req, res) => {
+import { NextApiHandler } from 'next';
+
+const handler: NextApiHandler<string> = (_req, res) => {
   let result = '';
 
   if (process.env.NEXT_PUBLIC_GOOGLE_ADCENSE_CLIENT_ID) {

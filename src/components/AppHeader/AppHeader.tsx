@@ -10,14 +10,24 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { useLocale } from '@react-aria/i18n';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import PropTypes from 'prop-types';
-import React, { forwardRef, useCallback, useState } from 'react';
-import { AVAILABLE_LOCALES } from '../constants';
-import AppDrawer from './AppDrawer';
-import EorzeaClock from './EorzeaClock';
+import React, { FC, useCallback, useState } from 'react';
+import AppDrawer from '@/components/AppDrawer';
+import EorzeaClock from '@/components/EorzeaClock';
+import { AVAILABLE_LOCALES } from '@/constants';
 
 const useStyles = makeStyles((theme) =>
   createStyles({
+    menuItem: {
+      padding: 0,
+    },
+    menuLink: {
+      color: 'inherit',
+      display: 'block',
+      padding: [theme.spacing(0.75), theme.spacing(2)]
+        .map((v) => `${v}px`)
+        .join(' '),
+      textDecoration: 'inherit',
+    },
     title: {
       color: 'inherit',
       textDecoration: 'none',
@@ -31,24 +41,7 @@ const useStyles = makeStyles((theme) =>
   }),
 );
 
-const MenuItemLink = forwardRef(
-  ({ as, children, href, prefetch, ...props }, ref) => (
-    <Link as={as} href={href} prefetch>
-      <a {...props} ref={ref}>
-        {children}
-      </a>
-    </Link>
-  ),
-);
-
-MenuItemLink.propTypes = {
-  as: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
-  href: PropTypes.string.isRequired,
-  prefetch: PropTypes.bool.isRequired,
-};
-
-const AppHeader = () => {
+const AppHeader: FC = () => {
   const [open, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const { locale } = useLocale();
@@ -75,11 +68,7 @@ const AppHeader = () => {
 
   return (
     <>
-      <AppBar
-        className={classes.appBar}
-        elevation={isHome ? 0 : 4}
-        position="fixed"
-      >
+      <AppBar elevation={isHome ? 0 : 4} position="fixed">
         <Toolbar>
           <IconButton color="inherit" onClick={handleMenuIconClick}>
             <MenuIcon />
@@ -103,9 +92,6 @@ const AppHeader = () => {
                 <LanguageIcon />
               </IconButton>
               <Menu
-                MenuListProps={{
-                  component: 'div',
-                }}
                 anchorEl={anchorEl}
                 anchorOrigin={{
                   horizontal: 'right',
@@ -121,20 +107,28 @@ const AppHeader = () => {
                 {Object.entries(AVAILABLE_LOCALES).map(
                   ([availableLocale, label]) => (
                     <MenuItem
-                      as={`/${availableLocale}${router.asPath.replace(
-                        /^\/[^/]+/,
-                        '',
-                      )}`}
-                      component={MenuItemLink}
-                      href={router.pathname}
-                      hrefLang={availableLocale}
+                      className={classes.menuItem}
                       key={`item-${availableLocale}`}
-                      lang={availableLocale}
                       onClick={handleMenuClose}
-                      prefetch={false}
                       selected={availableLocale === locale}
                     >
-                      {label}
+                      <Link
+                        as={`/${availableLocale}${router.asPath.replace(
+                          /^\/[^/]+/,
+                          '',
+                        )}`}
+                        href={router.pathname}
+                        prefetch={false}
+                      >
+                        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                        <a
+                          className={classes.menuLink}
+                          hrefLang={availableLocale}
+                          lang={availableLocale}
+                        >
+                          {label}
+                        </a>
+                      </Link>
                     </MenuItem>
                   ),
                 )}
