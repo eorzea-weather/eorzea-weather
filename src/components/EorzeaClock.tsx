@@ -1,12 +1,12 @@
 import Typography from '@material-ui/core/Typography';
 import EorzeaTime from 'eorzea-time';
-import React, { useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 
-const EorzeaClock = () => {
-  const [date, setDate] = useState(null);
+const EorzeaClock: FC = () => {
+  const [date, setDate] = useState<EorzeaTime>();
 
   useEffect(() => {
-    let requestID;
+    let requestID: number;
 
     const loop = () => {
       setDate(new EorzeaTime());

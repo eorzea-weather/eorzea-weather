@@ -16,9 +16,15 @@ import camelCase from 'lodash/camelCase';
 import chunk from 'lodash/chunk';
 import range from 'lodash/range';
 import uniq from 'lodash/uniq';
-import PropTypes from 'prop-types';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, {
+  ChangeEvent,
+  FC,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react';
 import useSWR from 'swr';
+import Weather from '@/types/Weather';
 import WeatherTableCell from './WeatherTableCell';
 import messages from './intl';
 
@@ -51,11 +57,15 @@ const useStyles = makeStyles((theme) =>
   }),
 );
 
-const WeatherTable = ({ zoneID }) => {
-  const [highlightedWeathers, setHighlightedWeathers] = useState([]);
+type Props = {
+  zoneID: string;
+};
+
+const WeatherTable: FC<Props> = ({ zoneID }) => {
+  const [highlightedWeathers, setHighlightedWeathers] = useState<string[]>([]);
   const { locale } = useLocale();
   const messageFormatter = useMessageFormatter(messages);
-  const { data: weatherTable } = useSWR(
+  const { data: weatherTable } = useSWR<Weather[]>(
     `/api/zones/${camelCase(zoneID)}/forecast?locale=${locale}`,
     async (key) => {
       const res = await fetch(key);
@@ -65,24 +75,27 @@ const WeatherTable = ({ zoneID }) => {
   );
   const classes = useStyles();
 
-  const handleFilterChange = useCallback(({ target }) => {
-    const { checked, value } = target;
+  const handleFilterChange = useCallback(
+    ({ target }: ChangeEvent<HTMLInputElement>) => {
+      const { checked, value } = target;
 
-    if (value) {
-      setHighlightedWeathers((values) => {
-        const newValues = [...values];
-        const index = values.indexOf(value);
+      if (value) {
+        setHighlightedWeathers((values) => {
+          const newValues = [...values];
+          const index = values.indexOf(value);
 
-        if (index >= 0) {
-          newValues.splice(index, 1);
-        } else if (checked) {
-          newValues.push(value);
-        }
+          if (index >= 0) {
+            newValues.splice(index, 1);
+          } else if (checked) {
+            newValues.push(value);
+          }
 
-        return newValues;
-      });
-    }
-  }, []);
+          return newValues;
+        });
+      }
+    },
+    [],
+  );
 
   useEffect(() => {
     setHighlightedWeathers([]);
@@ -163,10 +176,6 @@ const WeatherTable = ({ zoneID }) => {
       )}
     </>
   );
-};
-
-WeatherTable.propTypes = {
-  zoneID: PropTypes.string.isRequired,
 };
 
 export default WeatherTable;

@@ -1,8 +1,13 @@
 import classNames from 'classnames';
-import PropTypes from 'prop-types';
-import React, { useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 
-const Ad = ({ className, format, slot }) => {
+type Props = {
+  className?: string;
+  format?: string;
+  slot: string;
+};
+
+const Ad: FC<Props> = ({ className, format = 'auto', slot }) => {
   useEffect(() => {
     (window.adsbygoogle = window.adsbygoogle || []).push({});
   }, []);
@@ -17,17 +22,6 @@ const Ad = ({ className, format, slot }) => {
       data-full-width-responsive="true"
     />
   );
-};
-
-Ad.propTypes = {
-  className: PropTypes.string,
-  format: PropTypes.string,
-  slot: PropTypes.string.isRequired,
-};
-
-Ad.defaultProps = {
-  className: undefined,
-  format: 'auto',
 };
 
 export default Ad;

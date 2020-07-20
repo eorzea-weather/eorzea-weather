@@ -5,8 +5,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import PropTypes from 'prop-types';
-import React, { useCallback, useState } from 'react';
+import React, { FC, useCallback, useState } from 'react';
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -17,7 +16,11 @@ const useStyles = makeStyles((theme) =>
   }),
 );
 
-const AppDrawerNavItem = ({ children, label }) => {
+type Props = {
+  label: string;
+};
+
+const AppDrawerNavItem: FC<Props> = ({ children, label }) => {
   const [open, setOpen] = useState(false);
   const classes = useStyles();
 
@@ -43,11 +46,6 @@ const AppDrawerNavItem = ({ children, label }) => {
       </Collapse>
     </>
   );
-};
-
-AppDrawerNavItem.propTypes = {
-  children: PropTypes.node.isRequired,
-  label: PropTypes.string.isRequired,
 };
 
 export default AppDrawerNavItem;

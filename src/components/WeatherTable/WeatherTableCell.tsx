@@ -5,9 +5,8 @@ import Typography from '@material-ui/core/Typography';
 import Skeleton from '@material-ui/lab/Skeleton';
 import { useDateFormatter } from '@react-aria/i18n';
 import classNames from 'classnames';
-import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
-import weatherShape from '../../types/weatherShape';
+import React, { FC, useEffect, useState } from 'react';
+import Weather from '@/types/Weather';
 
 const EIGHT_HOURS = 8 * 175 * 1000;
 
@@ -36,7 +35,12 @@ const useStyles = makeStyles((theme) =>
   }),
 );
 
-const WeatherTableCell = ({ highlight, value }) => {
+type Props = {
+  highlight?: boolean;
+  value?: Weather;
+};
+
+const WeatherTableCell: FC<Props> = ({ highlight = false, value }) => {
   const [now, setNow] = useState(() => Date.now());
   const dateFormatter = useDateFormatter({
     hour: 'numeric',
@@ -52,15 +56,15 @@ const WeatherTableCell = ({ highlight, value }) => {
   });
   const classes = useStyles();
 
-  const startedAt = value?.startedAt && new Date(value.startedAt);
-  const time = startedAt?.getTime() || 0;
+  const startedAt = value ? new Date(value.startedAt) : new Date(0);
+  const time = startedAt.getTime();
   const className = classNames(classes.root, {
     [classes.highlight]: highlight,
     [classes.past]: time + EIGHT_HOURS < now,
   });
 
   useEffect(() => {
-    let requestID;
+    let requestID: number;
 
     const loop = () => {
       setNow(Date.now());
@@ -102,16 +106,6 @@ const WeatherTableCell = ({ highlight, value }) => {
       )}
     </TableCell>
   );
-};
-
-WeatherTableCell.propTypes = {
-  highlight: PropTypes.bool,
-  value: weatherShape,
-};
-
-WeatherTableCell.defaultProps = {
-  highlight: false,
-  value: undefined,
 };
 
 export default WeatherTableCell;

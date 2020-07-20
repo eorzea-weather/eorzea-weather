@@ -6,10 +6,10 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import { useLocale } from '@react-aria/i18n';
 import kebabCase from 'lodash/kebabCase';
 import Link from 'next/link';
-import React from 'react';
-import { useZoneList } from '../../context/zone';
+import React, { FC } from 'react';
+import { useZoneList } from '@/context/zone';
 
-const ZoneList = () => {
+const ZoneList: FC = () => {
   const { locale } = useLocale();
   const zoneList = useZoneList();
 

@@ -4,13 +4,15 @@ import { createStyles, makeStyles } from '@material-ui/core/styles';
 import { useMessageFormatter } from '@react-aria/i18n';
 import camelCase from 'lodash/camelCase';
 import kebabCase from 'lodash/kebabCase';
-import PropTypes from 'prop-types';
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import Ad from '../../../components/Ad';
-import WeatherTable from '../../../components/WeatherTable';
-import { AVAILABLE_LOCALES, EORZEA_ZONE_LIST } from '../../../constants';
-import { useZone } from '../../../context/zone';
+import Ad from '@/components/Ad';
+import WeatherTable from '@/components/WeatherTable';
+import { AVAILABLE_LOCALES, EORZEA_ZONE_LIST } from '@/constants';
+import { useZone } from '@/context/zone';
+
+const availableLocales = Object.keys(AVAILABLE_LOCALES);
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -34,10 +36,30 @@ const useStyles = makeStyles((theme) =>
   }),
 );
 
-export const getStaticProps = async ({ params }) => {
+type Params = {
+  locale: string;
+  id: string;
+};
+
+type Props = {
+  id: string;
+  locale: string;
+  messages: {
+    [key: string]: {
+      [key: string]: string;
+    };
+  };
+};
+
+export const getStaticProps: GetStaticProps<Props, Params> = async ({
+  params,
+}) => {
+  if (!params?.locale) throw new TypeError('locale is required.');
+  if (!params?.id) throw new TypeError('id is required.');
+
   const { locale } = params;
-  const { default: message } = await import(
-    `../../../intl/zone/${locale}.json`
+  const message = await import(`@/intl/zone/${locale}.json`).then(
+    (mod: { default: { [key: string]: string } }) => mod.default,
   );
   const id = camelCase(params.id);
 
@@ -52,12 +74,13 @@ export const getStaticProps = async ({ params }) => {
   };
 };
 
-export const getStaticPaths = () => ({
+// eslint-disable-next-line @typescript-eslint/require-await
+export const getStaticPaths: GetStaticPaths<Params> = async () => ({
   fallback: false,
-  paths: EORZEA_ZONE_LIST.reduce(
+  paths: EORZEA_ZONE_LIST.reduce<{ params: Params }[]>(
     (result, id) =>
       result.concat(
-        Object.keys(AVAILABLE_LOCALES).map((locale) => ({
+        availableLocales.map((locale) => ({
           params: {
             locale,
             id: kebabCase(id),
@@ -68,7 +91,7 @@ export const getStaticPaths = () => ({
   ),
 });
 
-const Zone = ({ id, messages }) => {
+const Zone: NextPage<Props> = ({ id, messages }) => {
   const messageFormatter = useMessageFormatter(messages);
   const zone = useZone({ id });
   const classes = useStyles();
@@ -100,12 +123,6 @@ const Zone = ({ id, messages }) => {
         )}
     </>
   );
-};
-
-Zone.propTypes = {
-  id: PropTypes.string.isRequired,
-  messages: PropTypes.objectOf(PropTypes.objectOf(PropTypes.string.isRequired))
-    .isRequired,
 };
 
 export default Zone;

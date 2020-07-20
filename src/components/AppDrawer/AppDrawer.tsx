@@ -9,22 +9,14 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { useLocale, useMessageFormatter } from '@react-aria/i18n';
 import kebabCase from 'lodash/kebabCase';
 import Link from 'next/link';
-import PropTypes from 'prop-types';
-import React, { useCallback } from 'react';
-import * as pkg from '../../../package.json';
-import { useZoneList } from '../../context/zone';
+import React, { FC, useCallback } from 'react';
+import * as pkg from '@/../package.json';
+import { useZoneList } from '@/context/zone';
 import AppDrawerNavItem from './AppDrawerNavItem';
 import messages from './intl';
 
-const normalizeRepositoryUrl = (repository) => {
-  if (repository.url) {
-    return repository.url.replace(/\.git$/, '');
-  }
-  if (typeof repository !== 'string') {
-    return null;
-  }
-  return `https://github.com/${repository}`;
-};
+const normalizeRepositoryUrl = (repository: { url: string }): string =>
+  repository.url.replace(/\.git$/, '');
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -44,15 +36,18 @@ const useStyles = makeStyles((theme) =>
   }),
 );
 
-const AppDrawer = ({ onClose, open }) => {
+type Props = {
+  onClose: () => void;
+  open: boolean;
+};
+
+const AppDrawer: FC<Props> = ({ onClose, open }) => {
   const { locale } = useLocale();
   const messageFormatter = useMessageFormatter(messages);
   const zoneList = useZoneList();
   const classes = useStyles();
 
-  const handleClose = useCallback((...args) => onClose(...args), [onClose]);
-
-  const repositoryUrl = normalizeRepositoryUrl(pkg.repository);
+  const handleClose = useCallback(() => onClose(), [onClose]);
 
   return (
     <Drawer
@@ -93,29 +88,19 @@ const AppDrawer = ({ onClose, open }) => {
       </List>
       <Divider />
       <List onKeyDown={handleClose}>
-        {repositoryUrl && (
-          <>
-            {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
-            <ListItem
-              button
-              component="a"
-              href={repositoryUrl}
-              onClick={handleClose}
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <ListItemText primary={messageFormatter('source_code')} />
-            </ListItem>
-          </>
-        )}
+        <ListItem
+          button
+          component="a"
+          href={normalizeRepositoryUrl(pkg.repository)}
+          onClick={handleClose}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <ListItemText primary={messageFormatter('source_code')} />
+        </ListItem>
       </List>
     </Drawer>
   );
-};
-
-AppDrawer.propTypes = {
-  onClose: PropTypes.func.isRequired,
-  open: PropTypes.bool.isRequired,
 };
 
 export default AppDrawer;

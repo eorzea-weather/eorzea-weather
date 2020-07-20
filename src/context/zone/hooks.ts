@@ -2,10 +2,10 @@ import { useMessageFormatter } from '@react-aria/i18n';
 import EorzeaWeather from 'eorzea-weather';
 import snakeCase from 'lodash/snakeCase';
 import { useContext } from 'react';
-import Context from './Context';
+import Context, { Zone } from './Context';
 import messages from './intl';
 
-export function useZone({ id }) {
+export function useZone({ id }: { id: string }): Zone {
   const { zones } = useContext(Context);
 
   return zones[id];
@@ -85,7 +85,11 @@ const areaMap = {
   ],
 };
 
-export function useZoneList() {
+type ZoneList = {
+  [area: string]: Zone[];
+};
+
+export function useZoneList(): ZoneList {
   const { zones } = useContext(Context);
   const formatMessage = useMessageFormatter(messages);
 
