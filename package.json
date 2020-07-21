@@ -18,8 +18,6 @@
     "core-js": "^3.6.5",
     "eorzea-time": "^3.0.0",
     "eorzea-weather": "^3.0.1",
-    "full-icu": "^1.3.1",
-    "localforage": "^1.7.4",
     "lodash": "^4.17.19",
     "next": "^9.4.4",
     "prop-types": "^15.7.2",
@@ -113,12 +111,12 @@
     "url": "https://github.com/eorzea-weather/eorzea-weather-app.git"
   },
   "scripts": {
-    "build": "NODE_ICU_DATA=node_modules/full-icu next build",
-    "dev": "NODE_ICU_DATA=node_modules/full-icu next",
+    "build": "next build",
+    "dev": "next",
     "format": "prettier --write .",
     "format-check": "prettier --check --write .",
     "lint": "eslint .",
-    "start": "NODE_ICU_DATA=node_modules/full-icu next start"
+    "start": "next start"
   },
   "version": "1.0.0"
 }
