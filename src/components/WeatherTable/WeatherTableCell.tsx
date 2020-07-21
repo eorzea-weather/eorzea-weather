@@ -4,7 +4,7 @@ import TableCell from '@material-ui/core/TableCell';
 import Typography from '@material-ui/core/Typography';
 import Skeleton from '@material-ui/lab/Skeleton';
 import { useDateFormatter } from '@react-aria/i18n';
-import classNames from 'classnames';
+import clsx from 'clsx';
 import React, { FC, useEffect, useState } from 'react';
 import Weather from '@/types/Weather';
 
@@ -58,10 +58,6 @@ const WeatherTableCell: FC<Props> = ({ highlight = false, value }) => {
 
   const startedAt = value ? new Date(value.startedAt) : new Date(0);
   const time = startedAt.getTime();
-  const className = classNames(classes.root, {
-    [classes.highlight]: highlight,
-    [classes.past]: time + EIGHT_HOURS < now,
-  });
 
   useEffect(() => {
     let requestID: number;
@@ -80,7 +76,12 @@ const WeatherTableCell: FC<Props> = ({ highlight = false, value }) => {
   }, []);
 
   return (
-    <TableCell className={className}>
+    <TableCell
+      className={clsx(classes.root, {
+        [classes.highlight]: highlight,
+        [classes.past]: time + EIGHT_HOURS < now,
+      })}
+    >
       <Typography color="inherit">
         {value ? (
           <>

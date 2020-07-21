@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import clsx from 'clsx';
 import React, { FC, useEffect } from 'react';
 
 type Props = {
@@ -14,7 +14,7 @@ const Ad: FC<Props> = ({ className, format = 'auto', slot }) => {
 
   return (
     <ins
-      className={classNames('adsbygoogle', className)}
+      className={clsx('adsbygoogle', className)}
       style={{ display: 'block' }}
       data-ad-client={process.env.NEXT_PUBLIC_GOOGLE_ADCENSE_CLIENT_ID}
       data-ad-format={format}
