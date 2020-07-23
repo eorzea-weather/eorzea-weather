@@ -108,19 +108,21 @@ const Zone: NextPage<Props> = ({ id, messages }) => {
         <Typography className={classes.headline} variant="subtitle1">
           {title}
         </Typography>
+
+        {process.env.NEXT_PUBLIC_GOOGLE_ADCENSE_CLIENT_ID &&
+          process.env.NEXT_PUBLIC_GOOGLE_ADCENSE_AD_SLOT && (
+            <Container maxWidth="md">
+              <Ad
+                className={classes.ad}
+                format="horizontal"
+                key={`ad-for-${zone.id}`}
+                slot={process.env.NEXT_PUBLIC_GOOGLE_ADCENSE_AD_SLOT}
+              />
+            </Container>
+          )}
+
         <WeatherTable zoneID={zone.id} />
       </main>
-
-      {process.env.NEXT_PUBLIC_GOOGLE_ADCENSE_CLIENT_ID &&
-        process.env.NEXT_PUBLIC_GOOGLE_ADCENSE_AD_SLOT && (
-          <Container maxWidth="md">
-            <Ad
-              className={classes.ad}
-              key={`ad-for-${zone.id}`}
-              slot={process.env.NEXT_PUBLIC_GOOGLE_ADCENSE_AD_SLOT}
-            />
-          </Container>
-        )}
     </>
   );
 };
