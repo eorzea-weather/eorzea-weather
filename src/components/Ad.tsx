@@ -19,7 +19,7 @@ const Ad: FC<Props> = ({ className, format = 'auto', slot }) => {
       data-ad-client={process.env.NEXT_PUBLIC_GOOGLE_ADCENSE_CLIENT_ID}
       data-ad-format={format}
       data-ad-slot={slot}
-      data-full-width-responsive="true"
+      data-full-width-responsive={format !== 'auto' ? 'false' : 'true'}
     />
   );
 };
