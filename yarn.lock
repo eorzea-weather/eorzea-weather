@@ -1185,19 +1185,19 @@
   resolved "https://registry.yarnpkg.com/@next/react-refresh-utils/-/react-refresh-utils-9.4.4.tgz#d94cbb3b354a07f1f5b80e554d6b9e34aba99e41"
   integrity sha512-9nKENeWRI6kQk44TbeqleIVtNLfcS3klVUepzl/ZCqzR5Bi06uqBCD277hdVvG/wL1pxA+R/pgJQLqnF5E2wPQ==
 
-"@react-aria/i18n@^3.0.2":
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/@react-aria/i18n/-/i18n-3.0.2.tgz#e2430164681fe6f4ab1ba332123835e05cf92add"
-  integrity sha512-fI7l/eHG8MIv5gEaTsASENgVyA0aFM0cJ4HqA+gNZlZyLKHoCGPxp9o8zLx2Em+JoHb9UI/W7dUG73fOJGvKvA==
+"@react-aria/i18n@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@react-aria/i18n/-/i18n-3.1.0.tgz#1b0cc60ed5c253fbb5065b0e0b31e69d39cad253"
+  integrity sha512-d4TH0fQ62Li7RrEX7Vw375A3IU2CkgFHMe0ily77tQqVFkxY6N9uLNWODPi6+w1gNDXEB6g48u4xTTFh5rMElw==
   dependencies:
     "@babel/runtime" "^7.6.2"
-    "@react-types/shared" "^3.0.2"
+    "@react-types/shared" "^3.1.0"
     intl-messageformat "^2.2.0"
 
-"@react-types/shared@^3.0.2":
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/@react-types/shared/-/shared-3.0.2.tgz#99aed8bbc902e40c796e8cab6d554eee02a4ed5e"
-  integrity sha512-j7wuNbh/o+iMqyCWL0HybxWmThPBoEaPVALCS3Q8eUmNbsnZUMGqMrbartmN1YVBbceDbBl3D840NolL3Gx6wA==
+"@react-types/shared@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@react-types/shared/-/shared-3.1.0.tgz#92b4b5e727d4595247a25f946a98bbcfde71a67e"
+  integrity sha512-UwQBG3QLMx6i/gnQj19BjCvoEtZwsW9QB6lfLpaQb4K1jiEZouYjm+50SvgaJKXb2l0WsibHj9cEj9SABjw5Dg==
 
 "@types/accepts@^1.3.5":
   version "1.3.5"
