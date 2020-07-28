@@ -1,15 +1,13 @@
 const withMDX = require('@next/mdx')();
 
 const nextConfig = {
-  experimental: {
-    rewrites: () => [
-      {
-        destination: '/api/ads',
-        source: '/ads.txt',
-      },
-    ],
-  },
   pageExtensions: ['ts', 'tsx', 'mdx'],
+  rewrites: () => [
+    {
+      destination: '/api/ads',
+      source: '/ads.txt',
+    },
+  ],
 };
 
 module.exports = withMDX(nextConfig);
