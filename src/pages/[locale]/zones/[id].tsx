@@ -114,7 +114,6 @@ const Zone: NextPage<Props> = ({ id, messages }) => {
             <Container maxWidth="md">
               <Ad
                 className={classes.ad}
-                format="horizontal"
                 key={`ad-for-${zone.id}`}
                 slot={process.env.NEXT_PUBLIC_GOOGLE_ADCENSE_AD_SLOT}
               />
