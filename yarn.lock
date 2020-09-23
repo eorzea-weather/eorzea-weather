@@ -1294,14 +1294,22 @@
     "@nodelib/fs.scandir" "2.1.3"
     fastq "^1.6.0"
 
-"@react-aria/i18n@^3.1.0":
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/@react-aria/i18n/-/i18n-3.1.0.tgz#1b0cc60ed5c253fbb5065b0e0b31e69d39cad253"
-  integrity sha512-d4TH0fQ62Li7RrEX7Vw375A3IU2CkgFHMe0ily77tQqVFkxY6N9uLNWODPi6+w1gNDXEB6g48u4xTTFh5rMElw==
+"@react-aria/i18n@^3.1.1":
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/@react-aria/i18n/-/i18n-3.1.1.tgz#f92d9d2577ed4d7993b6ac3553b7c9da8dcdfa73"
+  integrity sha512-O38pZF2uFjU7bOce8+zWMrNw1RQa4FXsUd/D9VKOB+qKZUqYcfGlecZoXzDjiSym7zCBzX9ABK0e3AgbbLbugQ==
   dependencies:
     "@babel/runtime" "^7.6.2"
+    "@react-aria/ssr" "^3.0.0"
     "@react-types/shared" "^3.1.0"
     intl-messageformat "^2.2.0"
+
+"@react-aria/ssr@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@react-aria/ssr/-/ssr-3.0.0.tgz#6e31ac63f2ee3f6b706ef6ffc72858114b19c2ca"
+  integrity sha512-io9JKsc2Op4npPW5mqAEewA3KmOaV4+B4DA6PRFYLQI8DN83XuxTN8NFFmCCwPbqzQcPoT/y3c//Vx6tX3XM8w==
+  dependencies:
+    "@babel/runtime" "^7.6.2"
 
 "@react-types/shared@^3.1.0":
   version "3.1.0"
