@@ -4,12 +4,7 @@ import { AVAILABLE_LOCALES } from '@/constants';
 
 const availableLocales = Object.keys(AVAILABLE_LOCALES);
 
-export const getServerSideProps: GetServerSideProps = async ({
-  query,
-  res,
-  req,
-  // eslint-disable-next-line @typescript-eslint/require-await
-}) => {
+export const getServerSideProps: GetServerSideProps = ({ query, req }) => {
   const accept = accepts(req);
   const queriedLocale = Array.isArray(query.locale)
     ? query.locale[0]
@@ -21,16 +16,12 @@ export const getServerSideProps: GetServerSideProps = async ({
   const path = (req.url || '/').split('?')[0];
   const newPath = `/${locale}${path === '/' ? '' : path}`;
 
-  if (res) {
-    res.writeHead(307, {
-      Location: newPath,
-    });
-    res.end();
-  }
-
-  return {
-    props: {},
-  };
+  return Promise.resolve({
+    unstable_redirect: {
+      destination: newPath,
+      permanent: false,
+    },
+  });
 };
 
 const Redirect: NextPage = () => null;
