@@ -18,6 +18,7 @@ export default {
   'weathers.wind': '風',
   'zones.amhAraeng': 'アム・アレーン',
   'zones.azysLla': 'アジス・ラー',
+  'zones.bozjanSouthernFront': '南方ボズヤ戦線',
   'zones.centralShroud': '黒衣森：中央森林',
   'zones.centralThanalan': '中央ザナラーン',
   'zones.coerthasCentralHighlands': 'クルザス中央高地',

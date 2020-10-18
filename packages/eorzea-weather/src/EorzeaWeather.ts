@@ -18,6 +18,10 @@ export default class EorzeaWeather {
     return zones.ZONE_AZYS_LLA;
   }
 
+  static get ZONE_BOZJAN_SOUTHERN_FRONT(): string {
+    return zones.ZONE_BOZJAN_SOUTHERN_FRONT;
+  }
+
   static get ZONE_CENTRAL_SHROUD(): string {
     return zones.ZONE_CENTRAL_SHROUD;
   }

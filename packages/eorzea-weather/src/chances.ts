@@ -44,6 +44,22 @@ export const azysLla = (chance: number): string => {
   return WEATHER_THUNDER;
 };
 
+export const bozjanSouthernFront = (chance: number): string => {
+  if (chance < 52) {
+    return WEATHER_FAIR_SKIES;
+  }
+  if (chance < 64) {
+    return WEATHER_RAIN;
+  }
+  if (chance < 76) {
+    return WEATHER_WIND;
+  }
+  if (chance < 88) {
+    return WEATHER_THUNDER;
+  }
+  return WEATHER_DUST_STORMS;
+};
+
 export const centralShroud = (chance: number): string => {
   if (chance < 5) {
     return WEATHER_THUNDER;
