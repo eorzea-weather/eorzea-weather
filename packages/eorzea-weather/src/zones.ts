@@ -1,5 +1,6 @@
 export const ZONE_AMH_ARAENG = 'amhAraeng';
 export const ZONE_AZYS_LLA = 'azysLla';
+export const ZONE_BOZJAN_SOUTHERN_FRONT = 'bozjanSouthernFront';
 export const ZONE_CENTRAL_SHROUD = 'centralShroud';
 export const ZONE_CENTRAL_THANALAN = 'centralThanalan';
 export const ZONE_COERTHAS_CENTRAL_HIGHLANDS = 'coerthasCentralHighlands';

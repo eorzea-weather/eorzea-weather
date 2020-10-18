@@ -18,6 +18,7 @@ export default {
   'weathers.wind': 'Wind',
   'zones.amhAraeng': 'Amh Araeng',
   'zones.azysLla': 'Azys Lla',
+  'zones.bozjanSouthernFront': 'Bozjan Southern Front',
   'zones.centralShroud': 'Central Shroud',
   'zones.centralThanalan': 'Central Thanalan',
   'zones.coerthasCentralHighlands': 'Coerthas Central Highlands',
