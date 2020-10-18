@@ -76,6 +76,7 @@ const areaMap = {
     EorzeaWeather.ZONE_THE_GOBLET,
     EorzeaWeather.ZONE_SHIROGANE,
     EorzeaWeather.ZONE_MOR_DHONA,
+    EorzeaWeather.ZONE_BOZJAN_SOUTHERN_FRONT,
   ],
   eureka: [
     EorzeaWeather.ZONE_EUREKA_ANEMOS,

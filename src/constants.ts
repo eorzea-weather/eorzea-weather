@@ -8,6 +8,7 @@ export const AVAILABLE_LOCALES = {
 export const EORZEA_ZONE_LIST = [
   EorzeaWeather.ZONE_AMH_ARAENG,
   EorzeaWeather.ZONE_AZYS_LLA,
+  EorzeaWeather.ZONE_BOZJAN_SOUTHERN_FRONT,
   EorzeaWeather.ZONE_CENTRAL_SHROUD,
   EorzeaWeather.ZONE_CENTRAL_THANALAN,
   EorzeaWeather.ZONE_COERTHAS_CENTRAL_HIGHLANDS,
