@@ -17,7 +17,7 @@
     "clsx": "^1.1.1",
     "core-js": "^3.6.5",
     "eorzea-time": "^3.0.0",
-    "eorzea-weather": "^3.0.1",
+    "eorzea-weather": "^3.1.0",
     "lodash": "^4.17.20",
     "next": "^9.5.4",
     "prop-types": "^15.7.2",
