@@ -1,9 +1,10 @@
 import blue from '@material-ui/core/colors/blue';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import { I18nProvider } from '@react-aria/i18n';
-import { AppProps } from 'next/app';
+import type { AppProps } from 'next/app';
 import Router from 'next/router';
 import React, { useEffect } from 'react';
+import type { FC } from 'react';
 import Layout from '@/components/Layout';
 import { Provider as ZoneProvider } from '@/context/zone';
 import tracker from '@/utils/tracker';
@@ -14,11 +15,9 @@ const theme = createMuiTheme({
   },
 });
 
-type PageProps = {
-  locale: string;
-};
+const MyApp: FC<AppProps> = ({ Component, pageProps, router }) => {
+  const locale = router.locale ?? 'en';
 
-const MyApp = ({ Component, pageProps }: AppProps<PageProps>): JSX.Element => {
   useEffect(() => {
     const handleRouteChangeComplete = (url: string) => {
       tracker.track({
@@ -37,12 +36,8 @@ const MyApp = ({ Component, pageProps }: AppProps<PageProps>): JSX.Element => {
   useEffect(() => {
     const renderedStyles = document.getElementById('jss-server-side');
 
-    if (renderedStyles?.parentNode) {
-      renderedStyles.parentNode.removeChild(renderedStyles);
-    }
+    renderedStyles?.parentNode?.removeChild(renderedStyles);
   }, []);
-
-  const locale = (pageProps as PageProps).locale || 'en';
 
   return (
     <I18nProvider locale={locale}>

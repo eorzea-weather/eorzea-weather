@@ -12,8 +12,6 @@ import WeatherTable from '@/components/WeatherTable';
 import { AVAILABLE_LOCALES, EORZEA_ZONE_LIST } from '@/constants';
 import { useZone } from '@/context/zone';
 
-const availableLocales = Object.keys(AVAILABLE_LOCALES);
-
 const useStyles = makeStyles((theme) =>
   createStyles({
     ad: {
@@ -36,60 +34,14 @@ const useStyles = makeStyles((theme) =>
   }),
 );
 
-type Params = {
-  locale: string;
-  id: string;
-};
-
 type Props = {
   id: string;
-  locale: string;
   messages: {
     [key: string]: {
       [key: string]: string;
     };
   };
 };
-
-export const getStaticProps: GetStaticProps<Props, Params> = async ({
-  params,
-}) => {
-  if (!params?.locale) throw new TypeError('locale is required.');
-  if (!params?.id) throw new TypeError('id is required.');
-
-  const { locale } = params;
-  const message = await import(`@/intl/zone/${locale}.json`).then(
-    (mod: { default: { [key: string]: string } }) => mod.default,
-  );
-  const id = camelCase(params.id);
-
-  return {
-    props: {
-      id,
-      locale,
-      messages: {
-        [locale]: message,
-      },
-    },
-  };
-};
-
-// eslint-disable-next-line @typescript-eslint/require-await
-export const getStaticPaths: GetStaticPaths<Params> = async () => ({
-  fallback: false,
-  paths: EORZEA_ZONE_LIST.reduce<{ params: Params }[]>(
-    (result, id) =>
-      result.concat(
-        availableLocales.map((locale) => ({
-          params: {
-            locale,
-            id: kebabCase(id),
-          },
-        })),
-      ),
-    [],
-  ),
-});
 
 const Zone: NextPage<Props> = ({ id, messages }) => {
   const messageFormatter = useMessageFormatter(messages);
@@ -127,3 +79,49 @@ const Zone: NextPage<Props> = ({ id, messages }) => {
 };
 
 export default Zone;
+
+type Params = {
+  id: string;
+};
+
+export const getStaticProps: GetStaticProps<Props, Params> = async ({
+  params,
+  locale,
+}) => {
+  if (!params?.id) throw new TypeError('id is required.');
+
+  const message = await import(`@/intl/zone/${locale || 'en'}.json`).then(
+    (mod: { default: { [key: string]: string } }) => mod.default,
+  );
+  const id = camelCase(params.id);
+
+  return {
+    props: {
+      id,
+      messages: {
+        [locale || 'en']: message,
+      },
+    },
+  };
+};
+
+export const getStaticPaths: GetStaticPaths<Params> = () => {
+  const locales = Object.keys(AVAILABLE_LOCALES);
+  const paths = locales.reduce<{ params: Params; locale?: string }[]>(
+    (result, locale) =>
+      result.concat(
+        EORZEA_ZONE_LIST.map((id) => ({
+          locale,
+          params: {
+            id: kebabCase(id),
+          },
+        })),
+      ),
+    [],
+  );
+
+  return Promise.resolve({
+    fallback: false,
+    paths,
+  });
+};
