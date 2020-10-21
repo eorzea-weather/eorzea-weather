@@ -3,7 +3,7 @@ const withMDX = require('@next/mdx')();
 const nextConfig = {
   experimental: {
     i18n: {
-      defaultLocale: 'en',
+      defaultLocale: 'ja',
       locales: ['en', 'ja'],
     },
   },
