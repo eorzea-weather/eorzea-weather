@@ -1,6 +1,6 @@
 import EorzeaWeather from 'eorzea-weather';
 
-export const AVAILABLE_LOCALES = {
+export const AVAILABLE_LOCALES: Record<string, string> = {
   en: 'English',
   ja: '日本語',
 };

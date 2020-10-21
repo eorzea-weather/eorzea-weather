@@ -3,14 +3,13 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
-import { useLocale } from '@react-aria/i18n';
 import kebabCase from 'lodash/kebabCase';
 import Link from 'next/link';
-import React, { FC } from 'react';
+import React from 'react';
+import type { FC } from 'react';
 import { useZoneList } from '@/context/zone';
 
 const ZoneList: FC = () => {
-  const { locale } = useLocale();
   const zoneList = useZoneList();
 
   return (
@@ -27,8 +26,7 @@ const ZoneList: FC = () => {
           >
             {zones.map((zone) => (
               <Link
-                as={`/${locale}/zones/${kebabCase(zone.id)}`}
-                href="/[locale]/zones/[id]"
+                href={`/zones/${kebabCase(zone.id)}`}
                 key={`item-${zone.id}`}
                 passHref
               >

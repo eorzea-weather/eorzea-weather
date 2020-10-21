@@ -7,10 +7,10 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import LanguageIcon from '@material-ui/icons/Language';
 import MenuIcon from '@material-ui/icons/Menu';
-import { useLocale } from '@react-aria/i18n';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { FC, useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+import type { FC } from 'react';
 import AppDrawer from '@/components/AppDrawer';
 import EorzeaClock from '@/components/EorzeaClock';
 import { AVAILABLE_LOCALES } from '@/constants';
@@ -42,9 +42,9 @@ const useStyles = makeStyles((theme) =>
 );
 
 const AppHeader: FC = () => {
+  const [isHome, setIsHome] = useState(true);
   const [open, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
-  const { locale } = useLocale();
   const router = useRouter();
   const classes = useStyles();
 
@@ -64,7 +64,9 @@ const AppHeader: FC = () => {
     setAnchorEl(null);
   }, []);
 
-  const isHome = router.pathname === '/[locale]';
+  useEffect(() => {
+    setIsHome(router.pathname === '/');
+  }, [router.pathname]);
 
   return (
     <>
@@ -80,13 +82,13 @@ const AppHeader: FC = () => {
             variant="h6"
           >
             {!isHome && (
-              <Link as={`/${locale}`} href="/[locale]" prefetch={false}>
-                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+              <Link href="/" prefetch={false}>
                 <a className={classes.title}>Eorzea Weather</a>
               </Link>
             )}
           </Typography>
-          {router.asPath.startsWith(`/${locale}`) && (
+
+          {(router.locales || []).length > 1 && (
             <>
               <IconButton color="inherit" onClick={handleLanguageIconClick}>
                 <LanguageIcon />
@@ -104,41 +106,34 @@ const AppHeader: FC = () => {
                   vertical: 'top',
                 }}
               >
-                {Object.entries(AVAILABLE_LOCALES).map(
-                  ([availableLocale, label]) => (
-                    <MenuItem
-                      className={classes.menuItem}
-                      key={`item-${availableLocale}`}
-                      onClick={handleMenuClose}
-                      selected={availableLocale === locale}
-                    >
-                      <Link
-                        as={`/${availableLocale}${router.asPath.replace(
-                          /^\/[^/]+/,
-                          '',
-                        )}`}
-                        href={router.pathname}
-                        prefetch={false}
+                {(router.locales || []).map((locale) => (
+                  <MenuItem
+                    className={classes.menuItem}
+                    key={`item-${locale}`}
+                    onClick={handleMenuClose}
+                    selected={locale === router.locale}
+                  >
+                    <Link href={router.asPath} locale={locale} prefetch={false}>
+                      <a
+                        className={classes.menuLink}
+                        hrefLang={locale}
+                        lang={locale}
                       >
-                        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                        <a
-                          className={classes.menuLink}
-                          hrefLang={availableLocale}
-                          lang={availableLocale}
-                        >
-                          {label}
-                        </a>
-                      </Link>
-                    </MenuItem>
-                  ),
-                )}
+                        {AVAILABLE_LOCALES[locale]}
+                      </a>
+                    </Link>
+                  </MenuItem>
+                ))}
               </Menu>
             </>
           )}
+
           <EorzeaClock />
         </Toolbar>
       </AppBar>
+
       <Toolbar />
+
       <AppDrawer onClose={handleDrawerClose} open={open} />
     </>
   );

@@ -6,10 +6,11 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import { useLocale, useMessageFormatter } from '@react-aria/i18n';
+import { useMessageFormatter } from '@react-aria/i18n';
 import kebabCase from 'lodash/kebabCase';
 import Link from 'next/link';
-import React, { FC, useCallback } from 'react';
+import React, { useCallback } from 'react';
+import type { FC } from 'react';
 import * as pkg from '@/../package.json';
 import { useZoneList } from '@/context/zone';
 import AppDrawerNavItem from './AppDrawerNavItem';
@@ -42,7 +43,6 @@ type Props = {
 };
 
 const AppDrawer: FC<Props> = ({ onClose, open }) => {
-  const { locale } = useLocale();
   const messageFormatter = useMessageFormatter(messages);
   const zoneList = useZoneList();
   const classes = useStyles();
@@ -67,8 +67,7 @@ const AppDrawer: FC<Props> = ({ onClose, open }) => {
           <AppDrawerNavItem key={`drawer-item-${label}`} label={label}>
             {zones.map((zone) => (
               <Link
-                as={`/${locale}/zones/${kebabCase(zone.id)}`}
-                href="/[locale]/zones/[id]"
+                href={`/zones/${kebabCase(zone.id)}`}
                 key={`item-${zone.id}`}
                 passHref
                 prefetch={false}
