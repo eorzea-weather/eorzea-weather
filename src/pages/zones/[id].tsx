@@ -9,7 +9,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import Ad from '@/components/Ad';
 import WeatherTable from '@/components/WeatherTable';
-import { AVAILABLE_LOCALES, EORZEA_ZONE_LIST } from '@/constants';
+import { EORZEA_ZONE_LIST } from '@/constants';
 import { useZone } from '@/context/zone';
 
 const useStyles = makeStyles((theme) =>
@@ -105,9 +105,8 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
   };
 };
 
-export const getStaticPaths: GetStaticPaths<Params> = () => {
-  const locales = Object.keys(AVAILABLE_LOCALES);
-  const paths = locales.reduce<{ params: Params; locale?: string }[]>(
+export const getStaticPaths: GetStaticPaths<Params> = ({ locales }) => {
+  const paths = (locales || []).reduce<{ params: Params; locale?: string }[]>(
     (result, locale) =>
       result.concat(
         EORZEA_ZONE_LIST.map((id) => ({
