@@ -1,12 +1,10 @@
 const withMDX = require('@next/mdx')();
 
 const nextConfig = {
-  experimental: {
-    i18n: {
-      defaultLocale: 'ja',
-      localeDetection: false,
-      locales: ['en', 'ja'],
-    },
+  i18n: {
+    defaultLocale: 'ja',
+    localeDetection: false,
+    locales: ['en', 'ja'],
   },
   pageExtensions: ['ts', 'tsx', 'mdx'],
   rewrites: () => [
