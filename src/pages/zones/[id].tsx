@@ -106,18 +106,20 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
 };
 
 export const getStaticPaths: GetStaticPaths<Params> = ({ locales }) => {
-  const paths = (locales || []).reduce<{ params: Params; locale?: string }[]>(
-    (result, locale) =>
-      result.concat(
-        EORZEA_ZONE_LIST.map((id) => ({
+  const paths = EORZEA_ZONE_LIST.flatMap((id) => {
+    const params = {
+      id: kebabCase(id),
+    };
+
+    return locales
+      ? locales.map((locale) => ({
           locale,
-          params: {
-            id: kebabCase(id),
-          },
-        })),
-      ),
-    [],
-  );
+          params,
+        }))
+      : {
+          params,
+        };
+  });
 
   return Promise.resolve({
     fallback: false,
