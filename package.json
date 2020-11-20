@@ -19,7 +19,7 @@
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-helmet": "^6.1.0",
-    "swr": "^0.3.8"
+    "swr": "^0.3.9"
   },
   "description": "Weather forecast for Eorzea.",
   "devDependencies": {
