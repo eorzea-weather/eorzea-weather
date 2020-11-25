@@ -9,7 +9,7 @@ const handler: NextApiHandler<string> = (_req, res) => {
   }
 
   res.setHeader('Content-Type', 'text/plain');
-  res.setHeader('Cache-Content', 'max-age=60');
+  res.setHeader('Cache-Control', 'max-age=60');
 
   res.status(200).send(result);
 };
