@@ -17,13 +17,13 @@ const theme = createMuiTheme({
 
 const MyApp: FC<AppProps> = ({ Component, pageProps, router }) => {
   const locale = router.locale ?? 'en';
-  
+
   const handleRouteChangeComplete = useCallback((url: string) => {
     tracker.track({
       path: url,
       title: document.title,
     });
-  }, [])
+  }, []);
 
   useEffect(() => {
     Router.events.on('routeChangeComplete', handleRouteChangeComplete);
@@ -31,7 +31,7 @@ const MyApp: FC<AppProps> = ({ Component, pageProps, router }) => {
     return () => {
       Router.events.off('routeChangeComplete', handleRouteChangeComplete);
     };
-  }, []);
+  }, [handleRouteChangeComplete]);
 
   useEffect(() => {
     const renderedStyles = document.getElementById('jss-server-side');
