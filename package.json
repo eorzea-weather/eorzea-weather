@@ -32,7 +32,7 @@
     "@types/mdx-js__react": "^1.5.3",
     "@types/node": "^14.14.10",
     "@types/react-helmet": "^6.1.0",
-    "@typescript-eslint/eslint-plugin": "^4.8.2",
+    "@typescript-eslint/eslint-plugin": "^4.9.1",
     "@typescript-eslint/parser": "^4.9.1",
     "eslint": "^7.14.0",
     "eslint-config-prettier": "^7.0.0",
