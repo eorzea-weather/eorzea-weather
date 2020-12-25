@@ -16,8 +16,8 @@
     "eorzea-weather": "^3.1.0",
     "lodash": "^4.17.20",
     "next": "^10.0.3",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
     "swr": "^0.3.9"
   },
