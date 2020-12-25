@@ -587,12 +587,13 @@
   dependencies:
     "@types/node" "*"
 
-"@types/clean-css@^4.2.2":
-  version "4.2.2"
-  resolved "https://registry.yarnpkg.com/@types/clean-css/-/clean-css-4.2.2.tgz#99fd79f6939c2b325938a1c569712e07dd97d709"
-  integrity sha512-xiTJn3bmDh1lA8c6iVJs4ZhHw+pcmxXlJQXOB6G1oULaak8rmarIeFKI4aTJ7849dEhaO612wgIualZfbxTJwA==
+"@types/clean-css@^4.2.3":
+  version "4.2.3"
+  resolved "https://registry.yarnpkg.com/@types/clean-css/-/clean-css-4.2.3.tgz#12c13cc815f5e793014ee002c6324455907d851c"
+  integrity sha512-ET0ldU/vpXecy5vO8JRIhtJWSrk1vzXdJcp3Bjf8bARZynl6vfkhEKY/A7njfNIRlmyTGuVFuqnD6I3tOGdXpQ==
   dependencies:
     "@types/node" "*"
+    source-map "^0.6.0"
 
 "@types/gtag.js@^0.0.3":
   version "0.0.3"
