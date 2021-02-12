@@ -10,7 +10,7 @@
     "@material-ui/styles": "^4.11.1",
     "@mdx-js/react": "^1.6.19",
     "@react-aria/i18n": "^3.2.0",
-    "clean-css": "^4.2.3",
+    "clean-css": "^5.0.1",
     "clsx": "^1.1.1",
     "eorzea-time": "^3.0.0",
     "eorzea-weather": "^3.1.0",
