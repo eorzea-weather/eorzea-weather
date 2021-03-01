@@ -14,7 +14,7 @@
     "clsx": "^1.1.1",
     "eorzea-time": "^3.0.0",
     "eorzea-weather": "^3.1.0",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "next": "^10.0.7",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
