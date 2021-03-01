@@ -35,7 +35,7 @@
     "@typescript-eslint/eslint-plugin": "^4.15.2",
     "@typescript-eslint/parser": "^4.15.0",
     "eslint": "^7.21.0",
-    "eslint-config-prettier": "^7.2.0",
+    "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-jsx-a11y": "~6.4.1",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-react": "~7.22.0",
@@ -55,8 +55,7 @@
       "eslint:recommended",
       "plugin:react/recommended",
       "plugin:jsx-a11y/recommended",
-      "plugin:prettier/recommended",
-      "prettier/react"
+      "plugin:prettier/recommended"
     ],
     "overrides": [
       {
@@ -66,8 +65,7 @@
         "extends": [
           "plugin:@typescript-eslint/recommended",
           "plugin:@typescript-eslint/eslint-recommended",
-          "plugin:@typescript-eslint/recommended-requiring-type-checking",
-          "prettier/@typescript-eslint"
+          "plugin:@typescript-eslint/recommended-requiring-type-checking"
         ],
         "parserOptions": {
           "project": "tsconfig.json"
