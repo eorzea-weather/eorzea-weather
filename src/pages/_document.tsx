@@ -24,8 +24,10 @@ class MyDocument extends Document {
       ...ctx,
       renderPage: () =>
         ctx.renderPage({
-          enhanceApp: (App) => (props): JSX.Element =>
-            sheets.collect(<App {...props} />),
+          enhanceApp:
+            (App) =>
+            (props): JSX.Element =>
+              sheets.collect(<App {...props} />),
         }),
     });
     const css = sheets.toString();
