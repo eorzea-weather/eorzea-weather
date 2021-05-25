@@ -15,7 +15,7 @@
     "eorzea-time": "^3.0.0",
     "eorzea-weather": "^3.1.0",
     "lodash": "^4.17.21",
-    "next": "^10.2.0",
+    "next": "^10.2.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
