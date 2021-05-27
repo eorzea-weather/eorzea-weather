@@ -61,4 +61,5 @@ export const EORZEA_ZONE_LIST = [
   EorzeaWeather.ZONE_WESTERN_THANALAN,
   EorzeaWeather.ZONE_WOLVES_DEN_PIER,
   EorzeaWeather.ZONE_YANXIA,
+  EorzeaWeather.ZONE_ZADNOR,
 ];

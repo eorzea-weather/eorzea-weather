@@ -13,7 +13,7 @@
     "clean-css": "^5.1.2",
     "clsx": "^1.1.1",
     "eorzea-time": "^3.0.0",
-    "eorzea-weather": "^3.1.0",
+    "eorzea-weather": "^3.2.0",
     "lodash": "^4.17.21",
     "next": "^10.2.3",
     "react": "^17.0.2",
