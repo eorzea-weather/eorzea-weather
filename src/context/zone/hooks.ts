@@ -77,6 +77,7 @@ const areaMap = {
     EorzeaWeather.ZONE_SHIROGANE,
     EorzeaWeather.ZONE_MOR_DHONA,
     EorzeaWeather.ZONE_BOZJAN_SOUTHERN_FRONT,
+    EorzeaWeather.ZONE_ZADNOR,
   ],
   eureka: [
     EorzeaWeather.ZONE_EUREKA_ANEMOS,
