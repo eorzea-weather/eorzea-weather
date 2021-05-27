@@ -990,3 +990,19 @@ export const yanxia = (chance: number): string => {
   }
   return WEATHER_CLEAR_SKIES;
 };
+
+export const zadnor = (chance: number): string => {
+  if (chance < 60) {
+    return WEATHER_FAIR_SKIES;
+  }
+  if (chance < 70) {
+    return WEATHER_RAIN;
+  }
+  if (chance < 80) {
+    return WEATHER_WIND;
+  }
+  if (chance < 90) {
+    return WEATHER_THUNDER;
+  }
+  return WEATHER_SNOW;
+};

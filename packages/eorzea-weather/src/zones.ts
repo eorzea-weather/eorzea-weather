@@ -53,3 +53,4 @@ export const ZONE_WESTERN_LA_NOSCEA = 'westernLaNoscea';
 export const ZONE_WESTERN_THANALAN = 'westernThanalan';
 export const ZONE_WOLVES_DEN_PIER = 'wolvesDenPier';
 export const ZONE_YANXIA = 'yanxia';
+export const ZONE_ZADNOR = 'zadnor';

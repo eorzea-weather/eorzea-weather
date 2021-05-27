@@ -230,6 +230,10 @@ export default class EorzeaWeather {
     return zones.ZONE_YANXIA;
   }
 
+  static get ZONE_ZADNOR(): string {
+    return zones.ZONE_ZADNOR;
+  }
+
   static getWeather(
     id: string,
     date: Date,
