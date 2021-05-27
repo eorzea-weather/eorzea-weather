@@ -71,4 +71,5 @@ export default {
   'zones.westernThanalan': '西ザナラーン',
   'zones.wolvesDenPier': 'ウルヴズジェイル係船場',
   'zones.yanxia': 'ヤンサ',
+  'zones.zadnor': 'ザトゥノル高原',
 };
