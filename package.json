@@ -105,8 +105,6 @@
   "scripts": {
     "build": "next build",
     "dev": "next",
-    "format": "prettier --write .",
-    "format-check": "prettier --check --write .",
     "lint": "eslint .",
     "start": "next start"
   },

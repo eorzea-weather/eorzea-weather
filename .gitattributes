@@ -1,0 +1,5 @@
+# See https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored
+/.yarn/releases/** binary linguist-vendored
+/.yarn/plugins/** binary linguist-vendored
+
+/yarn.lock linguist-language=YAML linguist-generated
