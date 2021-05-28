@@ -32,4 +32,4 @@ jobs:
           ${{ runner.os }}-yarn-
     - run: yarn install --immutable
     - run: yarn lint
-    - run: yarn workspace @eorzea-weather/app build
+    - run: yarn workspaces foreach run test
