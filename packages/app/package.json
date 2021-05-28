@@ -8,7 +8,7 @@
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.58",
     "@material-ui/styles": "^4.11.4",
-    "@mdx-js/react": "^1.6.19",
+    "@mdx-js/react": "^1.6.22",
     "@react-aria/i18n": "^3.3.1",
     "clean-css": "^5.1.2",
     "clsx": "^1.1.1",
