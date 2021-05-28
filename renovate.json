@@ -1,5 +1,16 @@
 {
   "extends": [
-    "config:base"
-  ]
+    "config:base",
+    ":semanticCommitTypeAll(build)"
+  ],
+  "labels": [
+    "dependencies"
+  ],
+  "lockFileMaintenance": {
+    "enabled": true
+  },
+  "postUpdateOptions": [
+    "yarnDedupeHighest"
+  ],
+  "rangeStrategy": "bump"
 }
