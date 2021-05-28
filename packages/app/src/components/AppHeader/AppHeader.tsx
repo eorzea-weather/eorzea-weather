@@ -9,11 +9,10 @@ import LanguageIcon from '@material-ui/icons/Language';
 import MenuIcon from '@material-ui/icons/Menu';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useCallback, useEffect, useState } from 'react';
-import type { FC } from 'react';
-import AppDrawer from '@/components/AppDrawer';
-import EorzeaClock from '@/components/EorzeaClock';
-import { AVAILABLE_LOCALES } from '@/constants';
+import React, { FC, useCallback, useEffect, useState } from 'react';
+import { AVAILABLE_LOCALES } from '../../constants';
+import AppDrawer from '../AppDrawer';
+import EorzeaClock from '../EorzeaClock';
 
 const useStyles = makeStyles((theme) =>
   createStyles({

@@ -3,35 +3,8 @@
   "bugs": {
     "url": "https://github.com/eorzea-weather/eorzea-weather-app/issues"
   },
-  "dependencies": {
-    "@material-ui/core": "^4.11.4",
-    "@material-ui/icons": "^4.11.2",
-    "@material-ui/lab": "^4.0.0-alpha.58",
-    "@material-ui/styles": "^4.11.1",
-    "@mdx-js/react": "^1.6.19",
-    "@react-aria/i18n": "^3.3.1",
-    "clean-css": "^5.1.2",
-    "clsx": "^1.1.1",
-    "eorzea-time": "^3.0.0",
-    "eorzea-weather": "^3.2.0",
-    "lodash": "^4.17.21",
-    "next": "^10.2.3",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-helmet": "^6.1.0",
-    "swr": "^0.5.6"
-  },
-  "description": "Weather forecast for Eorzea.",
+  "description": "The monorepo of Eorzea Weather.",
   "devDependencies": {
-    "@mdx-js/loader": "^1.6.22",
-    "@next/mdx": "^10.2.3",
-    "@types/accepts": "^1.3.5",
-    "@types/clean-css": "^4.2.4",
-    "@types/gtag.js": "^0.0.4",
-    "@types/lodash": "^4.14.170",
-    "@types/mdx-js__react": "^1.5.3",
-    "@types/node": "^15.6.1",
-    "@types/react-helmet": "^6.1.1",
     "@typescript-eslint/eslint-plugin": "^4.25.0",
     "@typescript-eslint/parser": "^4.25.0",
     "eslint": "^7.27.0",
@@ -78,6 +51,7 @@
     "plugins": [
       "react-hooks"
     ],
+    "root": true,
     "rules": {
       "jsx-a11y/anchor-is-valid": "off",
       "react-hooks/exhaustive-deps": "error",
@@ -91,7 +65,7 @@
   },
   "homepage": "https://eorzea-weather.info/",
   "license": "MIT",
-  "name": "@eorzea-weather/eorzea-weather-app",
+  "name": "@eorzea-weather/monorepo",
   "prettier": {
     "semi": true,
     "singleQuote": true,
@@ -100,13 +74,13 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/eorzea-weather/eorzea-weather-app.git"
+    "url": "https://github.com/eorzea-weather/eorzea-weather.git"
   },
   "scripts": {
-    "build": "next build",
-    "dev": "next",
-    "lint": "eslint .",
-    "start": "next start"
+    "lint": "eslint ."
   },
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "workspaces": [
+    "packages/*"
+  ]
 }

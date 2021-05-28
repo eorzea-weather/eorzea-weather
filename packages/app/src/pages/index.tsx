@@ -7,8 +7,8 @@ import type { GetStaticProps, NextPage } from 'next';
 import Link from 'next/link';
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import Ad from '@/components/Ad';
-import ZoneList from '@/components/ZoneList';
+import Ad from '../components/Ad';
+import ZoneList from '../components/ZoneList';
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -86,7 +86,7 @@ const Home: NextPage<Props> = ({ messages }) => {
 export default Home;
 
 export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => {
-  const message = await import(`@/intl/home/${locale || 'en'}.json`).then(
+  const message = await import(`../intl/home/${locale || 'en'}.json`).then(
     (mod: { default: { [key: string]: string } }) => mod.default,
   );
 

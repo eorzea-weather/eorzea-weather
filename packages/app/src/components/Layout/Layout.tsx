@@ -4,10 +4,9 @@ import { createStyles, makeStyles } from '@material-ui/core/styles';
 import { useLocale, useMessageFormatter } from '@react-aria/i18n';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React from 'react';
-import type { FC } from 'react';
+import React, { FC } from 'react';
 import { Helmet } from 'react-helmet';
-import AppHeader from '@/components/AppHeader';
+import AppHeader from '../AppHeader';
 import messages from './intl';
 
 const useStyles = makeStyles((theme) =>

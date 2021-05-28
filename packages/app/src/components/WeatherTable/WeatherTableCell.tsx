@@ -6,7 +6,7 @@ import Skeleton from '@material-ui/lab/Skeleton';
 import { useDateFormatter } from '@react-aria/i18n';
 import clsx from 'clsx';
 import React, { FC, useEffect, useState } from 'react';
-import Weather from '@/types/Weather';
+import Weather from '../../types/Weather';
 
 const EIGHT_HOURS = 8 * 175 * 1000;
 

@@ -7,10 +7,10 @@ import kebabCase from 'lodash/kebabCase';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import Ad from '@/components/Ad';
-import WeatherTable from '@/components/WeatherTable';
-import { EORZEA_ZONE_LIST } from '@/constants';
-import { useZone } from '@/context/zone';
+import Ad from '../../components/Ad';
+import WeatherTable from '../../components/WeatherTable';
+import { EORZEA_ZONE_LIST } from '../../constants';
+import { useZone } from '../../context/zone';
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -90,7 +90,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
 }) => {
   if (!params?.id) throw new TypeError('id is required.');
 
-  const message = await import(`@/intl/zone/${locale || 'en'}.json`).then(
+  const message = await import(`../../intl/zone/${locale || 'en'}.json`).then(
     (mod: { default: { [key: string]: string } }) => mod.default,
   );
   const id = camelCase(params.id);
