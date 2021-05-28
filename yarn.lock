@@ -1480,7 +1480,7 @@ __metadata:
     "@material-ui/lab": ^4.0.0-alpha.58
     "@material-ui/styles": ^4.11.4
     "@mdx-js/loader": ^1.6.22
-    "@mdx-js/react": ^1.6.19
+    "@mdx-js/react": ^1.6.22
     "@next/mdx": ^10.2.3
     "@react-aria/i18n": ^3.3.1
     "@types/accepts": ^1.3.5
@@ -1977,7 +1977,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mdx-js/react@npm:1.6.22, @mdx-js/react@npm:^1.6.19":
+"@mdx-js/react@npm:1.6.22, @mdx-js/react@npm:^1.6.22":
   version: 1.6.22
   resolution: "@mdx-js/react@npm:1.6.22"
   peerDependencies:
