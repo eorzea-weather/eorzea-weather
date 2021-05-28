@@ -6,7 +6,7 @@ function computeEorzeaDate(date: Date): Date {
 }
 
 export default class EorzeaTime {
-  #date: Date
+  #date: Date;
 
   constructor(date = new Date()) {
     this.#date = computeEorzeaDate(date);
