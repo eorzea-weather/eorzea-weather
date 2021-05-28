@@ -4,10 +4,13 @@ Weather forecast for Eorzea.
 
 ## Dependencies
 
-- [eorzea-weather](https://github.com/eorzea-weather/eorzea-weather)
-- [eorzea-time](https://github.com/eorzea-weather/eorzea-time)
-- [...](package.json)
+- [Node.js](https://nodejs.org/en/) v14.x
+- [Yarn](https://yarnpkg.com/)
 
 ## LICENSE
 
 [MIT](LICENSE)
+
+```plain
+(C) SQUARE ENIX CO., LTD. All Rights Reserved.
+```
