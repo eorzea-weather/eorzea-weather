@@ -3,11 +3,10 @@ import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import { I18nProvider } from '@react-aria/i18n';
 import type { AppProps } from 'next/app';
 import Router from 'next/router';
-import type { FC } from 'react';
-import React, { useCallback, useEffect } from 'react';
-import Layout from '@/components/Layout';
-import { Provider as ZoneProvider } from '@/context/zone';
-import tracker from '@/utils/tracker';
+import React, { FC, useCallback, useEffect } from 'react';
+import Layout from '../components/Layout';
+import { Provider as ZoneProvider } from '../context/zone';
+import tracker from '../utils/tracker';
 
 const theme = createMuiTheme({
   palette: {

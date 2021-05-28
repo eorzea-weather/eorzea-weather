@@ -5,9 +5,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import kebabCase from 'lodash/kebabCase';
 import Link from 'next/link';
-import React from 'react';
-import type { FC } from 'react';
-import { useZoneList } from '@/context/zone';
+import React, { FC } from 'react';
+import { useZoneList } from '../../context/zone';
 
 const ZoneList: FC = () => {
   const zoneList = useZoneList();

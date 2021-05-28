@@ -9,10 +9,9 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { useMessageFormatter } from '@react-aria/i18n';
 import kebabCase from 'lodash/kebabCase';
 import Link from 'next/link';
-import React, { useCallback } from 'react';
-import type { FC } from 'react';
-import * as pkg from '@/../package.json';
-import { useZoneList } from '@/context/zone';
+import React, { FC, useCallback } from 'react';
+import * as pkg from '../../../package.json';
+import { useZoneList } from '../../context/zone';
 import AppDrawerNavItem from './AppDrawerNavItem';
 import messages from './intl';
 

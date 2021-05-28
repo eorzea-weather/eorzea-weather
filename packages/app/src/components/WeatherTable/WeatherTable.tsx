@@ -24,7 +24,7 @@ import React, {
   useState,
 } from 'react';
 import useSWR from 'swr';
-import Weather from '@/types/Weather';
+import Weather from '../../types/Weather';
 import WeatherTableCell from './WeatherTableCell';
 import messages from './intl';
 

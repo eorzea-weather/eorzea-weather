@@ -1,7 +1,7 @@
 import { useLocale } from '@react-aria/i18n';
 import EorzeaWeather from 'eorzea-weather';
 import React, { FC, useMemo } from 'react';
-import { EORZEA_ZONE_LIST } from '@/constants';
+import { EORZEA_ZONE_LIST } from '../../constants';
 import Context from './Context';
 
 const Provider: FC = ({ children }) => {
