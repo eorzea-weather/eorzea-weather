@@ -5,7 +5,7 @@ const withMDX = require('@next/mdx')();
  **/
 const nextConfig = {
   future: {
-    webpack5: true
+    webpack5: true,
   },
   i18n: {
     defaultLocale: 'ja',
