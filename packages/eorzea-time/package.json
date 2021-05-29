@@ -5,7 +5,7 @@
   },
   "description": ":clock3: A clock of the Eorzea time.",
   "devDependencies": {
-    "@types/jest": "^26.0.5",
+    "@types/jest": "^26.0.23",
     "jest": "^26.1.0",
     "microbundle": "^0.13.1",
     "ts-jest": "^26.1.3",
