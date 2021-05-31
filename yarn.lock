@@ -4686,7 +4686,7 @@ __metadata:
     "@types/jest": ^26.0.23
     jest: ^27.0.3
     microbundle: ^0.13.1
-    ts-jest: ^27.0.1
+    ts-jest: ^27.0.2
     typescript: ^4.3.2
   languageName: unknown
   linkType: soft
@@ -4698,7 +4698,7 @@ __metadata:
     "@types/jest": ^26.0.23
     jest: ^27.0.3
     microbundle: ^0.13.1
-    ts-jest: ^27.0.1
+    ts-jest: ^27.0.2
     typescript: ^4.3.2
   languageName: unknown
   linkType: soft
@@ -10633,9 +10633,9 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"ts-jest@npm:^27.0.1":
-  version: 27.0.1
-  resolution: "ts-jest@npm:27.0.1"
+"ts-jest@npm:^27.0.2":
+  version: 27.0.2
+  resolution: "ts-jest@npm:27.0.2"
   dependencies:
     bs-logger: 0.x
     buffer-from: 1.x
@@ -10652,7 +10652,7 @@ resolve@^2.0.0-next.3:
     typescript: ">=3.8 <5.0"
   bin:
     ts-jest: cli.js
-  checksum: 27beb3354339d652097b66c03d7c952798492c87014f4349292d5c25aa1c155162bd7593680d563e56805dddc73eff9c09c25c74845b98cf4f82c9d9e74c743a
+  checksum: dbc3fb1e61b6fc4c4063c32e8637bd2a255e8e54f0388ddd67064b712c796e9523697ec9d74a7563ce04117f4771f29e3b2a87cd5a455645808af877a7fba96a
   languageName: node
   linkType: hard
 
