@@ -1,18 +1,12 @@
-import blue from '@material-ui/core/colors/blue';
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import { I18nProvider } from '@react-aria/i18n';
 import type { AppProps } from 'next/app';
 import Router from 'next/router';
 import React, { FC, useCallback, useEffect } from 'react';
 import Layout from '../components/Layout';
+import Theme from '../components/Theme';
 import { Provider as ZoneProvider } from '../context/zone';
+import { Provider as SettingsProvider } from '../context/settings';
 import tracker from '../utils/tracker';
-
-const theme = createMuiTheme({
-  palette: {
-    primary: blue,
-  },
-});
 
 const MyApp: FC<AppProps> = ({ Component, pageProps, router }) => {
   const locale = router.locale ?? 'en';
@@ -40,13 +34,15 @@ const MyApp: FC<AppProps> = ({ Component, pageProps, router }) => {
 
   return (
     <I18nProvider locale={locale}>
-      <MuiThemeProvider theme={theme}>
-        <ZoneProvider>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </ZoneProvider>
-      </MuiThemeProvider>
+      <SettingsProvider>
+        <Theme>
+          <ZoneProvider>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </ZoneProvider>
+        </Theme>
+      </SettingsProvider>
     </I18nProvider>
   );
 };

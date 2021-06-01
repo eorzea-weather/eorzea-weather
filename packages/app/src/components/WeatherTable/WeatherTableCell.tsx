@@ -13,7 +13,7 @@ const EIGHT_HOURS = 8 * 175 * 1000;
 const useStyles = makeStyles((theme) =>
   createStyles({
     highlight: {
-      backgroundColor: theme.palette.grey[100],
+      backgroundColor: theme.palette.action.selected,
     },
     past: {
       color: theme.palette.text.disabled,
