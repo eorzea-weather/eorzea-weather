@@ -13,6 +13,7 @@ import React, { FC, useCallback, useEffect, useState } from 'react';
 import { AVAILABLE_LOCALES } from '../../constants';
 import AppDrawer from '../AppDrawer';
 import EorzeaClock from '../EorzeaClock';
+import ThemeButton from '../ThemeButton';
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -86,6 +87,8 @@ const AppHeader: FC = () => {
               </Link>
             )}
           </Typography>
+
+          <ThemeButton />
 
           {(router.locales || []).length > 1 && (
             <>
