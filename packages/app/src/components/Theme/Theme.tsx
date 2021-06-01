@@ -1,16 +1,14 @@
 import blue from '@material-ui/core/colors/blue';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-import React, { FC, useContext, useMemo } from 'react';
-import { SettingsContext } from '../../context/settings';
+import React, { FC, useMemo } from 'react';
+import { useSettings } from '../../context/settings';
 
-const ThemeProvider: FC = ({ children }) => {
-  const settings = useContext(SettingsContext);
+const Theme: FC = ({ children }) => {
+  const settings = useSettings();
   const prefersDark = useMediaQuery('(prefers-color-scheme: dark)');
 
   const theme = useMemo(() => {
-    // This isn't unsafe. TypeScript go away.
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
     let dark = settings.state.dark;
     if (dark == null) dark = prefersDark;
 
@@ -29,4 +27,4 @@ const ThemeProvider: FC = ({ children }) => {
   );
 };
 
-export default ThemeProvider;
+export default Theme;

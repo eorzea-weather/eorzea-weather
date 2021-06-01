@@ -3,7 +3,7 @@ import type { AppProps } from 'next/app';
 import Router from 'next/router';
 import React, { FC, useCallback, useEffect } from 'react';
 import Layout from '../components/Layout';
-import ThemeProvider from '../components/ThemeProvider';
+import Theme from '../components/Theme';
 import { Provider as ZoneProvider } from '../context/zone';
 import { Provider as SettingsProvider } from '../context/settings';
 import tracker from '../utils/tracker';
@@ -35,13 +35,13 @@ const MyApp: FC<AppProps> = ({ Component, pageProps, router }) => {
   return (
     <I18nProvider locale={locale}>
       <SettingsProvider>
-        <ThemeProvider>
+        <Theme>
           <ZoneProvider>
             <Layout>
               <Component {...pageProps} />
             </Layout>
           </ZoneProvider>
-        </ThemeProvider>
+        </Theme>
       </SettingsProvider>
     </I18nProvider>
   );
