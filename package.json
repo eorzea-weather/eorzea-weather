@@ -5,86 +5,29 @@
   },
   "description": "The monorepo of Eorzea Weather.",
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.26.0",
-    "@typescript-eslint/parser": "^4.26.0",
-    "eslint": "^7.27.0",
-    "eslint-config-prettier": "^8.3.0",
+    "@types/eslint": "~7.2.13",
+    "@typescript-eslint/eslint-plugin": "~4.26.0",
+    "@typescript-eslint/parser": "~4.26.0",
+    "eslint": "~7.27.0",
+    "eslint-config-prettier": "~8.3.0",
     "eslint-plugin-jsx-a11y": "~6.4.1",
-    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-prettier": "~3.4.0",
     "eslint-plugin-react": "~7.24.0",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "prettier": "^2.3.0",
-    "typescript": "^4.3.2"
-  },
-  "eslintConfig": {
-    "env": {
-      "browser": true,
-      "node": true
-    },
-    "extends": [
-      "eslint:recommended",
-      "plugin:prettier/recommended"
-    ],
-    "overrides": [
-      {
-        "files": [
-          "*.{ts,tsx}"
-        ],
-        "extends": [
-          "plugin:@typescript-eslint/recommended",
-          "plugin:@typescript-eslint/eslint-recommended",
-          "plugin:@typescript-eslint/recommended-requiring-type-checking"
-        ],
-        "parserOptions": {
-          "project": "tsconfig.json"
-        }
-      },
-      {
-        "files": [
-          "*.{jsx,tsx}"
-        ],
-        "extends": [
-          "plugin:react/recommended",
-          "plugin:react-hooks/recommended",
-          "plugin:jsx-a11y/recommended"
-        ],
-        "rules": {
-          "jsx-a11y/anchor-is-valid": "off"
-        }
-      },
-      {
-        "files": [
-          "*.tsx"
-        ],
-        "rules": {
-          "react/prop-types": "off"
-        }
-      }
-    ],
-    "parserOptions": {
-      "ecmaVersion": 2019
-    },
-    "root": true,
-    "settings": {
-      "react": {
-        "version": "detect"
-      }
-    }
+    "eslint-plugin-react-hooks": "~4.2.0",
+    "prettier": "~2.3.0",
+    "typescript": "~4.3.2"
   },
   "homepage": "https://eorzea-weather.info/",
   "license": "MIT",
   "name": "@eorzea-weather/monorepo",
-  "prettier": {
-    "semi": true,
-    "singleQuote": true,
-    "trailingComma": "all"
-  },
   "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/eorzea-weather/eorzea-weather.git"
   },
   "scripts": {
+    "format": "prettier -w './**/*.{json,md,mdx,yml}'",
+    "format-check": "prettier -c './**/*.{json,md,mdx,yml}'",
     "lint": "eslint .",
     "postinstall": "yarn workspaces foreach --exclude @eorzea-weather/app run build"
   },

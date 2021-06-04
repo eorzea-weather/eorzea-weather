@@ -113,8 +113,7 @@ dist
 # yarn v2
 .yarn/
 .pnp.*
+.yarnrc.yml
 
 # docs
-*.json
-*.md
-*.yml
+CODE_OF_CONDUCT.md
