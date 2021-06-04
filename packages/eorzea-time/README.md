@@ -25,23 +25,24 @@ Download the **eorzea-time.min.js** from [releases page](https://github.com/flow
 ```html
 <!-- ... -->
 <dl>
-  <dt>eorzea time
-  <dd><span id="eorzea-time"></span>
+  <dt>eorzea time</dt>
+  <dd><span id="eorzea-time"></span></dd>
 </dl>
+
 <script src="eorzea-time.min.js"></script>
 <script>
-(function() {
-  'use strict';
+  (function () {
+    'use strict';
 
-  var result = document.getElementById('eorzea-time');
+    var result = document.getElementById('eorzea-time');
 
-  (function timer() {
-    setTimeout(function() {
-      var eorzeaTime = new EorzeaTime();
-      result.textContent = eorzeaTime.toString();
-    }, 1000 / 60);
+    (function timer() {
+      setTimeout(function () {
+        var eorzeaTime = new EorzeaTime();
+        result.textContent = eorzeaTime.toString();
+      }, 1000 / 60);
+    })();
   })();
-})();
 </script>
 <!-- ... -->
 ```
