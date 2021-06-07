@@ -1508,8 +1508,8 @@ __metadata:
   resolution: "@eorzea-weather/monorepo@workspace:."
   dependencies:
     "@types/eslint": ~7.2.13
-    "@typescript-eslint/eslint-plugin": ~4.26.0
-    "@typescript-eslint/parser": ~4.26.0
+    "@typescript-eslint/eslint-plugin": ~4.26.1
+    "@typescript-eslint/parser": ~4.26.1
     eslint: ~7.28.0
     eslint-config-prettier: ~8.3.0
     eslint-plugin-jsx-a11y: ~6.4.1
@@ -2598,7 +2598,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/eslint-plugin@npm:~4.26.0":
+"@typescript-eslint/eslint-plugin@npm:~4.26.1":
   version: 4.26.1
   resolution: "@typescript-eslint/eslint-plugin@npm:4.26.1"
   dependencies:
@@ -2636,7 +2636,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/parser@npm:~4.26.0":
+"@typescript-eslint/parser@npm:~4.26.1":
   version: 4.26.1
   resolution: "@typescript-eslint/parser@npm:4.26.1"
   dependencies:
