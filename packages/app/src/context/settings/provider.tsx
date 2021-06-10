@@ -10,6 +10,7 @@ import type { State, Context } from './types';
 
 const initialState: State = {
   dark: null,
+  displaySeconds: true,
 };
 
 // Context and Provider
