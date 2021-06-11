@@ -4696,7 +4696,7 @@ __metadata:
   dependencies:
     "@types/jest": ^26.0.23
     jest: ^27.0.4
-    microbundle: ^0.13.2
+    microbundle: ^0.13.3
     ts-jest: ^27.0.3
     typescript: ~4.3.2
   languageName: unknown
@@ -4708,7 +4708,7 @@ __metadata:
   dependencies:
     "@types/jest": ^26.0.23
     jest: ^27.0.4
-    microbundle: ^0.13.2
+    microbundle: ^0.13.3
     ts-jest: ^27.0.3
     typescript: ~4.3.2
   languageName: unknown
@@ -7593,9 +7593,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"microbundle@npm:^0.13.2":
-  version: 0.13.2
-  resolution: "microbundle@npm:0.13.2"
+"microbundle@npm:^0.13.3":
+  version: 0.13.3
+  resolution: "microbundle@npm:0.13.3"
   dependencies:
     "@babel/core": ^7.12.10
     "@babel/plugin-proposal-class-properties": 7.12.1
@@ -7639,7 +7639,7 @@ __metadata:
     typescript: ^4.1.3
   bin:
     microbundle: dist/cli.js
-  checksum: 7901a47fee3ae6a595d6dd2f289e4d812a9d1e9136b0499e9bcbffdeeef64edd604e0520bf7df253a56e11150d2ecc29b1ef444b2b0062c5fac0630fcdd53663
+  checksum: 9816aad2e0b7f8885733e2d0115a620114b36b66b16f7128bab7f690675006c1fd18ba22ab3caa826929b780a83ba36796f1678ef3994b4300b435c4d6047dd6
   languageName: node
   linkType: hard
 
