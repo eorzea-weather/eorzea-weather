@@ -13,6 +13,12 @@ export default function settingsReducer(state: State, action: Action): State {
         ...state,
         dark: action.dark ?? null,
       };
+
+    case 'setdisplayseconds':
+      return {
+        ...state,
+        displaySeconds: action.displaySeconds ?? false,
+      };
   }
 
   return state;
