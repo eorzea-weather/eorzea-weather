@@ -1474,9 +1474,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@eorzea-weather/app@workspace:packages/app"
   dependencies:
-    "@material-ui/core": ^4.11.4
+    "@material-ui/core": ^4.12.1
     "@material-ui/icons": ^4.11.2
-    "@material-ui/lab": ^4.0.0-alpha.58
+    "@material-ui/lab": ^4.0.0-alpha.60
     "@material-ui/styles": ^4.11.4
     "@mdx-js/loader": ^1.6.22
     "@mdx-js/react": ^1.6.22
@@ -1854,13 +1854,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@material-ui/core@npm:^4.11.4":
-  version: 4.11.4
-  resolution: "@material-ui/core@npm:4.11.4"
+"@material-ui/core@npm:^4.12.1":
+  version: 4.12.1
+  resolution: "@material-ui/core@npm:4.12.1"
   dependencies:
     "@babel/runtime": ^7.4.4
     "@material-ui/styles": ^4.11.4
-    "@material-ui/system": ^4.11.3
+    "@material-ui/system": ^4.12.1
     "@material-ui/types": 5.1.0
     "@material-ui/utils": ^4.11.2
     "@types/react-transition-group": ^4.2.0
@@ -1877,7 +1877,7 @@ __metadata:
   peerDependenciesMeta:
     "@types/react":
       optional: true
-  checksum: fccfb867bc15875ab261552dcf4c626cfbd2fa93334666c880e32d509106e8804713e0421ad7af9095382eb06146e508ef75947d12d46a56cb8c9cabe7cf440e
+  checksum: 6f612bbb75c18a9ef6746361d0736c5777c4a3a52f85bc4d0d1f6f49b2e1982dd4afc85cba1d66057f5e5d9b52ce1c6d2a9803d71592c50d96fadd74e4170201
   languageName: node
   linkType: hard
 
@@ -1898,9 +1898,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@material-ui/lab@npm:^4.0.0-alpha.58":
-  version: 4.0.0-alpha.58
-  resolution: "@material-ui/lab@npm:4.0.0-alpha.58"
+"@material-ui/lab@npm:^4.0.0-alpha.60":
+  version: 4.0.0-alpha.60
+  resolution: "@material-ui/lab@npm:4.0.0-alpha.60"
   dependencies:
     "@babel/runtime": ^7.4.4
     "@material-ui/utils": ^4.11.2
@@ -1908,14 +1908,14 @@ __metadata:
     prop-types: ^15.7.2
     react-is: ^16.8.0 || ^17.0.0
   peerDependencies:
-    "@material-ui/core": ^4.9.10
+    "@material-ui/core": ^4.12.1
     "@types/react": ^16.8.6 || ^17.0.0
     react: ^16.8.0 || ^17.0.0
     react-dom: ^16.8.0 || ^17.0.0
   peerDependenciesMeta:
     "@types/react":
       optional: true
-  checksum: 39777028a72b8ef23a24926fbbc56cb4bef0f109e50c2711d546880b2918c8554fdf39b5eeaea8a0e4214302fd7d02788b91688ce4e26aac362e6cfe755030ac
+  checksum: 8da8bcd63621f0ee1bc3a2013a1b54c89259cc17833ab4728bb0b95d08535dfee884779a76d6fec8597f2dd1748b3ce008e114bcd18ce26c6f4abd223cfeaebb
   languageName: node
   linkType: hard
 
@@ -1950,9 +1950,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@material-ui/system@npm:^4.11.3":
-  version: 4.11.3
-  resolution: "@material-ui/system@npm:4.11.3"
+"@material-ui/system@npm:^4.12.1":
+  version: 4.12.1
+  resolution: "@material-ui/system@npm:4.12.1"
   dependencies:
     "@babel/runtime": ^7.4.4
     "@material-ui/utils": ^4.11.2
@@ -1965,7 +1965,7 @@ __metadata:
   peerDependenciesMeta:
     "@types/react":
       optional: true
-  checksum: 928f8fc1cd2b52d827d6cad1c5fc27fa6ce526b78560e3274892df085abccc15d28a9f42c439c93b90df14cc69a259843a106561e8096f06e7cea3bd1a4faeac
+  checksum: 2acf20b43090c381530899e2fa85b0a774fc4dfe08aa97a55c8fd58f833175fd1cb17374ecc403f722c2db3b3caffd1fadd5dffe146a08d036bc6031d676659b
   languageName: node
   linkType: hard
 
