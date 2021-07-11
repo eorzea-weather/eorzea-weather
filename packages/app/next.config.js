@@ -4,8 +4,8 @@ const withMDX = require('@next/mdx')();
  * @type {import('next/dist/next-server/server/config').NextConfig}
  **/
 const nextConfig = {
-  future: {
-    webpack5: true,
+  eslint: {
+    ignoreDuringBuilds: true,
   },
   i18n: {
     defaultLocale: 'ja',
