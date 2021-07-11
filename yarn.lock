@@ -1486,7 +1486,7 @@ __metadata:
     "@types/clean-css": ^4.2.5
     "@types/gtag.js": ^0.0.7
     "@types/lodash": ^4.14.171
-    "@types/mdx-js__react": ^1.5.3
+    "@types/mdx-js__react": ^1.5.4
     "@types/node": ^15.6.1
     "@types/react-helmet": ^6.1.2
     clean-css: ^5.1.3
@@ -2500,12 +2500,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/mdx-js__react@npm:^1.5.3":
-  version: 1.5.3
-  resolution: "@types/mdx-js__react@npm:1.5.3"
+"@types/mdx-js__react@npm:^1.5.4":
+  version: 1.5.4
+  resolution: "@types/mdx-js__react@npm:1.5.4"
   dependencies:
     "@types/react": "*"
-  checksum: ef1095c51952de29eab99ec10d73f0f509b927dac845e877e3263a9df4ac64cdf5b4f1574f2c522b3ef37e309839364bed7c6bcb2f9501a17f6540ca7fbfd812
+  checksum: b06ec66dc91d8c0b425ee0fb7f4ff29b77d6ffe9da0a4f5f60b45ceb8773b19fc6225570b92914d2fd4df63f24d8aadafffb60207705b541e9922cd485575dbd
   languageName: node
   linkType: hard
 
