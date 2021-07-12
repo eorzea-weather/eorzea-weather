@@ -1,6 +1,3 @@
 /// <reference types="next" />
 /// <reference types="next/types/global" />
-
-declare interface Window {
-  adsbygoogle: Record<string, null>[];
-}
+/// <reference types="next/image-types/global" />
