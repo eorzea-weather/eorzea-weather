@@ -1485,7 +1485,7 @@ __metadata:
     "@types/accepts": ^1.3.5
     "@types/clean-css": ^4.2.5
     "@types/gtag.js": ^0.0.7
-    "@types/lodash": ^4.14.171
+    "@types/lodash": ^4.14.172
     "@types/mdx-js__react": ^1.5.4
     "@types/node": ^15.6.1
     "@types/react-helmet": ^6.1.2
@@ -2486,10 +2486,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/lodash@npm:^4.14.171":
-  version: 4.14.171
-  resolution: "@types/lodash@npm:4.14.171"
-  checksum: d093d8ff8b31d7829ab5f2625d824bb1f903fb07d4beca50812c99c3d6c6b63155c56eb0ecf14b97f0d4ba5fcb3b13f8259cca6d4313345326f3c48bed6f4b9f
+"@types/lodash@npm:^4.14.172":
+  version: 4.14.172
+  resolution: "@types/lodash@npm:4.14.172"
+  checksum: 5fc51ea40d7e455bd1c760bcc60c9e81f82d85988666d4d4969bd8311367c63bbf1fe2be48755ba87836710e45fff94014ec164ebe6ccaa72815014981152434
   languageName: node
   linkType: hard
 
