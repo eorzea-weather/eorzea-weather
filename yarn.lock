@@ -1478,7 +1478,7 @@ __metadata:
     "@types/mdx-js__react": ^1.5.4
     "@types/node": ^15.6.1
     "@types/react-helmet": ^6.1.2
-    clean-css: ^5.1.3
+    clean-css: ^5.1.5
     clsx: ^1.1.1
     eorzea-time: "workspace:^3.0.0"
     eorzea-weather: "workspace:^3.2.0"
@@ -3782,12 +3782,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"clean-css@npm:^5.1.3":
-  version: 5.1.3
-  resolution: "clean-css@npm:5.1.3"
+"clean-css@npm:^5.1.5":
+  version: 5.1.5
+  resolution: "clean-css@npm:5.1.5"
   dependencies:
     source-map: ~0.6.0
-  checksum: ccfa9dd6b604533c68f441126619eece3e2904f0792746b60906303387ffb6859a655cd87778ef7438c21743c5b1a20948812cef41e7a85b558632003f44bea9
+  checksum: 67ca53cabe22dabafd338bde5ebb5c416e151f9b6cb73b774db888ddf6c39272e373c0e81bea98a75e67182d1b6a915c7ade88434242b35f79217d1a13f29075
   languageName: node
   linkType: hard
 
