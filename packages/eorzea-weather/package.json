@@ -6,7 +6,7 @@
   "description": "Weather forecast for Eorzea.",
   "devDependencies": {
     "@types/jest": "^27.0.1",
-    "jest": "^27.0.6",
+    "jest": "^27.1.0",
     "microbundle": "^0.13.3",
     "ts-jest": "^27.0.5",
     "typescript": "~4.3.5"
