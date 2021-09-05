@@ -1,38 +1,60 @@
 {
   "author": "Lily Cartelet <flowercartelet@gmail.com>",
   "bugs": {
-    "url": "https://github.com/eorzea-weather/eorzea-weather-app/issues"
+    "url": "https://github.com/eorzea-weather/eorzea-weather/issues"
   },
-  "description": "The monorepo of Eorzea Weather.",
+  "dependencies": {
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.60",
+    "@material-ui/styles": "^4.11.4",
+    "@mdx-js/react": "^1.6.22",
+    "@react-aria/i18n": "^3.3.2",
+    "clean-css": "^5.1.5",
+    "clsx": "^1.1.1",
+    "eorzea-time": "^3.0.0",
+    "eorzea-weather": "^3.2.0",
+    "lodash": "^4.17.21",
+    "next": "^11.1.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-helmet": "^6.1.0",
+    "swr": "^0.5.6"
+  },
+  "description": "Weather forecast for Eorzea.",
   "devDependencies": {
+    "@mdx-js/loader": "^1.6.22",
+    "@next/mdx": "^11.1.0",
+    "@types/clean-css": "^4.2.5",
     "@types/eslint": "~7.28.0",
+    "@types/gtag.js": "^0.0.7",
+    "@types/lodash": "^4.14.172",
+    "@types/mdx-js__react": "^1.5.4",
+    "@types/node": "^15.6.1",
+    "@types/react-helmet": "^6.1.2",
     "@typescript-eslint/eslint-plugin": "~4.29.3",
-    "@typescript-eslint/parser": "~4.29.3",
     "eslint": "~7.32.0",
+    "eslint-config-next": "^11.1.2",
     "eslint-config-prettier": "~8.3.0",
-    "eslint-plugin-jsx-a11y": "~6.4.1",
     "eslint-plugin-prettier": "~3.4.1",
-    "eslint-plugin-react": "~7.24.0",
-    "eslint-plugin-react-hooks": "~4.2.0",
     "prettier": "~2.3.2",
     "typescript": "~4.3.5"
   },
   "homepage": "https://eorzea-weather.info/",
   "license": "MIT",
-  "name": "@eorzea-weather/monorepo",
+  "name": "@eorzea-weather/app",
   "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/eorzea-weather/eorzea-weather.git"
   },
   "scripts": {
+    "build": "next build",
+    "dev": "next",
     "format": "prettier -w './**/*.{json,md,mdx,yml}'",
     "format-check": "prettier -c './**/*.{json,md,mdx,yml}'",
-    "lint": "eslint .",
-    "postinstall": "yarn workspaces foreach --exclude @eorzea-weather/app run build"
+    "lint": "next lint",
+    "start": "next start"
   },
-  "version": "1.0.0",
-  "workspaces": [
-    "packages/*"
-  ]
+  "version": "1.0.0"
 }
