@@ -372,7 +372,7 @@ __metadata:
     "@types/node": ^15.6.1
     "@types/react-helmet": ^6.1.2
     "@typescript-eslint/eslint-plugin": ~4.31.2
-    clean-css: ^5.1.5
+    clean-css: ^5.2.0
     clsx: ^1.1.1
     eorzea-time: ^3.0.0
     eorzea-weather: ^3.2.0
@@ -1936,12 +1936,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"clean-css@npm:^5.1.5":
-  version: 5.1.5
-  resolution: "clean-css@npm:5.1.5"
+"clean-css@npm:^5.2.0":
+  version: 5.2.0
+  resolution: "clean-css@npm:5.2.0"
   dependencies:
     source-map: ~0.6.0
-  checksum: 67ca53cabe22dabafd338bde5ebb5c416e151f9b6cb73b774db888ddf6c39272e373c0e81bea98a75e67182d1b6a915c7ade88434242b35f79217d1a13f29075
+  checksum: ccb63b244b200abf53a005429b50132845a49b994fb6a2889a7eb775d53fbde7cb0d0b13655e435b0c3a6788d5d0fbcd2f56ccf32da852ef21ae933198dcad24
   languageName: node
   linkType: hard
 
