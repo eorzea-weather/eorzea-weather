@@ -26,7 +26,7 @@
     "@mdx-js/loader": "^1.6.22",
     "@next/mdx": "^11.1.2",
     "@types/clean-css": "^4.2.5",
-    "@types/eslint": "~7.28.2",
+    "@types/eslint": "~7.29.0",
     "@types/gtag.js": "^0.0.8",
     "@types/lodash": "^4.14.176",
     "@types/mdx-js__react": "^1.5.5",
