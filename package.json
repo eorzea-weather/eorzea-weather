@@ -28,7 +28,7 @@
     "@types/clean-css": "^4.2.5",
     "@types/eslint": "~7.29.0",
     "@types/gtag.js": "^0.0.8",
-    "@types/lodash": "^4.14.177",
+    "@types/lodash": "^4.14.178",
     "@types/mdx-js__react": "^1.5.5",
     "@types/node": "^15.6.1",
     "@types/react-helmet": "^6.1.4",
