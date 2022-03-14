@@ -313,7 +313,7 @@ __metadata:
     "@mdx-js/loader": ^1.6.22
     "@mdx-js/react": ^1.6.22
     "@next/mdx": ^12.0.9
-    "@react-aria/i18n": ^3.3.4
+    "@react-aria/i18n": ^3.3.7
     "@types/clean-css": ^4.2.5
     "@types/eslint": ~7.29.0
     "@types/gtag.js": ^0.0.8
@@ -778,7 +778,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-aria/i18n@npm:^3.3.4":
+"@react-aria/i18n@npm:^3.3.7":
   version: 3.3.7
   resolution: "@react-aria/i18n@npm:3.3.7"
   dependencies:
