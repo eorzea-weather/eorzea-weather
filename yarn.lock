@@ -312,7 +312,7 @@ __metadata:
     "@material-ui/styles": ^4.11.4
     "@mdx-js/loader": ^1.6.22
     "@mdx-js/react": ^1.6.22
-    "@next/mdx": ^12.0.9
+    "@next/mdx": ^12.1.0
     "@react-aria/i18n": ^3.3.7
     "@types/clean-css": ^4.2.5
     "@types/eslint": ~7.29.0
@@ -327,11 +327,11 @@ __metadata:
     eorzea-time: ^3.0.0
     eorzea-weather: ^3.2.0
     eslint: ~7.32.0
-    eslint-config-next: ^12.0.9
+    eslint-config-next: ^12.1.0
     eslint-config-prettier: ~8.3.0
     eslint-plugin-prettier: ~4.0.0
     lodash: ^4.17.21
-    next: ^12.0.9
+    next: ^12.1.0
     prettier: ~2.5.1
     react: ^17.0.2
     react-dom: ^17.0.2
@@ -664,7 +664,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/mdx@npm:^12.0.9":
+"@next/mdx@npm:^12.1.0":
   version: 12.1.0
   resolution: "@next/mdx@npm:12.1.0"
   peerDependencies:
@@ -1766,7 +1766,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-next@npm:^12.0.9":
+"eslint-config-next@npm:^12.1.0":
   version: 12.1.0
   resolution: "eslint-config-next@npm:12.1.0"
   dependencies:
@@ -3122,7 +3122,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next@npm:^12.0.9":
+"next@npm:^12.1.0":
   version: 12.1.0
   resolution: "next@npm:12.1.0"
   dependencies:
