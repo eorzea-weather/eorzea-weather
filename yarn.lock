@@ -316,7 +316,7 @@ __metadata:
     "@react-aria/i18n": ^3.3.7
     "@types/clean-css": ^4.2.5
     "@types/eslint": ~7.29.0
-    "@types/gtag.js": ^0.0.8
+    "@types/gtag.js": ^0.0.9
     "@types/lodash": ^4.14.180
     "@types/mdx-js__react": ^1.5.5
     "@types/node": ^15.6.1
@@ -875,10 +875,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/gtag.js@npm:^0.0.8":
-  version: 0.0.8
-  resolution: "@types/gtag.js@npm:0.0.8"
-  checksum: fecb1d772a0cdbf8573741ad4f8932a418bf44c3d38dec01221504e35658040fb82d6c7916577bb2cd5f3eff4a30642bda81fc35847443101eda05cf58107199
+"@types/gtag.js@npm:^0.0.9":
+  version: 0.0.9
+  resolution: "@types/gtag.js@npm:0.0.9"
+  checksum: e9dac2e71be4e25048576406161226295c40131885ee6fa5b1dc4f416a69f9ab8ddb6ca0da6aeb8990830e2ab0910d0fb0ce1eaaa6256f1dd002064580dc264f
   languageName: node
   linkType: hard
 
