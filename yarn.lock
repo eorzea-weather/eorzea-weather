@@ -313,7 +313,7 @@ __metadata:
     "@mdx-js/loader": ^1.6.22
     "@mdx-js/react": ^1.6.22
     "@next/mdx": ^12.1.0
-    "@react-aria/i18n": ^3.3.7
+    "@react-aria/i18n": ^3.3.8
     "@types/clean-css": ^4.2.5
     "@types/eslint": ~7.29.0
     "@types/gtag.js": ^0.0.10
@@ -425,12 +425,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@internationalized/date@npm:3.0.0-alpha.3":
-  version: 3.0.0-alpha.3
-  resolution: "@internationalized/date@npm:3.0.0-alpha.3"
+"@internationalized/date@npm:3.0.0-alpha.4":
+  version: 3.0.0-alpha.4
+  resolution: "@internationalized/date@npm:3.0.0-alpha.4"
   dependencies:
     "@babel/runtime": ^7.6.2
-  checksum: f48d321afb936331f82139621b34221e7b0fe494c8f1fe67426fbf84c91a6f13bff9ea3003abe4b3f6eb0648fcb18a81ec96bbd37844a298cca7980469a4f9ae
+  checksum: 9f734c98fdbd05ddfcbd083c959b3b0ed290fc609af83d286a80984aeb29d4a4847da5bd1bbbb9c5764f0c68f2624b37ecbf19f55c3318b877bf5da141965fd9
   languageName: node
   linkType: hard
 
@@ -444,12 +444,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@internationalized/number@npm:^3.0.5":
-  version: 3.0.5
-  resolution: "@internationalized/number@npm:3.0.5"
+"@internationalized/number@npm:^3.0.6":
+  version: 3.0.6
+  resolution: "@internationalized/number@npm:3.0.6"
   dependencies:
     "@babel/runtime": ^7.6.2
-  checksum: 39834ef4a0c04904c905ceae6756f35fd61092b4ca009f3a9e4fff6f120c9f01facc258857f861280004775026d86af84cb680a9da1499a715f0fac79de2b02c
+  checksum: cb310ec99506bd1038467401b517c76b81e6ffd2290a2f4aa50fa0fbac9d91f92b3e3bbd625c9302e01bed4b4f538a2a5354afa7d7effdcce5199c0b4a016955
   languageName: node
   linkType: hard
 
@@ -778,20 +778,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-aria/i18n@npm:^3.3.7":
-  version: 3.3.7
-  resolution: "@react-aria/i18n@npm:3.3.7"
+"@react-aria/i18n@npm:^3.3.8":
+  version: 3.3.8
+  resolution: "@react-aria/i18n@npm:3.3.8"
   dependencies:
     "@babel/runtime": ^7.6.2
-    "@internationalized/date": 3.0.0-alpha.3
+    "@internationalized/date": 3.0.0-alpha.4
     "@internationalized/message": ^3.0.5
-    "@internationalized/number": ^3.0.5
+    "@internationalized/number": ^3.0.6
     "@react-aria/ssr": ^3.1.2
     "@react-aria/utils": ^3.11.3
     "@react-types/shared": ^3.11.2
   peerDependencies:
     react: ^16.8.0 || ^17.0.0-rc.1
-  checksum: d779d699743a8df98d04f7cf00077a45db07f90e0e5e0d5544f47d0e024167a53421d9bcbedd508c524962b780554ce81e26675270f1bfd7bc1b918dac87e656
+  checksum: 132b5232c934cb6525470e84e57d9984fe008cfebd891dd08331a246c741cddc9b9de021987d54c44fc6f643890465015353f87a9968023980f986329e935c98
   languageName: node
   linkType: hard
 
