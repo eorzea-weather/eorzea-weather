@@ -337,7 +337,7 @@ __metadata:
     react-dom: ^17.0.2
     react-helmet: ^6.1.0
     swr: ^1.2.2
-    typescript: ~4.6.2
+    typescript: ~4.6.3
   languageName: unknown
   linkType: soft
 
@@ -4104,23 +4104,23 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@~4.6.2#~builtin<compat/typescript>":
-  version: 4.6.2
-  resolution: "typescript@patch:typescript@npm%3A4.6.2#~builtin<compat/typescript>::version=4.6.2&hash=32657b"
+"typescript@patch:typescript@~4.6.3#~builtin<compat/typescript>":
+  version: 4.6.3
+  resolution: "typescript@patch:typescript@npm%3A4.6.3#~builtin<compat/typescript>::version=4.6.3&hash=32657b"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 4b15830bdbd391a66f9f3bcc2dc81fdcaa8143adbf3f9e47dc67ab2d971646a1caf19b89c677afea066e22d3d111f3c1b7b137e3d9a7e8663a6bf9497d428041
+  checksum: 59346df396432a7dc69f86776acadbe61d1f1faf8bbecf6dadc3bd95d2a70808a40a65dc17699b8aec74902edca2d49aa7373bb61443705d7c3e56dd2757d5c3
   languageName: node
   linkType: hard
 
-typescript@~4.6.2:
-  version: 4.6.2
-  resolution: "typescript@npm:4.6.2"
+typescript@~4.6.3:
+  version: 4.6.3
+  resolution: "typescript@npm:4.6.3"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 8a44ed7e6f6c4cb1ebe8cf236ecda2fb119d84dcf0fbd77e707b2dfea1bbcfc4e366493a143513ce7f57203c75da9d4e20af6fe46de89749366351046be7577c
+  checksum: 255bb26c8cb846ca689dd1c3a56587af4f69055907aa2c154796ea28ee0dea871535b1c78f85a6212c77f2657843a269c3a742d09d81495b97b914bf7920415b
   languageName: node
   linkType: hard
 
