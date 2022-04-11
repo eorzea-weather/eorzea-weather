@@ -336,7 +336,7 @@ __metadata:
     react: ^17.0.2
     react-dom: ^17.0.2
     react-helmet: ^6.1.0
-    swr: ^1.2.2
+    swr: ^1.3.0
     typescript: ~4.6.3
   languageName: unknown
   linkType: soft
@@ -3997,12 +3997,12 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"swr@npm:^1.2.2":
-  version: 1.2.2
-  resolution: "swr@npm:1.2.2"
+"swr@npm:^1.3.0":
+  version: 1.3.0
+  resolution: "swr@npm:1.3.0"
   peerDependencies:
     react: ^16.11.0 || ^17.0.0 || ^18.0.0
-  checksum: 723747c7c263536d8c9ee8b38039462395ba09a7925508f22c8fc940a1ae72e1f05ef678767b2197ce337e170f4812563281bc4b5f9ad7e4eec895cd7139fb8e
+  checksum: e7a184f0d560e9c8be85c023cc8e65e56a88a6ed46f9394b301b07f838edca23d2e303685319a4fcd620b81d447a7bcb489c7fa0a752c259f91764903c690cdb
   languageName: node
   linkType: hard
 
