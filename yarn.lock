@@ -313,7 +313,7 @@ __metadata:
     "@mdx-js/loader": ^1.6.22
     "@mdx-js/react": ^1.6.22
     "@next/mdx": ^12.1.6
-    "@react-aria/i18n": ^3.3.8
+    "@react-aria/i18n": ^3.3.9
     "@types/clean-css": ^4.2.5
     "@types/eslint": ~7.29.0
     "@types/gtag.js": ^0.0.10
@@ -377,14 +377,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@formatjs/icu-messageformat-parser@npm:2.0.19":
-  version: 2.0.19
-  resolution: "@formatjs/icu-messageformat-parser@npm:2.0.19"
+"@formatjs/icu-messageformat-parser@npm:2.1.0":
+  version: 2.1.0
+  resolution: "@formatjs/icu-messageformat-parser@npm:2.1.0"
   dependencies:
     "@formatjs/ecma402-abstract": 1.11.4
     "@formatjs/icu-skeleton-parser": 1.3.6
     tslib: ^2.1.0
-  checksum: 178c4436dab3b0485e4dfb5b41cd05221cee6c5521d3f53bd4712dd1dc5c74cd24da495cc2a6934ab037419aae74db4275b4fb0e69dd426a9dcc30b6a9bf7997
+  checksum: 8dab4d102b334dd7ab25b85817b074f1b54845d02f9ef9fa5a1fa6a9723176ad28a59d845fdc0eeedb868b891e61a4c530384b123db29f5b14e1f3f8b207373f
   languageName: node
   linkType: hard
 
@@ -425,31 +425,31 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@internationalized/date@npm:3.0.0-alpha.4":
-  version: 3.0.0-alpha.4
-  resolution: "@internationalized/date@npm:3.0.0-alpha.4"
+"@internationalized/date@npm:3.0.0-rc.0":
+  version: 3.0.0-rc.0
+  resolution: "@internationalized/date@npm:3.0.0-rc.0"
   dependencies:
     "@babel/runtime": ^7.6.2
-  checksum: 9f734c98fdbd05ddfcbd083c959b3b0ed290fc609af83d286a80984aeb29d4a4847da5bd1bbbb9c5764f0c68f2624b37ecbf19f55c3318b877bf5da141965fd9
+  checksum: 94566ea75c49cdde4f7903725a29d95017028c3272e80134e7c6a8050a64e8bfcf63f8aa269e85c124ac9ce37ee108a1d6b98bf42ee06c6e11aee12b923f010e
   languageName: node
   linkType: hard
 
-"@internationalized/message@npm:^3.0.5":
-  version: 3.0.5
-  resolution: "@internationalized/message@npm:3.0.5"
-  dependencies:
-    "@babel/runtime": ^7.6.2
-    intl-messageformat: ^9.6.12
-  checksum: afecf57dcacfeb95ec83426edf04d406293e485670ac9077ac6d4e6c04d7a51e22e6a8a59bff02f91cad000c924d3a47e8eff1f7b5116e738006b49c60b9cf34
-  languageName: node
-  linkType: hard
-
-"@internationalized/number@npm:^3.0.6":
+"@internationalized/message@npm:^3.0.6":
   version: 3.0.6
-  resolution: "@internationalized/number@npm:3.0.6"
+  resolution: "@internationalized/message@npm:3.0.6"
   dependencies:
     "@babel/runtime": ^7.6.2
-  checksum: cb310ec99506bd1038467401b517c76b81e6ffd2290a2f4aa50fa0fbac9d91f92b3e3bbd625c9302e01bed4b4f538a2a5354afa7d7effdcce5199c0b4a016955
+    intl-messageformat: ^9.12.0
+  checksum: 621c93921a2c70beefb72b6dbd52db1d1dff2b9a2a0843cac3fb9a286529829d63c20aa23a85f0ee500d516efa8121ae6cf40d9bfd29b46ce651eaa488d0cb29
+  languageName: node
+  linkType: hard
+
+"@internationalized/number@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "@internationalized/number@npm:3.1.0"
+  dependencies:
+    "@babel/runtime": ^7.6.2
+  checksum: e348576125302e812971243a13ce70dc18098f93978ca666aff67d12e84c86656aabf5958063ec7f2fb43c0481193e819acb78edc0e295c8fc213c9037b857fd
   languageName: node
   linkType: hard
 
@@ -785,20 +785,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-aria/i18n@npm:^3.3.8":
-  version: 3.3.8
-  resolution: "@react-aria/i18n@npm:3.3.8"
+"@react-aria/i18n@npm:^3.3.9":
+  version: 3.3.9
+  resolution: "@react-aria/i18n@npm:3.3.9"
   dependencies:
     "@babel/runtime": ^7.6.2
-    "@internationalized/date": 3.0.0-alpha.4
-    "@internationalized/message": ^3.0.5
-    "@internationalized/number": ^3.0.6
+    "@internationalized/date": 3.0.0-rc.0
+    "@internationalized/message": ^3.0.6
+    "@internationalized/number": ^3.1.0
     "@react-aria/ssr": ^3.1.2
-    "@react-aria/utils": ^3.11.3
-    "@react-types/shared": ^3.11.2
+    "@react-aria/utils": ^3.12.0
+    "@react-types/shared": ^3.12.0
   peerDependencies:
     react: ^16.8.0 || ^17.0.0-rc.1
-  checksum: 132b5232c934cb6525470e84e57d9984fe008cfebd891dd08331a246c741cddc9b9de021987d54c44fc6f643890465015353f87a9968023980f986329e935c98
+  checksum: 8cc1cf7bbf595134aca20d9ff84f72744297a1405b40a133d211a3deacffac32f8882408f23584e41305ff4a2599e8d6e52fde6b9dd11a1dfbc58f7946b8edec
   languageName: node
   linkType: hard
 
@@ -813,18 +813,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-aria/utils@npm:^3.11.3":
-  version: 3.11.3
-  resolution: "@react-aria/utils@npm:3.11.3"
+"@react-aria/utils@npm:^3.12.0":
+  version: 3.12.0
+  resolution: "@react-aria/utils@npm:3.12.0"
   dependencies:
     "@babel/runtime": ^7.6.2
     "@react-aria/ssr": ^3.1.2
     "@react-stately/utils": ^3.4.1
-    "@react-types/shared": ^3.11.2
+    "@react-types/shared": ^3.12.0
     clsx: ^1.1.1
   peerDependencies:
     react: ^16.8.0 || ^17.0.0-rc.1
-  checksum: d6a26feca118d45b9cc653d049c6aa5f7161bd16ccd5b046a5bd7f4eaba70f2f197975dcb8970290609a5902bd042a451103aef03607640eae3c68f102367bbe
+  checksum: 8dbcecbc84828e6a76f2509405e9cc500c51a9b25ac795b1f723fde99a0de3a08f8733468d6c5f667f65d94adf9b05c7d345f7fd754057d09481907b2073fdbf
   languageName: node
   linkType: hard
 
@@ -839,12 +839,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-types/shared@npm:^3.11.2":
-  version: 3.11.2
-  resolution: "@react-types/shared@npm:3.11.2"
+"@react-types/shared@npm:^3.12.0":
+  version: 3.12.0
+  resolution: "@react-types/shared@npm:3.12.0"
   peerDependencies:
     react: ^16.8.0 || ^17.0.0-rc.1
-  checksum: 6d656ac43387c4605faf539d3d4831b281ec961215f7eac830093cac1839828726b76be8db86e4c8c907197e0384fd3d84f3b812d65f48225014c6581c232764
+  checksum: 400590e560154506919debb3bdf3c54760176e7d6b521c94a45730e7388366b874f0167be0f6710c2a9bd35f9edbf895b0147881689ac0242880c532ababe369
   languageName: node
   linkType: hard
 
@@ -2530,15 +2530,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"intl-messageformat@npm:^9.6.12":
-  version: 9.12.0
-  resolution: "intl-messageformat@npm:9.12.0"
+"intl-messageformat@npm:^9.12.0":
+  version: 9.13.0
+  resolution: "intl-messageformat@npm:9.13.0"
   dependencies:
     "@formatjs/ecma402-abstract": 1.11.4
     "@formatjs/fast-memoize": 1.2.1
-    "@formatjs/icu-messageformat-parser": 2.0.19
+    "@formatjs/icu-messageformat-parser": 2.1.0
     tslib: ^2.1.0
-  checksum: 0df8d383cae950e4a9be150a5219d22ae339a295c7ec523be96b7ae8c19dee4ea9df15c2a6d7eba0bfb4f3fd0ae1b7b0a78ff12cd9ed374d073b48d83fb20267
+  checksum: effb840ae6e213adceab9951dbb2d18d1a354c82e35dbd213011daf23bcc79e2a18b6ef79157ae3b69c1e6d898fe66b54dd184ac180ee0646e26a70276e60038
   languageName: node
   linkType: hard
 
