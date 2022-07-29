@@ -9,7 +9,7 @@
     "@material-ui/lab": "^4.0.0-alpha.60",
     "@material-ui/styles": "^4.11.4",
     "@mdx-js/react": "^1.6.22",
-    "@react-aria/i18n": "^3.5.0",
+    "@react-aria/i18n": "^3.5.1",
     "clean-css": "^5.3.1",
     "clsx": "^1.2.1",
     "eorzea-time": "^3.0.0",
