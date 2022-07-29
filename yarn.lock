@@ -313,7 +313,7 @@ __metadata:
     "@mdx-js/loader": ^1.6.22
     "@mdx-js/react": ^1.6.22
     "@next/mdx": ^12.1.6
-    "@react-aria/i18n": ^3.5.0
+    "@react-aria/i18n": ^3.5.1
     "@types/clean-css": ^4.2.5
     "@types/eslint": ~7.29.0
     "@types/gtag.js": ^0.0.10
@@ -794,9 +794,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-aria/i18n@npm:^3.5.0":
-  version: 3.5.0
-  resolution: "@react-aria/i18n@npm:3.5.0"
+"@react-aria/i18n@npm:^3.5.1":
+  version: 3.5.1
+  resolution: "@react-aria/i18n@npm:3.5.1"
   dependencies:
     "@babel/runtime": ^7.6.2
     "@internationalized/date": ^3.0.1
@@ -808,7 +808,7 @@ __metadata:
     "@react-types/shared": ^3.14.0
   peerDependencies:
     react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
-  checksum: d8e9c39a0b2fae37e2ac902129e7b2fc598a685ce93f5b7fa34d9a1eab78d4d7bd477baee3e8e7e13c3f9ae790ace60193f8706b51b75e840c768de8cd0133ec
+  checksum: 018a26702d779c1a4512471492137d6435a3fbead082ba2bb202ba4a9c3b96ad3a23fbf7f9fb95f27abb8774fe4e64ef2eefe70095401c3daa46a7f0ad803869
   languageName: node
   linkType: hard
 
