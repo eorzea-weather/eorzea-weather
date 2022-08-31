@@ -313,7 +313,7 @@ __metadata:
     "@mdx-js/loader": ^1.6.22
     "@mdx-js/react": ^1.6.22
     "@next/mdx": ^12.1.6
-    "@react-aria/i18n": ^3.5.1
+    "@react-aria/i18n": ^3.6.0
     "@types/clean-css": ^4.2.5
     "@types/eslint": ~7.29.0
     "@types/gtag.js": ^0.0.11
@@ -794,9 +794,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-aria/i18n@npm:^3.5.1":
-  version: 3.5.1
-  resolution: "@react-aria/i18n@npm:3.5.1"
+"@react-aria/i18n@npm:^3.6.0":
+  version: 3.6.0
+  resolution: "@react-aria/i18n@npm:3.6.0"
   dependencies:
     "@babel/runtime": ^7.6.2
     "@internationalized/date": ^3.0.1
@@ -804,11 +804,11 @@ __metadata:
     "@internationalized/number": ^3.1.1
     "@internationalized/string": ^3.0.0
     "@react-aria/ssr": ^3.3.0
-    "@react-aria/utils": ^3.13.2
-    "@react-types/shared": ^3.14.0
+    "@react-aria/utils": ^3.13.3
+    "@react-types/shared": ^3.14.1
   peerDependencies:
     react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
-  checksum: 018a26702d779c1a4512471492137d6435a3fbead082ba2bb202ba4a9c3b96ad3a23fbf7f9fb95f27abb8774fe4e64ef2eefe70095401c3daa46a7f0ad803869
+  checksum: ede9cd611e15fe2975556dfe695bdcb67cbcb8d2dfff7677174f86f1418421491fbbbfd8eab40e724a8db24877d2f980df6e50d26d29d5b3e607ca39b42befc3
   languageName: node
   linkType: hard
 
@@ -823,18 +823,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-aria/utils@npm:^3.13.2":
-  version: 3.13.2
-  resolution: "@react-aria/utils@npm:3.13.2"
+"@react-aria/utils@npm:^3.13.3":
+  version: 3.13.3
+  resolution: "@react-aria/utils@npm:3.13.3"
   dependencies:
     "@babel/runtime": ^7.6.2
     "@react-aria/ssr": ^3.3.0
     "@react-stately/utils": ^3.5.1
-    "@react-types/shared": ^3.14.0
+    "@react-types/shared": ^3.14.1
     clsx: ^1.1.1
   peerDependencies:
     react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
-  checksum: 1978dbd54fecbef8db52693b92d9b3071a856ba4e7a4382747f0b1772042d5d2708afed008707d56fc24c47e989051927bb1a5c61b0335cd6be8bd2fef660eb8
+  checksum: b6d87ddb8e1d93b00405473099390c854647d81c0419de53cc4a7f02bdcca6d030776fba9f4b241400af13082bafc820dd5ce05c168e8f5a2c43a1b2660fb2ad
   languageName: node
   linkType: hard
 
@@ -849,12 +849,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-types/shared@npm:^3.14.0":
-  version: 3.14.0
-  resolution: "@react-types/shared@npm:3.14.0"
+"@react-types/shared@npm:^3.14.1":
+  version: 3.14.1
+  resolution: "@react-types/shared@npm:3.14.1"
   peerDependencies:
     react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
-  checksum: e5aa5c52ce112dd74ff2c4cb9311aaa65a404d6bd94df6293f8ffc38c58626ae2186094a1d96c09e846ff0be004c09fc24f0be26f6ccf5263ae711f44723c7bb
+  checksum: 117fe230f5a26b7fcaf535c1cfb7c4d42416b0f49d0e0b3436fef2a5851234967908c4e884fc5f2a99a04bee2543543348346a04e1f3f45aaa14c42b6f08491a
   languageName: node
   linkType: hard
 
