@@ -314,7 +314,7 @@ __metadata:
     "@mdx-js/react": ^1.6.22
     "@next/mdx": ^12.1.6
     "@react-aria/i18n": ^3.6.0
-    "@types/clean-css": ^4.2.5
+    "@types/clean-css": ^4.2.6
     "@types/eslint": ~7.29.0
     "@types/gtag.js": ^0.0.11
     "@types/lodash": ^4.14.185
@@ -865,13 +865,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/clean-css@npm:^4.2.5":
-  version: 4.2.5
-  resolution: "@types/clean-css@npm:4.2.5"
+"@types/clean-css@npm:^4.2.6":
+  version: 4.2.6
+  resolution: "@types/clean-css@npm:4.2.6"
   dependencies:
     "@types/node": "*"
     source-map: ^0.6.0
-  checksum: 640f0c47ecda76fa15d1d4ea0cd49c6f617f080147b09aae009cafe90bd69362d018abbe61823ac3b867b1057ef7b2c64162ce9fbf876c524800d80c9f87a9e2
+  checksum: 24240a0866579df8abb537cf6ffa7475f1f817f1103a803e864c715898677ed569901a898799efff59ecea482444cfdf148c92708adf523f336c7ac9c050980a
   languageName: node
   linkType: hard
 
