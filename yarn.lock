@@ -306,10 +306,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@eorzea-weather/app@workspace:."
   dependencies:
-    "@material-ui/core": ^4.12.3
+    "@material-ui/core": ^4.12.4
     "@material-ui/icons": ^4.11.2
-    "@material-ui/lab": ^4.0.0-alpha.60
-    "@material-ui/styles": ^4.11.4
+    "@material-ui/lab": ^4.0.0-alpha.61
+    "@material-ui/styles": ^4.11.5
     "@mdx-js/loader": ^1.6.22
     "@mdx-js/react": ^1.6.22
     "@next/mdx": ^12.1.6
@@ -462,7 +462,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@material-ui/core@npm:^4.12.3":
+"@material-ui/core@npm:^4.12.4":
   version: 4.12.4
   resolution: "@material-ui/core@npm:4.12.4"
   dependencies:
@@ -506,7 +506,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@material-ui/lab@npm:^4.0.0-alpha.60":
+"@material-ui/lab@npm:^4.0.0-alpha.61":
   version: 4.0.0-alpha.61
   resolution: "@material-ui/lab@npm:4.0.0-alpha.61"
   dependencies:
@@ -527,7 +527,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@material-ui/styles@npm:^4.11.4, @material-ui/styles@npm:^4.11.5":
+"@material-ui/styles@npm:^4.11.5":
   version: 4.11.5
   resolution: "@material-ui/styles@npm:4.11.5"
   dependencies:
