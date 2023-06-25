@@ -319,7 +319,7 @@ __metadata:
     "@types/gtag.js": ^0.0.11
     "@types/lodash": ^4.14.185
     "@types/mdx-js__react": ^1.5.5
-    "@types/node": ^15.6.1
+    "@types/node": ^15.14.9
     "@types/react-helmet": ^6.1.5
     "@typescript-eslint/eslint-plugin": ~4.33.0
     clean-css: ^5.3.1
@@ -954,7 +954,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^15.6.1":
+"@types/node@npm:^15.14.9":
   version: 15.14.9
   resolution: "@types/node@npm:15.14.9"
   checksum: 49f7f0522a3af4b8389aee660e88426490cd54b86356672a1fedb49919a8797c00d090ec2dcc4a5df34edc2099d57fc2203d796c4e7fbd382f2022ccd789eee7
