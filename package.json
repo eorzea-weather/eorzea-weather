@@ -35,7 +35,7 @@
     "@typescript-eslint/eslint-plugin": "~4.33.0",
     "eslint": "~7.32.0",
     "eslint-config-next": "^12.1.6",
-    "eslint-config-prettier": "~8.5.0",
+    "eslint-config-prettier": "~8.10.0",
     "eslint-plugin-prettier": "~4.2.1",
     "prettier": "~2.7.1",
     "typescript": "~4.8.3"
