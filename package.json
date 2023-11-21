@@ -25,7 +25,7 @@
   "devDependencies": {
     "@mdx-js/loader": "^1.6.22",
     "@next/mdx": "^12.1.6",
-    "@types/clean-css": "^4.2.6",
+    "@types/clean-css": "^4.2.11",
     "@types/eslint": "~7.29.0",
     "@types/gtag.js": "^0.0.11",
     "@types/lodash": "^4.14.185",
